@@ -27,9 +27,19 @@ const navLinks = [
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
   return (
-    <nav className=' fixed top-0 left-0 right-0 z-10 bg-black '>
-      <div className='flex flex-wrap items-center justify-between mx-auto p-5 xl:px-36'>
-        <Link href={"/"} className='block sm:text-xl rounded md:p-0 hover:text-purple-300 '>Saksham Jain</Link>
+    <nav className=' navbar
+     fixed sm:sticky 
+     top-0 left-0 right-0 
+     z-10 
+     bg-black '>
+
+      <div className='flex flex-wrap items-center justify-between 
+      mx-auto p-3 sm:px-4 lg:px-14 xl:px-36'>
+
+        <Link href={"/"} className='block sm:text-base rounded md:p-0 hover:text-purple-300 '>
+        Saksham Jain
+        </Link>
+        
         <div className='mobile-menu block md:hidden'>
             {
                 navbarOpen ? (
@@ -41,7 +51,7 @@ const Navbar = () => {
             }
         </div>
         <div className='menu hidden md:block md:w-auto' id='navbar'>
-            <ul className='flex gap-6 md:p-0 md:flex-row md:space-x-8 mt-0'>
+            <ul className='flex gap-2 md:p-0 md:flex-row md:space-x-8 mt-0'>
                 {
                     navLinks.map((Link, index) => (
                         <li key = {index}>
