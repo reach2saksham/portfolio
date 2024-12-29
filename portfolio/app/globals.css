@@ -2,6 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/public/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('ttf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SixCaps';
+  src: url('/fonts/SixCaps.ttf') format('truetype'); /* Correct path */
+  font-weight: normal;
+  font-style: normal;
+}
+
+.navbar, .bento {
+  font-family: 'Sequel Sans', sans-serif;
+}
+
+.projecthead{
+  font-family: 'SixCaps', sans-serif;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

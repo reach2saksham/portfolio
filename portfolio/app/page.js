@@ -1,14 +1,17 @@
 import Image from "next/image";
 import Bento from "./components/Bento";
 import Navbar from "./components/Navbar";
+import Projects from "./components/Projects";
+import Testing from "./components/Testing";
 
 export default function Home() {
   return (
-    <main className="flex min-h-screen flex-col bg-black container mx-auto">
+    <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
       <Navbar/>
-      <div className=" container mt-24 mx-auto">
       <Bento/>
-      </div>
+      <Projects/>
+
+      {/* <Testing/> */}
     </main>
   );
 }
