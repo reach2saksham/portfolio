@@ -3,25 +3,36 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'MyCustomFont';
-  src: url('/public/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('ttf');
+  font-family: 'SSMedium';
+  src: url('/public/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SSRoman';
+  src: url('/public/fonts/Sequel\ Sans\ Roman\ Body.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SixCaps';
-  src: url('/fonts/SixCaps.ttf') format('truetype'); /* Correct path */
+  src: url('/fonts/SixCaps.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-.navbar, .bento {
-  font-family: 'Sequel Sans', sans-serif;
+.navbar, .bento, .card {
+  font-family: 'SSMedium', sans-serif;
 }
 
 .projecthead{
   font-family: 'SixCaps', sans-serif;
+}
+
+.tags{
+  font-family: 'SSMedium', sans-serif;
 }
 
 :root {
