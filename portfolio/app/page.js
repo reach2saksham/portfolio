@@ -3,6 +3,7 @@ import Bento from "./components/Bento";
 import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Testing from "./components/Testing";
+import Card from "./components/Card";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
       <Navbar/>
       <Bento/>
       <Projects/>
+      {/* <Card/> */}
 
       {/* <Testing/> */}
     </main>
