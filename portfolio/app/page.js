@@ -4,6 +4,7 @@ import Navbar from "./components/Navbar";
 import Projects from "./components/Projects";
 import Testing from "./components/Testing";
 import Card from "./components/Card";
+import Footer from "./components/Footer";
 
 export default function Home() {
   return (
@@ -14,6 +15,7 @@ export default function Home() {
       {/* <Card/> */}
 
       {/* <Testing/> */}
+      <Footer/>
     </main>
   );
 }

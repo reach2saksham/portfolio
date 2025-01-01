@@ -110,13 +110,13 @@ const Bento = () => {
                 sequence={[
                   // Same substring at the start will only be typed out once, initially
                   'SAKSHAM JAIN',
-                  2000, // wait 1s before replacing "Mice" with "Hamsters"
+                  1500, // wait 1s before replacing "Mice" with "Hamsters"
                   '',
-                  2000,
+                  1500,
                   'सक्षम जैन',
-                  2000,
+                  1500,
                   'TOBI',
-                  2000
+                  1500
                 ]}
                 wrapper="span"
                 speed={50}
