@@ -4,14 +4,14 @@
 
 @font-face {
   font-family: 'SSMedium';
-  src: url('/public/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('truetype');
+  src: url('/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'SSRoman';
-  src: url('/public/fonts/Sequel\ Sans\ Roman\ Body.ttf')  format('truetype');
+  src: url('/fonts/Sequel\ Sans\ Roman\ Body.ttf')  format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -23,7 +23,16 @@
   font-style: normal;
 }
 
-.navbar, .bento, .card {
+@font-face {
+  font-family: 'OffBit';
+  src: url('/fonts/OffBitTrial-DotBold.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+.navbar, .bento, .card, .footer {
   font-family: 'SSMedium', sans-serif;
 }
 
@@ -35,6 +44,10 @@
   font-family: 'SSMedium', sans-serif;
 }
 
+.foothead {
+  font-family: 'OffBit', sans-serif;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -42,7 +55,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
     --foreground: #ededed;
   }
 }

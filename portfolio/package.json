@@ -16,6 +16,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-type-animation": "^3.2.0",
+    "resend": "^4.0.1",
     "type": "^2.7.3"
   },
   "devDependencies": {
