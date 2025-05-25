@@ -1,12 +1,41 @@
-import React from 'react'
+"use client"
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 
 const Card = (props) => {
+  const [showTooltip, setShowTooltip] = useState(false);
+  const [tooltipPosition, setTooltipPosition] = useState({ x: 0, y: 0 });
+
+  // Handle mouse move within the card
+  const handleMouseMove = (e) => {
+    // Get the mouse position relative to the viewport
+    setTooltipPosition({
+      x: e.clientX,
+      y: e.clientY
+    });
+  };
+
+  // Handle mouse enter/leave
+  const handleMouseEnter = () => {
+    setShowTooltip(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowTooltip(false);
+  };
+
   return (
-    <div>
+    <div 
+      className='cursor-pointer relative' 
+      onClick={() => window.open(props.docsLink || '#', '_self')}
+      onMouseEnter={handleMouseEnter}
+      onMouseMove={handleMouseMove}
+      onMouseLeave={handleMouseLeave}
+      data-card-tooltip="true"
+    >
         {/* Image Section */}
-        <div className='relative m-2 overflow-hidden rounded-2xl group'>
+        <div className='relative m-3 overflow-hidden rounded-2xl group'>
             <Image
                 className='w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-sm'
                 src={props.image}
@@ -21,9 +50,16 @@ const Card = (props) => {
 
             {/* Centered "View Live" Button */}
             <div className='hidden group-hover:flex absolute inset-0 justify-center items-center'>
-                <button className='px-3 py-2 bg-[#E6E6E6] text-[#1A1A1A] text-xs rounded-2xl shadow-lg flex items-center gap-2 hover:bg-[#1A1A1A] hover:text-white'>
+                <a 
+                  href={props.liveLink || '#'} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  onClick={(e) => e.stopPropagation()} // Prevent triggering parent onClick
+                  className='px-3 py-2 bg-[#E6E6E6] text-[#1A1A1A] text-xs rounded-2xl shadow-lg flex items-center gap-2 hover:bg-[#1A1A1A] hover:text-white'
+                  data-view-live-button="true"
+                >
                     View Live <ArrowUpRightIcon className="h-3 w-3" />
-                </button>
+                </a>
             </div>
 
             {/* Top Overlay - Flex with justify-between */}
@@ -71,7 +107,7 @@ const Card = (props) => {
             </div>
         </div>
 
-        <div className='m-2 pt-2 flex flex-col gap-2'>
+        <div className='m-2 pt-2 pb-4 pr-2 pl-2 flex flex-col gap-2'>
             <div className='font-semibold text-lg'>{props.title}</div>
             <div className='text-xs'>
                 {props.description}
@@ -80,5 +116,49 @@ const Card = (props) => {
     </div>
   )
 }
+
+// This creates a tooltip component at the app level to avoid tooltip issues between multiple cards
+export const MouseTooltip = () => {
+  const [tooltipData, setTooltipData] = useState({ show: false, x: 0, y: 0 });
+  
+  // Set up global event listeners for mouse movement and card hover
+  React.useEffect(() => {
+    const handleMouseMove = (e) => {
+      // Check if mouse is over a "View Live" button, and hide tooltip if it is
+      if (e.target.closest('[data-view-live-button]')) {
+        setTooltipData(prev => ({ ...prev, show: false }));
+      } 
+      // Otherwise show tooltip if over a card
+      else if (e.target.closest('[data-card-tooltip]')) {
+        setTooltipData({
+          show: true,
+          x: e.clientX + 10, // Offset by 10px to the right
+          y: e.clientY - 10  // Offset by 10px upward
+        });
+      } else {
+        setTooltipData(prev => ({ ...prev, show: false }));
+      }
+    };
+
+    document.addEventListener('mousemove', handleMouseMove);
+    return () => {
+      document.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  if (!tooltipData.show) return null;
+
+  return (
+    <div 
+      className="fixed px-3 py-1 bg-gray-800 text-white text-xs rounded-lg opacity-90 whitespace-nowrap pointer-events-none z-50"
+      style={{
+        left: `${tooltipData.x}px`,
+        top: `${tooltipData.y}px`,
+      }}
+    >
+      Click to see documentation
+    </div>
+  );
+};
 
 export default Card;

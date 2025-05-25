@@ -68,7 +68,7 @@ const Bento = () => {
           border border-[#363636]/20 rounded-3xl 
           flex justify-center items-center '>
 
-          <Image className='w-full h-full object-cover  rounded-3xl lg:grayscale lg:hover:grayscale-0 transition duration-300'
+          <Image className='w-full h-full object-cover  rounded-3xl lg: lg:hover:-0 transition duration-300'
             src='/myphoto.png'
             width={717}
             height={674}
@@ -128,7 +128,7 @@ const Bento = () => {
 
           <div className='text-xs leading-5 text-[#B8B8B8]
                 lg:pt-0 px-5 pb-3  '>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Porro et excepturi rem quos, est nostrum deleniti sit repudiandae voluptate optio minima nobis voluptas in ex omnis enim ducimus saepe possimus. Lorem ipsum dolor sit amet consectetur adipisicing elit. Ab iste blanditiis, itaque eveniet delectus beatae reprehenderit unde temporibus sunt soluta!
+            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit temporibus, velit corrupti odio consequuntur vel expedita at laborum a amet, vitae ea quasi mollitia et suscipit iusto atque ex veritatis?
           </div>
 
         </div>
@@ -245,7 +245,7 @@ const Bento = () => {
 
             <div className='bg-[#313034]/[0.7] rounded-xl rounded-r-none h-2/6 flex gap-2 px-3 py-2 overflow-hidden overflow-x-auto scroll-smooth snap-x snap-mandatory'>
               {stack1Order.map((icon, index) => (
-                <Image className='lg:grayscale lg:group-hover:grayscale-0 transition duration-300'
+                <Image className='lg: lg:group-hover:-0 transition duration-300'
                   key={index}
                   src={`/STACK1/${icon}`}
                   width={50}
@@ -257,7 +257,7 @@ const Bento = () => {
 
             <div className='bg-[#313034]/[0.7] rounded-xl rounded-r-none h-2/6 flex gap-2 px-3 py-2 overflow-hidden overflow-x-auto scroll-smooth snap-x snap-mandatory'>
               <Image
-                className='lg:grayscale lg:group-hover:grayscale-0 transition duration-300'
+                className='lg: lg:group-hover:-0 transition duration-300'
                 src={`/STACK2/framer.svg`}
                 width={34}
                 height={50}
@@ -266,7 +266,7 @@ const Bento = () => {
 
               {stack2Order.map((icon, index) => (
                 <Image
-                  className='lg:grayscale lg:group-hover:grayscale-0 transition duration-300'
+                  className='lg: lg:group-hover:-0 transition duration-300'
                   key={index}
                   src={`/STACK2/${icon}`}
                   width={50}
