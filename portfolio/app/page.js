@@ -6,6 +6,7 @@ import Testing from "./components/Testing";
 import Card from "./components/Card";
 import Footer from "./components/Footer";
 
+
 export default function Home() {
   return (
     <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">

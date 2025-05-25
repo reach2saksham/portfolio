@@ -1,6 +1,7 @@
 "use client";
 import React, {useState} from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import NavLink from './NavLink'
 import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/solid";
 import MenuOverlay from './MenuOverlay';
@@ -8,7 +9,7 @@ import MenuOverlay from './MenuOverlay';
 const navLinks = [
     {
         title: "Work",
-        path: "#work",
+        path: "#projects", // This should match your Projects section ID
     },
     {
         title: "About",
@@ -20,12 +21,35 @@ const navLinks = [
     },
     {
         title: "Contact",
-        path: "#contact",
+        path: "#footer", // This should match your footer ID
     }
 ]
 
 const Navbar = () => {
     const [navbarOpen, setNavbarOpen] = useState(false);
+    const router = useRouter();
+
+    const handleLogoClick = (e) => {
+        e.preventDefault();
+        
+        // Check if we're on the home page
+        if (window.location.pathname === '/') {
+            // If on home page, just scroll to top
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        } else {
+            // If on another page, navigate to home with slide transition to the right
+            document.body.classList.add('transitioning');
+            document.body.style.transform = 'translateX(100%)';
+            
+            setTimeout(() => {
+                router.push('/');
+            }, 300);
+        }
+    };
+
   return (
     <nav className=' navbar
      fixed sm:sticky 
@@ -36,7 +60,11 @@ const Navbar = () => {
       <div className='flex flex-wrap items-center justify-between 
       mx-auto p-3 sm:px-4 lg:px-14 xl:px-36'>
 
-        <Link href={"/"} className='block sm:text-base rounded md:p-0 hover:text-purple-300 '>
+        <Link 
+            href={"/"} 
+            onClick={handleLogoClick}
+            className='block sm:text-base rounded md:p-0 hover:text-purple-300 cursor-pointer'
+        >
         Saksham Jain
         </Link>
         

@@ -2,6 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+.animate-in {
+  opacity: 1 !important;
+  transform: translate(0, 0) !important;
+}
+
 @font-face {
   font-family: 'SSMedium';
   src: url('/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('truetype');
@@ -30,7 +35,12 @@
   font-style: normal;
 }
 
-
+@font-face {
+  font-family: 'Sfpro';
+  src: url('/fonts/SFPRODISPLAYMEDIUM.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
 
 .navbar, .bento, .card, .footer {
   font-family: 'SSMedium', sans-serif;
@@ -44,8 +54,12 @@
   font-family: 'SSMedium', sans-serif;
 }
 
-.foothead {
+.foothead, .company {
   font-family: 'OffBit', sans-serif;
+}
+
+.sfpro {
+  font-family: 'Sfpro', sans-serif;
 }
 
 :root {
@@ -64,4 +78,16 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  transform: translateX(0) !important;
+  transition: none !important;
+}
+
+body.transitioning {
+  transition: transform 0.3s ease-in-out !important;
+}
+
+/* Reset transitions after navigation */
+body.page-loaded {
+  transform: translateX(0) !important;
+  transition: none !important;
 }

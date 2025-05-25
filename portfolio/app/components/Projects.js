@@ -1,6 +1,6 @@
 "use client"
 import React, { useState } from 'react';
-import Card from './Card';
+import Card, { MouseTooltip } from './Card';
 import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 
 let designitems = {
@@ -15,6 +15,8 @@ let designitems = {
     domain: 'UI/UX Designer',
     impact: '100+ Users Daily',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem similique dolore necessitatibus iste commodi corrupti magnam a tenetur, laboriosam inventore nam, ea cum molestiae eaque.',
+    docsLink: '/design/case1', // Add your documentation link here
+    liveLink: 'https://your-live-site.com/dashboard' // Add your live link here
   },
 };
 
@@ -30,6 +32,8 @@ let devitems = {
     domain: 'UI/UX Designer',
     impact: '100+ Users Daily',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem similique dolore necessitatibus iste commodi corrupti magnam a tenetur, laboriosam inventore nam, ea cum molestiae eaque.',
+    docsLink: '/dev/dashboard-docs', // Add your documentation link here
+    liveLink: 'https://your-live-site.com/dashboard' // Add your live link here
   },
 };
 
@@ -54,12 +58,13 @@ const Projects = () => {
   };
 
   return (
-    <div className="projects container max-w-full pt-4 mx-auto xl:px-36 lg:px-14 sm:px-4">
+    <div id='projects' className="projects container max-w-full pt-4 mx-auto xl:px-36 lg:px-14 sm:px-4">
+      {/* Global tooltip that follows the mouse */}
+      <MouseTooltip />
+      
       {/* Navigation for small screens */}
-      <div className="md:hidden flex items-center justify-around mb-4 ">
-        
+      <div className="md:hidden flex items-center justify-around mb-4">
         {/* <div className="text-center text-2xl font-semibold">{columns[currentColumn].title}</div> */}
-        
       </div>
 
       {/* Responsive columns */}
@@ -71,32 +76,35 @@ const Projects = () => {
               index === currentColumn ? 'block' : 'hidden'
             } md:block`}
           >
-                <div className="bg-[#131313] relative group rounded-3xl px-2 md:px-0">
-                    <div className='flex justify-between md:justify-center px-4 items-center'>
+            <div className="bg-[#131313] relative group rounded-3xl px-2 md:px-0">
+              <div className='flex justify-between md:justify-center px-4 items-center'>
                 <ChevronLeftIcon
-            className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
-            onClick={handlePrev}
-            />
-              <div className="projecthead text-center pt-2 text-7xl mb-4">{col.title}</div>
-                <ChevronRightIcon
-            className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
-            onClick={handleNext}
-            />
-            </div>
-              {col.content.map(([key, card]) => (
-                <Card
-                  key={key}
-                  title={card.title}
-                  image={card.image}
-                  width={card.width}
-                  height={card.height}
-                  alt={card.alt}
-                  tags={card.tags}
-                  role={card.role}
-                  domain={card.domain}
-                  impact={card.impact}
-                  description={card.description}
+                  className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
+                  onClick={handlePrev}
                 />
+                <div className="projecthead text-center pt-2 text-7xl mb-4">{col.title}</div>
+                <ChevronRightIcon
+                  className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
+                  onClick={handleNext}
+                />
+              </div>
+              {col.content.map(([key, card]) => (
+                <div data-card-tooltip="true" key={key}>
+                  <Card
+                    title={card.title}
+                    image={card.image}
+                    width={card.width}
+                    height={card.height}
+                    alt={card.alt}
+                    tags={card.tags}
+                    role={card.role}
+                    domain={card.domain}
+                    impact={card.impact}
+                    description={card.description}
+                    docsLink={card.docsLink}
+                    liveLink={card.liveLink}
+                  />
+                </div>
               ))}
             </div>
           </div>
