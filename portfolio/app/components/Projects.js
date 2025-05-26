@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import Card, { MouseTooltip } from './Card';
 import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 
+
 let designitems = {
   card1: {
     title: 'CLIENT SIDE DASHBOARD',
@@ -76,7 +77,7 @@ const Projects = () => {
               index === currentColumn ? 'block' : 'hidden'
             } md:block`}
           >
-            <div className="bg-[#131313] relative group rounded-3xl px-2 md:px-0">
+            <div className="bg-[#131313] relative group rounded-[20px] px-2 md:px-0">
               <div className='flex justify-between md:justify-center px-4 items-center'>
                 <ChevronLeftIcon
                   className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"

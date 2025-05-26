@@ -67,6 +67,39 @@
   --foreground: #171717;
 }
 
+/* Original globe styles - kept for backward compatibility */
+.globe {
+  width: 100%;
+  height: 100%;
+  position: sticky;
+  overflow: hidden;
+}
+
+/* New enlarged globe styles */
+.globe-enlarged {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Ensure the globe canvas scales properly within its container */
+.globe-enlarged canvas {
+  max-width: none !important;
+  max-height: none !important;
+  width: 150% !important;
+  height: 150% !important;
+  object-fit: cover;
+  transform: scale(1.2);
+}
+
+/* Alternative: If you want even larger globe */
+.globe-enlarged.xl canvas {
+  width: 200% !important;
+  height: 200% !important;
+  transform: scale(1.5);
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #000000;
@@ -78,16 +111,13 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
-  transform: translateX(0) !important;
-  transition: none !important;
 }
 
-body.transitioning {
-  transition: transform 0.3s ease-in-out !important;
-}
-
-/* Reset transitions after navigation */
-body.page-loaded {
-  transform: translateX(0) !important;
-  transition: none !important;
+/* Responsive adjustments for mobile */
+@media (max-width: 768px) {
+  .globe-enlarged canvas {
+    width: 120% !important;
+    height: 120% !important;
+    transform: scale(1.1);
+  }
 }

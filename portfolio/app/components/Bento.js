@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { TypeAnimation } from 'react-type-animation';
+import { Globe } from "./Globe";
 
 const stack1Order = [
   'figma.svg',
@@ -53,10 +54,10 @@ const Bento = () => {
     <div className='bento
        flex items-center justify-center 
        md:h-[600px] h-[1400px] max-w-full container 
-       pt-4 mx-auto 
+       pt-4 mx-auto mt-2 mb-5
        xl:px-36 lg:px-14 sm:px-4'>
 
-      <div className='grid grid-cols-3 grid-rows-10 gap-2
+      <div className='grid grid-cols-3 grid-rows-10 gap-3
          md:grid-cols-11  sm:grid-rows-10
          h-full w-full px-2 pt-10
          sm:px-0 sm:pt-0'>
@@ -65,10 +66,10 @@ const Bento = () => {
           order-1 sm:order-1  
           md:col-span-5 md:row-span-10
           bg-[#171717] 
-          border border-[#363636]/20 rounded-3xl 
+          border border-[#363636]/20 rounded-[20px] 
           flex justify-center items-center '>
 
-          <Image className='w-full h-full object-cover  rounded-3xl lg: lg:hover:-0 transition duration-300'
+          <Image className='w-full h-full object-cover  rounded-[20px] lg: lg:hover:-0 transition duration-300'
             src='/myphoto.png'
             width={717}
             height={674}
@@ -78,27 +79,12 @@ const Bento = () => {
           />
         </div>
 
-        <div className='col-span-1 row-span-2
-          order-4 md:order-2 
-          md:col-span-1 md:row-span-7 
-          bg-[#0F0F0F] 
-          rounded-3xl 
-          flex justify-center items-center'>
-
-          <Image className='w-full h-full object-cover rounded-3xl'
-            src='/Banner.png'
-            width={1660}
-            height={800}
-            alt='Small Banner'
-            priority
-            unoptimized={true}
-          />
-        </div>
+        
         <div className='col-span-3 row-span-2
           order-2 
-          md:col-span-5 md:row-span-3 
-          bg-[#0F0F0F] 
-          border border-[#363636]/20 rounded-3xl 
+          md:col-span-6 md:row-span-3 
+          bg-[#0F0F0F]  hover:border-oklch(1, 0, 0, 0.1) hover:border-[2.5px]
+          border border-[#363636]/20 rounded-[20px] 
           group
           flex flex-col justify-between'>
 
@@ -136,7 +122,7 @@ const Bento = () => {
           order-3 md:order-4 
           md:col-span-2 md:row-span-4 
           bg-[#543AA8] lg:bg-[#0F0F0F] lg:text-[#B8B8B8]
-          lg:border border-[5px] border-[#6D4ED7]  lg:border-[#363636] lg:border-opacity-20  rounded-3xl 
+          lg:border border-[5px] border-[#6D4ED7]  lg:border-[#363636] lg:border-opacity-20  rounded-[20px] 
           flex gap-3 
           lg:hover:bg-[#543AA8] lg:hover:border-[#6D4ED7] hover:border-[5px] lg:hover:border-[5px] lg:hover:text-[#EDE5F0] text-[#EDE5F0]'>
           <div className='flex flex-col justify-between'>
@@ -157,7 +143,7 @@ const Bento = () => {
           lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2
           order-5 sm:order-5 
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-3xl 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-[20px] 
           flex justify-center items-center 
           group
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
@@ -172,7 +158,7 @@ const Bento = () => {
           lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2
           order-6 sm:order-6
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-3xl 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-[20px] 
           flex justify-center items-center 
           group
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
@@ -185,26 +171,29 @@ const Bento = () => {
 
         <div className='col-span-1 row-span-2
           order-7 sm:order-7 
-          lg:col-span-1 lg:row-span-4 md:col-span-1 md:row-span-4 
+          lg:col-span-2 lg:row-span-4 md:col-span-1 md:row-span-4 
           bg-[#0F0F0F] text-[#B8B8B8]
-          border border-[#363636]/20  rounded-3xl 
-          flex flex-col justify-between items-center'>
-          <div className='text-3xl pt-3 px-5 text-[#D9D9D9] font-bold text-transform: uppercase'>{time}</div>
+          border border-[#363636]/20  rounded-[20px]
+          flex flex-col justify-center items-center
+          relative overflow-hidden'>
 
-          <Image
-            src='/sun.svg'
-            width={72}
-            height={72}
-            alt='sun' />
+            {/* Enlarged globe container */}
+            <div className='globe-enlarged w-full h-full relative'>
+              <Globe />
+            </div>
 
-          <p className='text-[12px] px-5 pb-3 leading-4 '>Currently based in IIT Roorkee</p>
+            {/* Optional: Add time and location info over the globe */}
+            <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 text-center'>
+              <div className='text-sm font-bold uppercase text-[#D9D9D9] mb-1'>{time}</div>
+              <p className='text-[10px] text-[#B8B8B8]'>Currently based in IIT Roorkee</p>
+            </div>
         </div>
 
         <div className='row-span-1
           lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2
           order-8 sm:order-8
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-3xl 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-[20px] 
           flex justify-center items-center 
           group
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
@@ -219,7 +208,7 @@ const Bento = () => {
           lg:col-span-1 lg:row-span-2 md:col-span-1 md:row-span-2
           order-9 sm:order-9
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-3xl 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-[20px] 
           flex justify-center items-center 
           group
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
@@ -234,7 +223,7 @@ const Bento = () => {
           order-10 sm:order-10 
           lg:col-span-6 lg:row-span-3 md:col-span-6 md:row-span-3
           bg-[#0F0F0F] 
-          border border-[#363636]/20  rounded-3xl 
+          border border-[#363636]/20  rounded-[20px] 
           flex gap-8 sm:gap-0 justify-center items-center group'>
 
           <div className='w-1/4 px-5 pb-2 h-full flex flex-col justify-end text-3xl pt-3 text-[#D9D9D9] font-bold '>
@@ -243,7 +232,7 @@ const Bento = () => {
 
           <div className='w-3/4 h-full flex flex-col justify-around'>
 
-            <div className='bg-[#313034]/[0.7] rounded-xl rounded-r-none h-2/6 flex gap-2 px-3 py-2 overflow-hidden overflow-x-auto scroll-smooth snap-x snap-mandatory'>
+            <div className='bg-[#313034]/[0.7] rounded-[20px] rounded-r-none h-2/6 flex gap-2 px-3 py-2 overflow-hidden overflow-x-auto scroll-smooth snap-x snap-mandatory'>
               {stack1Order.map((icon, index) => (
                 <Image className='lg: lg:group-hover:-0 transition duration-300'
                   key={index}
@@ -255,7 +244,7 @@ const Bento = () => {
               ))}
             </div>
 
-            <div className='bg-[#313034]/[0.7] rounded-xl rounded-r-none h-2/6 flex gap-2 px-3 py-2 overflow-hidden overflow-x-auto scroll-smooth snap-x snap-mandatory'>
+            <div className='bg-[#313034]/[0.7] rounded-[20px] rounded-r-none h-2/6 flex gap-2 px-3 py-2 overflow-hidden overflow-x-auto scroll-smooth snap-x snap-mandatory'>
               <Image
                 className='lg: lg:group-hover:-0 transition duration-300'
                 src={`/STACK2/framer.svg`}

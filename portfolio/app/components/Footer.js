@@ -1,6 +1,7 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
+import { SocialIcon } from 'react-social-icons'
 
 const social = [
   { icon: "1.svg", link: "https://www.linkedin.com/in/sakshamjainiitr/" },

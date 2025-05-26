@@ -333,6 +333,8 @@ const Page = () => {
                 <BlurImage src="/ig2.png" width={460} height={460} title="Sex" subtitle="sexy" alt="Another Banner" />
               </div>
             </div>
+            
+            
 
 
 

@@ -1,8 +1,11 @@
 import Link from "next/link"
 import { useRouter } from 'next/navigation'
+import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 const NavLink = ({href, title}) => {
     const router = useRouter();
+    const [isAnimating, setIsAnimating] = useState(false);
     
     const handleClick = (e) => {
         e.preventDefault();
@@ -29,7 +32,17 @@ const NavLink = ({href, title}) => {
                 }
             }
             
-            // For other links or if Contact footer doesn't exist on current page
+            // For Saksham Jain (logo) and Work button - trigger page swipe if not on homepage
+            if (title === 'Work' && !isOnHomePage) {
+    // Just scroll to top of current case study page
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+    return;
+}
+            
+            // For other links or if already on home page
             const targetElement = document.getElementById(targetId);
             
             // If element exists on current page, scroll to it
@@ -42,31 +55,25 @@ const NavLink = ({href, title}) => {
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
-            } else {
-                // If element doesn't exist on current page or not on home page, navigate to home
-                if (!isOnHomePage) {
-                    // Add slide transition - slide to right when leaving other pages
-                    document.body.classList.add('transitioning');
-                    document.body.style.transform = 'translateX(100%)';
-                    
-                    setTimeout(() => {
-                        router.push(`/${href}`);
-                    }, 300);
-                } else {
-                    // Just navigate with hash if already on home
-                    router.push(`/${href}`);
-                }
-            }
+            } 
         }
     };
 
     return (
-        <Link 
-            href={href} 
-            onClick={handleClick}
-            className='block sm:text-base rounded md:p-0 hover:text-purple-300'>
-            {title}
-        </Link>
+        <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+        >
+            <Link 
+                href={href} 
+                onClick={handleClick}
+                className={`block sm:text-base rounded md:p-0 hover:text-purple-300 transition-colors duration-200 ${
+                    isAnimating ? 'pointer-events-none opacity-70' : ''
+                }`}>
+                {title}
+            </Link>
+        </motion.div>
     )
 }
 
