@@ -37,7 +37,7 @@ const Page = () => {
   return (
     <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
       <Navbar />
-      <div className="projects container max-w-full pt-4 mt-12 sm:mt-0 mx-auto px-3 xl:px-36 lg:px-14 sm:px-4">
+      <div className="projects container max-w-full pt-4 mt-12 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
         {/* Header Section */}
         <div className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-3/4 pb-4 lg:pb-0">
@@ -51,9 +51,9 @@ const Page = () => {
               className="w-full h-auto lg:object-cover lg:h-full 2xl:object-contain"
             />
           </div>
-          <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080]">
+          <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080] border-opacity-40">
             <div className="sfpro text-sm text-[#646464] tracking-wider">INDUSTRY</div>
-            <div className="tags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500">
+            <div className="tags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
               {caseStudy.industry}
             </div>
             <div className="sfpro text-sm text-[#646464] pt-4 pb-2 tracking-wider">TECH STACK</div>
@@ -108,7 +108,7 @@ const Page = () => {
           {/* Main Content */}
           <div className="flex flex-col w-full lg:w-3/4 pt-2 lg:pt-0">
             <div className="pt-2 lg:pt-0">{caseStudy.description}</div>
-            <div className="flex flex-wrap pt-6 justify-between">
+            <div className="flex flex-wrap pt-6 gap-4 justify-between">
               {[
                 ['ROLE', caseStudy.role],
                 ['COLLABORATORS', caseStudy.collaborators],

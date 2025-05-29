@@ -66,7 +66,7 @@ const Card = (props) => {
             <div className='absolute top-3 left-3 right-3 flex justify-between items-center p-2'>
                 <div className='flex gap-2'>
                     {props.tags.map((tag, index) => (
-                        <span key={index} className='tags bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:bg-[#1A1A1A] group-hover:text-white group-hover:shadow-lg'>
+                        <span key={index} className='tags block md:hidden lg:block bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:bg-[#1A1A1A] group-hover:text-white group-hover:shadow-lg'>
                             {tag}
                         </span>
                     ))}

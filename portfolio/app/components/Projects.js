@@ -59,7 +59,7 @@ const Projects = () => {
   };
 
   return (
-    <div id='projects' className="projects container max-w-full pt-4 mx-auto xl:px-36 lg:px-14 sm:px-4">
+    <div id='projects' className="projects container max-w-full px-4 pt-4 mx-auto xl:px-36 lg:px-14 sm:px-4 z-40">
       {/* Global tooltip that follows the mouse */}
       <MouseTooltip />
       
@@ -90,7 +90,7 @@ const Projects = () => {
                 />
               </div>
               {col.content.map(([key, card]) => (
-                <div data-card-tooltip="true" key={key}>
+                <div data-card-tooltip="true"  key={key}>
                   <Card
                     title={card.title}
                     image={card.image}

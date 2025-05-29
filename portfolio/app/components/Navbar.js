@@ -1,13 +1,32 @@
 "use client";
-import React, {useState} from 'react'
+import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import { motion } from 'framer-motion'
 import NavLink from './NavLink'
-import {Bars3Icon, XMarkIcon} from "@heroicons/react/24/solid";
-import MenuOverlay from './MenuOverlay';
 
-const navLinks = [
+// Mobile navigation links (includes Home)
+const mobileNavLinks = [
+    {
+        title: "Home",
+        path: "#hero", // This should match your Hero/Home section ID
+    },
+    {
+        title: "Work",
+        path: "#projects", // This should match your Projects section ID
+    },
+    {
+        title: "About",
+        path: "#about",
+    },
+    {
+        title: "Contact",
+        path: "#footer", // This should match your footer ID
+    }
+]
+
+// Desktop navigation links (excludes Home since logo serves as Home)
+const desktopNavLinks = [
     {
         title: "Work",
         path: "#projects", // This should match your Projects section ID
@@ -18,7 +37,7 @@ const navLinks = [
     },
     {
         title: "Resume",
-        path: "#resume",
+        path: "#resume", // You may need to adjust this to match your resume section ID
     },
     {
         title: "Contact",
@@ -27,9 +46,29 @@ const navLinks = [
 ]
 
 const Navbar = () => {
-    const [navbarOpen, setNavbarOpen] = useState(false);
     const [isAnimating, setIsAnimating] = useState(false);
+    const [isHomeActive, setIsHomeActive] = useState(false);
     const router = useRouter();
+
+    // Check if we're at the top of the home page
+    useEffect(() => {
+        const checkHomeActive = () => {
+            const isOnHomePage = window.location.pathname === '/';
+            const isAtTop = window.scrollY < 100; // Consider "home" when near top
+            setIsHomeActive(isOnHomePage && isAtTop);
+        };
+
+        checkHomeActive();
+        
+        // Add scroll listener
+        window.addEventListener('scroll', checkHomeActive);
+        window.addEventListener('load', checkHomeActive);
+        
+        return () => {
+            window.removeEventListener('scroll', checkHomeActive);
+            window.removeEventListener('load', checkHomeActive);
+        };
+    }, []);
 
     const handleLogoClick = (e) => {
         e.preventDefault();
@@ -90,59 +129,14 @@ const Navbar = () => {
     };
 
   return (
-    <nav className=' navbar
-     fixed sm:sticky 
-     top-0 left-0 right-0 
-     z-10 
-     bg-black '>
+    <nav className='navbar fixed sm:sticky top-0 left-0 right-0 bg-black z-50'>
+      <div className='flex flex-wrap items-center justify-between mx-auto p-3 sm:px-4 lg:px-14 xl:px-36'>
 
-      <div className='flex flex-wrap items-center justify-between 
-      mx-auto p-3 sm:px-4 lg:px-14 xl:px-36'>
-
-        <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.75 }}
-            transition={{ duration: 0.2 }}
-        >
-            <Link 
-                href={"/"} 
-                onClick={handleLogoClick}
-                className={`block sm:text-base rounded md:p-0 hover:text-purple-300 cursor-pointer transition-colors duration-200 ${
-                    isAnimating ? 'pointer-events-none opacity-70' : ''
-                }`}
-            >
-            Saksham Jain
-            </Link>
-        </motion.div>
-        
-        <div className='mobile-menu block md:hidden'>
-            {
-                navbarOpen ? (
-                    <motion.button 
-                        onClick={() => setNavbarOpen(false)} 
-                        className=' flex items-center hover:text-white text-slate-200'
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        <XMarkIcon className='h-5 w-5' />
-                    </motion.button>
-                    
-                ) : (
-                    <motion.button 
-                        onClick={() => setNavbarOpen(true)} 
-                        className=' flex items-center hover:text-white hover:border-white text-slate-200'
-                        whileHover={{ scale: 1.1 }}
-                        whileTap={{ scale: 0.9 }}
-                    >
-                        <Bars3Icon className='h-5 w-5' />
-                    </motion.button>
-                )
-            }
-        </div>
-        <div className='menu hidden md:block md:w-auto' id='navbar'>
-            <ul className='flex gap-2 md:p-0 md:flex-row md:space-x-8 mt-0'>
+        {/* Mobile View - Only Navigation Links */}
+        <div className='menu w-full md:hidden' id='navbar-mobile'>
+            <ul className='flex justify-between gap-4 mt-0'>
                 {
-                    navLinks.map((Link, index) => (
+                    mobileNavLinks.map((Link, index) => (
                         <motion.li 
                             key={index}
                             initial={{ opacity: 0, y: -10 }}
@@ -155,8 +149,47 @@ const Navbar = () => {
                 }
             </ul>
         </div>
+        
+        {/* Desktop View - Logo + Navigation Menu */}
+        <div className='hidden md:flex items-center justify-between w-full'>
+            {/* Logo */}
+            <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.75 }}
+                transition={{ duration: 0.2 }}
+            >
+                <Link 
+                    href={"/"} 
+                    onClick={handleLogoClick}
+                    className={`block text-base rounded cursor-pointer transition-all duration-300 ease-in-out ${
+                        isHomeActive 
+                            ? 'text-purple-400 opacity-100' 
+                            : 'text-white opacity-50 hover:text-purple-300 hover:opacity-80'
+                    } ${isAnimating ? 'pointer-events-none opacity-70' : ''}`}
+                >
+                Saksham Jain
+                </Link>
+            </motion.div>
+            
+            {/* Navigation Menu */}
+            <div className='menu' id='navbar-desktop'>
+                <ul className='flex gap-2 space-x-8'>
+                    {
+                        desktopNavLinks.map((Link, index) => (
+                            <motion.li 
+                                key={index}
+                                initial={{ opacity: 0, y: -10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.3, delay: index * 0.1 }}
+                            >
+                                <NavLink href={Link.path} title={Link.title} />
+                            </motion.li>
+                        ))
+                    }
+                </ul>
+            </div>
+        </div>
       </div>
-      {navbarOpen ? <MenuOverlay links={navLinks} /> : null}
     </nav>
   )
 }

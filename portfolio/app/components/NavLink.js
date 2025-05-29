@@ -1,80 +1,118 @@
-import Link from "next/link"
-import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
-import { useState } from 'react'
+"use client";
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-const NavLink = ({href, title}) => {
-    const router = useRouter();
-    const [isAnimating, setIsAnimating] = useState(false);
-    
-    const handleClick = (e) => {
-        e.preventDefault();
-        
-        if (href.startsWith('#')) {
-            const targetId = href.substring(1);
-            const isOnHomePage = window.location.pathname === '/';
-            
-            // Special handling for Contact - always try to scroll to footer on current page first
-            if (title === 'Contact') {
-                const targetElement = document.getElementById(targetId);
+const NavLink = ({ href, title }) => {
+    const [isActive, setIsActive] = useState(false);
+
+    useEffect(() => {
+        const checkActiveSection = () => {
+            // Handle hash links for sections on the same page
+            if (href.startsWith('#')) {
+                const sectionId = href.substring(1);
                 
-                if (targetElement) {
-                    // Footer exists on current page, scroll to it
-                    const navbarHeight = 40;
-                    const elementPosition = targetElement.getBoundingClientRect().top;
-                    const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+                // Special handling for Home button
+                if (sectionId === 'hero' || title === 'Home') {
+                    const isOnHomePage = window.location.pathname === '/';
+                    const isAtTop = window.scrollY < 100; // Consider "home" when near top
+                    setIsActive(isOnHomePage && isAtTop);
+                    return;
+                }
+                
+                // Handle other sections
+                const section = document.getElementById(sectionId);
+                
+                if (section) {
+                    const rect = section.getBoundingClientRect();
+                    const isInView = rect.top <= 100 && rect.bottom >= 100;
+                    setIsActive(isInView);
+                }
+            } else {
+                // Handle regular page links
+                setIsActive(window.location.pathname === href);
+            }
+        };
 
+        // Check immediately
+        checkActiveSection();
+
+        // Add scroll listener for hash links
+        if (href.startsWith('#')) {
+            window.addEventListener('scroll', checkActiveSection);
+            return () => window.removeEventListener('scroll', checkActiveSection);
+        }
+    }, [href, title]);
+
+    const handleClick = (e) => {
+        if (href.startsWith('#')) {
+            e.preventDefault();
+            
+            const sectionId = href.substring(1);
+            
+            // Special handling for Home button
+            if (sectionId === 'hero' || title === 'Home') {
+                const isOnHomePage = window.location.pathname === '/';
+                
+                if (isOnHomePage) {
+                    // If on home page, scroll to top
                     window.scrollTo({
-                        top: offsetPosition,
+                        top: 0,
                         behavior: 'smooth'
                     });
-                    return; // Exit early, don't navigate away
+                } else {
+                    // If on another page, navigate to home page
+                    window.location.href = '/';
                 }
+                return;
             }
             
-            // For Saksham Jain (logo) and Work button - trigger page swipe if not on homepage
-            if (title === 'Work' && !isOnHomePage) {
-    // Just scroll to top of current case study page
-    window.scrollTo({
-        top: 0,
-        behavior: 'smooth'
-    });
-    return;
-}
+            // Handle other sections
+            const section = document.getElementById(sectionId);
             
-            // For other links or if already on home page
-            const targetElement = document.getElementById(targetId);
-            
-            // If element exists on current page, scroll to it
-            if (targetElement && isOnHomePage) {
-                const navbarHeight = 40;
-                const elementPosition = targetElement.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
-
+            if (section) {
+                // Get the section's position
+                const rect = section.getBoundingClientRect();
+                const currentScrollY = window.scrollY;
+                
+                // Define different offsets for different sections
+                let offset = 80; // Default offset for navbar height
+                
+                // Custom offsets for specific sections
+                if (sectionId === 'projects') {
+                    offset = 120; // Extra offset for projects section
+                } else if (sectionId === 'about') {
+                    offset = 100; // Custom offset for about section
+                } else if (sectionId === 'footer') {
+                    offset = 50; // Less offset for footer
+                }
+                
+                // Calculate target scroll position
+                const targetScrollY = currentScrollY + rect.top - offset;
+                
+                // Smooth scroll to target position
                 window.scrollTo({
-                    top: offsetPosition,
+                    top: targetScrollY,
                     behavior: 'smooth'
                 });
-            } 
+            }
         }
     };
 
     return (
-        <motion.div
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            transition={{ duration: 0.2 }}
+        <Link
+            href={href}
+            onClick={handleClick}
+            className={`
+                block py-2 pr-4 pl-3 rounded md:p-0 transition-all duration-300 ease-in-out
+                ${isActive 
+                    ? 'text-purple-400 opacity-100' 
+                    : 'text-white opacity-50 hover:text-purple-300 hover:opacity-80'
+                }
+            `}
         >
-            <Link 
-                href={href} 
-                onClick={handleClick}
-                className={`block sm:text-base rounded md:p-0 hover:text-purple-300 transition-colors duration-200 ${
-                    isAnimating ? 'pointer-events-none opacity-70' : ''
-                }`}>
-                {title}
-            </Link>
-        </motion.div>
-    )
-}
+            {title}
+        </Link>
+    );
+};
 
 export default NavLink;

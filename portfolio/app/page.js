@@ -6,6 +6,7 @@ import Testing from "./components/Testing";
 import Card from "./components/Card";
 import Footer from "./components/Footer";
 import Hero from "./components/Hero";
+// import InfiniteSlider from "./components/InfiniteSlider";
 
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
     <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
       <Navbar/>
       <Hero/>
+      {/* <InfiniteSlider/> */}
       <Bento/>
       <Projects/>
       {/* <Card/> */}

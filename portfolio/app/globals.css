@@ -7,6 +7,45 @@
   transform: translate(0, 0) !important;
 }
 
+/* WebKit browsers (Chrome, Safari, Edge) */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+/* ::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+} */
+
+::-webkit-scrollbar-thumb {
+  background-color: #888; 
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
+}
+
+/* Firefox */
+/* html {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #f1f1f1;
+} */
+
+
+@font-face {
+  font-family: 'WhyteM';
+  src: url('/fonts/WhyteMedium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'WhyteR';
+  src: url('/fonts/WhyteRegular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 @font-face {
   font-family: 'SSMedium';
   src: url('/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('truetype');
@@ -36,23 +75,75 @@
 }
 
 @font-face {
+  font-family: 'SSRB';
+  src: url('/fonts/SSRomanBody.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'SSRD';
+  src: url('/fonts/SSRomanDisplay.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Sfpro';
   src: url('/fonts/SFPRODISPLAYMEDIUM.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
 
-.navbar, .bento, .card, .footer {
-  font-family: 'SSMedium', sans-serif;
+@font-face {
+  font-family: 'itc';
+  src: url('/fonts/itc.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ppbook';
+  src: url('/fonts/ppbok.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ppmedium';
+  src: url('/fonts/ppmedium.otf') format('opentype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'movatif';
+  src: url('/fonts/Movatif.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.heroheading {
+  font-family: 'WhyteR', sans-serif;
+}
+
+.herotext {
+  font-family: 'SSRD', sans-serif;
+}
+
+.herointro {
+  font-family: 'ppbook', sans-serif;
+}
+
+.herointrobold {
+  font-family: 'ppmedium', sans-serif;
+}
+
+.navbar, .bento, .card, .footer, .tags {
+  font-family: 'SSRB', sans-serif;
 }
 
 .projecthead{
   font-family: 'SixCaps', sans-serif;
 }
 
-.tags{
-  font-family: 'SSMedium', sans-serif;
-}
 
 .foothead, .company {
   font-family: 'OffBit', sans-serif;
