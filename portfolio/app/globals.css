@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+* {
+  cursor: url('/newcursor.svg'), auto;
+}
+
 .animate-in {
   opacity: 1 !important;
   transform: translate(0, 0) !important;
@@ -30,7 +34,6 @@
   scrollbar-width: thin;
   scrollbar-color: #888 #f1f1f1;
 } */
-
 
 @font-face {
   font-family: 'WhyteM';
@@ -120,6 +123,28 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'avant';
+  src: url('/fonts/avant.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'goodv';
+  src: url('/fonts/goodvibrations.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.mask {
+  font-family: 'avant', sans-serif;
+}
+
+.good {
+  font-family: 'goodv', sans-serif;
+}
+
 .heroheading {
   font-family: 'WhyteR', sans-serif;
 }
@@ -143,7 +168,6 @@
 .projecthead{
   font-family: 'SixCaps', sans-serif;
 }
-
 
 .foothead, .company {
   font-family: 'OffBit', sans-serif;
@@ -210,5 +234,12 @@ body {
     width: 120% !important;
     height: 120% !important;
     transform: scale(1.1);
+  }
+}
+
+@layer base {
+  .theme {
+    --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
+    --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
   }
 }

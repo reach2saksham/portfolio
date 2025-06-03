@@ -79,9 +79,9 @@ const NavLink = ({ href, title }) => {
                 
                 // Custom offsets for specific sections
                 if (sectionId === 'projects') {
-                    offset = 120; // Extra offset for projects section
+                    offset = 40; // Extra offset for projects section
                 } else if (sectionId === 'about') {
-                    offset = 100; // Custom offset for about section
+                    offset = 10; // Custom offset for about section
                 } else if (sectionId === 'footer') {
                     offset = 50; // Less offset for footer
                 }

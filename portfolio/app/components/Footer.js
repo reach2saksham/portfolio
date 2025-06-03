@@ -3,8 +3,8 @@ import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SocialIcon } from 'react-social-icons'
-
-
+import emailjs from '@emailjs/browser';
+import { motion } from "framer-motion";
 
 const social = [
   { icon: "1.svg", link: "https://www.linkedin.com/in/sakshamjainiitr/" },
@@ -105,6 +105,10 @@ const Footer = () => {
   const [score, setScore] = useState(0);
   const [gameAreaBounds, setGameAreaBounds] = useState({ top: 0, left: 0, right: 800, bottom: 400 });
   const [targetPos, setTargetPos] = useState(null); // Store the target position when stopping
+  const [submitted, setSubmitted] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
+
 
   // Refs for DOM elements and animation
   const footerRef = useRef(null);
@@ -114,6 +118,37 @@ const Footer = () => {
   const moveAxisRef = useRef("x"); // Track which axis we're moving on: "x" or "y"
   const dotSpawnIntervalRef = useRef(null);
   const isMovingRef = useRef(false);
+  const form = useRef();
+
+  // EmailJS configuration
+  const sendEmail = async (e) => {
+    e.preventDefault();
+
+    setIsLoading(true);
+
+    const publicKey = "K2zm_VwrmppRUatQf";
+    const serviceID = "service_x2qubbg";
+    const templateID = "template_63j2uvb";
+
+    try {
+      await emailjs.sendForm(serviceID, templateID, form.current, {
+        publicKey: publicKey,
+      });
+
+      setIsLoading(false);
+      setSubmitted(true);
+      form.current.reset();
+
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.log('FAILED...', error.text);
+      setIsLoading(false);
+    }
+  };
+
+
 
   // Function to show Calendly widget
   const showCalendlyWidget = () => {
@@ -132,22 +167,27 @@ const Footer = () => {
   };
 
   // Handle 11th social icon click (calendar icon)
-const handleCalendarClick = (e) => {
-  e.preventDefault();
-  window.open('https://calendly.com/reach2saksham2004', '_blank');
-};
-
-  // Handle keyboard events
-useEffect(() => {
-  const handleKeyPress = (event) => {
-    if (event.key === 'M' || event.key === 'm') {
-      window.open('https://calendly.com/reach2saksham2004', '_blank');
-    }
+  const handleCalendarClick = (e) => {
+    e.preventDefault();
+    window.open('https://calendly.com/sakshamjainiitr', '_blank');
   };
 
-  window.addEventListener('keydown', handleKeyPress);
-  return () => window.removeEventListener('keydown', handleKeyPress);
-}, []);
+  // Handle keyboard events
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // Don't trigger if user is typing in a form input
+      const isFormInput = event.target.tagName === 'INPUT' ||
+        event.target.tagName === 'TEXTAREA' ||
+        event.target.isContentEditable;
+
+      if ((event.key === 'M' || event.key === 'm') && !isFormInput) {
+        window.open('https://calendly.com/sakshamjainiitr', '_blank');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
 
   // Time tracking
   useEffect(() => {
@@ -497,45 +537,9 @@ useEffect(() => {
     };
   }, [cursorPos, gameAreaBounds, pacmanPos, direction, targetPos]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-
-    const data = {
-      name: e.target.name.value,
-      email: e.target.email.value,
-      message: e.target.message.value,
-    }
-
-    const JSONdata = JSON.stringify(data);
-    const endpoint = '/api/send';
-
-    const options = {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSONdata,
-    }
-
-    try {
-      const response = await fetch(endpoint, options);
-      const resData = await response.json();
-      console.log(resData);
-
-      if (response.status === 200) {
-        console.log('Message sent successfully');
-        // Optional: Reset form
-        e.target.reset();
-      } else {
-        console.error('Error sending message:', resData);
-      }
-    } catch (error) {
-      console.error('Network error:', error);
-    }
-  }
 
   return (
-    <div ref={footerRef} id="footer" className="container max-w-full py-6 px-6 mx-auto xl:px-36 lg:px-14 sm:px-4 relative z-40">
+    <div ref={footerRef} id="footer" className="container max-w-full py-6 px-6 mx-auto xl:px-36 lg:px-14 sm:px-4 relative z-30">
       {/* Game Area */}
       <div
         ref={gameAreaRef}
@@ -556,33 +560,179 @@ useEffect(() => {
         </div>
 
         {/* FIXED: Wrap inputs in a form element */}
-        <form className="grid w-full md:w-[60%] lg:w-[45%] mx-auto grid-cols-2 grid-rows-6 gap-4 pt-4 mb-4" onSubmit={handleSubmit}>
+        <form
+          ref={form}
+          className="grid w-full md:w-[60%] lg:w-[45%] mx-auto grid-cols-2 grid-rows-6 gap-4 pt-4 mb-4" >
           <input
-            type="text"
-            name="name"
+            type="from_name"
+            name="from_name"
             id="name"
             placeholder="Name"
             required
             className="col-span-1 p-3 rounded-md text-white bg-[#131313] border border-[#363636]/20 focus:outline-none"
           />
           <input
-            type="email"
-            name="email"
+            type="from_email"
+            name="from_email"
             id="email"
             placeholder="Email"
             required
             className="col-span-1 p-3 rounded-md text-white bg-[#131313] border border-[#363636]/20 focus:outline-none"
           />
           <textarea
+            type="message"
             placeholder="Message"
             name="message"
             id="message"
             required
             className="col-span-2 row-span-3 p-3 rounded-md text-white bg-[#131313] border border-[#363636]/20 focus:outline-none"
           ></textarea>
-          <button type="submit" className="col-span-2 p-3 rounded-md text-black bg-white text-center font-semibold">
-            Send your message
-          </button>
+          <motion.button
+            type="submit"
+            onClick={sendEmail}
+            disabled={isLoading || submitted}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            className="col-span-2 p-3 rounded-md text-center font-semibold relative overflow-hidden group"
+            initial={{ scale: 1 }}
+            animate={{
+              backgroundColor: submitted ? "#22c55e" : isLoading ? "#6b7280" : "#ffffff",
+              color: submitted ? "#ffffff" : isLoading ? "#ffffff" : "#000000",
+              scale: submitted ? 1.02 : 1,
+            }}
+            transition={{
+              type: "spring",
+              stiffness: 400,
+              damping: 25,
+              backgroundColor: { duration: 0.3 },
+              scale: { duration: 0.2 }
+            }}
+            whileHover={{
+              scale: isLoading || submitted ? 1.02 : 1.05,
+              y: -2,
+              boxShadow: "0 10px 25px rgba(255,255,255,0.1)"
+            }}
+            whileTap={{
+              scale: 0.98,
+              y: 0
+            }}
+          >
+            {/* Background gradient animation */}
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500"
+              initial={{ x: "-100%" }}
+              animate={{
+                x: isHovered && !isLoading && !submitted ? "0%" : "-100%"
+              }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            />
+
+            {/* Ripple effect on click */}
+            <motion.div
+              className="absolute inset-0 bg-white/20 rounded-full"
+              initial={{ scale: 0, opacity: 0 }}
+              animate={{
+                scale: isLoading ? [0, 2, 2] : 0,
+                opacity: isLoading ? [0.3, 0.1, 0] : 0
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: isLoading ? Infinity : 0,
+                ease: "easeOut"
+              }}
+            />
+
+            {/* Button content */}
+            <span className="relative z-10 flex items-center justify-center gap-2">
+              {/* Loading spinner */}
+              {isLoading && (
+                <motion.div
+                  className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full"
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 1,
+                    repeat: Infinity,
+                    ease: "linear"
+                  }}
+                />
+              )}
+
+              {/* Success checkmark */}
+              {submitted && (
+                <motion.svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                  initial={{ scale: 0, rotate: -90 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{
+                    type: "spring",
+                    stiffness: 500,
+                    damping: 25,
+                    delay: 0
+                  }}
+                >
+                  <motion.path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 13l4 4L19 7"
+                    initial={{ pathLength: 0 }}
+                    animate={{ pathLength: 1 }}
+                    transition={{ duration: 0.5, delay: 0.2 }}
+                  />
+                </motion.svg>
+              )}
+
+              {/* Button text with stagger animation */}
+              <motion.span
+                animate={{
+                  y: isLoading ? [-2, 2, -2] : 0
+                }}
+                transition={{
+                  duration: 0.8,
+                  repeat: isLoading ? Infinity : 0,
+                  ease: "easeInOut"
+                }}
+              >
+                {submitted ? "Message is Recieved!" : isLoading ? "Sending..." : "Send Message"}
+              </motion.span>
+            </span>
+
+            {/* Particle effect on success */}
+            {submitted && (
+              <>
+                {[...Array(8)].map((_, i) => (
+                  <motion.div
+                    key={i}
+                    className="absolute w-1 h-1 bg-white rounded-full"
+                    style={{
+                      left: "50%",
+                      top: "50%",
+                    }}
+                    initial={{
+                      scale: 0,
+                      x: 0,
+                      y: 0,
+                      opacity: 1
+                    }}
+                    animate={{
+                      scale: [0, 1, 0],
+                      x: Math.cos((i * 45) * Math.PI / 180) * 40,
+                      y: Math.sin((i * 45) * Math.PI / 180) * 40,
+                      opacity: [1, 1, 0]
+                    }}
+                    transition={{
+                      duration: 1,
+                      delay: i * 0.1,
+                      ease: "easeOut"
+                    }}
+                  />
+                ))}
+              </>
+            )}
+          </motion.button>
         </form>
         {/* Clear divider to enforce boundary */}
         {/* <div ref={dividerRef} className="w-full border-t border-gray-800 mt-4 mb-4"></div> */}

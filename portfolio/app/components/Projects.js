@@ -59,31 +59,31 @@ const Projects = () => {
   };
 
   return (
-    <div id='projects' className="projects container max-w-full px-4 pt-4 mx-auto xl:px-36 lg:px-14 sm:px-4 z-40">
+    <div id='projects' className="projects container max-w-full px-4 pt-4 mx-auto xl:px-36 lg:px-14 sm:px-4 z-50">
       {/* Global tooltip that follows the mouse */}
       <MouseTooltip />
       
       {/* Navigation for small screens */}
-      <div className="md:hidden flex items-center justify-around mb-4">
+      <div className="md:hidden flex items-center justify-around mb-4 z-30">
         {/* <div className="text-center text-2xl font-semibold">{columns[currentColumn].title}</div> */}
       </div>
 
       {/* Responsive columns */}
-      <div className="flex gap-2 justify-between max-w-full">
+      <div className="flex  gap-2 justify-between max-w-full z-30">
         {columns.map((col, index) => (
           <div
             key={index}
-            className={`w-full md:w-1/3 ${
+            className={`w-full md:w-1/3 z-30 ${
               index === currentColumn ? 'block' : 'hidden'
             } md:block`}
           >
-            <div className="bg-[#131313] relative group rounded-[20px] px-2 md:px-0">
-              <div className='flex justify-between md:justify-center px-4 items-center'>
+            <div className="bg-[#131313] relative group rounded-[20px] px-2 md:px-0 z-30">
+              <div className='flex justify-between md:justify-center px-4 items-center z-30'>
                 <ChevronLeftIcon
                   className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
                   onClick={handlePrev}
                 />
-                <div className="projecthead text-center pt-2 text-7xl mb-4">{col.title}</div>
+                <div className="projecthead text-center pt-6 text-7xl mb-4 ">{col.title}</div>
                 <ChevronRightIcon
                   className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
                   onClick={handleNext}

@@ -37,7 +37,7 @@ const desktopNavLinks = [
     },
     {
         title: "Resume",
-        path: "#resume", // You may need to adjust this to match your resume section ID
+        path: "https://drive.google.com/file/d/YOUR_FILE_ID/view?usp=sharing", // You may need to adjust this to match your resume section ID
     },
     {
         title: "Contact",
