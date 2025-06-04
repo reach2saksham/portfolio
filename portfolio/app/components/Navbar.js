@@ -134,7 +134,7 @@ const Navbar = () => {
 
         {/* Mobile View - Only Navigation Links */}
         <div className='menu w-full md:hidden' id='navbar-mobile'>
-            <ul className='flex justify-between gap-4 mt-0'>
+            <ul className='flex justify-between gap-1 min-[380px]:gap-4 mt-0'>
                 {
                     mobileNavLinks.map((Link, index) => (
                         <motion.li 

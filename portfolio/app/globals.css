@@ -177,6 +177,10 @@
   font-family: 'Sfpro', sans-serif;
 }
 
+.casetags {
+  font-family: 'ppbook', sans-serif;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;

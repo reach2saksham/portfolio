@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 
 let designitems = {
   card1: {
-    title: 'CLIENT SIDE DASHBOARD',
+    title: `Elevating IMG's Marketing Game`,
     image: '/bottles.png',
     width: 350,
     height: 380,
@@ -16,7 +16,7 @@ let designitems = {
     domain: 'UI/UX Designer',
     impact: '100+ Users Daily',
     description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem similique dolore necessitatibus iste commodi corrupti magnam a tenetur, laboriosam inventore nam, ea cum molestiae eaque.',
-    docsLink: '/design/case1', // Add your documentation link here
+    docsLink: '/design/img-brand', // Add your documentation link here
     liveLink: 'https://your-live-site.com/dashboard' // Add your live link here
   },
 };

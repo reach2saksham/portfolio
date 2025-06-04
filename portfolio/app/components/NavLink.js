@@ -83,7 +83,7 @@ const NavLink = ({ href, title }) => {
                 } else if (sectionId === 'about') {
                     offset = 10; // Custom offset for about section
                 } else if (sectionId === 'footer') {
-                    offset = 50; // Less offset for footer
+                    offset = 30; // Less offset for footer
                 }
                 
                 // Calculate target scroll position

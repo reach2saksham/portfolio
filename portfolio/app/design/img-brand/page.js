@@ -7,15 +7,15 @@ import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import BlurImage from '@/app/components/BlurImage';
 
 const caseStudy = {
-  industry: 'Transport Tech',
+  industry: 'Marketing and Advertising',
   techStack: {
     'Suite of SAAS, Web': ['framer', 'figma', 'framer'],
     'Mobile Applications': ['framer', 'framer', 'framer'],
-    'Interaction & Designing': ['framer', 'framer', 'framer'],
+    'Interaction & Designing': ['framer', 'figma', 'framer'],
   },
   companyName: 'IMG BRAND',
   period: 'April 2023 - Present',
-  domain: 'WEB-RESPONSIVE UI INTERFACE',
+  domain: 'GRAPHIC DESIGNING',
   description: `For 2 years, I prototyped new ways to engage with computer interfaces, mostly working with voice and AI. Brain was one of the first companies to explore the idea of multimodal, generative interfaces. My time working with the team has shaped many of the principles I design with now. Most of my work stayed in R&D but pieces of it have shipped and are now in the app store.`,
   sections: ['Overview', 'Highlights', 'Context', 'Empathize', 'Ideate', 'Update Flow', 'Prototype', 'Reflection'],
   role: ['Cheif of Product Design', 'Project Leader', 'Webmaster'],
@@ -53,12 +53,12 @@ const Page = () => {
           </div>
           <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080] border-opacity-40">
             <div className="sfpro text-sm text-[#646464] tracking-wider">INDUSTRY</div>
-            <div className="tags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
+            <div className="casetags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
               {caseStudy.industry}
             </div>
             <div className="sfpro text-sm text-[#646464] pt-4 pb-2 tracking-wider">TECH STACK</div>
             {Object.entries(caseStudy.techStack).map(([category, icons], index) => (
-              <div key={index} className="tags text-sm">
+              <div key={index} className="casetags text-sm">
                 <div className="pt-2">{category}</div>
                 <div className="flex gap-4 flex-wrap justify-start py-2 border-gray-500">
                   {icons.map((icon, idx) => (
@@ -88,9 +88,9 @@ const Page = () => {
           <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
             <div className="flex flex-col w-full hidden lg:block">
               <div className="company text-5xl">{caseStudy.companyName}</div>
-              <div className="tags text-sm">{caseStudy.period}</div>
+              <div className="casetags text-sm">{caseStudy.period}</div>
               <div className="sfpro text-sm pt-7 text-[#646464] tracking-wider">{caseStudy.domain}</div>
-              <div className="tags text-base py-4">
+              <div className="casetags text-base py-4">
                 {caseStudy.sections.map((section, index) => (
                   <button
                     key={index}
@@ -107,19 +107,19 @@ const Page = () => {
 
           {/* Main Content */}
           <div className="flex flex-col w-full lg:w-3/4 pt-2 lg:pt-0">
-            <div className="pt-2 lg:pt-0">{caseStudy.description}</div>
-            <div className="flex flex-wrap pt-6 gap-4 justify-between">
+            <div className="casetags pt-2 lg:pt-0">{caseStudy.description}</div>
+            <div className="flex flex-wrap pt-6 gap-4 md:gap-0  justify-between">
               {[
                 ['ROLE', caseStudy.role],
                 ['COLLABORATORS', caseStudy.collaborators],
                 ['DELIVERABLES', caseStudy.deliverables],
                 ['TIMELINE & STATUS', caseStudy.timelineStatus],
               ].map(([title, items], idx) => (
-                <div key={idx} className="flex flex-col gap-1 pt-6 lg:pt-0 flex-grow basis-1/4 min-w-[150px]">
+                <div key={idx} className="flex flex-col gap-1  pt-6 lg:pt-0  w-fit">
                   <div className="sfpro text-sm text-[#646464] tracking-wider">{title}</div>
                   <div className="pt-1">
                     {items.map((item, i) => (
-                      <div key={i} className="tags text-sm">{item}</div>
+                      <div key={i} className="casetags w-fit text-sm">{item}</div>
                     ))}
                   </div>
                 </div>

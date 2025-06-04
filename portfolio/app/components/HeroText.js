@@ -49,7 +49,7 @@ const HeroText = () => {
         </motion.div>
       </div>
 
-      <div className='flex flex-row gap-2 lg:inline-flex lg:flex-row herointro text-lg'>
+      <div className='flex items-center gap-4 flex-wrap herointro text-lg'>
         <p className='hidden lg:block'>Press &lsquo;</p>
         <p className='herointrobold hidden -mx-2 lg:block md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent '>M</p>
         <p className='hidden lg:block'>&rsquo; key to schedule a&nbsp;</p>
@@ -61,16 +61,15 @@ const HeroText = () => {
           <p>Currently a undergrad student at IIT Roorkee</p>
 
         </div>
-      </div>
-      <a
+         <a
         href="https://drive.google.com/your-resume-link" // Replace with your actual Drive link
         target="_blank"
         rel="noopener noreferrer"
-        className="block md:hidden tags mt-4 px-4 py-2 text-sm  rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-purple-950 shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
+        className="block md:hidden tags px-4 py-2 text-sm  rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-purple-950 shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
       >
         View Resume
-      </a>
-
+      </a>  
+      </div>
     </div>
   );
 };

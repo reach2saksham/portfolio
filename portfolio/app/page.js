@@ -144,7 +144,17 @@ export default function Home() {
       <div className="relative z-40">
         {/* DiscButton with dynamic positioning - changes from absolute to fixed when clicked */}
         <motion.div
-          className={`w-fit flex bg-red items-center justify-start max-w-full container mx-auto mt-[14vh] sm:mt-[10vh] md:mt-[10vh] lg:mt-[6vh] xl:mt-[10vh] xl:px-36 lg:px-14 sm:px-4 px-4 z-40 ${
+          className={`w-fit flex bg-red items-center justify-start max-w-full container
+             mx-auto 
+             sm:mt-[48px]
+             min-[390px]:mt-[116px]
+             mt-[76px]
+
+
+             xl:px-36 
+             lg:px-14 
+             sm:px-4 
+             px-4 z-40 ${
             !isMobile && isDiscClicked ? 'fixed' : 'absolute'
           }`}
           style={{
@@ -154,7 +164,7 @@ export default function Home() {
           }}
           animate={getTranslateValues()}
           transition={{
-            duration: isMobile ? 0.2 : 0.3, // Faster animation on mobile
+            duration: isMobile ? 0.2 : 0.25, // Faster animation on mobile
             type: "smooth"
           }}
         >

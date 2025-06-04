@@ -108,8 +108,8 @@ const Card = (props) => {
         </div>
 
         <div className='m-2 pt-2 pb-4 pr-2 pl-2 flex flex-col gap-2'>
-            <div className='font-semibold text-lg'>{props.title}</div>
-            <div className='text-xs'>
+            <div className='casetags font-semibold text-lg'>{props.title}</div>
+            <div className='casetags text-sm opacity-75'>
                 {props.description}
             </div>
         </div>
@@ -150,7 +150,7 @@ export const MouseTooltip = () => {
 
   return (
     <div 
-      className="fixed px-3 py-1 bg-gray-800 text-white text-xs rounded-lg opacity-90 whitespace-nowrap pointer-events-none z-50"
+      className="fixed herointro mt-6 px-3 py-1 bg-[#FF4BAC] text-white  rounded-e-xl rounded-b-xl text-xs opacity-90 whitespace-nowrap pointer-events-none z-50"
       style={{
         left: `${tooltipData.x}px`,
         top: `${tooltipData.y}px`,

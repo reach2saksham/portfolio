@@ -44,7 +44,7 @@ const ProjectItem = React.memo(({ name, handle, setIndex, index }) => (
     onMouseOver={() => setIndex(index)}
     className="cursor-default hover:opacity-80 transition-opacity"
   >
-    <h3 className="text-[8vw] md:text-[2.5vw] font-bold text-[#c1b3a5] pt-4 pb-16">
+    <h3 className="text-[8vw] md:text-[2.5vw] font-bold text-[#c1b3a5] pt-4 pb-20">
       {name}
     </h3>
   </div>
@@ -63,7 +63,7 @@ const Description = React.memo(({ mousePosition, projects }) => {
     >
       <div className="absolute w-full h-full flex items-center justify-center z-10">
         <div className="w-full max-w-6xl px-8">
-          <div className="flex flex-col md:flex-row gap-28">
+          <div className="flex flex-col md:flex-row gap-32">
             {[0, 1, 2].map((colIndex) => (
               <div key={colIndex} className="flex flex-col gap-28 md:gap-32 flex-1">
                 {projects.slice(colIndex * 2, colIndex * 2 + 2).map((project, i) => (
@@ -145,8 +145,9 @@ const PortfolioGallery = () => {
   return (
     <main 
       onMouseMove={mouseMove} 
-      className="text-white overflow-x-hidden relative container max-w-full p-4 mx-auto xl:px-36 lg:px-14 sm:px-4 z-30 tags"
+      className="text-white overflow-x-hidden relative container max-w-full mx-auto xl:px-36 lg:px-14 sm:px-4 z-30 tags"
     >
+      <div className='bg-blue-500 rounded-3xl overflow-hidden'>
       {mainProjects.map(({ handle }) => (
         <Gallery 
           mousePosition={mousePosition} 
@@ -154,10 +155,12 @@ const PortfolioGallery = () => {
           key={handle}
         />
       ))}
+      </div>
       <Description 
         mousePosition={mousePosition} 
         projects={aboutProjects}
       />
+      
     </main>
   );
 };
