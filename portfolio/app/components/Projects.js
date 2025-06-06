@@ -6,8 +6,8 @@ import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 
 let designitems = {
   card1: {
-    title: `How to make college prediction easier for JEE students`,
-    image: '/design/img-brand/mockup.png',
+    title: `Making college prediction easier for JEE students`,
+    image: '/design/rank-matrix/mockup.png',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -15,7 +15,7 @@ let designitems = {
     role: ['UI Designer', 'Motion Designer'],
     domain: ['UI/UX', 'Anmation', 'Graphics'],
     impact: ['Counselling tool for 12M+ JEE Students every year'],
-    description: `Exploring how strategic graphic design, marketing, and branding efforts were leveraged to uphold and amplify Information Management Group's legacy and influence.`,
+    description: `While countless web apps offer seat information for students, this platform goes a step further—intelligently sorting and presenting the best counseling options based on your details, with zero manual calibration. Just input your info, and let the system do the rest.`,
     docsLink: '/design/rank-matrix', // Add your documentation link here
     liveLink: 'https://rankmatrix.in/' // Add your live link here
   },

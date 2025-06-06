@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import BlurImage from '@/app/components/BlurImage';
+import ExpandImage from '@/app/components/ExpandImage';
 
 const caseStudy = {
   industry: 'Marketing and Advertising',
@@ -46,13 +47,17 @@ const Page = () => {
   const hasLinks = caseStudy.links && (caseStudy.links.liveProduct || caseStudy.links.figmaFile);
 
   return (
-    <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
+    <main 
+    id='overview'
+    className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
       <Navbar />
-      <div className="projects container max-w-full pt-4 mt-12 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
+      <div 
+      className="projects container max-w-full pt-4 mt-12 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
         {/* Header Section */}
-        <div className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
+        <div
+          className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-3/4 pb-4 lg:pb-0">
-            <Image
+            <ExpandImage
               src="/design/img-brand/cover.png"
               width={1080}
               height={400}
@@ -65,7 +70,8 @@ const Page = () => {
           <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080] border-opacity-40">
             {caseStudy.industry && (
               <>
-                <div className="sfpro text-sm text-[#646464] tracking-wider">INDUSTRY</div>
+                <div 
+                className="sfpro text-sm text-[#646464] tracking-wider">INDUSTRY</div>
                 <div className="casetags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
                   {caseStudy.industry}
                 </div>
@@ -91,7 +97,7 @@ const Page = () => {
                             <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black"></div>
                           </div>
 
-                          <Image
+                          <ExpandImage
                             className="transition duration-300 group-hover:scale-110"
                             src={`/STACK2/${icon}.svg`}
                             width={icon === 'framer' ? 25 : 40}
@@ -111,6 +117,7 @@ const Page = () => {
         {/* Main Content with Sticky Sidebar */}
         <div className="flex flex-col lg:flex-row pt-6 min-h-screen">
           {/* Sidebar */}
+          {/* Sidebar */}
           <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
             <div className="flex flex-col w-full hidden lg:block">
               {caseStudy.companyName && (
@@ -124,16 +131,36 @@ const Page = () => {
               )}
               {caseStudy.sections && caseStudy.sections.length > 0 && (
                 <div className="casetags text-base py-4">
-                  {caseStudy.sections.map((section, index) => (
-                    <button
-                      key={index}
-                      className={`py-1 flex flex-col rounded transition-colors ${selectedSection === index ? 'text-white' : 'text-[#646464]'
-                        }`}
-                      onClick={() => setSelectedSection(index)}
-                    >
-                      {section}
-                    </button>
-                  ))}
+                  {caseStudy.sections.map((section, index) => {
+                    const sectionIds = {
+                      'Overview': 'overview',
+                      'Highlights': 'highlights',
+                      'Logo Design': 'logos',
+                      'T-Shirt 2024': 't2024',
+                      'T-Shirt 2025': 't2025',
+                      'Posters': 'posters'
+                    };
+
+                    return (
+                      <button
+                        key={index}
+                        className={`py-1 flex flex-col rounded transition-colors text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
+                          }`}
+                        onClick={() => {
+                          setSelectedSection(index);
+                          const element = document.getElementById(sectionIds[section]);
+                          if (element) {
+                            element.scrollIntoView({
+                              behavior: 'smooth',
+                              block: 'start'
+                            });
+                          }
+                        }}
+                      >
+                        {section}
+                      </button>
+                    );
+                  })}
                 </div>
               )}
             </div>
@@ -215,7 +242,9 @@ const Page = () => {
               )}
             </div> */}
 
-            <div className='company text-3xl mt-12 mb-2'>
+            <div
+              id='highlights'
+              className='company text-3xl pt-12 mb-2'>
               THE HIGHLIGHTS
             </div>
 
@@ -226,12 +255,15 @@ const Page = () => {
               </div>
               <div className="flex gap-1 sm:gap-4 justify-center items-center flex-col sm:flex-row">
                 <BlurImage src="/design/img-brand/tshirt2.png" width={460} height={460} title="T-Shirt 2024 Interation" subtitle="This was supposed to be printed 🥺" alt="Small Banner" />
-                <BlurImage src="/design/img-brand/ig2.png" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>}  alt="Another Banner" />
+                <BlurImage src="/design/img-brand/ig2.png" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Another Banner" />
               </div>
             </div>
 
-            <div className='mt-12 flex flex-col gap-4'>
-              <p className='text-3xl company'>THE LOGOS</p>
+            <div 
+            id='logos'
+            className='pt-12 flex flex-col gap-4'>
+              <p
+                className='text-3xl company'>THE LOGOS</p>
               <video
                 src="/design/img-brand/imgOGlogo.mp4"
                 autoPlay
@@ -242,7 +274,7 @@ const Page = () => {
               />
               <p className='casetags' >{`Like every great brand, IMG needed versatile, stylized logo variations—usable only if they served real purpose. So I went on a rampage, designing a range of tech-inspired logos that stayed true to IMG’s identity while enabling flexible, custom use across platforms and contexts. `}  </p>
 
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/1.png'
                 width={1660}
                 height={800}
@@ -250,7 +282,7 @@ const Page = () => {
                 priority
               />
               <p className='casetags' >{`Let's pour some portrait graphics as well.`}  </p>
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/3.png'
                 width={1660}
                 height={800}
@@ -258,7 +290,7 @@ const Page = () => {
                 priority
               />
               <p>{`Pre-planning my game, I knew a standout T-shirt design was on the horizon.You say: The arc reactor? C'mon man that's too 2012. A Maze? Too chaotic.  A QR code? Cool, but something's still missing. So I dove deeper—piecing together a coherent, tech-forward logo from scattered elements to craft a design that will truly fit the bigger picture.`}</p>
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/2.png'
                 width={1660}
                 height={800}
@@ -266,7 +298,7 @@ const Page = () => {
                 priority
               />
               <p>{`Wait, no logo design is complete without making it look like that it has been made out mathematical magic.`}</p>
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/logonew.png'
                 width={1660}
                 height={800}
@@ -275,9 +307,11 @@ const Page = () => {
               />
               <p>{`Everything will make sense soon enough, just wait till you see how I bring the second one to life.`}</p>
 
-              <p className='text-3xl company pt-12'>THE T-SHIRT 2024</p>
+              <p
+                id='t2024'
+                className='text-3xl company pt-12'>THE T-SHIRT 2024</p>
               <p>{`Tasked with designing a T-shirt, I had plenty of ideas—but I knew the real magic would come from combining different elements and hiding easter eggs for the keen-eyed. Early on, I explored two design directions. This was one of them—the one that didn’t made the cut :`}</p>
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/shirtidea.png'
                 width={1660}
                 height={800}
@@ -285,7 +319,7 @@ const Page = () => {
                 priority
               />
               <p>{`Now, coming to the direction I finally chose—it was a quirky idea that brought together all my nerdy instincts. So I started wireframing, sort of. And honestly, this was my very first iteration. This also answers your question about where that 5×5 new logo came in—it really shines in the isometric view.`}</p>
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/4.png'
                 width={1660}
                 height={800}
@@ -293,7 +327,7 @@ const Page = () => {
                 priority
               />
               <p>{`Later, I learned that for custom prints to be cost-effective, the design needed to stick to black and white and stay within a limited rectangular print area at the center. So in my high-fidelity iteration, I removed the QR code layers forming the circular base in the original pencil-paper version to make the T-shirt budget-friendly. The following illustration deciphers the design for you in detail.`}</p>
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/5.png'
                 width={1660}
                 height={800}
@@ -302,7 +336,7 @@ const Page = () => {
               />
               <p>{`Solid design, right? Surprisingly, even though it was well received by almost everyone, this one was also rejected 🥹 turns out a senior preferred a more minimal look. But stick around till the end of the case study—there’s a twist waiting for you. `}</p>
               <p>Oh also, here are some techish stickers I created in between.</p>
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/6.png'
                 width={1660}
                 height={800}
@@ -320,7 +354,7 @@ const Page = () => {
               />
               <p>{`Now, I know you might argue—how is this even minimalistic? But come on, it’s a huge leap from where we started (in terms of minimalism). Just look at the designs below. And yet, the same senior had an issue with having a cube on the T-shirt. So, even this minimal design was rejected—despite the entire club loving it and rooting for it to be printed after being awestruck by the concept.`}</p>
               <div className='flex flex-col gap-1 md:flex-row'>
-                <Image
+                <ExpandImage
                   className='object-cover'
                   src='/design/img-brand/tcb.png'
                   width={464}
@@ -328,7 +362,7 @@ const Page = () => {
                   alt='TCB Brand Image'
                   priority
                 />
-                <Image
+                <ExpandImage
                   className='object-cover'
                   src='/design/img-brand/tcw.png'
                   width={464}
@@ -340,7 +374,7 @@ const Page = () => {
               <p>{`At this point, it felt like the classic design iteration loop trap. Honestly, I was feeling a bit low—so I started throwing random elements together, just hoping something might click by chance. But hey, that’s not how it works in real life... right? Right?`}</p>
               <div className='flex flex-col lg:flex-row gap-1 justify-center items-center'>
                 <div>
-                  <Image className='object-cover'
+                  <ExpandImage className='object-cover'
                     src='/design/img-brand/a.png'
                     width={306}
                     height={800}
@@ -349,7 +383,7 @@ const Page = () => {
                   />
                 </div>
                 <div>
-                  <Image className='object-cover'
+                  <ExpandImage className='object-cover'
                     src='/design/img-brand/b.png'
                     width={306}
                     height={800}
@@ -358,7 +392,7 @@ const Page = () => {
                   />
                 </div>
                 <div>
-                  <Image className='object-cover'
+                  <ExpandImage className='object-cover'
                     src='/design/img-brand/c.png'
                     width={306}
                     height={800}
@@ -367,7 +401,7 @@ const Page = () => {
                   />
                 </div>
               </div>
-            <p>{`Behold! my random lab experiment that somehow worked and got instantly approved. (Though many of us, including me, were still rooting for the earlier designs.) This one symbolizes connecting dots/people to form IMG, reflecting collaboration and problem-solving at its core.`}</p>
+              <p>{`Behold! my random lab experiment that somehow worked and got instantly approved. (Though many of us, including me, were still rooting for the earlier designs.) This one symbolizes connecting dots/people to form IMG, reflecting collaboration and problem-solving at its core.`}</p>
               <video
                 src="/design/img-brand/tshirtanime.mp4"
                 autoPlay
@@ -376,7 +410,7 @@ const Page = () => {
                 playsInline
                 className="w-full h-auto"
               />
-              <Image className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover'
                 src='/design/img-brand/8.png'
                 width={1660}
                 height={800}
@@ -385,47 +419,52 @@ const Page = () => {
               />
               <p>{`Never mind—had to strip it down even more. Here it is: Wohoo! Officially printed T-Shirts, 2024.`}</p>
               <div className='flex flex-col md:flex-row gap-1'>
-              <Image className='object-cover'
-                src='/design/img-brand/twf.png'
-                width={464}
-                height={240}
-                alt='Small Banner'
-                priority
-              />
-              <Image className='object-cover'
-                src='/design/img-brand/tbf.png'
-                width={464}
-                height={240}
-                alt='Small Banner'
-                priority
-              />
+                <ExpandImage className='object-cover'
+                  src='/design/img-brand/twf.png'
+                  width={464}
+                  height={240}
+                  alt='Small Banner'
+                  priority
+                />
+                <ExpandImage className='object-cover'
+                  src='/design/img-brand/tbf.png'
+                  width={464}
+                  height={240}
+                  alt='Small Banner'
+                  priority
+                />
               </div>
-              <p className='text-3xl company mt-12'>THE T-SHIRTS 2025</p>
+              <p
+                id='t2025'
+                className='text-3xl company pt-12'>THE T-SHIRTS 2025</p>
               <p>{`This is the twist I was talking about—these designs really stuck with the members. The hype to wear them was so strong that, instead of going with a new design this year, my previous ones were brought back for print. But then came a strange dilemma: the club was completely split, half the members wanted the all black-and-white version, while the other half rooted for the colored cube.`}</p>
               <div className='flex flex-col md:flex-row gap-1'>
-              <Image className='object-cover'
-                src='/design/img-brand/1NA.png'
-                width={464}
-                height={240}
-                alt='Small Banner'
-                priority
-              />
-              <Image className='object-cover'
-                src='/design/img-brand/1NB.png'
-                width={464}
-                height={240}
-                alt='Small Banner'
-                priority
-              />
+                <ExpandImage className='object-cover'
+                  src='/design/img-brand/1NA.png'
+                  width={464}
+                  height={240}
+                  alt='Small Banner'
+                  priority
+                />
+                <ExpandImage className='object-cover'
+                  src='/design/img-brand/1NB.png'
+                  width={464}
+                  height={240}
+                  alt='Small Banner'
+                  priority
+                />
               </div>
               <p>{`In the end, we landed on a pretty unexpected solution—two T-shirts for 2025, and each member got to choose their favorite. With custom quotes (yes, I got two!), everyone had the freedom to personalize their design and bring in their own creative twist. Yayy! And that’s the story of T-Shirt(s) 2025.`}</p>
-              <div className='mt-12 flex flex-col'>
-                <p className='text-3xl company mb-4'>POSTERS</p>
+              <div
+              id='posters'
+              className='pt-12 flex flex-col'>
+                <p
+                  className='text-3xl company mb-4'>POSTERS</p>
                 <div className=''>
                   <div className="flex gap-4 flex-col lg:flex-row">
                     <BlurImage src="/design/img-brand/rankmatrix.png" width={460} height={460} title="Rank Matrix 2024" subtitle="Advertising post to redirect JEE students to the portal." alt="Small Banner" />
                     <BlurImage src="/design/img-brand/webautomation.png" width={460} height={460} title="Web Automation Workshop 2024" subtitle="Minimalstic poster required by the team." alt="Another Banner" />
-                    
+
                   </div>
                 </div>
                 <div className="flex gap-4 flex-col lg:flex-row">
@@ -434,10 +473,10 @@ const Page = () => {
                 </div>
                 <div className="flex gap-4 flex-col lg:flex-row">
                   <BlurImage src="/design/img-brand/ig1.png" width={460} height={460} title="Open Source Workshop 2024" subtitle="A poster for inviting students" alt="Small Banner" />
-                  <BlurImage src="/design/img-brand/rankmatrix2.png" width={460} height={460} title="Rank Matrix Launch 2024" subtitle={<>Read Rank Matrix, <a href="" className="text-blue-500 hover:underline">Case Study Here!</a></>}  alt="Another Banner" />
+                  <BlurImage src="/design/img-brand/rankmatrix2.png" width={460} height={460} title="Rank Matrix Launch 2024" subtitle={<>Read Rank Matrix, <a href="" className="text-blue-500 hover:underline">Case Study Here!</a></>} alt="Another Banner" />
                 </div>
-                
-                  <p className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</p>
+
+                <p className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</p>
               </div>
             </div>
           </div>
