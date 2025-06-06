@@ -26,93 +26,99 @@ const Card = (props) => {
   };
 
   return (
-    <div 
-      className='cursor-pointer z-30 relative' 
+    <div
+      className='cursor-pointer z-30 relative'
       onClick={() => window.open(props.docsLink || '#', '_self')}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}
       data-card-tooltip="true"
     >
-        {/* Image Section */}
-        <div className='relative m-3 overflow-hidden rounded-2xl group'>
-            <Image
-                className='w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-sm'
-                src={props.image}
-                width={props.width}
-                height={props.height}
-                alt={props.alt}
-                priority
-                unoptimized={true}
-            />
-            {/* Black Overlay on Hover */}
-            <div className='absolute inset-0 bg-[#1E1E1E] opacity-0 group-hover:opacity-70 transition-opacity rounded-2xl'></div>
+      {/* Image Section */}
+      <div className='relative m-3 overflow-hidden rounded-2xl group'>
+        <Image
+          className='w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300 rounded-sm'
+          src={props.image}
+          width={props.width}
+          height={props.height}
+          alt={props.alt}
+          priority
+          unoptimized={true}
+        />
+        {/* Black Overlay on Hover */}
+        <div className='absolute inset-0 bg-[#1E1E1E] opacity-0 group-hover:opacity-70 transition-opacity rounded-2xl'></div>
 
-            {/* Centered "View Live" Button */}
-            <div className='hidden group-hover:flex absolute inset-0 justify-center items-center'>
-                <a 
-                  href={props.liveLink || '#'} 
-                  target="_blank" 
-                  rel="noopener noreferrer"
-                  onClick={(e) => e.stopPropagation()} // Prevent triggering parent onClick
-                  className='px-3 py-2 bg-[#E6E6E6] text-[#1A1A1A] text-xs rounded-2xl shadow-lg flex items-center gap-2 hover:bg-[#1A1A1A] hover:text-white'
-                  data-view-live-button="true"
-                >
-                    View Live <ArrowUpRightIcon className="h-3 w-3" />
-                </a>
-            </div>
+        {/* Centered "View Live" Button - Only render if liveLink exists */}
+        {props.liveLink && (
+          <div className='hidden group-hover:flex absolute inset-0 justify-center items-center'>
+            <a
+              href={props.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={(e) => e.stopPropagation()} // Prevent triggering parent onClick
+              className='px-3 py-2 bg-[#E6E6E6] text-[#1A1A1A] text-xs rounded-2xl shadow-lg flex items-center gap-2 hover:bg-[#1A1A1A] hover:text-white'
+              data-view-live-button="true"
+            >
+              View Live <ArrowUpRightIcon className="h-3 w-3" />
+            </a>
+          </div>
+        )}
 
-            {/* Top Overlay - Flex with justify-between */}
-            <div className='absolute top-3 left-3 right-3 flex justify-between items-center p-2'>
-                <div className='flex gap-2'>
-                    {props.tags.map((tag, index) => (
-                        <span key={index} className='tags block md:hidden lg:block bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:bg-[#1A1A1A] group-hover:text-white group-hover:shadow-lg'>
-                            {tag}
-                        </span>
-                    ))}
-                </div>
-                <span className='tags bg-[#E6E6E6] text-[#1A1A1A] text-sm font-semibold rounded-full w-5 h-5 flex justify-center items-center'>
-                    <ArrowUpRightIcon className="h-3 w-3" />
-                </span>
-            </div>
-
-            {/* Bottom Overlay - Flex column with gap-2 */}
-            <div className='hidden group-hover:flex absolute bottom-3 left-3 right-3 flex-col gap-2 p-2'>
-                <div className='flex gap-2'>
-                    <span className='tags px-2 py-[2px] text-[10px] rounded-2xl bg-[#1A1A1A] text-white group-hover:shadow-lg'>
-                        Role
-                    </span>
-                    {props.role.map((item, index) => (
-                        <span key={index} className='tags bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:shadow-lg'>
-                            {item}
-                        </span>
-                    ))}
-                </div>
-                <div className='flex gap-2'>
-                    <span className='tags px-2 py-[2px] text-[10px] rounded-2xl bg-[#1A1A1A] text-white group-hover:shadow-lg'>
-                        Domain
-                    </span>
-                    <span className='tags bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:shadow-lg'>
-                        {props.domain}
-                    </span>
-                </div>
-                <div className='flex gap-2'>
-                    <span className='tags px-2 py-[2px] text-[10px] rounded-2xl bg-[#1A1A1A] text-white group-hover:shadow-lg'>
-                        Impact
-                    </span>
-                    <span className='tags bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:shadow-lg'>
-                        {props.impact}
-                    </span>
-                </div>
-            </div>
+        {/* Top Overlay - Flex with justify-between */}
+        <div className='absolute top-3 left-3 right-3 flex justify-between items-center p-2'>
+          <div className='flex gap-2'>
+            {props.tags.map((tag, index) => (
+              <span key={index} className='tags block md:hidden lg:block bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:bg-[#1A1A1A] group-hover:text-white group-hover:px-2 group-hover:py-[3px] group-hover:shadow-lg'>
+                {tag}
+              </span>
+            ))}
+          </div>
+          <span className='tags bg-[#E6E6E6] text-[#1A1A1A] text-sm font-semibold rounded-full w-5 h-5 flex justify-center items-center'>
+            <ArrowUpRightIcon className="h-3 w-3" />
+          </span>
         </div>
 
-        <div className='m-2 pt-2 pb-4 pr-2 pl-2 flex flex-col gap-2'>
-            <div className='casetags font-semibold text-lg'>{props.title}</div>
-            <div className='casetags text-sm opacity-75'>
-                {props.description}
-            </div>
+        {/* Bottom Overlay - Flex column with gap-2 */}
+        <div className='hidden group-hover:flex absolute bottom-3 left-3 right-3 flex-col gap-2 p-2'>
+          <div className='flex gap-2'>
+            <span className='tags px-2 py-[2px] text-[10px] rounded-2xl bg-[#1A1A1A] text-white group-hover:shadow-lg'>
+              Role
+            </span>
+            {props.role.map((item, index) => (
+              <span key={index} className='tags bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:shadow-lg'>
+                {item}
+              </span>
+            ))}
+          </div>
+          <div className='flex gap-2'>
+            <span className='tags px-2 py-[2px] text-[10px] rounded-2xl bg-[#1A1A1A] text-white group-hover:shadow-lg'>
+              Domain
+            </span>
+            {(Array.isArray(props.domain) ? props.domain : [props.domain]).map((item, index) => (
+              <span key={index} className='tags bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:shadow-lg'>
+                {item}
+              </span>
+            ))}
+          </div>
+          <div className='flex gap-2'>
+            <span className='tags px-2 py-[2px] text-[10px] rounded-2xl bg-[#1A1A1A] text-white group-hover:shadow-lg'>
+              Impact
+            </span>
+            {(Array.isArray(props.impact) ? props.impact : [props.impact]).map((item, index) => (
+              <span key={index} className='tags bg-[#E6E6E6] text-[#1A1A1A] px-2 py-[2px] text-[10px] rounded-2xl group-hover:shadow-lg'>
+                {item}
+              </span>
+            ))}
+          </div>
         </div>
+      </div>
+
+      <div className='m-2 pt-2 pb-4 pr-2 pl-2 flex flex-col gap-2'>
+        <div className='casetags font-semibold text-lg'>{props.title}</div>
+        <div className='casetags text-sm opacity-75'>
+          {props.description}
+        </div>
+      </div>
     </div>
   )
 }
@@ -120,14 +126,14 @@ const Card = (props) => {
 // This creates a tooltip component at the app level to avoid tooltip issues between multiple cards
 export const MouseTooltip = () => {
   const [tooltipData, setTooltipData] = useState({ show: false, x: 0, y: 0 });
-  
+
   // Set up global event listeners for mouse movement and card hover
   React.useEffect(() => {
     const handleMouseMove = (e) => {
       // Check if mouse is over a "View Live" button, and hide tooltip if it is
       if (e.target.closest('[data-view-live-button]')) {
         setTooltipData(prev => ({ ...prev, show: false }));
-      } 
+      }
       // Otherwise show tooltip if over a card
       else if (e.target.closest('[data-card-tooltip]')) {
         setTooltipData({
@@ -149,7 +155,7 @@ export const MouseTooltip = () => {
   if (!tooltipData.show) return null;
 
   return (
-    <div 
+    <div
       className="fixed herointro mt-6 px-3 py-1 bg-[#FF4BAC] text-white  rounded-e-xl rounded-b-xl text-xs opacity-90 whitespace-nowrap pointer-events-none z-50"
       style={{
         left: `${tooltipData.x}px`,

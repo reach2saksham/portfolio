@@ -137,6 +137,20 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'unicam';
+  src: url('/fonts/NeueUnicaM.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'unican';
+  src: url('/fonts/NeueUnicaN.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .mask {
   font-family: 'avant', sans-serif;
 }
@@ -178,7 +192,7 @@
 }
 
 .casetags {
-  font-family: 'ppbook', sans-serif;
+  font-family: 'unican', sans-serif;
 }
 
 :root {

@@ -6,18 +6,32 @@ import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 
 let designitems = {
   card1: {
-    title: `Elevating IMG's Marketing Game`,
-    image: '/bottles.png',
+    title: `How to make college prediction easier for JEE students`,
+    image: '/design/img-brand/mockup.png',
     width: 350,
     height: 380,
     alt: 'Mockup',
-    tags: ['Internship', 'July 2024 - Sept 2024'],
-    role: ['UI/UX Designer', 'Product Manager'],
-    domain: 'UI/UX Designer',
-    impact: '100+ Users Daily',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem similique dolore necessitatibus iste commodi corrupti magnam a tenetur, laboriosam inventore nam, ea cum molestiae eaque.',
+    tags: ['College Project', 'April 2024'],
+    role: ['UI Designer', 'Motion Designer'],
+    domain: ['UI/UX', 'Anmation', 'Graphics'],
+    impact: ['Counselling tool for 12M+ JEE Students every year'],
+    description: `Exploring how strategic graphic design, marketing, and branding efforts were leveraged to uphold and amplify Information Management Group's legacy and influence.`,
+    docsLink: '/design/rank-matrix', // Add your documentation link here
+    liveLink: 'https://rankmatrix.in/' // Add your live link here
+  },
+  card2: {
+    title: `Elevating IMG's Brand Identity Game`,
+    image: '/design/img-brand/mockup.png',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['Student Society', 'April 2023 - Present'],
+    role: ['Chief of Product Design'],
+    domain: ['Graphic','Marketing'],
+    impact: ['Brand Identity for 15K+ students'],
+    description: `Exploring how strategic graphic design, marketing, and branding efforts were leveraged to uphold and amplify Information Management Group's legacy and influence.`,
     docsLink: '/design/img-brand', // Add your documentation link here
-    liveLink: 'https://your-live-site.com/dashboard' // Add your live link here
+    // liveLink: 'https://your-live-site.com/dashboard' // Add your live link here
   },
 };
 
@@ -77,7 +91,7 @@ const Projects = () => {
               index === currentColumn ? 'block' : 'hidden'
             } md:block`}
           >
-            <div className="bg-[#131313] relative group rounded-[20px] px-2 md:px-0 z-30">
+            <div className="bg-[#131313] relative rounded-[20px] px-2 md:px-0 z-30">
               <div className='flex justify-between md:justify-center px-4 items-center z-30'>
                 <ChevronLeftIcon
                   className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"

@@ -40,21 +40,9 @@ const BlurImage = ({ src, width, height, alt, title, subtitle }) => {
           unoptimized={true}
         />
 
-        {/* Progressive Blur Effect */}
-        <ProgressiveBlur
-          className="pointer-events-none absolute bottom-0 left-0 h-[40%] w-full"
-          blurIntensity={0.3}
-          animate={isHover ? "visible" : "hidden"}
-          variants={{
-            hidden: { opacity: 0 },
-            visible: { opacity: 1 },
-          }}
-          transition={{ duration: 0.2, ease: "easeOut" }}
-        />
-
-        {/* Title & Subtitle */}
+        {/* Enhanced Progressive Blur Effect with Dark Overlay */}
         <motion.div
-          className="absolute bottom-0 left-0"
+          className="pointer-events-none absolute bottom-0 left-0 w-full h-[25%]"
           animate={isHover ? "visible" : "hidden"}
           variants={{
             hidden: { opacity: 0 },
@@ -62,9 +50,35 @@ const BlurImage = ({ src, width, height, alt, title, subtitle }) => {
           }}
           transition={{ duration: 0.2, ease: "easeOut" }}
         >
+          {/* Dark gradient overlay for better contrast */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+          
+          {/* Progressive blur effect */}
+          <ProgressiveBlur
+            className="absolute inset-0"
+            blurIntensity={0.1}
+          />
+        </motion.div>
+
+        {/* Title & Subtitle with Text Shadow */}
+        <motion.div
+          className="absolute bottom-0 left-0"
+          animate={isHover ? "visible" : "hidden"}
+          variants={{
+            hidden: { opacity: 0, y: 10 },
+            visible: { opacity: 1, y: 0 },
+          }}
+          transition={{ duration: 0.2, ease: "easeOut" }}
+        >
           <div className="flex flex-col items-start gap-0 px-5 py-4">
-            <p className="text-base font-medium text-white">{title}</p>
-            <span className="text-base text-zinc-300">{subtitle}</span>
+            <p className="text-base font-medium text-white drop-shadow-lg" 
+               style={{ textShadow: '0 2px 4px rgba(0,0,0,0.8)' }}>
+              {title}
+            </p>
+            <span className="text-base text-zinc-200 drop-shadow-md"
+                  style={{ textShadow: '0 1px 2px rgba(0,0,0,0.8)' }}>
+              {subtitle}
+            </span>
           </div>
         </motion.div>
       </div>
