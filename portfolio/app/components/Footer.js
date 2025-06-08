@@ -767,7 +767,7 @@ const Footer = () => {
                   onClick={index === 10 ? handleCalendarClick : undefined}
                 >
                   <Image
-                    className="lg:grayscale lg:hover:grayscale-0 transition duration-300"
+                    className="lg:grayscale lg:hover:grayscale-0 hover:scale-125 transition duration-300"
                     src={`/social/${item.icon}`}
                     width={18}
                     height={18}

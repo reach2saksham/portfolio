@@ -155,7 +155,7 @@ const ExpandImage = ({
       {/* Expanded Modal */}
       {isExpanded && (
         <div 
-          className="fixed inset-0 bg-black bg-opacity-90 flex items-center justify-center z-50"
+          className="fixed inset-0 bg-black bg-opacity-95 flex items-center justify-center z-50"
           onClick={handleClose}
         >
           {/* Controls */}

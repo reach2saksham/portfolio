@@ -1,5 +1,5 @@
 "use client";
-import React from 'react';
+import React, { useState } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
@@ -22,7 +22,7 @@ const caseStudy = {
   period: 'April 2024',
   domain: 'ADAPTIVE UI DESIGN',
   description: `Rank Matrix is a web app designed to simplify the college selection process for JEE aspirants. Instead of sifting through multiple rounds of counseling data, students can instantly view their best admission chances based on the final seat matrix. The platform features a clean, intuitive UI/UX, smooth loading animations, and full accessibility with both light and dark mode support.`,
-  sections: ['Overview', 'Highlights', 'Logo Design', 'T-Shirt 2024', 'T-Shirt 2025', 'Posters'],
+  sections: ['Overview', 'Highlights', 'Font/Colour/Brand', 'Loading Animation', 'User Interfaces'],
   role: ['UI Designer', 'Motion Designer', 'Graphic Designer'],
   collaborators: ['Nikhil Nagar'],
   deliverables: ['User Interfaces', 'Light & Dark Mode', 'Loading Animations'],
@@ -38,6 +38,7 @@ const caseStudy = {
 
 const Page = () => {
   const [selectedSection, setSelectedSection] = React.useState(0);
+  const [activeMode, setActiveMode] = useState('dark');
 
   // Helper function to check if links exist
   const hasLinks = caseStudy.links && (caseStudy.links.liveProduct || caseStudy.links.figmaFile);
@@ -130,10 +131,9 @@ const Page = () => {
                     const sectionIds = {
                       'Overview': 'overview',
                       'Highlights': 'highlights',
-                      'Logo Design': 'logos',
-                      'T-Shirt 2024': 't2024',
-                      'T-Shirt 2025': 't2025',
-                      'Posters': 'posters'
+                      'Font/Colour/Brand': 'logos',
+                      'Loading Animation': 'loading',
+                      'User Interfaces': 'screens',
                     };
 
                     return (
@@ -281,215 +281,128 @@ const Page = () => {
                 priority
               />
               <div className=''>
-                  <div className="flex gap-4 flex-col lg:flex-row">
-                    
-                    <BlurImage src="/design/rank-matrix/iteration2.png" width={460} height={460} title="Iteration 1" subtitle="Pretty" alt="Another Banner" />
-                    <BlurImage src="/design/rank-matrix/iteration1.png" width={460} height={460} title="Iteration 2" subtitle="A little chaotic" alt="Another Banner" />
-
-                  </div>
-                </div>
                 <div className="flex gap-4 flex-col lg:flex-row">
-                  <BlurImage src="/design/rank-matrix/iteration5.png" width={460} height={460} title="Iteration 3" subtitle="Too Utilitarian" alt="Small Banner" />
-                  <BlurImage src="/design/rank-matrix/iteration4.png" width={460} height={460} title="Iteration 4" subtitle="Too much wisdom in one frame" alt="Another Banner" />
+
+                  <BlurImage src="/design/rank-matrix/iteration2.png" width={460} height={460} title="Iteration 1" subtitle="Pretty" alt="Another Banner" />
+                  <BlurImage src="/design/rank-matrix/iteration1.png" width={460} height={460} title="Iteration 2" subtitle="A little chaotic" alt="Another Banner" />
+
                 </div>
-                <div className="flex gap-4 flex-col lg:flex-row">
-                  <BlurImage src="/design/rank-matrix/iteration3.png" width={460} height={460} title="Iteration 5" subtitle="That James Thomson Builduibng svg took time" alt="Small Banner" />
-                  <BlurImage src="/design/img-brand/rankmatrix.png" width={460} height={460} title="Finalised" subtitle="But it was policy to not advertise our college through this" alt="Small Banner" />
-                </div>
+              </div>
+              <div className="flex gap-4 flex-col lg:flex-row">
+                <BlurImage src="/design/rank-matrix/iteration5.png" width={460} height={460} title="Iteration 3" subtitle="Too Utilitarian" alt="Small Banner" />
+                <BlurImage src="/design/rank-matrix/iteration4.png" width={460} height={460} title="Iteration 4" subtitle="Too much wisdom in one frame" alt="Another Banner" />
+              </div>
+              <div className="flex gap-4 flex-col lg:flex-row">
+                <BlurImage src="/design/rank-matrix/iteration3.png" width={460} height={460} title="Iteration 5" subtitle="That James Thomson Builduibng svg took time" alt="Small Banner" />
+                <BlurImage src="/design/img-brand/rankmatrix.png" width={460} height={460} title="Finalised" subtitle="But it was policy to not advertise our college through this" alt="Small Banner" />
+              </div>
 
-              <p className='pt-12 text-3xl company'>LOADING SCREENS</p>
+              <p 
+              id='loading'
+              className='pt-12 text-3xl company'>LOADING ANIMATIONS</p>
               <video
-              src="/design/rank-matrix/loaderfigma.mp4"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full h-auto"
-            />
-            <p>{`This was my very first iteration, fully created on Figma. Clean, minimalistic, and impressionable, it captured the essence of the loading experience. However, the Figma prototype turned out to be comparatively hefty work. I was then informed that for optimized performance, a JSON-based loader was needed. So, I turned to LottieFiles Creator, as the Figma plugin didn’t support the animation style I had built, heck! it didn’t even support gradient colors. The final LottieFiles-based loader is presented below and being used in live website right now:`}</p>
-
-              <Image className='w-full h-full object-cover'
-                src='/design/img-brand/3.png'
-                width={1660}
-                height={800}
-                alt='Small Banner'
-                priority
-              />
-              
-              <Image className='w-full h-full object-cover'
-                src='/design/img-brand/2.png'
-                width={1660}
-                height={800}
-                alt='Small Banner'
-                priority
-              />
-              <p>{`Wait, no logo design is complete without making it look like that it has been made out mathematical magic.`}</p>
-              <Image className='w-full h-full object-cover'
-                src='/design/img-brand/logonew.png'
-                width={1660}
-                height={800}
-                alt='Small Banner'
-                priority
-              />
-              <p>{`Everything will make sense soon enough, just wait till you see how I bring the second one to life.`}</p>
-
-              <p
-                id='t2024'
-                className='text-3xl company pt-12'>THE T-SHIRT 2024</p>
-              <p>{`Tasked with designing a T-shirt, I had plenty of ideas—but I knew the real magic would come from combining different elements and hiding easter eggs for the keen-eyed. Early on, I explored two design directions. This was one of them—the one that didn’t made the cut :`}</p>
-              <Image className='w-full h-full object-cover'
-                src='/design/img-brand/shirtidea.png'
-                width={1660}
-                height={800}
-                alt='Small Banner'
-                priority
-              />
-              <p>{`Now, coming to the direction I finally chose—it was a quirky idea that brought together all my nerdy instincts. So I started wireframing, sort of. And honestly, this was my very first iteration. This also answers your question about where that 5×5 new logo came in—it really shines in the isometric view.`}</p>
-              <Image className='w-full h-full object-cover'
-                src='/design/img-brand/4.png'
-                width={1660}
-                height={800}
-                alt='Small Banner'
-                priority
-              />
-              <p>{`Later, I learned that for custom prints to be cost-effective, the design needed to stick to black and white and stay within a limited rectangular print area at the center. So in my high-fidelity iteration, I removed the QR code layers forming the circular base in the original pencil-paper version to make the T-shirt budget-friendly. The following illustration deciphers the design for you in detail.`}</p>
-              <Image className='w-full h-full object-cover'
-                src='/design/img-brand/5.png'
-                width={1660}
-                height={800}
-                alt='Small Banner'
-                priority
-              />
-              <p>{`Solid design, right? Surprisingly, even though it was well received by almost everyone, this one was also rejected 🥹 turns out a senior preferred a more minimal look. But stick around till the end of the case study—there’s a twist waiting for you. `}</p>
-              <p>Oh also, here are some techish stickers I created in between.</p>
-              <Image className='w-full h-full object-cover'
-                src='/design/img-brand/6.png'
-                width={1660}
-                height={800}
-                alt='Small Banner'
-                priority
-              />
-              <p>{`But after seeing the previous design, the team was confident in my ability to deliver something great again—if that was just the first iteration, what could come next? So, poor me was back to the figma canvas again. But this time, I came back with a blast.`}</p>
-              <video
-                src="/design/img-brand/cube.mp4"
+                src="/design/rank-matrix/loaderfigma.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
                 className="w-full h-auto"
               />
-              <p>{`Now, I know you might argue—how is this even minimalistic? But come on, it’s a huge leap from where we started (in terms of minimalism). Just look at the designs below. And yet, the same senior had an issue with having a cube on the T-shirt. So, even this minimal design was rejected—despite the entire club loving it and rooting for it to be printed after being awestruck by the concept.`}</p>
-              <div className='flex flex-col gap-1 md:flex-row'>
-                <Image
-                  className='object-cover'
-                  src='/design/img-brand/tcb.png'
-                  width={464}
-                  height={240}
-                  alt='TCB Brand Image'
-                  priority
-                />
-                <Image
-                  className='object-cover'
-                  src='/design/img-brand/tcw.png'
-                  width={464}
-                  height={240}
-                  alt='TCW Brand Image'
-                  priority
-                />
-              </div>
-              <p>{`At this point, it felt like the classic design iteration loop trap. Honestly, I was feeling a bit low—so I started throwing random elements together, just hoping something might click by chance. But hey, that’s not how it works in real life... right? Right?`}</p>
-              <div className='flex flex-col lg:flex-row gap-1 justify-center items-center'>
-                <div>
-                  <Image className='object-cover'
-                    src='/design/img-brand/a.png'
-                    width={306}
-                    height={800}
-                    alt='Small Banner'
-                    priority
-                  />
-                </div>
-                <div>
-                  <Image className='object-cover'
-                    src='/design/img-brand/b.png'
-                    width={306}
-                    height={800}
-                    alt='Small Banner'
-                    priority
-                  />
-                </div>
-                <div>
-                  <Image className='object-cover'
-                    src='/design/img-brand/c.png'
-                    width={306}
-                    height={800}
-                    alt='Small Banner'
-                    priority
-                  />
-                </div>
-              </div>
-              <p>{`Behold! my random lab experiment that somehow worked and got instantly approved. (Though many of us, including me, were still rooting for the earlier designs.) This one symbolizes connecting dots/people to form IMG, reflecting collaboration and problem-solving at its core.`}</p>
+              <p>{`This was my very first iteration, fully created on Figma. Clean, minimalistic, and impressionable, it captured the essence of the loading experience. However, the Figma prototype turned out to be comparatively hefty work. I was then informed that for optimized performance, a JSON-based loader was needed. So, I turned to LottieFiles Creator, as the Figma plugin didn’t support the animation style I had built, heck! it didn’t even support gradient colors. The final LottieFiles-based loader is presented below and being used in live website right now:`}</p>
+
               <video
-                src="/design/img-brand/tshirtanime.mp4"
+                src="/design/rank-matrix/loader3.mp4"
                 autoPlay
                 loop
                 muted
                 playsInline
                 className="w-full h-auto"
               />
-              <Image className='w-full h-full object-cover'
-                src='/design/img-brand/8.png'
+
+              <p>{`This loading screen was designed with reusability in mind—it also serves perfectly as a component-level loader within the webpage.`}</p>
+
+              <p 
+              id='screens'
+              className='pt-12 text-3xl company'>USER INTERFACES</p>
+
+              <ExpandImage className='w-full h-full object-cover'
+                src='/design/rank-matrix/problems.png'
                 width={1660}
                 height={800}
                 alt='Small Banner'
                 priority
               />
-              <p>{`Never mind—had to strip it down even more. Here it is: Wohoo! Officially printed T-Shirts, 2024.`}</p>
-              <div className='flex flex-col md:flex-row gap-1'>
-                <Image className='object-cover'
-                  src='/design/img-brand/twf.png'
-                  width={464}
-                  height={240}
-                  alt='Small Banner'
-                  priority
-                />
-                <Image className='object-cover'
-                  src='/design/img-brand/tbf.png'
-                  width={464}
-                  height={240}
-                  alt='Small Banner'
-                  priority
-                />
-              </div>
-              <p
-                id='t2025'
-                className='text-3xl company pt-12'>THE T-SHIRTS 2025</p>
-              <p>{`This is the twist I was talking about—these designs really stuck with the members. The hype to wear them was so strong that, instead of going with a new design this year, my previous ones were brought back for print. But then came a strange dilemma: the club was completely split, half the members wanted the all black-and-white version, while the other half rooted for the colored cube.`}</p>
-              <div className='flex flex-col md:flex-row gap-1'>
-                <Image className='object-cover'
-                  src='/design/img-brand/1NA.png'
-                  width={464}
-                  height={240}
-                  alt='Small Banner'
-                  priority
-                />
-                <Image className='object-cover'
-                  src='/design/img-brand/1NB.png'
-                  width={464}
-                  height={240}
-                  alt='Small Banner'
-                  priority
-                />
-              </div>
-              <p>{`In the end, we landed on a pretty unexpected solution—two T-shirts for 2025, and each member got to choose their favorite. With custom quotes (yes, I got two!), everyone had the freedom to personalize their design and bring in their own creative twist. Yayy! And that’s the story of T-Shirt(s) 2025.`}</p>
-              <div
-                id='posters'
-                className='pt-12 flex flex-col'>
-                <p
-                  className='text-3xl company mb-4'>POSTERS</p>
-            
 
-                <p className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</p>
+              <div className='pt-10 flex flex-col gap-8'>
+                <div className='flex gap-6'>
+                <button 
+                 className={`tags ${activeMode === 'dark' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
+                onClick={() => setActiveMode('dark')}>
+                  Dark Mode
+                </button>
+                <button 
+                 className={`tags ${activeMode === 'light' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
+                onClick={() => setActiveMode('light')}>
+                  Light Mode
+                </button>
+                </div>
+                <div>
+                  {activeMode === 'dark' && (
+                    <div className='flex flex-col gap-4'>
+                      <ExpandImage className='w-full h-full object-cover'
+                        src='/design/rank-matrix/dark1.png'
+                        width={1660}
+                        height={800}
+                        alt='Small Banner'
+                        priority
+                      />
+                      <ExpandImage className='w-full h-full object-cover'
+                        src='/design/rank-matrix/dark2.png'
+                        width={1660}
+                        height={800}
+                        alt='Small Banner'
+                        priority
+                      />
+                      <ExpandImage className='w-full h-full object-cover'
+                        src='/design/rank-matrix/dark3.png'
+                        width={1660}
+                        height={800}
+                        alt='Small Banner'
+                        priority
+                      />
+                    </div>
+                  )}
+
+                  {activeMode === 'light' && (
+                    <div className='flex flex-col gap-4'>
+                      <ExpandImage className='w-full h-full object-cover'
+                        src='/design/rank-matrix/light1.png'
+                        width={1660}
+                        height={800}
+                        alt='Small Banner'
+                        priority
+                      />
+                      <ExpandImage className='w-full h-full object-cover'
+                        src='/design/rank-matrix/light2.png'
+                        width={1660}
+                        height={800}
+                        alt='Small Banner'
+                        priority
+                      />
+                      <ExpandImage className='w-full h-full object-cover'
+                        src='/design/rank-matrix/light3.png'
+                        width={1660}
+                        height={800}
+                        alt='Small Banner'
+                        priority
+                      />
+                    </div>
+                  )}
+                </div>
               </div>
+
+              <p className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</p>
+
             </div>
           </div>
         </div>

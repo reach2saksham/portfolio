@@ -18,7 +18,8 @@ const geistMono = Geist_Mono({
 
 export default function RootLayout({ children }) {
   const pathname = usePathname();
-  const showStars = !pathname?.includes('/design');
+  const excludedPaths = ['/design', '/product', '/dev'];
+  const showStars = !excludedPaths.some(path => pathname?.includes(path));
 
   return (
     <html lang="en">
