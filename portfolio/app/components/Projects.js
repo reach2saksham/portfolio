@@ -11,7 +11,7 @@ let designitems = {
     width: 350,
     height: 380,
     alt: 'Mockup',
-    tags: ['College Project', 'April 2024'],
+    tags: ['Internship', 'April 2024'],
     role: ['UI Designer', 'Motion Designer'],
     domain: ['UI/UX', 'Anmation', 'Graphics'],
     impact: ['Counselling tool for 12M+ JEE Students every year'],
@@ -38,7 +38,7 @@ let designitems = {
 let devitems = {
   card1: {
     title: 'CLIENT SIDE DASHBOARD',
-    image: '/bottles.png',
+    image: '/test.png',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -69,7 +69,7 @@ let productitems = {
   },
   card2: {
     title: `Production Optimization Strategy for B2B Company`,
-    image: '/product/eat-sure/thumbnail.png',
+    image: '/product/operatopolis/thumbnail.png',
     width: 350,
     height: 380,
     alt: 'Mockup',

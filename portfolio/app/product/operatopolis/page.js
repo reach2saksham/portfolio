@@ -18,22 +18,22 @@ const caseStudy = {
         'canva': 'Canva',
         'excel': 'MS Excel',
     },
-    companyName: 'EAT-SURE',
+    companyName: 'OPERATOPOLIS',
     period: 'Februrary 2025',
     domain: 'CONSULT STRATEGY DECK',
-    description: `Led a strategic case study to enhance EatSure’s penetration in college campuses, targeting the under-25 demographic. Analyzed student behavior and preferences to develop actionable strategies aimed at increasing app adoption. Proposed engagement, pricing, and incentive-based solutions, piloted with campus-specific insights to validate impact and feasibility.`,
+    description: `This project involved analyzing a Fabricator comapny's end-to-end production capabilities to determine whether the company could fulfill a high-volume, time-sensitive order from Dhanashree Forge Ltd. The goal was to assess daily processing capacity under variability, identify constraints, and evaluate cost-effective alternatives such as overtime or workforce reallocation to meet delivery commitments while maintaining quality and profitability.`,
     sections: ['Overview', 'Highlights', 'The Problem', 'Minimal Investment Strategies', 'Moderate Investment Strategies'],
     role: ['Strategy Consultant', 'Operations Analyst', 'Marketing Strategist'],
-    collaborators: ['Bhavesh Deshmukh'],
-    deliverables: ['Business Strategies', 'User Research'],
-    timelineStatus: ['Completed'],
+    collaborators: ['Aashi Jain', 'Akankshya Priyadarshini'],
+    deliverables: ['Finance Analyst', 'Consultant'],
+    timelineStatus: ['2nd Runner up', 'Completed'],
     //   links: {
     //     liveProduct: 'https://rankmatrix.in/',
     //     // figmaFile: 'https://figma.com',
     //   },
-    thewhat: `We worked on enhancing EatSure’s market penetration within college campuses by designing student-focused strategies to increase adoption and engagement among the under-25 demographic.`,
-    thewhy: `Despite 60% of EatSure’s users being under 25, app penetration in serviceable colleges remains just 5%. This gap highlights a significant untapped opportunity to deepen the brand’s presence and affinity within college ecosystems.`,
-    thehow: `We began with in-depth user and market research to identify behavioral patterns and actionable insights specific to college students. Based on this, we structured our strategies into two categories—those requiring minimal client investment and those requiring moderate investment. Each solution was backed by data and tailored to student preferences, resulting in a cohesive and practical roadmap for growth.`,
+    thewhat: `To supply 500 finished components weekly for ten weeks to Dhanashree Forge—a reputed domestic and global supplier. The production line followed a five-stage process involving machining, heat treatment, finishing, and quality packing. Each stage had specific time and labor requirements, variability in processing times further complicated capacity estimation.`,
+    thewhy: `The large order created a tough trade-off between controlling costs and maintaining humane labor conditions. Meeting the demand either required expensive additional labor or pushed existing workers into excessive overtime. Despite these challenges, the opportunity to partner with Dhanashree Forge promised long-term benefits, making it critical to find a sustainable and balanced fulfillment strategy.`,
+    thehow: `We began by breaking down and quantifying the problem to understand the company’s current capacity and constraints. After evaluating standard industry solutions—like buffer stock estimation at 95% confidence, extended workdays, and additional workforce deployment—we identified their limitations in this specific context. To overcome these, we developed a custom approach: the Trapezoidal Matrix Method, which is discussed in this case study.`,
 };
 
 const Page = () => {
@@ -55,7 +55,7 @@ const Page = () => {
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
                     <div className="w-full lg:w-3/4 pb-4 lg:pb-0">
                         <Image
-                            src="/product/eat-sure/poster.png"
+                            src="/product/operatopolis/poster.png"
                             width={1080}
                             height={400}
                             alt="Cover"
@@ -118,13 +118,13 @@ const Page = () => {
                     <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
                         <div className="flex flex-col w-full hidden lg:block">
                             {caseStudy.companyName && (
-                                <div className="company text-5xl">{caseStudy.companyName}</div>
+                                <div className="company text-[40px]">{caseStudy.companyName}</div>
                             )}
                             {caseStudy.period && (
                                 <div className="casetags text-sm">{caseStudy.period}</div>
                             )}
                             {caseStudy.domain && (
-                                <div className="sfpro text-sm pt-7 text-[#646464] tracking-wider">{caseStudy.domain}</div>
+                                <div className="sfpro text-sm pt-10 text-[#646464] tracking-wider">{caseStudy.domain}</div>
                             )}
                             {caseStudy.sections && caseStudy.sections.length > 0 && (
                                 <div className="casetags text-base py-4">
@@ -243,23 +243,46 @@ const Page = () => {
                             className='company text-3xl pt-12 mb-2'>
                             THE HIGHLIGHTS
                         </div>
-                        <ExpandImage className='w-full h-fobject-cover pb-4'
-                            src='/product/eat-sure/selection.png'
-                            width={1660}
-                            height={800}
-                            alt='Small Banner'
-                            priority
-                        />
 
-                        
+                        <div className='flex flex-col lg:flex-row gap-1 justify-center items-center'>
+                            <div>
+                                <ExpandImage className='object-cover'
+                                    src='/product/operatopolis/certificate.png'
+                                    width={306}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                            </div>
+                            <div>
+                                <ExpandImage className='object-cover'
+                                    src='/product/operatopolis/highlight.png'
+                                    width={306}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                            </div>
+                            <div>
+                                <ExpandImage className='object-cover'
+                                    src='/product/operatopolis/selection.png'
+                                    width={306}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                            </div>
+                        </div>
+
+
 
                         <div
                             id='problem'
                             className='pt-12 flex flex-col'>
-                            <p className='text-3xl company'>THE PROBLEM</p>
+                            <p className='text-3xl company'>PROBLEM STATEMENT</p>
 
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/0.png'
+                                src='/product/operatopolis/ps.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -267,82 +290,99 @@ const Page = () => {
                             />
                             <p
                                 id='market'
-                                className='pt-12 text-3xl company'>USER RESEARCH</p>
+                                className='pt-12 text-3xl company'>PROBLEM BREAKDOWN</p>
 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/1.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+                            <div className='flex flex-col md:flex-row gap-1'>
+                                <ExpandImage className='object-cover'
+                                    src='/product/operatopolis/pb1.png' 
+                                    width={464}
+                                    height={240}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                                <ExpandImage className='object-cover'
+                                    src='/product/operatopolis/pb2.png' 
+                                    width={464}
+                                    height={240}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                            </div>
+
+                            <ExpandImage className='w-full h-full object-cover pt-2'
+                                    src='/product/operatopolis/1.png' 
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
 
                             <p id='minimal'
                                 className='pt-12 text-3xl company'>MINIMAL INVESTMENT STRATEGIES</p>
 
-                            <div className='flex flex-col gap-4'> 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/Slide 16_9 - 3.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/Slide 16_9 - 4.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/Slide 16_9 - 5.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/Slide 16_9 - 6.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+                            <div className='flex flex-col gap-4'>
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/eat-sure/Slide 16_9 - 3.png'
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/eat-sure/Slide 16_9 - 4.png'
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/eat-sure/Slide 16_9 - 5.png'
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/eat-sure/Slide 16_9 - 6.png'
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
                             </div>
 
                             <p id='moderate'
                                 className='pt-12 text-3xl company'>MODERATE INVESTMENT SOLUTIONS</p>
-                            
-                            <div className='flex flex-col gap-4'> 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/Slide 16_9 - 7.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/Slide 16_9 - 8.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/Slide 16_9 - 9.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/eat-sure/Slide 16_9 - 10.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+
+                            <div className='flex flex-col gap-4'>
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/eat-sure/Slide 16_9 - 7.png'
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/eat-sure/Slide 16_9 - 8.png'
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/eat-sure/Slide 16_9 - 9.png'
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/eat-sure/Slide 16_9 - 10.png'
+                                    width={1660}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
                             </div>
 
                             <p className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</p>
