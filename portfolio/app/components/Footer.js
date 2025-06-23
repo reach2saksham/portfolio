@@ -555,7 +555,7 @@ const Footer = () => {
         ))}
 
         {/* Content */}
-        <div className="foothead text-[40px] sm:text-5xl md:text-6xl pt-8 pb-8 sm:pb-2 text-center uppercase w-full lg:w-[72%] xl:w-[65%] md:w-[90%] mx-auto">
+        <div className="foothead text-[40px] sm:text-5xl md:text-6xl pt-8 pb-8 sm:pb-2 text-center uppercase w-full lg:w-[72%] xl:w-[65%] md:w-[90%] mx-auto select-none">
           Contact me to create fun things together
         </div>
 

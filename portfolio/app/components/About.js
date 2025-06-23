@@ -37,7 +37,7 @@ const About = () => {
           text-7xl
           sm:text-8xl
           md:text-9xl 
-          
+          select-none
           good text-center text-white z-10'
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}

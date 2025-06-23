@@ -139,7 +139,7 @@ const Projects = () => {
                   className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
                   onClick={handlePrev}
                 />
-                <div className="projecthead text-center pt-6 text-7xl mb-4 ">{col.title}</div>
+                <div className="projecthead text-center pt-6 text-7xl mb-4 select-none">{col.title}</div>
                 <ChevronRightIcon
                   className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
                   onClick={handleNext}
