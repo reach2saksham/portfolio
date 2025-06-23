@@ -15,7 +15,7 @@ const Gallery = React.memo(({ mousePosition, handle }) => {
     >
       <div className="w-full h-[50vh] xl:h-full relative">
         <Image 
-          src={`/images/${handle}/background.webp`}
+          src={`/images/${handle}/background.avif`}
           alt="background image"
           fill
           className="w-full object-cover"
@@ -27,7 +27,7 @@ const Gallery = React.memo(({ mousePosition, handle }) => {
         style={{ x, y }}
       >
         <Image 
-          src={`/images/${handle}/1.webp`}
+          src={`/images/${handle}/1.avif`}
           alt="vignette image"
           fill
           className="w-full object-cover"
@@ -85,7 +85,7 @@ const Description = React.memo(({ mousePosition, projects }) => {
         style={{ x, y }}
       >
         <Image 
-          src={`/images/${projects[index].handle}/about.webp`}
+          src={`/images/${projects[index].handle}/about.avif`}
           alt="about image"
           fill
           className="w-full object-cover"

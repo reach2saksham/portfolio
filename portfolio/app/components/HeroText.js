@@ -17,7 +17,7 @@ const HeroText = () => {
       >
         <div className="w-14 h-8 rounded-full overflow-hidden">
           <Image
-            src="/introphoto.svg"
+            src="/introphoto.avif"
             alt="Saksham Jain"
             width={64}
             height={64}

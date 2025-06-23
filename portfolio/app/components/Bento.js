@@ -70,7 +70,7 @@ const Bento = () => {
           flex justify-center items-center '>
 
           <Image className='w-full h-full object-cover  rounded-[20px] lg: lg:hover:-0 transition duration-300'
-            src='/myphoto.png'
+            src='/myphoto.avif'
             width={717}
             height={674}
             alt='Saksham Jain'

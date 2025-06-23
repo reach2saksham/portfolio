@@ -38,7 +38,7 @@ let designitems = {
 let devitems = {
   card1: {
     title: 'CLIENT SIDE DASHBOARD',
-    image: '/test.png',
+    image: '/test.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',

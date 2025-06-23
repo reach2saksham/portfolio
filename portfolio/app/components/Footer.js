@@ -121,33 +121,40 @@ const Footer = () => {
   const form = useRef();
 
   // EmailJS configuration
-  const sendEmail = async (e) => {
-    e.preventDefault();
+ const sendEmail = async (e) => {
+  e.preventDefault();
 
-    setIsLoading(true);
+  const currentForm = form.current;
 
-    const publicKey = "K2zm_VwrmppRUatQf";
-    const serviceID = "service_x2qubbg";
-    const templateID = "template_63j2uvb";
+  // Native validation for required fields and patterns
+  if (!currentForm.checkValidity()) {
+    currentForm.reportValidity();
+    return;
+  }
 
-    try {
-      await emailjs.sendForm(serviceID, templateID, form.current, {
-        publicKey: publicKey,
-      });
+  setIsLoading(true);
 
-      setIsLoading(false);
-      setSubmitted(true);
-      form.current.reset();
+  const publicKey = "K2zm_VwrmppRUatQf";
+  const serviceID = "service_x2qubbg";
+  const templateID = "template_63j2uvb";
 
-      setTimeout(() => {
-        setSubmitted(false);
-      }, 3000);
-    } catch (error) {
-      console.log('FAILED...', error.text);
-      setIsLoading(false);
-    }
-  };
+  try {
+    await emailjs.sendForm(serviceID, templateID, currentForm, {
+      publicKey: publicKey,
+    });
 
+    setIsLoading(false);
+    setSubmitted(true);
+    currentForm.reset();
+
+    setTimeout(() => {
+      setSubmitted(false);
+    }, 3000);
+  } catch (error) {
+    console.error("FAILED...", error.text);
+    setIsLoading(false);
+  }
+};
 
 
   // Function to show Calendly widget
@@ -572,11 +579,13 @@ const Footer = () => {
             className="col-span-1 p-3 rounded-md text-white bg-[#131313] border border-[#363636]/20 focus:outline-none"
           />
           <input
-            type="from_email"
+            type="email"
             name="from_email"
             id="email"
             placeholder="Email"
             required
+            pattern="^[^\s@]+@[^\s@]+\.[^\s@]+$"
+            title="Please enter a valid Gmail address"
             className="col-span-1 p-3 rounded-md text-white bg-[#131313] border border-[#363636]/20 focus:outline-none"
           />
           <textarea
