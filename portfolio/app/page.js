@@ -15,7 +15,11 @@ import { motion } from 'framer-motion';
 // Wrapper component for lazy loading
 const LazyComponent = ({ children, shouldRender, placeholder = null }) => {
   if (!shouldRender) {
-    return placeholder || <div style={{ height: '100vh' }} />; // Maintain layout
+    return placeholder || (
+      <div style={{ height: '100vh' }} className="flex items-center justify-center">
+        <div className="animate-pulse text-white/50">Loading...</div>
+      </div>
+    ); // Maintain layout
   }
   return children;
 };
@@ -62,15 +66,15 @@ export default function Home() {
     // Configuration for intersection observer
     const observerOptions = {
       root: null,
-      rootMargin: '400px', // Start loading before element is visible
-      threshold: 0.1
+      rootMargin: '200px', // ✅ MORE CONSERVATIVE
+      threshold: 0.05      // ✅ LOWER THRESHOLD
     };
 
     // Special observer for footer with different settings
     const footerObserverOptions = {
       root: null,
       rootMargin: '0px',
-      threshold: 0.3 // Footer needs to be more visible to trigger
+      threshold: 0.1 // Footer needs to be more visible to trigger
     };
 
     // Create observers for each section
@@ -113,7 +117,7 @@ export default function Home() {
   const shouldRenderComponent = (sectionName) => {
     if (isFooterInFocus) {
       // When footer is in focus, only render footer and gallery
-      return sectionName === 'footer' || sectionName ==='gallery';
+      return sectionName === 'footer' || sectionName === 'gallery';
     }
     // Otherwise, render visible sections
     return visibleSections[sectionName];
@@ -130,11 +134,11 @@ export default function Home() {
       // No translation on mobile
       return { x: 0, y: 0 };
     }
-    
+
     // Desktop translate values only
-    return { 
+    return {
       x: isDiscClicked ? -205 : 0,
-      y: 0 
+      y: 0
     };
   };
 
@@ -154,9 +158,8 @@ export default function Home() {
              xl:px-36 
              lg:px-14 
              sm:px-4 
-             px-4 z-40 ${
-            !isMobile && isDiscClicked ? 'fixed' : 'absolute'
-          }`}
+             px-4 z-40 ${!isMobile && isDiscClicked ? 'fixed' : 'absolute'
+            }`}
           style={{
             // Position it to the left but not overlapping the Project AlphaQ button
             left: '0',
@@ -168,7 +171,7 @@ export default function Home() {
             type: "smooth"
           }}
         >
-          <DiscButton 
+          <DiscButton
             onPositionToggle={handlePositionToggle}
             isPositionFixed={isDiscClicked}
           />
