@@ -10,7 +10,7 @@ const About = () => {
     id='about'
     className='container flex flex-col justify-center items-center max-w-full px-4 pt-4 mx-auto xl:px-36 lg:px-14 sm:px-4 z-40'>
       
-      <div className='relative'>
+      <div className='relative z-40'>
         <motion.div
           initial={{ y: 200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
@@ -21,7 +21,7 @@ const About = () => {
           }}
         >
           <Image 
-            className='object-cover opacity-60 rounded-[20px] lg: lg:hover:-0 transition duration-300'
+            className='object-cover opacity-60 rounded-[20px] lg: lg:hover:-0 transition duration-300 z-40'
             src='/moon.avif'
             width={717}
             height={674}
@@ -32,7 +32,13 @@ const About = () => {
         </motion.div>
 
         <motion.h1 
-          className='absolute inset-0 flex items-center justify-center text-9xl good text-center text-white z-10'
+          className='absolute inset-0 
+          flex items-center justify-center 
+          text-7xl
+          sm:text-8xl
+          md:text-9xl 
+          
+          good text-center text-white z-10'
           initial={{ y: -100, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ 

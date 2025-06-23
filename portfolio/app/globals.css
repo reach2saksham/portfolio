@@ -259,7 +259,7 @@ body {
 /* Prevent white screen fallbacks */
 body {
   min-height: 100vh;
-  background-color: #000000 !important;
+  background-color: #000 !important;
 }
 
 /* Ensure content is never completely hidden */

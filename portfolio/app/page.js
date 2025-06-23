@@ -151,7 +151,7 @@ export default function Home() {
           className={`w-fit flex bg-red items-center justify-start max-w-full container
              mx-auto 
              sm:mt-[48px]
-             min-[390px]:mt-[116px]
+             min-[390px]:mt-[104px]
              mt-[76px]
 
 

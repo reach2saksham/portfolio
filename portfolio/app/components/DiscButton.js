@@ -145,7 +145,7 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
       ? "♪ NOW PLAYING • CLICK TO PAUSE • II & PLAY TO CHANGE • "
       : isPositionFixed 
         ? "CLICK THE DISC • CLICK THE DISC • CLICK THE DISC • CLICK •" 
-        : "CLICK THE DISC • CLICK THE DISC • CLICK THE DISC • CLICK •";
+        : "CLICK TO PLAY MUSIC • CLICK THE DISC • CLICK THE DISC •";
   }, [isPlaying, isPositionFixed]);
 
   // Memoized animation duration

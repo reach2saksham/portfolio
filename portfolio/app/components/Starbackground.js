@@ -32,14 +32,23 @@ const Stars = (props) => {
 };
 
 const StarsCanvas = () => (
-  <div className='w-full h-full fixed inset-0 z-[20]'>
-    <Canvas camera={{ position: [0, 0, 1], fov: 75 }}>
-      <Suspense fallback={null}>
+  <div className="w-full h-full fixed inset-0 z-10 bg-black">
+    <Canvas
+      camera={{ position: [0, 0, 1], fov: 75 }}
+      gl={{
+        alpha: true,
+        antialias: true,
+        powerPreference: 'high-performance',
+      }}
+      style={{ background: 'transparent' }}
+    >
+      <Suspense fallback={<div className="w-full h-full bg-black" />}>
         <Stars />
       </Suspense>
       <Preload all />
     </Canvas>
   </div>
 );
+
 
 export default StarsCanvas;
