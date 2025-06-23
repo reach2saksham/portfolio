@@ -2,8 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
-* {
-  cursor: url('/newcursor.svg'), auto;
+@media (hover: hover) {
+  * {
+    cursor: url('/newcursor.svg'), auto;
+  }
 }
 
 .animate-in {
@@ -105,7 +107,7 @@
 }
 @font-face {
   font-family: 'ppbook';
-  src: url('/fonts/ppbok.otf') format('opentype');
+  src: url('/fonts/ppbook.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
@@ -196,8 +198,15 @@
 }
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #000000;
+  --foreground: #ededed;
+}
+
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
 }
 
 /* Original globe styles - kept for backward compatibility */
@@ -218,8 +227,6 @@
 
 /* Ensure the globe canvas scales properly within its container */
 .globe-enlarged canvas {
-  max-width: none !important;
-  max-height: none !important;
   width: 150% !important;
   height: 150% !important;
   object-fit: cover;
@@ -231,19 +238,6 @@
   width: 200% !important;
   height: 200% !important;
   transform: scale(1.5);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #000000;
-    --foreground: #ededed;
-  }
-}
-
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 /* Responsive adjustments for mobile */

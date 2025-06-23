@@ -167,7 +167,7 @@ const Hero = () => {
         </div>
 
         {/* Right side Spline 3D scene - Maintain high z-index for robot interactions */}
-        <div className="w-[40%] hidden xl:block relative z-30">
+        <div className="w-[40%] hidden xl:block bg-red-500 absolute right-14 z-30">
           <div className="absolute w-[100%] h-[85vh] z-30">
             <Spline
               scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
