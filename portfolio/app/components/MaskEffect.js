@@ -21,7 +21,7 @@ const usePointerPosition = () => {
     useEffect(() => {
         // Mouse events
         window.addEventListener("mousemove", updateMousePosition);
-        
+
         // Touch events
         window.addEventListener("touchmove", updateTouchPosition, { passive: false });
         window.addEventListener("touchstart", updateTouchPosition, { passive: false });
@@ -105,11 +105,23 @@ export default function MaskEffect() {
                     WebkitMaskImage: `radial-gradient(circle, white 50%, transparent 50%)`,
                     maskImage: `radial-gradient(circle, white 50%, transparent 50%)`,
                     WebkitMaskRepeat: "no-repeat",
-                    maskRepeat: "no-repeat"
+                    maskRepeat: "no-repeat",
+
+                    // ✅ Add these lines
+                    transform: "translateZ(0)",
+                    WebkitTransform: "translateZ(0)",
+                    backfaceVisibility: "hidden",
+                    WebkitBackfaceVisibility: "hidden"
+                }}
+                initial={{
+                    WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
+                    maskPosition: `${x - size / 2}px ${y - size / 2}px`,
+                    WebkitMaskSize: `${size}px ${size}px`,
+                    maskSize: `${size}px ${size}px`,
                 }}
                 animate={{
-                    WebkitMaskPosition: `${x - (size / 2)}px ${y - (size / 2)}px`,
-                    maskPosition: `${x - (size / 2)}px ${y - (size / 2)}px`,
+                    WebkitMaskPosition: `${x - size / 2}px ${y - size / 2}px`,
+                    maskPosition: `${x - size / 2}px ${y - size / 2}px`,
                     WebkitMaskSize: `${size}px ${size}px`,
                     maskSize: `${size}px ${size}px`,
                 }}
@@ -129,7 +141,7 @@ export default function MaskEffect() {
             </motion.div>
 
             <div className="w-full h-full flex items-center justify-start -m-4 lg:pl-8 xl:pl-[122px] leading-[48px] sm:leading-[56px] md:leading-[66px] text-[42px] sm:text-[56px] md:text-6xl cursor-default relative z-20 select-none">
-                <p 
+                <p
                     className="w-[1000px] text-[#c1b3a5] px-10 md:px-10 flex flex-col gap-6"
                     onMouseEnter={handlePointerEnter}
                     onMouseLeave={handlePointerLeave}

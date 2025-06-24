@@ -125,11 +125,11 @@ const Hero = () => {
                     className="w-full group"
                   >
                     {[
+                      ['/companies/hyundai.svg', 'Hyundai Logo', 20],
                       ['/companies/uix.svg', 'UIX Labs Logo', 20],
                       ['/companies/rmx.svg', 'RankMatrix Logo', 20],
-                      ['/companies/hyundai.svg', 'Hyundai Logo', 20],
-                      ['/companies/ecell.svg', 'E-Cell Logo', 20],
                       ['/companies/tedx.svg', 'TEDx Logo', 20],
+                      ['/companies/ecell.svg', 'E-Cell Logo', 20],
                       ['/companies/img.svg', 'IMG Logo', 20],
                       
                     ].map(([src, alt, height], index) => (
