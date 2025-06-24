@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.sakshamjain.in
+
+# Sitemaps
+Sitemap: https://www.sakshamjain.in/sitemap.xml
