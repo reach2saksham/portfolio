@@ -55,7 +55,7 @@ const Page = () => {
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
                     <div className="w-full lg:w-3/4 pb-4 lg:pb-0">
                         <Image
-                            src="/product/operatopolis/poster.png"
+                            src="/product/operatopolis/poster.avif"
                             width={1080}
                             height={400}
                             alt="Cover"
@@ -247,7 +247,7 @@ const Page = () => {
                         <div className='flex flex-col lg:flex-row gap-1 justify-center items-center'>
                             <div>
                                 <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/certificate.png'
+                                    src='/product/operatopolis/certificate.avif'
                                     width={306}
                                     height={800}
                                     alt='Small Banner'
@@ -256,7 +256,7 @@ const Page = () => {
                             </div>
                             <div>
                                 <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/highlight.png'
+                                    src='/product/operatopolis/highlight.avif'
                                     width={306}
                                     height={800}
                                     alt='Small Banner'
@@ -265,7 +265,7 @@ const Page = () => {
                             </div>
                             <div>
                                 <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/selection.png'
+                                    src='/product/operatopolis/selection.avif'
                                     width={306}
                                     height={800}
                                     alt='Small Banner'
@@ -282,7 +282,7 @@ const Page = () => {
                             <p className='text-3xl company'>PROBLEM STATEMENT</p>
 
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/operatopolis/ps.png'
+                                src='/product/operatopolis/ps.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -294,14 +294,14 @@ const Page = () => {
 
                             <div className='flex flex-col md:flex-row gap-1'>
                                 <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/pb1.png' 
+                                    src='/product/operatopolis/pb1.avif' 
                                     width={464}
                                     height={240}
                                     alt='Small Banner'
                                     priority
                                 />
                                 <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/pb2.png' 
+                                    src='/product/operatopolis/pb2.avif' 
                                     width={464}
                                     height={240}
                                     alt='Small Banner'
@@ -310,7 +310,7 @@ const Page = () => {
                             </div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                    src='/product/operatopolis/1.png' 
+                                    src='/product/operatopolis/1.avif' 
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'
@@ -322,28 +322,28 @@ const Page = () => {
 
                             <div className='flex flex-col gap-4'>
                                 <ExpandImage className='w-full h-full object-cover'
-                                    src='/product/eat-sure/Slide 16_9 - 3.png'
+                                    src='/product/eat-sure/Slide 16_9 - 3.avif'
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'
                                     priority
                                 />
                                 <ExpandImage className='w-full h-full object-cover'
-                                    src='/product/eat-sure/Slide 16_9 - 4.png'
+                                    src='/product/eat-sure/Slide 16_9 - 4.avif'
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'
                                     priority
                                 />
                                 <ExpandImage className='w-full h-full object-cover'
-                                    src='/product/eat-sure/Slide 16_9 - 5.png'
+                                    src='/product/eat-sure/Slide 16_9 - 5.avif'
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'
                                     priority
                                 />
                                 <ExpandImage className='w-full h-full object-cover'
-                                    src='/product/eat-sure/Slide 16_9 - 6.png'
+                                    src='/product/eat-sure/Slide 16_9 - 6.avif'
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'
@@ -356,28 +356,28 @@ const Page = () => {
 
                             <div className='flex flex-col gap-4'>
                                 <ExpandImage className='w-full h-full object-cover'
-                                    src='/product/eat-sure/Slide 16_9 - 7.png'
+                                    src='/product/eat-sure/Slide 16_9 - 7.avif'
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'
                                     priority
                                 />
                                 <ExpandImage className='w-full h-full object-cover'
-                                    src='/product/eat-sure/Slide 16_9 - 8.png'
+                                    src='/product/eat-sure/Slide 16_9 - 8.avif'
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'
                                     priority
                                 />
                                 <ExpandImage className='w-full h-full object-cover'
-                                    src='/product/eat-sure/Slide 16_9 - 9.png'
+                                    src='/product/eat-sure/Slide 16_9 - 9.avif'
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'
                                     priority
                                 />
                                 <ExpandImage className='w-full h-full object-cover'
-                                    src='/product/eat-sure/Slide 16_9 - 10.png'
+                                    src='/product/eat-sure/Slide 16_9 - 10.avif'
                                     width={1660}
                                     height={800}
                                     alt='Small Banner'

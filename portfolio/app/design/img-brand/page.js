@@ -58,7 +58,7 @@ const Page = () => {
           className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-3/4 pb-4 lg:pb-0">
             <ExpandImage
-              src="/design/img-brand/cover.png"
+              src="/design/img-brand/cover.avif"
               width={1080}
               height={400}
               alt="Cover"
@@ -250,12 +250,12 @@ const Page = () => {
 
             <div className='justify-center items-center'>
               <div className="flex gap-1 sm:gap-4 justify-center items-center flex-col sm:flex-row">
-                <BlurImage src="/design/img-brand/ig1.png" width={460} height={460} title="Open Source Workshop" subtitle="A poster for inviting students" alt="Small Banner" />
-                <BlurImage src="/design/img-brand/tshirt.png" width={460} height={460} title="T-Shirt 2024" subtitle="I have screenshots of members wearing it to Singapore" alt="Another Banner" />
+                <BlurImage src="/design/img-brand/ig1.avif" width={460} height={460} title="Open Source Workshop" subtitle="A poster for inviting students" alt="Small Banner" />
+                <BlurImage src="/design/img-brand/tshirt.avif" width={460} height={460} title="T-Shirt 2024" subtitle="I have screenshots of members wearing it to Singapore" alt="Another Banner" />
               </div>
               <div className="flex gap-1 sm:gap-4 justify-center items-center flex-col sm:flex-row">
-                <BlurImage src="/design/img-brand/tshirt2.png" width={460} height={460} title="T-Shirt 2024 Interation" subtitle="This was supposed to be printed 🥺" alt="Small Banner" />
-                <BlurImage src="/design/img-brand/ig2.png" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Another Banner" />
+                <BlurImage src="/design/img-brand/tshirt2.avif" width={460} height={460} title="T-Shirt 2024 Interation" subtitle="This was supposed to be printed 🥺" alt="Small Banner" />
+                <BlurImage src="/design/img-brand/ig2.avif" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Another Banner" />
               </div>
             </div>
 
@@ -275,7 +275,7 @@ const Page = () => {
               <p className='casetags' >{`Like every great brand, IMG needed versatile, stylized logo variations—usable only if they served real purpose. So I went on a rampage, designing a range of tech-inspired logos that stayed true to IMG’s identity while enabling flexible, custom use across platforms and contexts. `}  </p>
 
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/1.png'
+                src='/design/img-brand/1.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -283,7 +283,7 @@ const Page = () => {
               />
               <p className='casetags' >{`Let's pour some portrait graphics as well.`}  </p>
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/3.png'
+                src='/design/img-brand/3.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -291,7 +291,7 @@ const Page = () => {
               />
               <p>{`Pre-planning my game, I knew a standout T-shirt design was on the horizon.You say: The arc reactor? C'mon man that's too 2012. A Maze? Too chaotic.  A QR code? Cool, but something's still missing. So I dove deeper—piecing together a coherent, tech-forward logo from scattered elements to craft a design that will truly fit the bigger picture.`}</p>
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/2.png'
+                src='/design/img-brand/2.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -299,7 +299,7 @@ const Page = () => {
               />
               <p>{`Wait, no logo design is complete without making it look like that it has been made out mathematical magic.`}</p>
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/logonew.png'
+                src='/design/img-brand/logonew.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -312,7 +312,7 @@ const Page = () => {
                 className='text-3xl company pt-12'>THE T-SHIRT 2024</p>
               <p>{`Tasked with designing a T-shirt, I had plenty of ideas—but I knew the real magic would come from combining different elements and hiding easter eggs for the keen-eyed. Early on, I explored two design directions. This was one of them—the one that didn’t made the cut :`}</p>
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/shirtidea.png'
+                src='/design/img-brand/shirtidea.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -320,7 +320,7 @@ const Page = () => {
               />
               <p>{`Now, coming to the direction I finally chose—it was a quirky idea that brought together all my nerdy instincts. So I started wireframing, sort of. And honestly, this was my very first iteration. This also answers your question about where that 5×5 new logo came in—it really shines in the isometric view.`}</p>
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/4.png'
+                src='/design/img-brand/4.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -328,7 +328,7 @@ const Page = () => {
               />
               <p>{`Later, I learned that for custom prints to be cost-effective, the design needed to stick to black and white and stay within a limited rectangular print area at the center. So in my high-fidelity iteration, I removed the QR code layers forming the circular base in the original pencil-paper version to make the T-shirt budget-friendly. The following illustration deciphers the design for you in detail.`}</p>
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/5.png'
+                src='/design/img-brand/5.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -337,7 +337,7 @@ const Page = () => {
               <p>{`Solid design, right? Surprisingly, even though it was well received by almost everyone, this one was also rejected 🥹 turns out a senior preferred a more minimal look. But stick around till the end of the case study—there’s a twist waiting for you. `}</p>
               <p>Oh also, here are some techish stickers I created in between.</p>
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/6.png'
+                src='/design/img-brand/6.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -356,7 +356,7 @@ const Page = () => {
               <div className='flex flex-col gap-1 md:flex-row'>
                 <ExpandImage
                   className='object-cover'
-                  src='/design/img-brand/tcb.png'
+                  src='/design/img-brand/tcb.avif'
                   width={464}
                   height={240}
                   alt='TCB Brand Image'
@@ -364,7 +364,7 @@ const Page = () => {
                 />
                 <ExpandImage
                   className='object-cover'
-                  src='/design/img-brand/tcw.png'
+                  src='/design/img-brand/tcw.avif'
                   width={464}
                   height={240}
                   alt='TCW Brand Image'
@@ -375,7 +375,7 @@ const Page = () => {
               <div className='flex flex-col lg:flex-row gap-1 justify-center items-center'>
                 <div>
                   <ExpandImage className='object-cover'
-                    src='/design/img-brand/a.png'
+                    src='/design/img-brand/a.avif'
                     width={306}
                     height={800}
                     alt='Small Banner'
@@ -384,7 +384,7 @@ const Page = () => {
                 </div>
                 <div>
                   <ExpandImage className='object-cover'
-                    src='/design/img-brand/b.png'
+                    src='/design/img-brand/b.avif'
                     width={306}
                     height={800}
                     alt='Small Banner'
@@ -393,7 +393,7 @@ const Page = () => {
                 </div>
                 <div>
                   <ExpandImage className='object-cover'
-                    src='/design/img-brand/c.png'
+                    src='/design/img-brand/c.avif'
                     width={306}
                     height={800}
                     alt='Small Banner'
@@ -411,7 +411,7 @@ const Page = () => {
                 className="w-full h-auto"
               />
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/img-brand/8.png'
+                src='/design/img-brand/8.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -420,14 +420,14 @@ const Page = () => {
               <p>{`Never mind—had to strip it down even more. Here it is: Wohoo! Officially printed T-Shirts, 2024.`}</p>
               <div className='flex flex-col md:flex-row gap-1'>
                 <ExpandImage className='object-cover'
-                  src='/design/img-brand/twf.png'
+                  src='/design/img-brand/twf.avif'
                   width={464}
                   height={240}
                   alt='Small Banner'
                   priority
                 />
                 <ExpandImage className='object-cover'
-                  src='/design/img-brand/tbf.png'
+                  src='/design/img-brand/tbf.avif'
                   width={464}
                   height={240}
                   alt='Small Banner'
@@ -440,14 +440,14 @@ const Page = () => {
               <p>{`This is the twist I was talking about—these designs really stuck with the members. The hype to wear them was so strong that, instead of going with a new design this year, my previous ones were brought back for print. But then came a strange dilemma: the club was completely split, half the members wanted the all black-and-white version, while the other half rooted for the colored cube.`}</p>
               <div className='flex flex-col md:flex-row gap-1'>
                 <ExpandImage className='object-cover'
-                  src='/design/img-brand/1NA.png'
+                  src='/design/img-brand/1NA.avif'
                   width={464}
                   height={240}
                   alt='Small Banner'
                   priority
                 />
                 <ExpandImage className='object-cover'
-                  src='/design/img-brand/1NB.png'
+                  src='/design/img-brand/1NB.avif'
                   width={464}
                   height={240}
                   alt='Small Banner'
@@ -462,18 +462,18 @@ const Page = () => {
                   className='text-3xl company mb-4'>POSTERS</p>
                 <div className=''>
                   <div className="flex gap-4 flex-col lg:flex-row">
-                    <BlurImage src="/design/img-brand/rankmatrix.png" width={460} height={460} title="Rank Matrix 2024" subtitle="Advertising post to redirect JEE students to the portal." alt="Small Banner" />
-                    <BlurImage src="/design/img-brand/webautomation.png" width={460} height={460} title="Web Automation Workshop 2024" subtitle="Minimalstic poster required by the team." alt="Another Banner" />
+                    <BlurImage src="/design/img-brand/rankmatrix.avif" width={460} height={460} title="Rank Matrix 2024" subtitle="Advertising post to redirect JEE students to the portal." alt="Small Banner" />
+                    <BlurImage src="/design/img-brand/webautomation.avif" width={460} height={460} title="Web Automation Workshop 2024" subtitle="Minimalstic poster required by the team." alt="Another Banner" />
 
                   </div>
                 </div>
                 <div className="flex gap-4 flex-col lg:flex-row">
-                  <BlurImage src="/design/img-brand/ig2.png" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Small Banner" />
-                  <BlurImage src="/design/img-brand/gympravesh.png" width={460} height={460} title="Gym Pravesh 2024" subtitle="Launch of Gym Pravesh app in the campus." alt="Another Banner" />
+                  <BlurImage src="/design/img-brand/ig2.avif" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Small Banner" />
+                  <BlurImage src="/design/img-brand/gympravesh.avif" width={460} height={460} title="Gym Pravesh 2024" subtitle="Launch of Gym Pravesh app in the campus." alt="Another Banner" />
                 </div>
                 <div className="flex gap-4 flex-col lg:flex-row">
-                  <BlurImage src="/design/img-brand/ig1.png" width={460} height={460} title="Open Source Workshop 2024" subtitle="A poster for inviting students" alt="Small Banner" />
-                  <BlurImage src="/design/img-brand/rankmatrix2.png" width={460} height={460} title="Rank Matrix Launch 2024" subtitle={<>Read Rank Matrix, <a href="" className="text-blue-500 hover:underline">Case Study Here!</a></>} alt="Another Banner" />
+                  <BlurImage src="/design/img-brand/ig1.avif" width={460} height={460} title="Open Source Workshop 2024" subtitle="A poster for inviting students" alt="Small Banner" />
+                  <BlurImage src="/design/img-brand/rankmatrix2.avif" width={460} height={460} title="Rank Matrix Launch 2024" subtitle={<>Read Rank Matrix, <a href="" className="text-blue-500 hover:underline">Case Study Here!</a></>} alt="Another Banner" />
                 </div>
 
                 <p className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</p>

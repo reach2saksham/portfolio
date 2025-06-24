@@ -7,7 +7,7 @@ import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 let designitems = {
   card1: {
     title: `Making college prediction easier for JEE students`,
-    image: '/design/rank-matrix/mockup.png',
+    image: '/design/rank-matrix/mockup.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -21,7 +21,7 @@ let designitems = {
   },
   card2: {
     title: `Elevating IMG's Brand Identity Game`,
-    image: '/design/img-brand/mockup.png',
+    image: '/design/img-brand/mockup.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -55,7 +55,7 @@ let devitems = {
 let productitems = {
   card1: {
     title: `VéVana: Vegan Leather from Stubble Waste`,
-    image: '/product/vevana/thumbnail.png',
+    image: '/product/vevana/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -69,7 +69,7 @@ let productitems = {
   },
   card2: {
     title: `Production Optimization Strategy for B2B Company`,
-    image: '/product/operatopolis/thumbnail.png',
+    image: '/product/operatopolis/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -83,7 +83,7 @@ let productitems = {
   },
   card3: {
     title: `Driving EatSure’s Adoption and Affinity Among College Students and Youth`,
-    image: '/product/eat-sure/thumbnail.png',
+    image: '/product/eat-sure/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',

@@ -54,7 +54,7 @@ const Page = () => {
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
                     <div className="w-full lg:w-3/4 pb-4 lg:pb-0">
                         <Image
-                            src="/product/vevana/poster.png"
+                            src="/product/vevana/poster.avif"
                             width={1080}
                             height={400}
                             alt="Cover"
@@ -247,7 +247,7 @@ const Page = () => {
                             THE HIGHLIGHTS
                         </div>
                         <ExpandImage className='w-full h-fobject-cover pb-4'
-                            src='/product/vevana/hult.png'
+                            src='/product/vevana/hult.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -272,14 +272,14 @@ const Page = () => {
                             <p className='text-3xl company'>THE PROBLEM</p>
 
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/3.png'
+                                src='/product/vevana/3.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/4.png'
+                                src='/product/vevana/4.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -290,7 +290,7 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>MARKET VALIDATION</p>
 
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/5.png'
+                                src='/product/vevana/5.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -301,7 +301,7 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>COMPARITIVE ANALYSIS</p>
 
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/17.png'
+                                src='/product/vevana/17.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -320,21 +320,21 @@ const Page = () => {
                             <p id='method'
                                 className='pt-12 text-3xl company'>METHODOLOGY</p>
                                 <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/7.png'
+                                src='/product/vevana/7.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                                 <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/method.png'
+                                src='/product/vevana/method.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                                 <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/10.png'
+                                src='/product/vevana/10.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -345,7 +345,7 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>COST STRUCTURE</p>
 
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/15.png'
+                                src='/product/vevana/15.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -361,21 +361,21 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>USP, DISTRIBUTION & SGS</p>
 
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/9.png'
+                                src='/product/vevana/9.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/16.png'
+                                src='/product/vevana/16.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/18.png'
+                                src='/product/vevana/18.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -386,7 +386,7 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>IMPACT</p>
 
                             <ExpandImage className='w-full h-full object-cover'
-                                src='/product/vevana/6.png'
+                                src='/product/vevana/6.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'

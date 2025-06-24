@@ -53,14 +53,14 @@ const Page = () => {
         {/* Header Section */}
         <div
           className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
-          <div className="w-full lg:w-3/4 pb-4 lg:pb-0">
+          <div className="w-full h-[32vh] sm:h-auto lg:w-3/4 pb-4 lg:pb-0">
             <video
               src="/design/rank-matrix/loader1.mp4"
               autoPlay
               loop
               muted
               playsInline
-              className="w-full h-auto"
+              className="w-full h-full object-cover sm:object-none sm:h-auto"
             />
           </div>
           <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080] border-opacity-40">
@@ -167,16 +167,16 @@ const Page = () => {
               <div className="casetags pt-2 lg:pt-0">{caseStudy.description}</div>
             )}
 
-            <div className="flex flex-wrap pt-6 gap-4 md:gap-0 justify-between">
+            <div className="pt-6 grid grid-cols-2 gap-x-4 gap-y-6 md:flex md:flex-wrap md:justify-between">
               {[
                 ['ROLES', caseStudy.role],
                 ['COLLABORATORS', caseStudy.collaborators],
                 ['DELIVERABLES', caseStudy.deliverables],
                 ['TIMELINE & STATUS', caseStudy.timelineStatus],
               ]
-                .filter(([_, items]) => items && items.length > 0) // Only show sections with items
+                .filter(([_, items]) => items && items.length > 0)
                 .map(([title, items], idx) => (
-                  <div key={idx} className="flex flex-col gap-1 pt-6 lg:pt-0 w-fit">
+                  <div key={idx} className="flex flex-col gap-1 w-fit">
                     <div className="sfpro text-sm text-[#646464] tracking-wider">{title}</div>
                     <div className="pt-1">
                       {items.map((item, i) => (
@@ -187,15 +187,16 @@ const Page = () => {
                 ))}
             </div>
 
+
             {/* Links Section - Only show if links exist */}
             {hasLinks && (
-              <div className="pt-6 flex gap-4">
+              <div className="pt-8 sm:pt-6 flex gap-4">
                 {caseStudy.links.liveProduct && (
                   <a
                     href={caseStudy.links.liveProduct}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
+                    className="sm:w-1/2 w-full bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
                   >
                     <p>LIVE PRODUCT</p>
                     <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
@@ -244,16 +245,16 @@ const Page = () => {
             </div>
 
 
-            <div className="flex flex-col gap-2 md:flex-row">
+            <div className="flex flex-col gap-2 items-center md:flex-row">
               <ExpandImage className='object-cover'
-                src='/design/rank-matrix/mockup2.png'
+                src='/design/rank-matrix/mockup2.avif'
                 width={279}
                 height={100}
                 alt='Small Banner'
                 priority
               />
               <ExpandImage className='object-cover'
-                src='/design/rank-matrix/mockup1.png'
+                src='/design/rank-matrix/mockup1.avif'
                 width={654}
                 height={200}
                 alt='Small Banner'
@@ -267,14 +268,14 @@ const Page = () => {
               <p className='text-3xl company'>TYPOGRAPHY, COLOUR PALETE AND BRANDING</p>
 
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/rank-matrix/font-color.png'
+                src='/design/rank-matrix/font-color.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
                 priority
               />
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/rank-matrix/logo.png'
+                src='/design/rank-matrix/logo.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -283,23 +284,23 @@ const Page = () => {
               <div className=''>
                 <div className="flex gap-4 flex-col lg:flex-row">
 
-                  <BlurImage src="/design/rank-matrix/iteration2.png" width={460} height={460} title="Iteration 1" subtitle="Pretty" alt="Another Banner" />
-                  <BlurImage src="/design/rank-matrix/iteration1.png" width={460} height={460} title="Iteration 2" subtitle="A little chaotic" alt="Another Banner" />
+                  <BlurImage src="/design/rank-matrix/iteration2.avif" width={460} height={460} title="Iteration 1" subtitle="Pretty" alt="Another Banner" />
+                  <BlurImage src="/design/rank-matrix/iteration1.avif" width={460} height={460} title="Iteration 2" subtitle="A little chaotic" alt="Another Banner" />
 
                 </div>
               </div>
               <div className="flex gap-4 flex-col lg:flex-row">
-                <BlurImage src="/design/rank-matrix/iteration5.png" width={460} height={460} title="Iteration 3" subtitle="Too Utilitarian" alt="Small Banner" />
-                <BlurImage src="/design/rank-matrix/iteration4.png" width={460} height={460} title="Iteration 4" subtitle="Too much wisdom in one frame" alt="Another Banner" />
+                <BlurImage src="/design/rank-matrix/iteration5.avif" width={460} height={460} title="Iteration 3" subtitle="Too Utilitarian" alt="Small Banner" />
+                <BlurImage src="/design/rank-matrix/iteration4.avif" width={460} height={460} title="Iteration 4" subtitle="Too much wisdom in one frame" alt="Another Banner" />
               </div>
               <div className="flex gap-4 flex-col lg:flex-row">
-                <BlurImage src="/design/rank-matrix/iteration3.png" width={460} height={460} title="Iteration 5" subtitle="That James Thomson Builduibng svg took time" alt="Small Banner" />
-                <BlurImage src="/design/img-brand/rankmatrix.png" width={460} height={460} title="Finalised" subtitle="But it was policy to not advertise our college through this" alt="Small Banner" />
+                <BlurImage src="/design/rank-matrix/iteration3.avif" width={460} height={460} title="Iteration 5" subtitle="That James Thomson Builduibng svg took time" alt="Small Banner" />
+                <BlurImage src="/design/img-brand/rankmatrix.avif" width={460} height={460} title="Finalised" subtitle="But it was policy to not advertise our college through this" alt="Small Banner" />
               </div>
 
-              <p 
-              id='loading'
-              className='pt-12 text-3xl company'>LOADING ANIMATIONS</p>
+              <p
+                id='loading'
+                className='pt-12 text-3xl company'>LOADING ANIMATIONS</p>
               <video
                 src="/design/rank-matrix/loaderfigma.mp4"
                 autoPlay
@@ -321,12 +322,12 @@ const Page = () => {
 
               <p>{`This loading screen was designed with reusability in mind—it also serves perfectly as a component-level loader within the webpage.`}</p>
 
-              <p 
-              id='screens'
-              className='pt-12 text-3xl company'>USER INTERFACES</p>
+              <p
+                id='screens'
+                className='pt-12 text-3xl company'>USER INTERFACES</p>
 
               <ExpandImage className='w-full h-full object-cover'
-                src='/design/rank-matrix/problems.png'
+                src='/design/rank-matrix/problems.avif'
                 width={1660}
                 height={800}
                 alt='Small Banner'
@@ -335,36 +336,36 @@ const Page = () => {
 
               <div className='pt-10 flex flex-col gap-8'>
                 <div className='flex gap-6'>
-                <button 
-                 className={`tags ${activeMode === 'dark' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
-                onClick={() => setActiveMode('dark')}>
-                  Dark Mode
-                </button>
-                <button 
-                 className={`tags ${activeMode === 'light' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
-                onClick={() => setActiveMode('light')}>
-                  Light Mode
-                </button>
+                  <button
+                    className={`tags ${activeMode === 'dark' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
+                    onClick={() => setActiveMode('dark')}>
+                    Dark Mode
+                  </button>
+                  <button
+                    className={`tags ${activeMode === 'light' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
+                    onClick={() => setActiveMode('light')}>
+                    Light Mode
+                  </button>
                 </div>
                 <div>
                   {activeMode === 'dark' && (
                     <div className='flex flex-col gap-4'>
                       <ExpandImage className='w-full h-full object-cover'
-                        src='/design/rank-matrix/dark1.png'
+                        src='/design/rank-matrix/dark1.avif'
                         width={1660}
                         height={800}
                         alt='Small Banner'
                         priority
                       />
                       <ExpandImage className='w-full h-full object-cover'
-                        src='/design/rank-matrix/dark2.png'
+                        src='/design/rank-matrix/dark2.avif'
                         width={1660}
                         height={800}
                         alt='Small Banner'
                         priority
                       />
                       <ExpandImage className='w-full h-full object-cover'
-                        src='/design/rank-matrix/dark3.png'
+                        src='/design/rank-matrix/dark3.avif'
                         width={1660}
                         height={800}
                         alt='Small Banner'
@@ -376,21 +377,21 @@ const Page = () => {
                   {activeMode === 'light' && (
                     <div className='flex flex-col gap-4'>
                       <ExpandImage className='w-full h-full object-cover'
-                        src='/design/rank-matrix/light1.png'
+                        src='/design/rank-matrix/light1.avif'
                         width={1660}
                         height={800}
                         alt='Small Banner'
                         priority
                       />
                       <ExpandImage className='w-full h-full object-cover'
-                        src='/design/rank-matrix/light2.png'
+                        src='/design/rank-matrix/light2.avif'
                         width={1660}
                         height={800}
                         alt='Small Banner'
                         priority
                       />
                       <ExpandImage className='w-full h-full object-cover'
-                        src='/design/rank-matrix/light3.png'
+                        src='/design/rank-matrix/light3.avif'
                         width={1660}
                         height={800}
                         alt='Small Banner'
