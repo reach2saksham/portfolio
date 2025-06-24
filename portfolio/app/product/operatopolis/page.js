@@ -247,7 +247,7 @@ const Page = () => {
                         <div className='flex flex-col lg:flex-row gap-1 justify-center items-center'>
                             <div>
                                 <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/certificate.avif'
+                                    src='/product/operatopolis/certificate.png'
                                     width={306}
                                     height={800}
                                     alt='Small Banner'
@@ -256,7 +256,7 @@ const Page = () => {
                             </div>
                             <div>
                                 <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/highlight.avif'
+                                    src='/product/operatopolis/highlight.png'
                                     width={306}
                                     height={800}
                                     alt='Small Banner'
@@ -265,7 +265,7 @@ const Page = () => {
                             </div>
                             <div>
                                 <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/selection.avif'
+                                    src='/product/operatopolis/selection.png'
                                     width={306}
                                     height={800}
                                     alt='Small Banner'
