@@ -50,11 +50,11 @@ const HeroText = () => {
       </div>
 
       <div className='flex items-center gap-4 flex-wrap herointro text-lg'>
-        <p className='hidden lg:block'>Press &lsquo;</p>
-        <p className='herointrobold hidden -mx-2 lg:block md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent '>M</p>
-        <p className='hidden lg:block'>&rsquo; key to schedule a&nbsp;</p>
+        <p className='hidden lg:block'>Press </p>
+        <p className='herointrobold hidden -mx-2 lg:block md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent '>&lsquo; M &rsquo;</p>
+        <p className='hidden lg:block'> key to schedule a</p>
         <p className='herointrobold hidden -mx-2 lg:block md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent '>Meeting</p>
-        <p className='hidden lg:block'>&nbsp;with me!</p>
+        <p className='hidden lg:block'>with me!</p>
 
         {/* Mobile text with Resume button */}
         <div className='block lg:hidden flex flex-col gap-3'>

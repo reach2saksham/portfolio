@@ -125,20 +125,19 @@ const Hero = () => {
                     className="w-full group"
                   >
                     {[
-                      ['https://html.tailus.io/blocks/customers/nvidia.svg', 'Nvidia Logo', 20],
-                      ['https://html.tailus.io/blocks/customers/column.svg', 'Column Logo', 16],
-                      ['https://html.tailus.io/blocks/customers/github.svg', 'GitHub Logo', 16],
-                      ['https://html.tailus.io/blocks/customers/nike.svg', 'Nike Logo', 20],
-                      ['https://html.tailus.io/blocks/customers/lemonsqueezy.svg', 'Lemon Squeezy Logo', 20],
-                      ['https://html.tailus.io/blocks/customers/laravel.svg', 'Laravel Logo', 16],
-                      ['https://html.tailus.io/blocks/customers/lilly.svg', 'Lilly Logo', 28],
-                      ['https://html.tailus.io/blocks/customers/openai.svg', 'OpenAI Logo', 24],
+                      ['/companies/uix.svg', 'UIX Labs Logo', 20],
+                      ['/companies/rmx.svg', 'RankMatrix Logo', 20],
+                      ['/companies/hyundai.svg', 'Hyundai Logo', 20],
+                      ['/companies/ecell.svg', 'E-Cell Logo', 20],
+                      ['/companies/tedx.svg', 'TEDx Logo', 20],
+                      ['/companies/img.svg', 'IMG Logo', 20],
+                      
                     ].map(([src, alt, height], index) => (
                       <div key={index} className="flex">
                         <Image
-                          className="mx-auto w-fit dark:invert-0 opacity-100 brightness-110 contrast-110 
-                          group-hover:opacity-100 group-hover:brightness-100 group-hover:contrast-100 
-                          group-hover:dark:invert transition-all duration-300 hover:scale-110 hover:opacity-90"
+                          className="mx-auto w-fit grayscale opacity-25 dark:invert-0 brightness-110 contrast-110 
+                          group-hover:opacity-100 group-hover:brightness-100 group-hover:contrast-100 group-hover:grayscale-0
+                          transition-all duration-300 hover:scale-[120%] hover:opacity-90"
                           src={src}
                           alt={alt}
                           height={height}

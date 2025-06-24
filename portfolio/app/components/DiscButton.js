@@ -141,12 +141,14 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
 
   // Memoized circular text content
   const circularText = useMemo(() => {
-    return isPlaying
-      ? "♪ NOW PLAYING • CLICK TO PAUSE • II & PLAY TO CHANGE • "
-      : isPositionFixed 
-        ? "CLICK THE DISC • CLICK THE DISC • CLICK THE DISC • CLICK •" 
-        : "CLICK TO PLAY MUSIC • CLICK THE DISC • CLICK THE DISC •";
-  }, [isPlaying, isPositionFixed]);
+  const baseText = isPlaying
+    ? "♪ NOW PLAYING • CLICK TO PAUSE • II & PLAY TO CHANGE • "
+    : isPositionFixed 
+      ? "CLICK THE DISC • CLICK THE DISC • CLICK THE DISC • CLICK •" 
+      : "CLICK TO PLAY MUSIC • CLICK THE DISC • CLICK THE DISC •";
+  return baseText.repeat(2); // duplicate to ensure full loop
+}, [isPlaying, isPositionFixed]);
+
 
   // Memoized animation duration
   const animationDuration = useMemo(() => {
@@ -196,7 +198,7 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
               fontFamily="Arial, sans-serif"
               letterSpacing="2"
             >
-              <textPath href="#circle" startOffset="0%">
+              <textPath href="#circle" startOffset="50%" textAnchor="middle">
                 {circularText}
               </textPath>
             </text>
