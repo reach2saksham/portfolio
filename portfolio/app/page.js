@@ -15,12 +15,12 @@ export const metadata = {
   ],
   openGraph: {
     title: "Saksham Jain",
-    description: "Hi, I am a student from IIT Roorkee. I'm selectively skilled in product design and management with strong focus on developing high quality & impactful digital experiences.",
+    description: "Hi, I'm a selectively skilled product designer from IIT Roorkee with strong focus on developing high quality & impactful digital experiences.",
     url: "https://www.sakshamjain.in",
     siteName: "Saksham Jain Portfolio",
     images: [
       {
-        url: "https://www.sakshamjain.in/images/3/1.avif",
+        src: "/images/3/1.avif",
         width: 1200,
         height: 630,
       },
