@@ -2,7 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import Image from "next/image";
-import { ProgressiveBlur } from "@/components/ui/progressive-blur";
+import ProgressiveBlur from "./ProgressiveBlur";
 import { motion } from "motion/react";
 
 const BlurImage = ({ src, width, height, alt, title, subtitle }) => {

@@ -1,8 +1,6 @@
 "use client";
 import React, { useState, useEffect, useRef } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { SocialIcon } from 'react-social-icons'
 import emailjs from '@emailjs/browser';
 import { motion } from "framer-motion";
 
@@ -752,21 +750,21 @@ const Footer = () => {
       <div className="footer flex flex-col gap-6 md:flex-row md:justify-between">
         <div className="flex gap-6 lg:w-none md:w-[45%]">
           <div className="flex flex-col gap-3">
-            <div className="text-[#646464] text-sm">VERSION</div>
+            <div className="text-white opacity-35 text-sm">VERSION</div>
             <div className="text-base">2025©Edition</div>
           </div>
           <div className="flex flex-col gap-3 md:flex-1 lg:flex-none">
-            <div className="text-[#646464] text-sm">LOCAL TIME</div>
+            <div className="text-white opacity-35 text-sm">LOCAL TIME</div>
             <div className="text-transform: uppercase text-base">{time} IST</div>
           </div>
           <div className="flex flex-col gap-3">
-            <div className="text-[#646464] text-sm">SCORE</div>
+            <div className="text-white opacity-35 text-sm">SCORE</div>
             <div className="text-base">{score}</div>
           </div>
         </div>
         <div>
           <div className="flex flex-col gap-4 w-4/5 md:w-6/10 lg:w-full md:ml-auto">
-            <div className="text-[#646464] text-sm">SOCIAL MEDIA</div>
+            <div className="text-white opacity-35 text-sm">SOCIAL MEDIA</div>
             <div className="flex flex-wrap items-center gap-6 md:gap-6">
               {social.map((item, index) => (
                 <a

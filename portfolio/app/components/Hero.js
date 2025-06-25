@@ -1,18 +1,14 @@
 // Hero.jsx - Fixed hover effects for Previously worked with section and HeroText
 "use client";
 
-import React, { useEffect, useState, useRef, useCallback } from 'react'
+import React, { useCallback } from 'react'
 import { motion } from "framer-motion";
-import { slideInFromLeft } from '@/utils/motion';
-import { SparkleIcon } from 'lucide-react';
 import HeroText from './HeroText';
 import Image from 'next/image';
 import InfiniteSlider from './InfiniteSlider';
 import ProgressiveBlur from './ProgressiveBlur';
 import Spline from '@splinetool/react-spline';
-import DiscButton from './DiscButton';
 import { ChevronRightIcon} from "@heroicons/react/24/solid";
-
 import { useRouter } from 'next/navigation';
 
 const Hero = () => {

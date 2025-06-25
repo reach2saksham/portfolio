@@ -2,7 +2,6 @@
 import React from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
-import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import BlurImage from '@/app/components/BlurImage';
 import ExpandImage from '@/app/components/ExpandImage';
@@ -172,16 +171,16 @@ const Page = () => {
               <div className="casetags pt-2 lg:pt-0">{caseStudy.description}</div>
             )}
 
-            <div className="flex flex-wrap pt-6 gap-4 md:gap-0 justify-between">
+            <div className="pt-6 grid grid-cols-2 gap-x-4 gap-y-6 md:flex md:flex-wrap md:justify-between">
               {[
                 ['ROLES', caseStudy.role],
                 ['COLLABORATORS', caseStudy.collaborators],
                 ['DELIVERABLES', caseStudy.deliverables],
                 ['TIMELINE & STATUS', caseStudy.timelineStatus],
               ]
-                .filter(([_, items]) => items && items.length > 0) // Only show sections with items
+                .filter(([_, items]) => items && items.length > 0)
                 .map(([title, items], idx) => (
-                  <div key={idx} className="flex flex-col gap-1 pt-6 lg:pt-0 w-fit">
+                  <div key={idx} className="flex flex-col gap-1 w-fit">
                     <div className="sfpro text-sm text-[#646464] tracking-wider">{title}</div>
                     <div className="pt-1">
                       {items.map((item, i) => (

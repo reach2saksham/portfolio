@@ -4,7 +4,6 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
-import BlurImage from '@/app/components/BlurImage';
 import ExpandImage from '@/app/components/ExpandImage';
 
 const caseStudy = {
@@ -21,7 +20,7 @@ const caseStudy = {
     period: 'March 2025 - Present',
     domain: 'SUSTAINABLE PRODUCT',
     description: `VéVana - Fashion without Footprints" envisions creating a sustainable ,zero-waste circular model that will significantly reduce water pollution & consumption, air pollution, animal slaughter, and toxic environment contamination by transforming RICE STUBBLE into VEGAN LEATHER, as a sustainable alternative to traditional leather.`,
-    sections: ['Overview', 'Highlights', 'The Problem', 'Market Validation', 'Caomparitive Analysis', 'Methodology', 'Cost Structure', 'USPs, Distribution & SDGs', 'Impact' ],
+    sections: ['Overview', 'Highlights', 'The Problem', 'Market Validation', 'Caomparitive Analysis', 'Methodology', 'Cost Structure', 'USPs, Distribution & SDGs', 'Impact'],
     role: ['Founder', 'Business Developer', 'Product Researcher'],
     collaborators: ['Aashi Jain'],
     deliverables: ['SDG 6: Clean Water & Sanitation', 'SDG 12: Responsible Consumption & Production', 'SDG 15: Life on Land'],
@@ -52,7 +51,7 @@ const Page = () => {
                 {/* Header Section */}
                 <div
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
-                    <div className="w-full lg:w-3/4 pb-4 lg:pb-0">
+                    <div className="w-full lg:w-3/4 pb-4 lg:pb-0 mt-14 sm:mt-0">
                         <Image
                             src="/product/vevana/poster.avif"
                             width={1080}
@@ -171,16 +170,16 @@ const Page = () => {
                             <div className="casetags pt-2 lg:pt-0">{caseStudy.description}</div>
                         )}
 
-                        <div className="flex flex-wrap pt-6 gap-4 md:gap-0 justify-between">
+                        <div className="pt-6 grid grid-cols-2 gap-x-4 gap-y-6 md:flex md:flex-wrap md:justify-between">
                             {[
                                 ['ROLES', caseStudy.role],
                                 ['COLLABORATORS', caseStudy.collaborators],
                                 ['DELIVERABLES', caseStudy.deliverables],
                                 ['TIMELINE & STATUS', caseStudy.timelineStatus],
                             ]
-                                .filter(([_, items]) => items && items.length > 0) // Only show sections with items
+                                .filter(([_, items]) => items && items.length > 0)
                                 .map(([title, items], idx) => (
-                                    <div key={idx} className="flex flex-col gap-1 pt-6 lg:pt-0 w-fit">
+                                    <div key={idx} className="flex flex-col gap-1 w-fit">
                                         <div className="sfpro text-sm text-[#646464] tracking-wider">{title}</div>
                                         <div className="pt-1">
                                             {items.map((item, i) => (
@@ -319,21 +318,21 @@ const Page = () => {
 
                             <p id='method'
                                 className='pt-12 text-3xl company'>METHODOLOGY</p>
-                                <ExpandImage className='w-full h-full object-cover'
+                            <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/7.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
-                                <ExpandImage className='w-full h-full object-cover'
+                            <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/method.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
-                                <ExpandImage className='w-full h-full object-cover'
+                            <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/10.avif'
                                 width={1660}
                                 height={800}
@@ -391,7 +390,7 @@ const Page = () => {
                                 height={800}
                                 alt='Small Banner'
                                 priority
-                                />
+                            />
 
                             <p className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</p>
 

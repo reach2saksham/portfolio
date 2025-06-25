@@ -35,9 +35,9 @@ const HeroText = () => {
             rotate: isHovered ? [0, 20, -10, 15, -5, 0, 0] : 0,
           }}
           transition={{
-            opacity: { duration: 0.3, ease: "easeInOut" },
+            opacity: { duration: 0.2, ease: "easeInOut" },
             rotate: {
-              duration: 1.5,
+              duration: 1,
               ease: "easeInOut",
               repeat: isHovered ? Infinity : 0,
               repeatType: "loop",

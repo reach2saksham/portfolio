@@ -127,21 +127,21 @@ export default function MaskEffect() {
                 }}
                 transition={{ type: "smooth", ease: "backOut", duration: 0.3 }}
             >
-                <p
+                <span
                     className="w-[1000px] text-black px-10 pt-20 md:px-10 md:pt-8 flex flex-col gap-6"
                 >
                     I know how to center a div.
-                    <p>
+                    <span>
                         I Google faster than I code.
                         <p>
                             {`cin >>"I bring structure to ideas and momentum to stalled projects";`}
                         </p>
-                    </p>
-                </p>
+                    </span>
+                </span>
             </motion.div>
 
             <div className="w-full h-full flex items-center justify-start -m-4 lg:pl-8 xl:pl-[122px] leading-[48px] sm:leading-[56px] md:leading-[66px] text-[42px] sm:text-[56px] md:text-6xl cursor-default relative z-20 select-none">
-                <p
+                <span
                     className="w-[1000px] text-[#c1b3a5] px-10 md:px-10 flex flex-col gap-6"
                     onMouseEnter={handlePointerEnter}
                     onMouseLeave={handlePointerLeave}
@@ -150,7 +150,7 @@ export default function MaskEffect() {
                     onTouchCancel={handleTouchEnd}
                 >
                     {`while(I'm == technical){`}
-                    <p>
+                    <span>
                         {`Learning += Everyday;`}
                         <p>
                             {`cout << " From `}
@@ -160,8 +160,8 @@ export default function MaskEffect() {
 
                             {` I love building things that work."; }`}
                         </p>
-                    </p>
-                </p>
+                    </span>
+                </span>
             </div>
         </main>
     );

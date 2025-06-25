@@ -3,7 +3,6 @@
 import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react'
 import { motion } from "framer-motion";
 import Image from 'next/image';
-import { ChevronRightIcon} from "@heroicons/react/24/solid";
 import { useRouter } from 'next/navigation';
 
 const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {

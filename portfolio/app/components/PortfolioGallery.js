@@ -44,9 +44,9 @@ const ProjectItem = React.memo(({ name, handle, setIndex, index }) => (
     onMouseOver={() => setIndex(index)}
     className="cursor-default hover:opacity-80 transition-opacity"
   >
-    <h3 className="text-[6vw] md:text-[2.5vw] font-bold text-[#c1b3a5] py-1 md:pt-4 md:pb-20">
+    <div className="text-[6vw] md:text-[2.5vw] font-bold text-[#c1b3a5] py-1 md:pt-4 md:pb-20 select-none">
       {name}
-    </h3>
+    </div>
   </div>
 ));
 ProjectItem.displayName = 'ProjectItem';
