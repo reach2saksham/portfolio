@@ -10,6 +10,13 @@ import ProgressiveBlur from './ProgressiveBlur';
 import Spline from '@splinetool/react-spline';
 import { ChevronRightIcon} from "@heroicons/react/24/solid";
 import { useRouter } from 'next/navigation';
+import dynamic from 'next/dynamic';
+
+
+const SplineScene = dynamic(() => import('./SplineScene'), {
+  ssr: false,
+  loading: () => <div className="w-full h-[85vh] bg-black/20 rounded-xl" />,
+});
 
 const Hero = () => {
   const router = useRouter();
@@ -121,12 +128,12 @@ const Hero = () => {
                     className="w-full group"
                   >
                     {[
-                      ['/companies/hyundai.svg', 'Hyundai Logo', 20],
-                      ['/companies/uix.svg', 'UIX Labs Logo', 20],
-                      ['/companies/rmx.svg', 'RankMatrix Logo', 20],
-                      ['/companies/tedx.svg', 'TEDx Logo', 20],
-                      ['/companies/ecell.svg', 'E-Cell Logo', 20],
-                      ['/companies/img.svg', 'IMG Logo', 20],
+                      ['/companies/hyundai.avif', 'Hyundai Logo', 20],
+                      ['/companies/uix.avif', 'UIX Labs Logo', 20],
+                      ['/companies/rmx.avif', 'RankMatrix Logo', 20],
+                      ['/companies/tedx.avif', 'TEDx Logo', 20],
+                      ['/companies/ecell.avif', 'E-Cell Logo', 20],
+                      ['/companies/img.avif', 'IMG Logo', 20],
                       
                     ].map(([src, alt, height], index) => (
                       <div key={index} className="flex">
@@ -164,10 +171,7 @@ const Hero = () => {
         {/* Right side Spline 3D scene - Maintain high z-index for robot interactions */}
         <div className="w-[40%] hidden xl:block bg-red-500 absolute right-14 z-30">
           <div className="absolute w-[100%] h-[85vh] z-30">
-            <Spline
-              scene="https://prod.spline.design/kZDDjO5HuC9GJUM2/scene.splinecode"
-              className="w-full h-full origin-center"
-            />
+            <SplineScene />
           </div>
         </div>
 
