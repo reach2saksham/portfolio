@@ -247,7 +247,7 @@ const Page = () => {
                             THE HIGHLIGHTS
                         </div>
                         <ExpandImage className='w-full h-fobject-cover pb-4'
-                            src='/product/bold-care/selection.png'
+                            src='/product/bold-care/selection.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -259,7 +259,7 @@ const Page = () => {
                             <p className='text-3xl company'>PROBLEM STATEMENT</p>
 
                             <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/product/bold-care/ps.png'
+                                src='/product/bold-care/ps.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -270,7 +270,7 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>BUSINESS CANVAS</p>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/product/bold-care/1.avif'
+                                src='/product/bold-care/1.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
