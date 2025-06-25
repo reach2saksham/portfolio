@@ -4,24 +4,30 @@ import withBundleAnalyzer from '@next/bundle-analyzer';
 const nextConfig = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })({
-  reactStrictMode: true, // Helps detect bad patterns in dev
-  swcMinify: true,        // Enable faster, smaller builds
-  compress: true,         // Enable gzip/brotli compression
+  reactStrictMode: true,
+  compress: true,
+
   experimental: {
-    serverActions: true,  // Only if you're using server components
+    serverActions: {},
+    // turbo: true, // optional: explicitly opt-in
   },
-  images: {
-    formats: ['image/avif', 'image/webp'], // Optimize image payload
-    domains: ['your-image-domain.com'],    // Allow remote images
+
+  async headers() {
+    return [
+      {
+        source: '/(.*)',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value:
+              process.env.NODE_ENV === 'production'
+                ? 'public, max-age=31536000, immutable'
+                : 'no-store',
+          },
+        ],
+      },
+    ];
   },
-  headers: async () => [
-    {
-      source: '/(.*)',
-      headers: [
-        { key: 'Cache-Control', value: 'public, max-age=31536000, immutable' },
-      ],
-    },
-  ],
 });
 
 export default nextConfig;

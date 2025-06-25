@@ -62,7 +62,7 @@ let productitems = {
     tags: ['Hult Prize', 'March 2025'],
     role: ['Founder', 'Product & Business Developer'],
     domain: ['Sustainable', 'Apparel', 'Biotech'],
-    impact: ['Cut stubble burning & saved 50K+ L water/ton leather'],
+    impact: ['Reduced stubble burning & 50K+ L water/ton leather'],
     description: `Designed and Developed waterless, animal-free leather product using mycelium. We were selected in top NC25 start-ups for B2B model across India & top 750 globally out of 10,000+ teams from 120+ countries`,
     docsLink: '/product/vevana', // Add your documentation link here
     // liveLink: 'https://rankmatrix.in/' // Add your live link here
@@ -76,7 +76,7 @@ let productitems = {
     tags: ['Case Competition', 'February 2025'],
     role: [' Strategy Consultant', 'Operations Analyst'],
     domain: ['Supply Chain', 'Manufacturing', 'Operations'],
-    impact: ['Reduced cost/piece by 34% keeping a 5-day workweek'],
+    impact: ['Cost/piece↓ by 34% keeping a 5-day workweek'],
     description: `Capacity and Labour Planning and Cost Optimization for a Fabrication company with strategic Order Fulfillment demand. Secured 2nd Runner-up position among 330+ teams in Operatopolis 3.0 at BIMTECH.`,
     docsLink: '/product/operatopolis', // Add your documentation link here
     // liveLink: 'https://rankmatrix.in/' // Add your live link here
@@ -90,9 +90,23 @@ let productitems = {
     tags: ['Case Competition', 'October 2024'],
     role: ['Product Designer', 'Marketing & Business Strategist'],
     domain: ['Food-Tech', 'E-Commerce'],
-    impact: ['3X user penetration in 6 months & +54% in conversions'],
+    impact: ['+54% user capture & conversions in 6 months'],
     description: `Developed 8+ student-focused, price-sensitive growth strategies in Rebel Foods EatSure Cloud 2024 through behavioral analysis, including tailored pricing models, platform-specific enhancements, localized packaging, etc.`,
     docsLink: '/product/eat-sure', // Add your documentation link here
+    // liveLink: 'https://rankmatrix.in/' // Add your live link here
+  },
+  card4: {
+    title: `Strategies & Growth Plan for BoldCare, a D2C Wellness Brand`,
+    image: '/product/bold-care/thumbnail.avif',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['Case Competition', `Jan 2025 - Feb 2025`],
+    role: ['Marketing Executive', 'Business Strategist'],
+    domain: ['Wellness', 'E-Commerce'],
+    impact: ['Projected 3x revenue in 12 months'],
+    description: `Covered GTM, branding & investor strategy for BoldCares next phase. Conducted profit/loss, market, user analysis to craft 20+ strategies. National Finalist in top 20 of 1600+ teams.`,
+    docsLink: '/product/bold-care', // Add your documentation link here
     // liveLink: 'https://rankmatrix.in/' // Add your live link here
   }
 };

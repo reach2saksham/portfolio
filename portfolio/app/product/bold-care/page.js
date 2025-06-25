@@ -7,7 +7,7 @@ import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import ExpandImage from '@/app/components/ExpandImage';
 
 const caseStudy = {
-    industry: 'Manufacturing in Secondary Sector',
+    industry: 'Sexual Health and Wellness',
     techStack: {
         'Design Tool': ['canva'],
         'Analyst Tool': ['excel'],
@@ -17,22 +17,22 @@ const caseStudy = {
         'canva': 'Canva',
         'excel': 'MS Excel',
     },
-    companyName: 'OPERATOPOLIS',
-    period: 'Februrary 2025',
-    domain: 'CONSULT STRATEGY DECK',
-    description: `This project involved analyzing a Fabricator comapny's end-to-end production capabilities to determine whether the company could fulfill a high-volume, time-sensitive order from Dhanashree Forge Ltd. The goal was to assess daily processing capacity under variability, identify constraints, and evaluate cost-effective alternatives such as overtime or workforce reallocation to meet delivery commitments while maintaining quality and profitability.`,
-    sections: ['Overview', 'Highlights', 'The Problem', 'Problem Breakdown', 'Initial Conditions', 'Solution Method', 'Impact'],
-    role: ['Strategy Consultant', 'Operations Analyst', 'Marketing Strategist'],
-    collaborators: ['Aashi Jain', 'Akankshya Priyadarshini'],
-    deliverables: ['Finance Analyst', 'Consultant'],
-    timelineStatus: ['2nd Runner up', 'Completed'],
+    companyName: 'BOLDCARE',
+    period: 'January 2025 - Februrary 2025',
+    domain: 'MARKETING STRATEGY DECK',
+    description: `Bold Care, an Indian company in emerging sexual wellness market, envisions becoming a trailblazer in redefining how sexual health is perceived and experienced. It aspires to position itself as the epitome of boldness, confidence, and inclusivity in India. Bold Care seeks to resonate not only with men but also with women. The solutuion explores building a strategy that not only aligns with these goals but also positions Bold Care as a dynamic, aspirational brand in the minds of consumers.`,
+    sections: ['Overview', 'Highlights', 'The Problem', 'Business Canvas', 'User Research', 'Marketing Strategies', 'Expansion Strategies', 'GTM & Impact', 'References',],
+    role: ['Strategy Consultant', 'Marketing Strategist'],
+    collaborators: ['Aashi Jain', 'Bhavya Gandi', 'Deepal Arora'],
+    deliverables: ['Strategic Recommendations', 'Campaign Concepts', 'Implementation Plan'],
+    timelineStatus: ['National Finalists', 'Completed'],
     //   links: {
     //     liveProduct: 'https://rankmatrix.in/',
     //     // figmaFile: 'https://figma.com',
     //   },
-    thewhat: `To supply 500 finished components weekly for ten weeks to Dhanashree Forge—a reputed domestic and global supplier. The production line followed a five-stage process involving machining, heat treatment, finishing, and quality packing. Each stage had specific time and labor requirements, variability in processing times further complicated capacity estimation.`,
-    thewhy: `The large order created a tough trade-off between controlling costs and maintaining humane labor conditions. Meeting the demand either required expensive additional labor or pushed existing workers into excessive overtime. Despite these challenges, the opportunity to partner with Dhanashree Forge promised long-term benefits, making it critical to find a sustainable and balanced fulfillment strategy.`,
-    thehow: `We began by breaking down and quantifying the problem to understand the company’s current capacity and constraints. After evaluating standard industry solutions—like buffer stock estimation at 95% confidence, extended workdays, and additional workforce deployment—we identified their limitations in this specific context. To overcome these, we developed a custom approach: the Trapezoidal Matrix Method, which is discussed in this case study.`,
+    thewhat: `This case rquires us to craft a robust and innovative roadmap for Bold Care,combining brand positioning, go-to-market strategies, and partnerships.`,
+    thewhy: `To make Bold Care a household name in the Indian sexual wellness landscape.`,
+    thehow: `We made the company's business canvas which incoporated their company footprint in various sections.Then extensive user research with customer journey map and current affairs provided us with what kind of digital presence was needed. Finally price sensitive marketing and expansion strategies were derived along with their detailed implementation.`,
 };
 
 const Page = () => {
@@ -54,7 +54,7 @@ const Page = () => {
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
                     <div className="w-full lg:w-3/4 pb-4 lg:pb-0 mt-14 sm:mt-0">
                         <Image
-                            src="/product/operatopolis/poster.avif"
+                            src="/product/bold-care/cover.avif"
                             width={1080}
                             height={400}
                             alt="Cover"
@@ -132,10 +132,12 @@ const Page = () => {
                                             'Overview': 'overview',
                                             'Highlights': 'highlights',
                                             'The Problem': 'problem',
-                                            'Problem Breakdown': 'breakdown',
-                                            'Initial Conditions': 'initial',
-                                            'Solution Method': 'tmm',
-                                            'Impact': 'impact',
+                                            'Business Canvas': 'breakdown',
+                                            'User Research': 'initial',
+                                            'Marketing Strategies': 'marketing',
+                                            'Expansion Strategies': 'expansion',
+                                            'GTM & Impact': 'gtm',
+                                            'References': 'refer',
                                         };
 
                                         return (
@@ -244,43 +246,20 @@ const Page = () => {
                             className='company text-3xl pt-12 mb-2'>
                             THE HIGHLIGHTS
                         </div>
-
-                        <div className='flex flex-col lg:flex-row gap-1 justify-center items-center'>
-                            <div>
-                                <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/certificate.png'
-                                    width={306}
-                                    height={800}
-                                    alt='Small Banner'
-                                    priority
-                                />
-                            </div>
-                            <div>
-                                <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/highlight.png'
-                                    width={306}
-                                    height={800}
-                                    alt='Small Banner'
-                                    priority
-                                />
-                            </div>
-                            <div>
-                                <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/selection.png'
-                                    width={306}
-                                    height={800}
-                                    alt='Small Banner'
-                                    priority
-                                />
-                            </div>
-                        </div>
+                        <ExpandImage className='w-full h-fobject-cover pb-4'
+                            src='/product/bold-care/selection.png'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
                         <div
                             id='problem'
                             className='pt-12 flex flex-col'>
                             <p className='text-3xl company'>PROBLEM STATEMENT</p>
 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/operatopolis/ps.avif'
+                            <ExpandImage className='w-full h-full object-cover pt-4'
+                                src='/product/bold-care/ps.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -288,27 +267,10 @@ const Page = () => {
                             />
                             <p
                                 id='breakdown'
-                                className='pt-12 text-3xl company'>PROBLEM BREAKDOWN</p>
-
-                            <div className='flex flex-col md:flex-row gap-1'>
-                                <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/pb1.avif'
-                                    width={464}
-                                    height={240}
-                                    alt='Small Banner'
-                                    priority
-                                />
-                                <ExpandImage className='object-cover'
-                                    src='/product/operatopolis/pb2.avif'
-                                    width={464}
-                                    height={240}
-                                    alt='Small Banner'
-                                    priority
-                                />
-                            </div>
+                                className='pt-12 text-3xl company'>BUSINESS CANVAS</p>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/product/operatopolis/1.avif'
+                                src='/product/bold-care/1.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -316,63 +278,62 @@ const Page = () => {
                             />
                             <p
                                 id='initial'
-                                className='pt-12 text-3xl company'>INITIAL CONDITIONS</p>
+                                className='pt-12 text-3xl company'>USER RESEARCH</p>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/product/operatopolis/5.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/product/operatopolis/6.avif'
+                                src='/product/bold-care/2.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <p
-                                id='tmm'
-                                className='pt-12 text-3xl company'>TRAPEZOIDAL MATRIX METHOD</p>
-
+                                id='marketing'
+                                className='pt-12 text-3xl company'>MARKETING STRATEGIES</p>
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/product/operatopolis/7.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/product/operatopolis/8.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/product/operatopolis/9.avif'
+                                src='/product/bold-care/3.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <p
-                                id='impact'
-                                className='pt-12 text-3xl company'>IMPACT</p>
+                                id='expansion'
+                                className='pt-12 text-3xl company'>EXPANSION STRATEGIES</p>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/product/operatopolis/10.avif'
+                                src='/product/bold-care/4.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
+                            <p
+                                id='gtm'
+                                className='pt-12 text-3xl company'>GTM AND IT'S IMPACT</p>
+                            <ExpandImage className='w-full h-full object-cover pt-2'
+                                src='/product/bold-care/5.png'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner'
+                                priority
+                            />
+                            <p
+                                id='refer'
+                                className='pt-12 text-3xl company'>REFERENCES</p>
+                            <ExpandImage className='w-full h-full object-cover pt-2'
+                                src='/product/bold-care/6.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner'
+                                priority
+                            />
+                            
                         </div>
                     </div>
-                    </div>
                 </div>
-                <Footer />
+            </div>
+            <Footer />
         </main>
     );
 };
