@@ -128,12 +128,12 @@ const Hero = () => {
                     className="w-full group"
                   >
                     {[
-                      ['/companies/hyundai.avif', 'Hyundai Logo', 20],
-                      ['/companies/uix.avif', 'UIX Labs Logo', 20],
-                      ['/companies/rmx.avif', 'RankMatrix Logo', 20],
-                      ['/companies/tedx.avif', 'TEDx Logo', 20],
-                      ['/companies/ecell.avif', 'E-Cell Logo', 20],
-                      ['/companies/img.avif', 'IMG Logo', 20],
+                      ['/companies/hyundai.svg', 'Hyundai Logo', 20],
+                      ['/companies/uix.svg', 'UIX Labs Logo', 20],
+                      ['/companies/rmx.svg', 'RankMatrix Logo', 20],
+                      ['/companies/tedx.svg', 'TEDx Logo', 20],
+                      ['/companies/ecell.svg', 'E-Cell Logo', 20],
+                      ['/companies/img.svg', 'IMG Logo', 20],
                       
                     ].map(([src, alt, height], index) => (
                       <div key={index} className="flex">
