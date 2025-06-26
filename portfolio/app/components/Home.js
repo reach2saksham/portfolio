@@ -62,7 +62,7 @@ export default function Home() {
 
     const observerOptions = {
       root: null,
-      rootMargin: '200px',
+      rootMargin: '1400px',
       threshold: 0.05
     };
 

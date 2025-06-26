@@ -207,7 +207,7 @@ const Page = () => {
                                 <div className="casetags text-sm">{caseStudy.period}</div>
                             )}
                             {caseStudy.domain && (
-                                <div className="sfpro text-sm pt-10 text-[#646464] tracking-wider">{caseStudy.domain}</div>
+                                <div className="sfpro text-sm pt-4 text-[#646464] tracking-wider">{caseStudy.domain}</div>
                             )}
                             {caseStudy.sections && caseStudy.sections.length > 0 && (
                                 <div className="casetags text-base py-4">
@@ -339,7 +339,7 @@ const Page = () => {
                 alt='Small Banner'
                 priority
               />
-              <ExpandImage className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover pt-2'
                 src='/design/rank-matrix/logo.avif'
                 width={1660}
                 height={800}
@@ -466,8 +466,6 @@ const Page = () => {
                   )}
                 </div>
               </div>
-
-              <div className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</div>
           </div>
         </div>
       </div>

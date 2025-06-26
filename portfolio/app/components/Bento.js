@@ -65,11 +65,11 @@ const Bento = () => {
         <div className='col-span-3 row-span-3 z-30
           order-1 sm:order-1  
           md:col-span-5 md:row-span-10
-          bg-[#171717] 
-          border border-[#363636]/20 rounded-[20px] 
+          bg-[#0F0F0F] hover:bg-[#171717]
+          border border-[#363636]/20 rounded-2xl 
           flex justify-center items-center '>
 
-          <Image className='w-full h-full object-cover  rounded-[20px] lg: lg:hover:-0 transition duration-300'
+          <Image className='w-full h-full object-cover  rounded-2xl lg: lg:hover:-0 transition duration-300'
             src='/myphoto.avif'
             width={717}
             height={674}
@@ -84,8 +84,8 @@ const Bento = () => {
           order-2 
           lg:col-span-6
           md:col-span-7 md:row-span-3 
-          bg-[#0F0F0F] 
-          border border-[#363636]/20 rounded-[20px] 
+          bg-[#0F0F0F] hover:bg-[#171717]
+          border border-[#363636]/20 rounded-2xl 
           group
           flex flex-col justify-between'>
 
@@ -113,9 +113,9 @@ const Bento = () => {
             </span>
           </div>
 
-          <div className='text-xs leading-5 text-[#B8B8B8]
-                lg:pt-0 px-5 pb-3  '>
-            Lorem ipsum dolor sit, amet consectetur adipisicing elit. Reprehenderit temporibus, velit corrupti odio consequuntur vel expedita at laborum a amet, vitae ea quasi mollitia et suscipit iusto atque ex veritatis?
+          <div className='text-sm leading-5 text-[#B8B8B8]
+                lg:pt-0 px-5 pb-3 bentotext '>
+            A strategist at heart, I have a knack for generating impactful ideas from scratch. I strive for excellence in whatever endeavour I take, be it product design, development, sports, games or even music. Whatever I take up, I ensure that it stands out as the best in its class.
           </div>
 
         </div>
@@ -123,19 +123,19 @@ const Bento = () => {
           order-3 md:order-4 
           md:col-span-3 lg:col-span-2 md:row-span-4 
           bg-[#543AA8] lg:bg-[#0F0F0F] lg:text-[#B8B8B8]
-          lg:border border-[5px] border-[#6D4ED7]  lg:border-[#363636] lg:border-opacity-20  rounded-[20px] 
+          lg:border border-[5px] border-[#6D4ED7]  lg:border-[#363636] lg:border-opacity-20  rounded-2xl 
           flex gap-3 
           lg:hover:bg-[#543AA8] lg:hover:border-[#6D4ED7] hover:border-[5px] lg:hover:border-[5px] lg:hover:text-[#EDE5F0] text-[#EDE5F0]'>
           <div className='flex flex-col justify-between'>
             <div className='text-2xl lg:text-3xl pt-3 px-5 font-bold text-[#D9D9D9]'>
               SKILLS
             </div>
-            <div className='text-sm px-5 pb-3 flex flex-col gap-2'>
+            <div className='text-sm px-5 pb-3 flex flex-col gap-2 bentotext'>
               <p>UI/UX Design</p>
-              <p>Full Stack Development</p>
-              <p>Logo Design</p>
-              <p>Finance</p>
-              <p>Case Studies</p>
+              <p>Consulting</p>
+              <p>Product Management</p>
+              <p>Visual & Motion Design</p>
+              <p>Fullstack Development</p>
             </div>
           </div>
         </div>
@@ -144,14 +144,14 @@ const Bento = () => {
           lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-2
           order-5 sm:order-5 
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-[20px] 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-2xl 
           flex justify-center items-center 
           group
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
 
           <div className='flex flex-col gap-1 items-center'>
-            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>10+</p>
-            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center'>Projects Completed</p>
+            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>20+</p>
+            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center bentobold'>Projects Completed</p>
           </div>
         </div>
 
@@ -159,14 +159,14 @@ const Bento = () => {
           lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-2
           order-6 sm:order-6
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-[20px] 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-2xl 
           flex justify-center items-center 
           group
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
 
           <div className='flex flex-col gap-1 items-center'>
             <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>5+</p>
-            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center'>Work Experiences</p>
+            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center bentobold'>Work Experiences</p>
           </div>
         </div>
 
@@ -175,20 +175,20 @@ const Bento = () => {
           lg:col-span-2 lg:row-span-4 md:col-span-2 md:row-span-4
           block md:hidden lg:block
           bg-[#0F0F0F] text-[#B8B8B8]
-          border border-[#363636]/20  rounded-[20px]
+          border border-[#363636]/20  rounded-2xl
           flex flex-col justify-center items-center
           relative overflow-hidden'>
 
             {/* Enlarged globe container */}
-            <div className='globe-enlarged w-full h-full relative'>
+            <div className='globe-enlarged w-full h-full relative hover:bg-[#171717]'>
               <Globe />
             </div>
 
             {/* Optional: Add time and location info over the globe */}
             <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 text-center'>
               <div className='text-xs lg:text-sm font-bold uppercase text-[#D9D9D9] mb-1'>{time}</div>
-              <p className='text-[10px] text-[#B8B8B8]'>Currently based in </p>
-              <p className='text-[10px] text-[#B8B8B8]'>IIT Roorkee, India</p>
+              <p className='text-xs text-[#B8B8B8] bentotext'>Currently based in </p>
+              <p className='text-xs text-[#B8B8B8] bentotext'>IIT Roorkee, India</p>
             </div>
         </div>
 
@@ -196,7 +196,7 @@ const Bento = () => {
           lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-2
           order-8 sm:order-8
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-[20px] 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-2xl 
           flex justify-center items-center 
           group
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
@@ -211,14 +211,14 @@ const Bento = () => {
           lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-2
           order-9 sm:order-9
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-[20px] 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-2xl 
           flex justify-center items-center 
           group
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
 
           <div className='flex flex-col gap-1 items-center'>
-            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>10+</p>
-            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center'>Projects Completed</p>
+            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>14+</p>
+            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center'>Awards Recieved</p>
           </div>
         </div>
 
@@ -226,8 +226,8 @@ const Bento = () => {
         className='col-span-3 row-span-2 z-30
           order-10 sm:order-10 
           lg:col-span-6 lg:row-span-3 md:col-span-7 md:row-span-3
-          bg-[#0F0F0F] 
-          border border-[#363636]/20  rounded-[20px] 
+          bg-[#0F0F0F] hover:bg-[#171717]
+          border border-[#363636]/20  rounded-2xl 
           flex gap-8 sm:gap-0 justify-center items-center group'>
 
           <div 
@@ -242,7 +242,7 @@ const Bento = () => {
 
             <div 
             className='bg-[#313034]/[0.7] 
-            rounded-[20px] rounded-r-none 
+            rounded-2xl rounded-r-none 
             h-2/6 
             flex gap-2 
             px-3 py-2 
@@ -261,7 +261,7 @@ const Bento = () => {
 
             <div 
             className='bg-[#313034]/[0.7] 
-            rounded-[20px] rounded-r-none 
+            rounded-2xl rounded-r-none 
             h-2/6 
             flex gap-2 
             px-3 py-2 

@@ -153,8 +153,30 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'mrm';
+  src: url('/fonts/manropemedium.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'mrb';
+  src: url('/fonts/manropebold.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .mask {
   font-family: 'avant', sans-serif;
+}
+
+.bentotext {
+  font-family: 'mrm', sans-serif;
+}
+
+.bentobold {
+  font-family: 'mrb', sans-serif;
 }
 
 .good {

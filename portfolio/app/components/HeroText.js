@@ -25,6 +25,7 @@ const HeroText = () => {
               }`}
           />
         </div>
+        
 
         {/* Waving emoji with framer motion */}
         <motion.div
@@ -48,27 +49,46 @@ const HeroText = () => {
           👋
         </motion.div>
       </div>
+      
+      <a className='block lg:hidden pl-2' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
+          <Image
+            className="lg:grayscale lg:hover:grayscale-0 hover:scale-[135%] transition duration-300"
+            src='/linkedin.svg'
+            width={28}
+            height={28}
+            alt='LinkedIn Icon'
+          />
+        </a>
 
       <div className='flex items-center gap-4 flex-wrap herointro text-lg'>
         <p className='hidden lg:block'>Press </p>
-        <p className='herointrobold hidden -mx-2 lg:block md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent '>&lsquo; M &rsquo;</p>
+        <a href='https://calendly.com/sakshamjainiitr' target='_blank' className='herointrobold hidden -mx-2 lg:block md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent hover:scale-110 '>&lsquo; M &rsquo;</a>
         <p className='hidden lg:block'> key to schedule a</p>
-        <p className='herointrobold hidden -mx-2 lg:block md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent '>Meeting</p>
+        <a href='https://calendly.com/sakshamjainiitr' target='_blank' className='herointrobold hidden -mx-2 lg:block md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent hover:scale-105'>Meeting</a>
         <p className='hidden lg:block'>with me!</p>
+        <a className='hidden lg:block' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
+          <Image
+            className="lg:grayscale lg:hover:grayscale-0 hover:scale-[135%] transition duration-300"
+            src='/linkedin.svg'
+            width={28}
+            height={28}
+            alt='LinkedIn Icon'
+          />
+        </a>
 
         {/* Mobile text with Resume button */}
         <div className='block lg:hidden flex flex-col gap-3'>
           <p>Currently a undergrad student at IIT Roorkee</p>
 
         </div>
-         <a
-        href="https://drive.google.com/your-resume-link" // Replace with your actual Drive link
-        target="_blank"
-        rel="noopener noreferrer"
-        className="block md:hidden tags px-4 py-2 text-sm  rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-purple-950 shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
-      >
-        View Resume
-      </a>  
+        <a
+          href="https://drive.google.com/your-resume-link" // Replace with your actual Drive link
+          target="_blank"
+          rel="noopener noreferrer"
+          className="block md:hidden tags px-4 py-2 text-sm  rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-purple-950 shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
+        >
+          View Resume
+        </a>
       </div>
     </div>
   );

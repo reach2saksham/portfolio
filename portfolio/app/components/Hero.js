@@ -79,7 +79,7 @@ const Hero = () => {
                 alt="i"
                 width={2}
                 height={4}
-                className="w-4 h-[52px] min-[454px]:w-6 min-[454px]:h-24 -mx-0.5 pb-[12px] sm:pb-6 md:pb-5"
+                className="w-4 h-[52px] min-[454px]:w-6 min-[454px]:h-24 -mx-0.5 pb-[12px] sm:pb-6 md:pb-5 hover:-translate-y-4 transition-transform"
               />
 
               <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">gned.</span>
