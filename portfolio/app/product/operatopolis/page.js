@@ -1,10 +1,21 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import ExpandImage from '@/app/components/ExpandImage';
+
+// Centralized section configuration - no more duplication!
+const SECTIONS_CONFIG = {
+    'Overview': 'overview',
+    'Highlights': 'highlights',
+    'The Problem': 'problem',
+    'Problem Breakdown': 'breakdown',
+    'Initial Conditions': 'initial',
+    'Solution Method': 'tmm',
+    'Impact': 'impact',
+};
 
 const caseStudy = {
     industry: 'Manufacturing in Secondary Sector',
@@ -21,7 +32,7 @@ const caseStudy = {
     period: 'Februrary 2025',
     domain: 'CONSULT STRATEGY DECK',
     description: `This project involved analyzing a Fabricator comapny's end-to-end production capabilities to determine whether the company could fulfill a high-volume, time-sensitive order from Dhanashree Forge Ltd. The goal was to assess daily processing capacity under variability, identify constraints, and evaluate cost-effective alternatives such as overtime or workforce reallocation to meet delivery commitments while maintaining quality and profitability.`,
-    sections: ['Overview', 'Highlights', 'The Problem', 'Problem Breakdown', 'Initial Conditions', 'Solution Method', 'Impact'],
+    sections: Object.keys(SECTIONS_CONFIG),
     role: ['Strategy Consultant', 'Operations Analyst', 'Marketing Strategist'],
     collaborators: ['Aashi Jain', 'Akankshya Priyadarshini'],
     deliverables: ['Finance Analyst', 'Consultant'],
@@ -36,16 +47,67 @@ const caseStudy = {
 };
 
 const Page = () => {
-    const [selectedSection, setSelectedSection] = React.useState(0);
+    const [selectedSection, setSelectedSection] = useState(0);
     const [activeMode, setActiveMode] = useState('dark');
+
+    // Scroll-based section highlighting
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-20% 0px -70% 0px', // Trigger when section is 20% from top
+            threshold: 0.1
+        };
+
+        const observerCallback = (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    // Find the section index based on the ID
+                    const sectionName = Object.keys(SECTIONS_CONFIG).find(key => SECTIONS_CONFIG[key] === sectionId);
+                    if (sectionName && caseStudy.sections) {
+                        const sectionIndex = caseStudy.sections.indexOf(sectionName);
+                        if (sectionIndex !== -1) {
+                            setSelectedSection(sectionIndex);
+                        }
+                    }
+                }
+            });
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Observe all sections
+        caseStudy.sections.forEach((section) => {
+            const element = document.getElementById(SECTIONS_CONFIG[section]);
+            if (element) {
+                observer.observe(element);
+            }
+        });
+
+        // Cleanup observer on unmount
+        return () => {
+            observer.disconnect();
+        };
+    }, []);
+
+    const handleSectionClick = (index, section) => {
+        setSelectedSection(index);
+        const element = document.getElementById(SECTIONS_CONFIG[section]);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    };
 
     // Helper function to check if links exist
     const hasLinks = caseStudy.links && (caseStudy.links.liveProduct || caseStudy.links.figmaFile);
 
     return (
         <main
-            id='overview'
             className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
+                <div id='overview'></div>
             <Navbar />
             <div
                 className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
@@ -112,8 +174,7 @@ const Page = () => {
 
                 {/* Main Content with Sticky Sidebar */}
                 <div className="flex flex-col lg:flex-row pt-6 min-h-screen">
-                    {/* Sidebar */}
-                    {/* Sidebar */}
+                    {/* Sidebar with scroll-based highlighting */}
                     <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
                         <div className="flex flex-col w-full hidden lg:block">
                             {caseStudy.companyName && (
@@ -127,37 +188,17 @@ const Page = () => {
                             )}
                             {caseStudy.sections && caseStudy.sections.length > 0 && (
                                 <div className="casetags text-base py-4">
-                                    {caseStudy.sections.map((section, index) => {
-                                        const sectionIds = {
-                                            'Overview': 'overview',
-                                            'Highlights': 'highlights',
-                                            'The Problem': 'problem',
-                                            'Problem Breakdown': 'breakdown',
-                                            'Initial Conditions': 'initial',
-                                            'Solution Method': 'tmm',
-                                            'Impact': 'impact',
-                                        };
-
-                                        return (
-                                            <button
-                                                key={index}
-                                                className={`py-1 flex flex-col rounded transition-colors text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
-                                                    }`}
-                                                onClick={() => {
-                                                    setSelectedSection(index);
-                                                    const element = document.getElementById(sectionIds[section]);
-                                                    if (element) {
-                                                        element.scrollIntoView({
-                                                            behavior: 'smooth',
-                                                            block: 'start'
-                                                        });
-                                                    }
-                                                }}
-                                            >
-                                                {section}
-                                            </button>
-                                        );
-                                    })}
+                                    {caseStudy.sections.map((section, index) => (
+                                        <button
+                                            key={index}
+                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${
+                                                selectedSection === index ? 'text-white' : 'text-[#646464]'
+                                            }`}
+                                            onClick={() => handleSectionClick(index, section)}
+                                        >
+                                            {section}
+                                        </button>
+                                    ))}
                                 </div>
                             )}
                         </div>
@@ -199,7 +240,7 @@ const Page = () => {
                                         rel="noopener noreferrer"
                                         className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
                                     >
-                                        <p>LIVE PRODUCT</p>
+                                        <div>LIVE PRODUCT</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
                                     </a>
                                 )}
@@ -210,7 +251,7 @@ const Page = () => {
                                         rel="noopener noreferrer"
                                         className={`${caseStudy.links.liveProduct ? 'w-1/2' : 'w-full'} bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs`}
                                     >
-                                        <p>CHECK IT IN FIGMA</p>
+                                        <div>CHECK IT IN FIGMA</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
                                     </a>
                                 )}
@@ -221,19 +262,19 @@ const Page = () => {
                         <div className="mt-16 flex flex-col gap-12 mb-12">
                             {caseStudy.thewhat && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHAT</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHAT</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thewhat}</div>
                                 </div>
                             )}
                             {caseStudy.thewhy && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHY</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHY</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thewhy}</div>
                                 </div>
                             )}
                             {caseStudy.thehow && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE HOW</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE HOW</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thehow}</div>
                                 </div>
                             )}
@@ -277,8 +318,8 @@ const Page = () => {
                         <div
                             id='problem'
                             className='pt-12 flex flex-col'>
-                            <p className='text-3xl company'>PROBLEM STATEMENT</p>
-
+                            <div className='text-3xl company'>PROBLEM STATEMENT</div>
+                        </div>
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/operatopolis/ps.avif'
                                 width={1660}
@@ -286,9 +327,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='breakdown'
-                                className='pt-12 text-3xl company'>PROBLEM BREAKDOWN</p>
+                                className='pt-12 text-3xl company'>PROBLEM BREAKDOWN</div>
 
                             <div className='flex flex-col md:flex-row gap-1'>
                                 <ExpandImage className='object-cover'
@@ -314,9 +355,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='initial'
-                                className='pt-12 text-3xl company'>INITIAL CONDITIONS</p>
+                                className='pt-12 text-3xl company'>INITIAL CONDITIONS</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/operatopolis/5.avif'
@@ -332,9 +373,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='tmm'
-                                className='pt-12 text-3xl company'>TRAPEZOIDAL MATRIX METHOD</p>
+                                className='pt-12 text-3xl company'>TRAPEZOIDAL MATRIX METHOD</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/operatopolis/7.avif'
@@ -357,9 +398,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='impact'
-                                className='pt-12 text-3xl company'>IMPACT</p>
+                                className='pt-12 text-3xl company'>IMPACT</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/operatopolis/10.avif'
@@ -368,11 +409,10 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                        </div>
-                    </div>
                     </div>
                 </div>
-                <Footer />
+            </div>
+            <Footer />
         </main>
     );
 };

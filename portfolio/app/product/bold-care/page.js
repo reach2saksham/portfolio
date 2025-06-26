@@ -1,10 +1,23 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import ExpandImage from '@/app/components/ExpandImage';
+
+// Centralized section configuration - no more duplication!
+const SECTIONS_CONFIG = {
+    'Overview': 'overview',
+    'Highlights': 'highlights',
+    'The Problem': 'problem',
+    'Business Canvas': 'breakdown',
+    'User Research': 'initial',
+    'Marketing Strategies': 'marketing',
+    'Expansion Strategies': 'expansion',
+    'GTM & Impact': 'gtm',
+    'References': 'refer',
+};
 
 const caseStudy = {
     industry: 'Sexual Health and Wellness',
@@ -21,7 +34,7 @@ const caseStudy = {
     period: 'January 2025 - Februrary 2025',
     domain: 'MARKETING STRATEGY DECK',
     description: `Bold Care, an Indian company in emerging sexual wellness market, envisions becoming a trailblazer in redefining how sexual health is perceived and experienced. It aspires to position itself as the epitome of boldness, confidence, and inclusivity in India. Bold Care seeks to resonate not only with men but also with women. The solutuion explores building a strategy that not only aligns with these goals but also positions Bold Care as a dynamic, aspirational brand in the minds of consumers.`,
-    sections: ['Overview', 'Highlights', 'The Problem', 'Business Canvas', 'User Research', 'Marketing Strategies', 'Expansion Strategies', 'GTM & Impact', 'References',],
+    sections: Object.keys(SECTIONS_CONFIG), // Use the centralized config
     role: ['Strategy Consultant', 'Marketing Strategist'],
     collaborators: ['Aashi Jain', 'Bhavya Gandi', 'Deepal Arora'],
     deliverables: ['Strategic Recommendations', 'Campaign Concepts', 'Implementation Plan'],
@@ -36,16 +49,92 @@ const caseStudy = {
 };
 
 const Page = () => {
-    const [selectedSection, setSelectedSection] = React.useState(0);
+    const [selectedSection, setSelectedSection] = useState(0);
     const [activeMode, setActiveMode] = useState('dark');
+    const [isManualClick, setIsManualClick] = useState(false);
+
+    // Scroll-based section highlighting
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-10% 0px -60% 0px', // More lenient trigger zones
+            threshold: [0, 0.1, 0.25] // Multiple thresholds for better detection
+        };
+
+        const observerCallback = (entries) => {
+            // Don't update if user just clicked manually
+            if (isManualClick) return;
+            
+            // Find the entry with the highest intersection ratio that's actually intersecting
+            let bestEntry = null;
+            let highestRatio = 0;
+            
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio > highestRatio) {
+                    bestEntry = entry;
+                    highestRatio = entry.intersectionRatio;
+                }
+            });
+            
+            if (bestEntry) {
+                const sectionId = bestEntry.target.id;
+                console.log('Section in view:', sectionId, 'Ratio:', bestEntry.intersectionRatio); // Debug log
+                
+                // Find the section index based on the ID
+                const sectionName = Object.keys(SECTIONS_CONFIG).find(key => SECTIONS_CONFIG[key] === sectionId);
+                if (sectionName && caseStudy.sections) {
+                    const sectionIndex = caseStudy.sections.indexOf(sectionName);
+                    if (sectionIndex !== -1) {
+                        setSelectedSection(sectionIndex);
+                    }
+                }
+            }
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Observe all sections and log which ones are found
+        caseStudy.sections.forEach((section) => {
+            const element = document.getElementById(SECTIONS_CONFIG[section]);
+            if (element) {
+                console.log('Observing section:', section, 'with ID:', SECTIONS_CONFIG[section]); // Debug log
+                observer.observe(element);
+            } else {
+                console.warn('Section not found:', section, 'with ID:', SECTIONS_CONFIG[section]); // Debug log
+            }
+        });
+
+        // Cleanup observer on unmount
+        return () => {
+            observer.disconnect();
+        };
+    }, [isManualClick]);
+
+    const handleSectionClick = (index, section) => {
+        setIsManualClick(true);
+        setSelectedSection(index);
+        
+        const element = document.getElementById(SECTIONS_CONFIG[section]);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Re-enable observer after scroll animation completes
+        setTimeout(() => {
+            setIsManualClick(false);
+        }, 1000); // Adjust timing as needed
+    };
 
     // Helper function to check if links exist
     const hasLinks = caseStudy.links && (caseStudy.links.liveProduct || caseStudy.links.figmaFile);
 
     return (
         <main
-            id='overview'
-            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
+        className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
+        <div id='overview' ></div>
             <Navbar />
             <div
                 className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
@@ -112,8 +201,7 @@ const Page = () => {
 
                 {/* Main Content with Sticky Sidebar */}
                 <div className="flex flex-col lg:flex-row pt-6 min-h-screen">
-                    {/* Sidebar */}
-                    {/* Sidebar */}
+                    {/* Sidebar with scroll-based highlighting */}
                     <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
                         <div className="flex flex-col w-full hidden lg:block">
                             {caseStudy.companyName && (
@@ -127,39 +215,17 @@ const Page = () => {
                             )}
                             {caseStudy.sections && caseStudy.sections.length > 0 && (
                                 <div className="casetags text-base py-4">
-                                    {caseStudy.sections.map((section, index) => {
-                                        const sectionIds = {
-                                            'Overview': 'overview',
-                                            'Highlights': 'highlights',
-                                            'The Problem': 'problem',
-                                            'Business Canvas': 'breakdown',
-                                            'User Research': 'initial',
-                                            'Marketing Strategies': 'marketing',
-                                            'Expansion Strategies': 'expansion',
-                                            'GTM & Impact': 'gtm',
-                                            'References': 'refer',
-                                        };
-
-                                        return (
-                                            <button
-                                                key={index}
-                                                className={`py-1 flex flex-col rounded transition-colors text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
-                                                    }`}
-                                                onClick={() => {
-                                                    setSelectedSection(index);
-                                                    const element = document.getElementById(sectionIds[section]);
-                                                    if (element) {
-                                                        element.scrollIntoView({
-                                                            behavior: 'smooth',
-                                                            block: 'start'
-                                                        });
-                                                    }
-                                                }}
-                                            >
-                                                {section}
-                                            </button>
-                                        );
-                                    })}
+                                    {caseStudy.sections.map((section, index) => (
+                                        <button
+                                            key={index}
+                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${
+                                                selectedSection === index ? 'text-white' : 'text-[#646464]'
+                                            }`}
+                                            onClick={() => handleSectionClick(index, section)}
+                                        >
+                                            {section}
+                                        </button>
+                                    ))}
                                 </div>
                             )}
                         </div>
@@ -201,7 +267,7 @@ const Page = () => {
                                         rel="noopener noreferrer"
                                         className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
                                     >
-                                        <p>LIVE PRODUCT</p>
+                                        <div>LIVE PRODUCT</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
                                     </a>
                                 )}
@@ -212,7 +278,7 @@ const Page = () => {
                                         rel="noopener noreferrer"
                                         className={`${caseStudy.links.liveProduct ? 'w-1/2' : 'w-full'} bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs`}
                                     >
-                                        <p>CHECK IT IN FIGMA</p>
+                                        <div>CHECK IT IN FIGMA</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
                                     </a>
                                 )}
@@ -223,19 +289,19 @@ const Page = () => {
                         <div className="mt-16 flex flex-col gap-12 mb-12">
                             {caseStudy.thewhat && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHAT</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHAT</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thewhat}</div>
                                 </div>
                             )}
                             {caseStudy.thewhy && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHY</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHY</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thewhy}</div>
                                 </div>
                             )}
                             {caseStudy.thehow && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE HOW</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE HOW</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thehow}</div>
                                 </div>
                             )}
@@ -256,7 +322,8 @@ const Page = () => {
                         <div
                             id='problem'
                             className='pt-12 flex flex-col'>
-                            <p className='text-3xl company'>PROBLEM STATEMENT</p>
+                            <div className='text-3xl company'>PROBLEM STATEMENT</div>
+                        </div>
 
                             <ExpandImage className='w-full h-full object-cover pt-4'
                                 src='/product/bold-care/ps.avif'
@@ -265,9 +332,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='breakdown'
-                                className='pt-12 text-3xl company'>BUSINESS CANVAS</p>
+                                className='pt-12 text-3xl company'>BUSINESS CANVAS</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/bold-care/1.png'
@@ -276,9 +343,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='initial'
-                                className='pt-12 text-3xl company'>USER RESEARCH</p>
+                                className='pt-12 text-3xl company'>USER RESEARCH</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/bold-care/2.png'
@@ -287,9 +354,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='marketing'
-                                className='pt-12 text-3xl company'>MARKETING STRATEGIES</p>
+                                className='pt-12 text-3xl company'>MARKETING STRATEGIES</div>
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/bold-care/3.png'
                                 width={1660}
@@ -297,9 +364,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='expansion'
-                                className='pt-12 text-3xl company'>EXPANSION STRATEGIES</p>
+                                className='pt-12 text-3xl company'>EXPANSION STRATEGIES</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/bold-care/4.png'
@@ -308,9 +375,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='gtm'
-                                className='pt-12 text-3xl company'>GTM AND IT'S IMPACT</p>
+                                className='pt-12 text-3xl company'>GTM AND IT'S IMPACT</div>
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/bold-care/5.png'
                                 width={1660}
@@ -318,9 +385,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='refer'
-                                className='pt-12 text-3xl company'>REFERENCES</p>
+                                className='pt-12 text-3xl company'>REFERENCES</div>
                             <ExpandImage className='w-full h-full object-cover pt-2'
                                 src='/product/bold-care/6.avif'
                                 width={1660}
@@ -328,8 +395,6 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            
-                        </div>
                     </div>
                 </div>
             </div>

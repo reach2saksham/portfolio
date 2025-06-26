@@ -1,10 +1,23 @@
 "use client";
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import ExpandImage from '@/app/components/ExpandImage';
+
+// Centralized section configuration - no more duplication!
+const SECTIONS_CONFIG = {
+    'Overview': 'overview',
+    'Highlights': 'highlights',
+    'The Problem': 'problem',
+    'Market Validation': 'market',
+    'Comparitive Analysis': 'compete',
+    'Methodology': 'method',
+    'Cost Structure': 'cost',
+    'USPs, Distribution & SDGs': 'usp',
+    'Impact': 'impact',
+};
 
 const caseStudy = {
     industry: 'Apparel and Accessories',
@@ -20,7 +33,7 @@ const caseStudy = {
     period: 'March 2025 - Present',
     domain: 'SUSTAINABLE PRODUCT',
     description: `VéVana - Fashion without Footprints" envisions creating a sustainable ,zero-waste circular model that will significantly reduce water pollution & consumption, air pollution, animal slaughter, and toxic environment contamination by transforming RICE STUBBLE into VEGAN LEATHER, as a sustainable alternative to traditional leather.`,
-    sections: ['Overview', 'Highlights', 'The Problem', 'Market Validation', 'Caomparitive Analysis', 'Methodology', 'Cost Structure', 'USPs, Distribution & SDGs', 'Impact'],
+    sections: Object.keys(SECTIONS_CONFIG),
     role: ['Founder', 'Business Developer', 'Product Researcher'],
     collaborators: ['Aashi Jain'],
     deliverables: ['SDG 6: Clean Water & Sanitation', 'SDG 12: Responsible Consumption & Production', 'SDG 15: Life on Land'],
@@ -35,16 +48,92 @@ const caseStudy = {
 };
 
 const Page = () => {
-    const [selectedSection, setSelectedSection] = React.useState(0);
+    const [selectedSection, setSelectedSection] = useState(0);
     const [activeMode, setActiveMode] = useState('dark');
+    const [isManualClick, setIsManualClick] = useState(false);
+
+    // Scroll-based section highlighting
+    useEffect(() => {
+        const observerOptions = {
+            root: null,
+            rootMargin: '-10% 0px -60% 0px', // More lenient trigger zones
+            threshold: [0, 0.1, 0.25] // Multiple thresholds for better detection
+        };
+
+        const observerCallback = (entries) => {
+            // Don't update if user just clicked manually
+            if (isManualClick) return;
+
+            // Find the entry with the highest intersection ratio that's actually intersecting
+            let bestEntry = null;
+            let highestRatio = 0;
+
+            entries.forEach((entry) => {
+                if (entry.isIntersecting && entry.intersectionRatio > highestRatio) {
+                    bestEntry = entry;
+                    highestRatio = entry.intersectionRatio;
+                }
+            });
+
+            if (bestEntry) {
+                const sectionId = bestEntry.target.id;
+                console.log('Section in view:', sectionId, 'Ratio:', bestEntry.intersectionRatio); // Debug log
+
+                // Find the section index based on the ID
+                const sectionName = Object.keys(SECTIONS_CONFIG).find(key => SECTIONS_CONFIG[key] === sectionId);
+                if (sectionName && caseStudy.sections) {
+                    const sectionIndex = caseStudy.sections.indexOf(sectionName);
+                    if (sectionIndex !== -1) {
+                        setSelectedSection(sectionIndex);
+                    }
+                }
+            }
+        };
+
+        const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+        // Observe all sections and log which ones are found
+        caseStudy.sections.forEach((section) => {
+            const element = document.getElementById(SECTIONS_CONFIG[section]);
+            if (element) {
+                console.log('Observing section:', section, 'with ID:', SECTIONS_CONFIG[section]); // Debug log
+                observer.observe(element);
+            } else {
+                console.warn('Section not found:', section, 'with ID:', SECTIONS_CONFIG[section]); // Debug log
+            }
+        });
+
+        // Cleanup observer on unmount
+        return () => {
+            observer.disconnect();
+        };
+    }, [isManualClick]);
+
+    const handleSectionClick = (index, section) => {
+        setIsManualClick(true);
+        setSelectedSection(index);
+
+        const element = document.getElementById(SECTIONS_CONFIG[section]);
+        if (element) {
+            element.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+
+        // Re-enable observer after scroll animation completes
+        setTimeout(() => {
+            setIsManualClick(false);
+        }, 1000); // Adjust timing as needed
+    };
 
     // Helper function to check if links exist
     const hasLinks = caseStudy.links && (caseStudy.links.liveProduct || caseStudy.links.figmaFile);
 
     return (
         <main
-            id='overview'
             className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
+            <div id='overview' ></div>
             <Navbar />
             <div
                 className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
@@ -111,54 +200,30 @@ const Page = () => {
 
                 {/* Main Content with Sticky Sidebar */}
                 <div className="flex flex-col lg:flex-row pt-6 min-h-screen">
-                    {/* Sidebar */}
-                    {/* Sidebar */}
+                    {/* Sidebar with scroll-based highlighting */}
                     <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
                         <div className="flex flex-col w-full hidden lg:block">
                             {caseStudy.companyName && (
-                                <div className="company text-5xl">{caseStudy.companyName}</div>
+                                <div className="company text-[40px]">{caseStudy.companyName}</div>
                             )}
                             {caseStudy.period && (
                                 <div className="casetags text-sm">{caseStudy.period}</div>
                             )}
                             {caseStudy.domain && (
-                                <div className="sfpro text-sm pt-7 text-[#646464] tracking-wider">{caseStudy.domain}</div>
+                                <div className="sfpro text-sm pt-10 text-[#646464] tracking-wider">{caseStudy.domain}</div>
                             )}
                             {caseStudy.sections && caseStudy.sections.length > 0 && (
                                 <div className="casetags text-base py-4">
-                                    {caseStudy.sections.map((section, index) => {
-                                        const sectionIds = {
-                                            'Overview': 'overview',
-                                            'Highlights': 'highlights',
-                                            'The Problem': 'problem',
-                                            'Market Validation': 'market',
-                                            'Comparitive Analysis': 'compete',
-                                            'Methodology': 'method',
-                                            'Cost Structure': 'cost',
-                                            'USPs, Distribution & SDGs': 'usp',
-                                            'Impact': 'impact',
-                                        };
-
-                                        return (
-                                            <button
-                                                key={index}
-                                                className={`py-1 flex flex-col rounded transition-colors text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
-                                                    }`}
-                                                onClick={() => {
-                                                    setSelectedSection(index);
-                                                    const element = document.getElementById(sectionIds[section]);
-                                                    if (element) {
-                                                        element.scrollIntoView({
-                                                            behavior: 'smooth',
-                                                            block: 'start'
-                                                        });
-                                                    }
-                                                }}
-                                            >
-                                                {section}
-                                            </button>
-                                        );
-                                    })}
+                                    {caseStudy.sections.map((section, index) => (
+                                        <button
+                                            key={index}
+                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
+                                                }`}
+                                            onClick={() => handleSectionClick(index, section)}
+                                        >
+                                            {section}
+                                        </button>
+                                    ))}
                                 </div>
                             )}
                         </div>
@@ -200,7 +265,7 @@ const Page = () => {
                                         rel="noopener noreferrer"
                                         className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
                                     >
-                                        <p>LIVE PRODUCT</p>
+                                        <div>LIVE PRODUCT</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
                                     </a>
                                 )}
@@ -211,7 +276,7 @@ const Page = () => {
                                         rel="noopener noreferrer"
                                         className={`${caseStudy.links.liveProduct ? 'w-1/2' : 'w-full'} bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs`}
                                     >
-                                        <p>CHECK IT IN FIGMA</p>
+                                        <div>CHECK IT IN FIGMA</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
                                     </a>
                                 )}
@@ -222,25 +287,25 @@ const Page = () => {
                         <div className="mt-16 flex flex-col gap-12 mb-12">
                             {caseStudy.thewhat && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHAT</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHAT</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thewhat}</div>
                                 </div>
                             )}
                             {caseStudy.thewhy && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHY</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE WHY</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thewhy}</div>
                                 </div>
                             )}
                             {caseStudy.thehow && (
                                 <div className="lg:flex-row lg:gap-36 flex flex-col">
-                                    <p className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE HOW</p>
+                                    <div className="lg:w-32 lg:flex-shrink-0 font-semibold tags">THE HOW</div>
                                     <div className="pt-4 lg:pt-0">{caseStudy.thehow}</div>
                                 </div>
                             )}
                         </div>
 
-                        <div
+                         <div
                             id='highlights'
                             className='company text-3xl pt-12 mb-2'>
                             THE HIGHLIGHTS
@@ -268,7 +333,8 @@ const Page = () => {
                         <div
                             id='problem'
                             className='pt-12 flex flex-col'>
-                            <p className='text-3xl company'>THE PROBLEM</p>
+                            <div className='text-3xl company'>THE PROBLEM</div>
+                        </div>
 
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/3.avif'
@@ -284,9 +350,9 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-                            <p
+                            <div
                                 id='market'
-                                className='pt-12 text-3xl company'>MARKET VALIDATION</p>
+                                className='pt-12 text-3xl company'>MARKET VALIDATION</div>
 
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/5.avif'
@@ -296,8 +362,8 @@ const Page = () => {
                                 priority
                             />
 
-                            <p id='compete'
-                                className='pt-12 text-3xl company'>COMPARITIVE ANALYSIS</p>
+                            <div id='compete'
+                                className='pt-12 text-3xl company'>COMPARITIVE ANALYSIS</div>
 
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/17.avif'
@@ -307,17 +373,17 @@ const Page = () => {
                                 priority
                             />
 
-                            <p className='unican text-2xl pt-4'>Some of our Competitors Include:</p>
+                            <div className='unican text-2xl pt-4'>Some of our Competitors Include:</div>
                             <div>
-                                <p className='pt-2'>1. Recore</p>
-                                <p>2. Banofi Leather</p>
-                                <p>3. Prara</p>
-                                <p>4. Winner Nippon Leatherette Pvt Ltd</p>
-                                <p className='pt-2'>VéVana stands out by using locally-sourced rice stubble, offering a lower-cost, zero-waste production process, and focusing on farmer empowerment while tackling air pollution</p>
+                                <div className='pt-2'>1. Recore</div>
+                                <div>2. Banofi Leather</div>
+                                <div>3. Prara</div>
+                                <div>4. Winner Nippon Leatherette Pvt Ltd</div>
+                                <div className='pt-2'>VéVana stands out by using locally-sourced rice stubble, offering a lower-cost, zero-waste production process, and focusing on farmer empowerment while tackling air pollution</div>
                             </div>
 
-                            <p id='method'
-                                className='pt-12 text-3xl company'>METHODOLOGY</p>
+                            <div id='method'
+                                className='pt-12 text-3xl company'>METHODOLOGY</div>
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/7.avif'
                                 width={1660}
@@ -340,8 +406,8 @@ const Page = () => {
                                 priority
                             />
 
-                            <p id='cost'
-                                className='pt-12 text-3xl company'>COST STRUCTURE</p>
+                            <div id='cost'
+                                className='pt-12 text-3xl company'>COST STRUCTURE</div>
 
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/15.avif'
@@ -351,13 +417,13 @@ const Page = () => {
                                 priority
                             />
 
-                            <p className='pt-2'>We will initially operate in the B2C market, offering sustainable vegan leather products directly to consumers. This will allow us to build brand recognition & validate our product. As we scale, we will expand in a B2B model, supplying to different industries. </p>
-                            <p className='unican text-2xl pt-4'>Our revenue streams include:</p>
+                            <div className='pt-2'>We will initially operate in the B2C market, offering sustainable vegan leather products directly to consumers. This will allow us to build brand recognition & validate our product. As we scale, we will expand in a B2B model, supplying to different industries. </div>
+                            <div className='unican text-2xl pt-4'>Our revenue streams include:</div>
                             <span className='pt-2'>1. Direct-to-Consumer: Vegan leather accessories (wallets, belts, handbags) through e-commerce & sustainable marketplaces.</span>
-                            <p>2. B2B Supply: Partnering with various industries</p>
-                            <p>3. Technology Licensing: Licensing our production process</p>
-                            <p id='usp'
-                                className='pt-12 text-3xl company'>USP, DISTRIBUTION & SGS</p>
+                            <div>2. B2B Supply: Partnering with various industries</div>
+                            <div>3. Technology Licensing: Licensing our production process</div>
+                            <div id='usp'
+                                className='pt-12 text-3xl company'>USP, DISTRIBUTION & SGS</div>
 
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/9.avif'
@@ -381,8 +447,8 @@ const Page = () => {
                                 priority
                             />
 
-                            <p id='impact'
-                                className='pt-12 text-3xl company'>IMPACT</p>
+                            <div id='impact'
+                                className='pt-12 text-3xl company'>IMPACT</div>
 
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/vevana/6.avif'
@@ -392,9 +458,8 @@ const Page = () => {
                                 priority
                             />
 
-                            <p className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</p>
+                            <div className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</div>
 
-                        </div>
                     </div>
                 </div>
             </div>
@@ -403,4 +468,4 @@ const Page = () => {
     );
 };
 
-export default Page;
+export default Page;    
