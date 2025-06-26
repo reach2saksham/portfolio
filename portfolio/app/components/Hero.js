@@ -69,7 +69,8 @@ const Hero = () => {
             lg:text-[46px] 
             xl:text-[54px] xl:leading-10
             min-[1385px]:text-6xl 
-            font-bold flex items-center flex-wrap">
+            font-bold flex items-center flex-wrap
+            pt-2 sm:pt-0">
               <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">
                 Not Just Des
               </span>
@@ -79,7 +80,7 @@ const Hero = () => {
                 alt="i"
                 width={2}
                 height={4}
-                className="w-4 h-[52px] min-[454px]:w-6 min-[454px]:h-24 -mx-0.5 pb-[12px] sm:pb-6 md:pb-5 hover:-translate-y-4 transition-transform"
+                className="w-4 h-[52px] sm:w-5 sm:h-[70px]  md:w-6 md:h-24 -mx-0.5 pb-[12px] sm:pb-4 md:pb-5 hover:-translate-y-4 transition-transform"
               />
 
               <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">gned.</span>
@@ -100,7 +101,7 @@ const Hero = () => {
               </div>
             </h1>
           </div>
-          <div className='flex flex-col h-[48vh] sm:h-[28vh] justify-between'>
+          <div className='flex flex-col h-[47vh] sm:h-[28vh] justify-between'>
           {/* HeroText component - fully interactive */}
           <div className="relative z-30 ">
             <HeroText />

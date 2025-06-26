@@ -52,10 +52,10 @@ const HeroText = () => {
       
       <a className='block lg:hidden pl-2' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
           <Image
-            className="lg:grayscale lg:hover:grayscale-0 hover:scale-[135%] transition duration-300"
+            className="lg:grayscale lg:hover:grayscale-0 transition duration-300"
             src='/linkedin.svg'
-            width={28}
-            height={28}
+            width={30}
+            height={30}
             alt='LinkedIn Icon'
           />
         </a>

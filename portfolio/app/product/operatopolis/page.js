@@ -31,11 +31,11 @@ const caseStudy = {
     companyName: 'OPERATOPOLIS',
     period: 'Februrary 2025',
     domain: 'CONSULT STRATEGY DECK',
-    description: `This project involved analyzing a Fabricator comapny's end-to-end production capabilities to determine whether the company could fulfill a high-volume, time-sensitive order from Dhanashree Forge Ltd. The goal was to assess daily processing capacity under variability, identify constraints, and evaluate cost-effective alternatives such as overtime or workforce reallocation to meet delivery commitments while maintaining quality and profitability.`,
+    description: `This project involved analyzing a Fabricator company's end-to-end production capabilities to determine whether the company could fulfill a high-volume, time-sensitive order from Dhanashree Forge Ltd. The goal was to assess daily processing capacity under variability, identify constraints, and evaluate cost-effective alternatives such as overtime or workforce reallocation to meet delivery commitments while maintaining quality and profitability.`,
     sections: Object.keys(SECTIONS_CONFIG),
     role: ['Strategy Consultant', 'Operations Analyst', 'Marketing Strategist'],
     collaborators: ['Aashi Jain', 'Akankshya Priyadarshini'],
-    deliverables: ['Finance Analyst', 'Consultant'],
+    deliverables: [ 'Cost per piece reduction', 'Production capacity optimisation', 'Working Hours optimisation',],
     timelineStatus: ['2nd Runner up', 'Completed'],
     //   links: {
     //     liveProduct: 'https://rankmatrix.in/',
