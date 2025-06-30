@@ -28,7 +28,7 @@ const stack2Order = [
   'miro.svg'
 ];
 
-const Bento = () => {
+const Bento = ({ isGlobeVisible }) => {
 
   const [time, setTime] = useState("");
 
@@ -79,7 +79,7 @@ const Bento = () => {
           />
         </div>
 
-        
+
         <div className='col-span-3 row-span-2 z-30
           order-2 
           lg:col-span-6
@@ -91,7 +91,7 @@ const Bento = () => {
 
           <div className='text-2xl lg:text-3xl pt-3 px-5 text-[#D9D9D9] font-bold'>
             I&apos;M <span className='group-hover:hidden'> SAKSHAM JAIN</span>
-              
+
             <span className='hidden group-hover:inline-block'>
               <TypeAnimation
                 sequence={[
@@ -99,6 +99,8 @@ const Bento = () => {
                   'SAKSHAM JAIN',
                   1500, // wait 1s before replacing "Mice" with "Hamsters"
                   '',
+                  1500,
+                  'Born & Raised in Sagar M.P.',
                   1500,
                   'सक्षम जैन',
                   1500,
@@ -177,19 +179,15 @@ const Bento = () => {
           bg-[#0F0F0F] text-[#B8B8B8]
           border border-[#363636]/20  rounded-2xl
           flex flex-col justify-center items-center
-          relative overflow-hidden'>
+          relative overflow-hidden hover:bg-[#171717] globe-enlarged'>
+          {/* Conditionally render the Globe only when its section is visible */}
+          {/* {isGlobeVisible && <Globe />} */}
 
-            {/* Enlarged globe container */}
-            <div className='globe-enlarged w-full h-full relative hover:bg-[#171717]'>
-              <Globe />
-            </div>
-
-            {/* Optional: Add time and location info over the globe */}
-            <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 text-center'>
-              <div className='text-xs lg:text-sm font-bold uppercase text-[#D9D9D9] mb-1'>{time}</div>
-              <p className='text-xs text-[#B8B8B8] bentotext'>Currently based in </p>
-              <p className='text-xs text-[#B8B8B8] bentotext'>IIT Roorkee, India</p>
-            </div>
+          <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 text-center z-10'>
+            <div className='text-xs lg:text-sm font-bold uppercase text-[#D9D9D9] mb-1'>{time}</div>
+            <p className='text-xs text-[#B8B8B8] bentotext'>Currently based in </p>
+            <p className='text-xs text-[#B8B8B8] bentotext'>IIT Roorkee, India</p>
+          </div>
         </div>
 
         <div className='row-span-1 z-30
@@ -222,16 +220,16 @@ const Bento = () => {
           </div>
         </div>
 
-        <div 
-        className='col-span-3 row-span-2 z-30
+        <div
+          className='col-span-3 row-span-2 z-30
           order-10 sm:order-10 
           lg:col-span-6 lg:row-span-3 md:col-span-7 md:row-span-3
           bg-[#0F0F0F] hover:bg-[#171717]
           border border-[#363636]/20  rounded-2xl 
           flex gap-8 sm:gap-0 justify-center items-center group'>
 
-          <div 
-          className='w-1/4 h-full 
+          <div
+            className='w-1/4 h-full 
           flex flex-col justify-end 
           text-3xl text-[#D9D9D9] font-bold
           px-5 pb-2 pt-3'>
@@ -240,8 +238,8 @@ const Bento = () => {
 
           <div className='w-3/4 h-full flex flex-col justify-around pl-6 md:pl-8'>
 
-            <div 
-            className='bg-[#313034]/[0.7] 
+            <div
+              className='bg-[#313034]/[0.7] 
             rounded-2xl rounded-r-none 
             h-2/6 
             flex gap-2 
@@ -259,8 +257,8 @@ const Bento = () => {
               ))}
             </div>
 
-            <div 
-            className='bg-[#313034]/[0.7] 
+            <div
+              className='bg-[#313034]/[0.7] 
             rounded-2xl rounded-r-none 
             h-2/6 
             flex gap-2 

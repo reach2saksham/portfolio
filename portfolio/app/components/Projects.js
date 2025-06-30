@@ -6,6 +6,20 @@ import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 // Your data objects remain the same
 let designitems = {
   card1: {
+    title: `A project and employee tracking dashboard for High-profile companies `,
+    image: '/design/uix-labs/thumbnail.avif',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['Internship', 'July 2024 - September 2024'],
+    role: ['Tech-Consulting', 'Web-app'],
+    domain: ['UI/UX Designer', 'Product Manager'],
+    impact: ['Used monthly by 80+ top companies to boost projects.'],
+    description: `When a client company gives project to a tech-consulting firm, they need a way to track the project and the employees working on it. This web app provides a comprehensive solution for tracking projects and employees, ensuring that everything is organized and efficient.`,
+    docsLink: '/design/uix-labs',
+    // liveLink: 'https://rankmatrix.in/'
+  },
+  card2: {
     title: `Making college prediction easier for JEE students`,
     image: '/design/rank-matrix/mockup.avif',
     width: 350,
@@ -19,7 +33,7 @@ let designitems = {
     docsLink: '/design/rank-matrix',
     liveLink: 'https://rankmatrix.in/'
   },
-  card2: {
+  card3: {
     title: `Elevating IMG's Brand Identity Game`,
     image: '/design/img-brand/mockup.avif',
     width: 350,
@@ -34,21 +48,33 @@ let designitems = {
   },
 };
 
-let devitems = {
+let consultitems = {
   card1: {
-    title: 'CLIENT SIDE DASHBOARD',
-    image: '/test.avif',
+    title: `Production Optimization Strategy for B2B Company`,
+    image: '/consult/operatopolis/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
-    tags: ['Internship', 'July 2024 - Sept 2024'],
-    role: ['UI/UX Designer', 'Product Manager'],
-    domain: 'UI/UX Designer',
-    impact: '100+ Users Daily',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Est voluptatem similique dolore necessitatibus iste commodi corrupti magnam a tenetur, laboriosam inventore nam, ea cum molestiae eaque.',
-    docsLink: '/dev/dashboard-docs',
-    liveLink: 'https://your-live-site.com/dashboard'
+    tags: ['Case Competition', 'February 2025'],
+    role: [' Strategy Consultant', 'Operations Analyst'],
+    domain: ['Supply Chain', 'Manufacturing', 'Operations'],
+    impact: ['Cost/piece↓ by 34% keeping a 5-day workweek'],
+    description: `Capacity and Labour Planning and Cost Optimization for a Fabrication company with strategic Order Fulfillment demand. Secured 2nd Runner-up position among 330+ teams in Operatopolis 3.0 at BIMTECH.`,
+    docsLink: '/consult/operatopolis',
   },
+  card2: {
+    title: `Strategies & Growth Plan for BoldCare, a D2C Wellness Brand`,
+    image: '/consult/bold-care/thumbnail.avif',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['Case Competition', `Jan 2025 - Feb 2025`],
+    role: ['Marketing Executive', 'Business Strategist'],
+    domain: ['Wellness', 'E-Commerce'],
+    impact: ['Projected 3x revenue in 12 months'],
+    description: `Covered GTM, branding & investor strategy for BoldCares next phase. Conducted profit/loss, market, user analysis to craft 20+ strategies. National Finalist in top 20 of 1600+ teams.`,
+    docsLink: '/consult/bold-care',
+  }
 };
 
 let productitems = {
@@ -64,46 +90,21 @@ let productitems = {
     impact: ['Reduced stubble burning & 50K+ L water/ton leather'],
     description: `Designed and Developed waterless, animal-free leather product using mycelium. We were selected in top NC25 start-ups for B2B model across India & top 750 globally out of 10,000+ teams from 120+ countries`,
     docsLink: '/product/vevana',
-  },
+  },  
   card2: {
-    title: `Production Optimization Strategy for B2B Company`,
-    image: '/product/operatopolis/thumbnail.avif',
-    width: 350,
-    height: 380,
-    alt: 'Mockup',
-    tags: ['Case Competition', 'February 2025'],
-    role: [' Strategy Consultant', 'Operations Analyst'],
-    domain: ['Supply Chain', 'Manufacturing', 'Operations'],
-    impact: ['Cost/piece↓ by 34% keeping a 5-day workweek'],
-    description: `Capacity and Labour Planning and Cost Optimization for a Fabrication company with strategic Order Fulfillment demand. Secured 2nd Runner-up position among 330+ teams in Operatopolis 3.0 at BIMTECH.`,
-    docsLink: '/product/operatopolis',
-  },
-  card3: {
     title: `Driving EatSure's Adoption and Affinity Among College Students and Youth`,
     image: '/product/eat-sure/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
-    tags: ['Case Competition', 'October 2024'],
+    tags: ['Product Deck', 'October 2024'],
     role: ['Product Designer', 'Marketing & Business Strategist'],
     domain: ['Food-Tech', 'E-Commerce'],
     impact: ['+54% user capture & conversions in 6 months'],
     description: `Developed 8+ student-focused, price-sensitive growth strategies in Rebel Foods EatSure Cloud 2024 through behavioral analysis, including tailored pricing models, platform-specific enhancements, localized packaging, etc.`,
     docsLink: '/product/eat-sure',
   },
-  card4: {
-    title: `Strategies & Growth Plan for BoldCare, a D2C Wellness Brand`,
-    image: '/product/bold-care/thumbnail.avif',
-    width: 350,
-    height: 380,
-    alt: 'Mockup',
-    tags: ['Case Competition', `Jan 2025 - Feb 2025`],
-    role: ['Marketing Executive', 'Business Strategist'],
-    domain: ['Wellness', 'E-Commerce'],
-    impact: ['Projected 3x revenue in 12 months'],
-    description: `Covered GTM, branding & investor strategy for BoldCares next phase. Conducted profit/loss, market, user analysis to craft 20+ strategies. National Finalist in top 20 of 1600+ teams.`,
-    docsLink: '/product/bold-care',
-  }
+  
 };
 
 const Projects = () => {
@@ -111,7 +112,7 @@ const Projects = () => {
 
   const columns = [
     { title: 'DESIGN', content: Object.entries(designitems) },
-    { title: 'DEVELOPMENT', content: Object.entries(devitems) },
+    { title: 'CONSULT', content: Object.entries(consultitems) },
     { title: 'PRODUCT', content: Object.entries(productitems) },
   ];
 

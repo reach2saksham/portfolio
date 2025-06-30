@@ -65,7 +65,6 @@ export default function Home() {
       rootMargin: '200px',
       threshold: 0.05
     };
-
     const footerObserverOptions = {
       root: null,
       rootMargin: '0px',
@@ -158,19 +157,19 @@ export default function Home() {
 
         <div ref={heroRef}>
           <LazyComponent shouldRender={shouldRenderComponent('hero')}>
-            <Hero />
+            <Hero isSplineVisible={visibleSections.hero} />
           </LazyComponent>
         </div>
       </div>
 
       <div ref={maskEffectRef}>
-        <LazyComponent shouldRender={shouldRenderComponent('maskEffect')}>
+        <LazyComponent shouldRender={visibleSections.maskEffect}>
           <MaskEffect />
         </LazyComponent>
       </div>
 
       <div id="projects" ref={projectsRef}>
-        <LazyComponent shouldRender={shouldRenderComponent('projects')}>
+        <LazyComponent shouldRender={visibleSections.projects}>
           <Projects />
         </LazyComponent>
       </div>
@@ -182,8 +181,8 @@ export default function Home() {
       </div>
 
       <div ref={bentoRef}>
-        <LazyComponent shouldRender={shouldRenderComponent('bento')}>
-          <Bento />
+        <LazyComponent shouldRender={visibleSections.bento}>
+          <Bento isGlobeVisible={visibleSections.bento} />
         </LazyComponent>
       </div>
 

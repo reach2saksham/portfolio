@@ -1,7 +1,9 @@
 "use client";
 
-import { useState, useEffect, useRef } from "react";
-import { motion, useScroll } from 'framer-motion';
+// import { useState, useEffect, useRef } from "react";
+// import { motion, useScroll } from 'framer-motion';
+import { useState, useEffect } from "react";
+import { motion } from 'framer-motion';
 
 // Custom hook for mouse and touch position
 const usePointerPosition = () => {
@@ -64,15 +66,15 @@ export default function MaskEffect() {
     const { x, y } = usePointerPosition();
     const size = useResponsiveSize(isActive);
 
-    const element = useRef(null);
-    const { scrollYProgress } = useScroll({
-        target: element,
-        offset: ["start end", "start start"]
-    });
+    // const element = useRef(null);
+    // const { scrollYProgress } = useScroll({
+    //     target: element,
+    //     offset: ["start end", "start start"]
+    // });
 
-    useEffect(() => {
-        scrollYProgress.on("change", e => console.log(e))
-    }, []);
+    // useEffect(() => {
+    //     scrollYProgress.on("change", e => console.log(e))
+    // }, []);
 
     const handlePointerEnter = () => {
         setIsActive(true);

@@ -1,3 +1,8 @@
+html {
+  /* Enforce a black background on the root element to prevent any white flashing during page loads or heavy rendering. */
+  background-color: #000;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -23,12 +28,12 @@
 } */
 
 ::-webkit-scrollbar-thumb {
-  background-color: #888; 
+  background-color: #888;
   border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
 }
 
 /* Firefox */
@@ -60,7 +65,7 @@
 
 @font-face {
   font-family: 'SSRoman';
-  src: url('/fonts/Sequel\ Sans\ Roman\ Body.ttf')  format('truetype');
+  src: url('/fonts/Sequel\ Sans\ Roman\ Body.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -85,6 +90,7 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'SSRD';
   src: url('/fonts/SSRomanDisplay.otf') format('opentype');
@@ -105,12 +111,14 @@
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'ppbook';
   src: url('/fonts/ppbook.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
 }
+
 @font-face {
   font-family: 'ppmedium';
   src: url('/fonts/ppmedium.otf') format('opentype');
@@ -199,15 +207,20 @@
   font-family: 'ppmedium', sans-serif;
 }
 
-.navbar, .bento, .card, .footer, .tags {
+.navbar,
+.bento,
+.card,
+.footer,
+.tags {
   font-family: 'SSRB', sans-serif;
 }
 
-.projecthead{
+.projecthead {
   font-family: 'SixCaps', sans-serif;
 }
 
-.foothead, .company {
+.foothead,
+.company {
   font-family: 'OffBit', sans-serif;
 }
 
@@ -226,18 +239,13 @@
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: var(--background) !important;
   font-family: Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
 }
 
-/* Original globe styles - kept for backward compatibility */
-.globe {
-  width: 100%;
-  height: 100%;
-  position: sticky;
-  overflow: hidden;
-}
+
 
 /* New enlarged globe styles */
 .globe-enlarged {
@@ -278,11 +286,6 @@ body {
   }
 }
 
-/* Prevent white screen fallbacks */
-body {
-  min-height: 100vh;
-  background-color: #000 !important;
-}
 
 /* Ensure content is never completely hidden */
 main {

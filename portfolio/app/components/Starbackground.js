@@ -15,7 +15,7 @@ const Stars = (props) => {
       ref.current.rotation.y -= delta / 80;
     }
   });
-  
+
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
@@ -36,21 +36,22 @@ const StarsCanvas = () => (
   <div className="w-full h-full fixed inset-0 z-10 bg-black">
     <Canvas
       onCreated={({ gl }) => {
-        gl.getContext().canvas.addEventListener('webglcontextlost', (e) => {
+        gl.domElement.addEventListener('webglcontextlost', (e) => {
           e.preventDefault();
-          console.warn('WebGL context lost');
+          console.warn('WebGL context lost. The canvas may need to be re-initialized.');
         });
       }}
       camera={{ position: [0, 0, 1], fov: 75 }}
       gl={{
-        alpha: true,
+        alpha: false,
         antialias: true,
         powerPreference: 'high-performance',
-        preserveDrawingBuffer: true, // Add this to prevent canvas wipe on render
       }}
       style={{ background: 'transparent' }}
     >
-      <Suspense fallback={<div className="w-full h-full bg-black" />}>
+      {/* Explicitly set the canvas background color to black to prevent white flashes */}
+      <color attach="background" args={['#000000']} />
+      <Suspense fallback={null}>
         <Stars />
       </Suspense>
       <Preload all />

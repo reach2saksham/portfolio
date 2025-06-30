@@ -332,7 +332,7 @@ const Page = () => {
               <div className='text-3xl company'>TYPOGRAPHY, COLOUR PALETE AND BRANDING</div>
             </div>
 
-              <ExpandImage className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover pt-4'
                 src='/design/rank-matrix/font-color.avif'
                 width={1660}
                 height={800}
@@ -372,9 +372,9 @@ const Page = () => {
                 loop
                 muted
                 playsInline
-                className="w-full h-auto"
+                className="w-full h-auto pt-4"
               />
-              <div>{`This was my very first iteration, fully created on Figma. Clean, minimalistic, and impressionable, it captured the essence of the loading experience. However, the Figma prototype turned out to be comparatively hefty work. I was then informed that for optimized performance, a JSON-based loader was needed. So, I turned to LottieFiles Creator, as the Figma plugin didn’t support the animation style I had built, heck! it didn’t even support gradient colors. The final LottieFiles-based loader is presented below and being used in live website right now:`}</div>
+              <div className='py-4'>{`This was my very first iteration, fully created on Figma. Clean, minimalistic, and impressionable, it captured the essence of the loading experience. However, the Figma prototype turned out to be comparatively hefty work. I was then informed that for optimized performance, a JSON-based loader was needed. So, I turned to LottieFiles Creator, as the Figma plugin didn’t support the animation style I had built, heck! it didn’t even support gradient colors. The final LottieFiles-based loader is presented below and being used in live website right now:`}</div>
 
               <video
                 src="/design/rank-matrix/loader3.mp4"
@@ -385,13 +385,13 @@ const Page = () => {
                 className="w-full h-auto"
               />
 
-              <div>{`This loading screen was designed with reusability in mind—it also serves perfectly as a component-level loader within the webpage.`}</div>
+              <div className='py-4'>{`This loading screen was designed with reusability in mind—it also serves perfectly as a component-level loader within the webpage.`}</div>
 
               <div
                 id='screens'
                 className='pt-12 text-3xl company'>USER INTERFACES</div>
 
-              <ExpandImage className='w-full h-full object-cover'
+              <ExpandImage className='w-full h-full object-cover pt-4'
                 src='/design/rank-matrix/problems.avif'
                 width={1660}
                 height={800}

@@ -18,7 +18,7 @@ const SplineScene = dynamic(() => import('./SplineScene'), {
   loading: () => <div className="w-full h-[85vh] bg-black/20 rounded-xl" />,
 });
 
-const Hero = () => {
+const Hero = ({ isSplineVisible }) => {
   const router = useRouter();
 
   const handleLatestProject = useCallback(() => {
@@ -170,11 +170,9 @@ const Hero = () => {
         </div>
 
         {/* Right side Spline 3D scene - Maintain high z-index for robot interactions */}
-        <div className="w-[40%] hidden xl:block bg-red-500 absolute right-14 z-30">
-          <div className="absolute w-[100%] h-[85vh] z-30">
-            <SplineScene />
-          </div>
-        </div>
+        {isSplineVisible && <div className="w-[40%] hidden xl:block absolute right-14 z-30">
++          <SplineScene />
++        </div>}
 
       </motion.div>
     </div>
