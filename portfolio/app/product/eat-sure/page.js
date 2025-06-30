@@ -11,6 +11,7 @@ const SECTIONS_CONFIG = {
     'Overview': 'overview',
     'Highlights': 'highlights',
     'The Problem': 'problem',
+    'User Research': 'research',
     'Minimal Investment Strategies': 'minimal',
     'Moderate Investment Strategies': 'moderate',
 };
@@ -330,7 +331,7 @@ const Page = () => {
                                 priority
                             />
                             <div
-                                id='market'
+                                id='research'
                                 className='pt-12 text-3xl company'>USER RESEARCH</div>
 
                             <ExpandImage className='w-full h-full object-cover'

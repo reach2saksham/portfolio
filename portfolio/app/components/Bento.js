@@ -31,6 +31,7 @@ const stack2Order = [
 const Bento = ({ isGlobeVisible }) => {
 
   const [time, setTime] = useState("");
+  const [isNightTime, setIsNightTime] = useState(false);
 
   useEffect(() => {
     const updateTime = () => {
@@ -42,10 +43,21 @@ const Bento = ({ isGlobeVisible }) => {
         hour12: true,
       });
       setTime(istTime);
+
+      // Get 24-hour format to check if it's night time
+      const hour24 = now.toLocaleTimeString("en-IN", {
+        timeZone: "Asia/Kolkata",
+        hour: "2-digit",
+        hour12: false,
+      });
+      
+      const currentHour = parseInt(hour24.split(':')[0]);
+      // Night time is from 19:00 (7 PM) to 06:59 (6:59 AM)
+      setIsNightTime(currentHour >= 19 || currentHour < 7);
     };
 
     updateTime();
-    const interval = setInterval(updateTime, 10000); // Update every minute
+    const interval = setInterval(updateTime, 10000); // Update every 10 seconds
 
     return () => clearInterval(interval); // Clean up interval on component unmount
   }, []);
@@ -178,10 +190,21 @@ const Bento = ({ isGlobeVisible }) => {
           block md:hidden lg:block
           bg-[#0F0F0F] text-[#B8B8B8]
           border border-[#363636]/20  rounded-2xl
-          flex flex-col justify-center items-center
-          relative overflow-hidden hover:bg-[#171717] globe-enlarged'>
+          flex flex-col justify-around items-center 
+          relative overflow-hidden hover:bg-[#171717] group'>
+
+            
           {/* Conditionally render the Globe only when its section is visible */}
           {/* {isGlobeVisible && <Globe />} */}
+          <div className='flex justify-center items-center mb-4 '>
+            <Image
+              className='transition-all duration-500 ease-in-out mt-8 group-hover:scale-125'
+              src={isNightTime ? '/moon.svg' : '/sun.svg'}
+              width={96}
+              height={96}
+              alt={isNightTime ? 'moon' : 'sun'}
+            />
+          </div>
 
           <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 text-center z-10'>
             <div className='text-xs lg:text-sm font-bold uppercase text-[#D9D9D9] mb-1'>{time}</div>

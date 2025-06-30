@@ -12,11 +12,10 @@ import About from "./About";
 import DiscButton from "./DiscButton";
 import { motion } from 'framer-motion';
 
-// Wrapper component for lazy loading
-const LazyComponent = ({ children, shouldRender, placeholder = null }) => {
+const LazyComponent = ({ children, shouldRender, placeholder = null, minHeight = '100vh' }) => {
   if (!shouldRender) {
     return placeholder || (
-      <div style={{ height: '100vh' }} className="flex items-center justify-center">
+      <div style={{ minHeight: minHeight }} className="flex items-center justify-center">
         <div className="animate-pulse text-white/50">Loading...</div>
       </div>
     );
@@ -25,6 +24,17 @@ const LazyComponent = ({ children, shouldRender, placeholder = null }) => {
 };
 
 export default function Home() {
+  const [loadedSections, setLoadedSections] = useState({
+    hero: true,
+    maskEffect: false,
+    projects: false,
+    about: false,
+    bento: false,
+    gallery: false,
+    footer: false
+  });
+
+  // Re-introduced state to track which components are currently visible
   const [visibleSections, setVisibleSections] = useState({
     hero: true,
     maskEffect: false,
@@ -35,7 +45,6 @@ export default function Home() {
     footer: false
   });
 
-  const [isFooterInFocus, setIsFooterInFocus] = useState(false);
   const [isDiscClicked, setIsDiscClicked] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
 
@@ -57,59 +66,55 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
+  // Modified observer to handle both loading and visibility tracking
   useEffect(() => {
     const observers = [];
 
     const observerOptions = {
       root: null,
       rootMargin: '200px',
-      threshold: 0.05
-    };
-    const footerObserverOptions = {
-      root: null,
-      rootMargin: '0px',
-      threshold: 0.1
+      threshold: 0.01
     };
 
-    const createObserver = (ref, sectionName, options = observerOptions) => {
+    const createObserver = (ref, sectionName) => {
       if (ref.current) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-            if (sectionName === 'footer') {
-              setIsFooterInFocus(entry.isIntersecting);
-            }
-
+            // Update visibility status
             setVisibleSections(prev => ({
               ...prev,
               [sectionName]: entry.isIntersecting
             }));
+
+            // Load the component once if it's intersecting and not already loaded
+            if (entry.isIntersecting) {
+              setLoadedSections(prev => ({
+                ...prev,
+                [sectionName]: true
+              }));
+            }
           });
-        }, options);
+        }, observerOptions);
 
         observer.observe(ref.current);
         observers.push(observer);
       }
     };
 
+    // We only need to create one observer for each section.
     createObserver(heroRef, 'hero');
     createObserver(maskEffectRef, 'maskEffect');
     createObserver(projectsRef, 'projects');
     createObserver(aboutRef, 'about');
     createObserver(bentoRef, 'bento');
     createObserver(galleryRef, 'gallery');
-    createObserver(footerRef, 'footer', footerObserverOptions);
+    createObserver(footerRef, 'footer');
 
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
   }, []);
 
-  const shouldRenderComponent = (sectionName) => {
-    if (isFooterInFocus) {
-      return sectionName === 'footer' || sectionName === 'gallery';
-    }
-    return visibleSections[sectionName];
-  };
 
   const handlePositionToggle = () => {
     setIsDiscClicked(!isDiscClicked);
@@ -156,45 +161,45 @@ export default function Home() {
         </motion.div>
 
         <div ref={heroRef}>
-          <LazyComponent shouldRender={shouldRenderComponent('hero')}>
+          <LazyComponent shouldRender={loadedSections.hero}>
             <Hero isSplineVisible={visibleSections.hero} />
           </LazyComponent>
         </div>
       </div>
 
       <div ref={maskEffectRef}>
-        <LazyComponent shouldRender={visibleSections.maskEffect}>
+        <LazyComponent shouldRender={loadedSections.maskEffect}>
           <MaskEffect />
         </LazyComponent>
       </div>
 
       <div id="projects" ref={projectsRef}>
-        <LazyComponent shouldRender={visibleSections.projects}>
+        <LazyComponent shouldRender={loadedSections.projects}>
           <Projects />
         </LazyComponent>
       </div>
 
       <div id="about" ref={aboutRef}>
-        <LazyComponent shouldRender={shouldRenderComponent('about')}>
+        <LazyComponent shouldRender={loadedSections.about} minHeight="700px">
           <About />
         </LazyComponent>
       </div>
 
       <div ref={bentoRef}>
-        <LazyComponent shouldRender={visibleSections.bento}>
+        <LazyComponent shouldRender={loadedSections.bento} minHeight="600px">
           <Bento isGlobeVisible={visibleSections.bento} />
         </LazyComponent>
       </div>
 
       <div ref={galleryRef}>
-        <LazyComponent shouldRender={true}>
-          <PortfolioGallery />
+        <LazyComponent shouldRender={loadedSections.gallery}>
+          <PortfolioGallery isInView={visibleSections.gallery} />
         </LazyComponent>
       </div>
 
       <div ref={footerRef}>
-        <LazyComponent shouldRender={true}>
-          <Footer />
+        <LazyComponent shouldRender={loadedSections.footer} minHeight="800px">
+          <Footer isInView={visibleSections.footer} />
         </LazyComponent>
       </div>
     </main>

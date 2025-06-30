@@ -1,7 +1,5 @@
 "use client";
 
-// import { useState, useEffect, useRef } from "react";
-// import { motion, useScroll } from 'framer-motion';
 import { useState, useEffect } from "react";
 import { motion } from 'framer-motion';
 
@@ -21,10 +19,7 @@ const usePointerPosition = () => {
     };
 
     useEffect(() => {
-        // Mouse events
         window.addEventListener("mousemove", updateMousePosition);
-
-        // Touch events
         window.addEventListener("touchmove", updateTouchPosition, { passive: false });
         window.addEventListener("touchstart", updateTouchPosition, { passive: false });
 
@@ -40,16 +35,16 @@ const usePointerPosition = () => {
 
 // Custom hook for responsive size
 const useResponsiveSize = (isActive) => {
-    const [size, setSize] = useState(250);
+    // CORRECTED LOGIC: Default to small size, expand on hover.
+    const [size, setSize] = useState(40);
 
     useEffect(() => {
         const updateSize = () => {
-            if (isActive) {
-                setSize(40);
-            } else {
-                // Check if screen is sm (640px) or larger
+            if (isActive) { // When hovered
                 const isSmallOrLarger = window.innerWidth >= 640;
-                setSize(isSmallOrLarger ? 400 : 280);
+                setSize(isSmallOrLarger ? 360 : 280);
+            } else { // When not hovered
+                setSize(40);
             }
         };
 
@@ -65,16 +60,6 @@ export default function MaskEffect() {
     const [isActive, setIsActive] = useState(false);
     const { x, y } = usePointerPosition();
     const size = useResponsiveSize(isActive);
-
-    // const element = useRef(null);
-    // const { scrollYProgress } = useScroll({
-    //     target: element,
-    //     offset: ["start end", "start start"]
-    // });
-
-    // useEffect(() => {
-    //     scrollYProgress.on("change", e => console.log(e))
-    // }, []);
 
     const handlePointerEnter = () => {
         setIsActive(true);
@@ -102,14 +87,12 @@ export default function MaskEffect() {
                 -m-4 lg:pl-8 xl:pl-[122px] min-[383px]:pb-12 min-[412px]:pb-24 min-[438px]:pb-12 min-[477px]:pb-24 min-[489px]:pb-36 min-[517px]:pb-48 min-[526px]:pb-36 min-[553px]:pb-24 min-[557px]:pb-12 min-[663px]:pb-[216px] min-[674px]:pb-40 min-[711px]:pb-[104px] min-[717px]:pb-12 md:pb-0
                 leading-[48px] sm:leading-[56px] md:leading-[66px] 
                 text-[42px] sm:text-[56px] md:text-6xl 
-                 bg-gradient-to-b from-[#BA3C97] to-[#E000C2] z-30 select-none"
+                 bg-gradient-to-b from-[#BA3C97] to-[#E000C2] z-30 select-none cursor-default" // MOVED CURSOR HERE
                 style={{
                     WebkitMaskImage: `radial-gradient(circle, white 50%, transparent 50%)`,
                     maskImage: `radial-gradient(circle, white 50%, transparent 50%)`,
                     WebkitMaskRepeat: "no-repeat",
                     maskRepeat: "no-repeat",
-
-                    // ✅ Add these lines
                     transform: "translateZ(0)",
                     WebkitTransform: "translateZ(0)",
                     backfaceVisibility: "hidden",
@@ -128,6 +111,12 @@ export default function MaskEffect() {
                     maskSize: `${size}px ${size}px`,
                 }}
                 transition={{ type: "smooth", ease: "backOut", duration: 0.3 }}
+                // MOVED EVENT HANDLERS to this top-level, interactive element
+                onMouseEnter={handlePointerEnter}
+                onMouseLeave={handlePointerLeave}
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+                onTouchCancel={handleTouchEnd}
             >
                 <span
                     className="w-[1000px] text-black px-10 pt-20 md:px-10 md:pt-8 flex flex-col gap-6"
@@ -142,14 +131,10 @@ export default function MaskEffect() {
                 </span>
             </motion.div>
 
-            <div className="w-full h-full flex items-center justify-start -m-4 lg:pl-8 xl:pl-[122px] leading-[48px] sm:leading-[56px] md:leading-[66px] text-[42px] sm:text-[56px] md:text-6xl cursor-default relative z-20 select-none">
+            <div className="w-full h-full flex items-center justify-start -m-4 lg:pl-8 xl:pl-[122px] leading-[48px] sm:leading-[56px] md:leading-[66px] text-[42px] sm:text-[56px] md:text-6xl relative z-20 select-none">
                 <span
                     className="w-[1000px] text-[#c1b3a5] px-10 md:px-10 flex flex-col gap-6"
-                    onMouseEnter={handlePointerEnter}
-                    onMouseLeave={handlePointerLeave}
-                    onTouchStart={handleTouchStart}
-                    onTouchEnd={handleTouchEnd}
-                    onTouchCancel={handleTouchEnd}
+                    // REMOVED event handlers from this underlying, non-interactive element
                 >
                     {`while(I'm == technical){`}
                     <span>
