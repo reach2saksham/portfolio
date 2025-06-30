@@ -171,8 +171,8 @@ const Hero = ({ isSplineVisible }) => {
 
         {/* Right side Spline 3D scene - Maintain high z-index for robot interactions */}
         {isSplineVisible && <div className="w-[40%] hidden xl:block absolute right-14 z-30">
-+          <SplineScene />
-+        </div>}
+          <SplineScene />
+        </div>}
 
       </motion.div>
     </div>
