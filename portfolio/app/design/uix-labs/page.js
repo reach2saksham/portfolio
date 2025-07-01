@@ -10,13 +10,10 @@ import ExpandImage from '@/app/components/ExpandImage';
 const SECTIONS_CONFIG = {
     'Overview': 'overview',
     'Highlights': 'highlights',
-    'The Problem': 'problem',
-    'Business Canvas': 'breakdown',
-    'User Research': 'initial',
-    'Marketing Strategies': 'marketing',
-    'Expansion Strategies': 'expansion',
-    'GTM & Impact': 'gtm',
-    'References': 'refer',
+    'User Research': 'research',
+    'The Process': 'process',
+    'Web-App Design': 'webapp',
+    'Case Study Design': 'casestudy',
 };
 
 const caseStudy = {
@@ -37,19 +34,21 @@ const caseStudy = {
     collaborators: ['Designer: Rahul', 'Co-Founder: Ayush Agrawal'],
     deliverables: ['Dashboard - Member Section', 'Case study page tempelate', 'Employee life cycle UX research'],
     timelineStatus: ['Completed'],
-      links: {
+    links: {
         liveProduct: 'https://uixlabs.co/blusmart',
         // figmaFile: 'https://figma.com',
-      },
-    thewhat:`An internal web-app's dashboard, designed for clients to track the project and employees working on it. A case study landing page template, designed to be reused across all future and past works.`,
+    },
+    thewhat: `An internal web-app's dashboard, designed for clients to track the project and employees working on it. A case study landing page template, designed to be reused across all future and past works.`,
     thewhy: `This dashboard was necessary because clients previously lacked real-time, in-depth visibility into project progress. It was also designed with future expansion in mind, as these clients often absorb employees from the firm for varying durations. The team members working on the project typically have the deepest understanding of it, making them the most suitable to support ongoing needs.`,
     thehow: `My role was to design the dashboard from scratch, focusing only on the employee tracking section, as other features were to be added later based on requirements. I conducted thorough user research to understand the client's pain points and what they wanted to see in the dashboard. On the second hand, the case study page template was designed for reuse across both past and future projects, so I ensured it was user-friendly and followed a consistent design language with the rest of the website. Extensive moodboarding and multiple iterations were done to arrive at the final designs.`,
 };
 
 const Page = () => {
     const [selectedSection, setSelectedSection] = useState(0);
-    const [activeMode, setActiveMode] = useState('dark');
+    const [activeMode, setActiveMode] = useState('iteration1');
     const [isManualClick, setIsManualClick] = useState(false);
+    const [hoveredImage, setHoveredImage] = useState(null);
+    
 
     // Scroll-based section highlighting
     useEffect(() => {
@@ -62,22 +61,22 @@ const Page = () => {
         const observerCallback = (entries) => {
             // Don't update if user just clicked manually
             if (isManualClick) return;
-            
+
             // Find the entry with the highest intersection ratio that's actually intersecting
             let bestEntry = null;
             let highestRatio = 0;
-            
+
             entries.forEach((entry) => {
                 if (entry.isIntersecting && entry.intersectionRatio > highestRatio) {
                     bestEntry = entry;
                     highestRatio = entry.intersectionRatio;
                 }
             });
-            
+
             if (bestEntry) {
                 const sectionId = bestEntry.target.id;
                 console.log('Section in view:', sectionId, 'Ratio:', bestEntry.intersectionRatio); // Debug log
-                
+
                 // Find the section index based on the ID
                 const sectionName = Object.keys(SECTIONS_CONFIG).find(key => SECTIONS_CONFIG[key] === sectionId);
                 if (sectionName && caseStudy.sections) {
@@ -111,7 +110,7 @@ const Page = () => {
     const handleSectionClick = (index, section) => {
         setIsManualClick(true);
         setSelectedSection(index);
-        
+
         const element = document.getElementById(SECTIONS_CONFIG[section]);
         if (element) {
             element.scrollIntoView({
@@ -131,8 +130,8 @@ const Page = () => {
 
     return (
         <main
-        className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
-        <div id='overview' ></div>
+            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
+            <div id='overview' ></div>
             <Navbar />
             <div
                 className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
@@ -215,9 +214,8 @@ const Page = () => {
                                     {caseStudy.sections.map((section, index) => (
                                         <button
                                             key={index}
-                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${
-                                                selectedSection === index ? 'text-white' : 'text-[#646464]'
-                                            }`}
+                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
+                                                }`}
                                             onClick={() => handleSectionClick(index, section)}
                                         >
                                             {section}
@@ -310,88 +308,357 @@ const Page = () => {
                             THE HIGHLIGHTS
                         </div>
                         <ExpandImage className='w-full h-fobject-cover pt-4 pb-4'
-                            src='/design/uix-labs/highlight.png'
+                            src='/design/uix-labs/highlight.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <div
-                            id='problem'
+                            id='research'
                             className='pt-12 flex flex-col'>
                             <div className='text-3xl company'>USER RESEARCH</div>
                         </div>
 
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/design/uix-labs/client.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <div
-                                id='breakdown'
-                                className='pt-12 text-3xl company'>BUSINESS CANVAS</div>
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/design/uix-labs/client.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <div className='py-4'>{`The firm follows a time-logging system, allowing members to work flexibly outside of scheduled meetings, provided their hours are logged. During my internship, this process was still being managed via Google Sheets. However, discrepancies often arose, especially with new members and interns, whose logs needed closer monitoring to prevent misuse. This created a need for role-based access, typically granted to a senior team member familiar with the project. In some cases, the client company also requested access for cross-verification. A proper system was required to document, store, and manage time logs, with clear approval controls in place.`}</div>
 
-                            <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/design/uix-labs/1.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <div
-                                id='initial'
-                                className='pt-12 text-3xl company'>USER RESEARCH</div>
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/design/uix-labs/persona.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/design/uix-labs/2.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <div
-                                id='marketing'
-                                className='pt-12 text-3xl company'>MARKETING STRATEGIES</div>
-                            <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/design/uix-labs/3.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <div
-                                id='expansion'
-                                className='pt-12 text-3xl company'>EXPANSION STRATEGIES</div>
+                        <div
+                            id='process'
+                            className='pt-12 text-3xl company'>THE PROCESS</div>
 
-                            <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/design/uix-labs/4.png'
+                        <div className='py-4'>{`Due to a Non-Disclosure Agreement, most internal processes and details cannot be shared. However, select wireframes that represent the web app's journey are showcased below.`}</div>
+
+                        <ExpandImage className='w-full h-full object-cover pt-6'
+                            src='/design/uix-labs/process.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+
+                        <div className='py-8'>{`During the expansion phase, our core focus was to create a seamless experience. It was decided that both a mobile app and a web app would be developed simultaneously by separate teams, with some shared members to ensure interconnectivity. As my team was still being formed, the wireframes below represent my initial concepts for the mobile app.`}</div>
+
+                        <div className='flex justify-center'>
+                            <ExpandImage className='w-3/4 h-3/4 object-cover'
+                                src='/design/uix-labs/wf1.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
-                            <div
-                                id='gtm'
-                                className='pt-12 text-3xl company'>GTM AND IT'S IMPACT</div>
-                            <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/design/uix-labs/5.png'
+                        </div>
+
+                        <div className='py-6'>{`Now, looking at the above wireframes, I was eventually asked to shif the focus on the web app (just kidding, a designer was already assigned to the mobile app). These wireframes were created at a very early stage, before any user research had been conducted, and served purely as foundational concepts.`}</div>
+
+                        <div className='pb-6'>{`In terms of design thinking, the process will begin every time with a senior member from UIX Labs, already present on the club platform, creating the project and filling in all essential initial details to kickstart it. Additional members could only join the project through invitation. The UIX lead would send an invite to the affiliated company's email ID, add them to the project, and assign them a role. Depending on their role, they could then invite other members as well.`}</div>
+
+                        <div className='flex flex-col gap-1 md:flex-row'>
+                            <ExpandImage
+                                className='object-cover'
+                                src='/design/uix-labs/wf2.avif'
+                                width={464}
+                                height={240}
+                                alt='TCB Brand Image'
+                                priority
+                            />
+                            <ExpandImage
+                                className='object-cover'
+                                src='/design/uix-labs/wf3.avif'
+                                width={464}
+                                height={240}
+                                alt='TCW Brand Image'
+                                priority
+                            />
+                        </div>
+
+                        <div className='pt-6 pb-4'>{`At this stage, it was decided that the landing or hero section of the web app for clients would be a Discover section. This section would function as a dynamic, prompt-based interface, capable of delivering data analytics or insights related to the project. Powered by natural language processing, it would translate user prompts into database queries and generate accurate, real-time dashboard results.`}</div>
+                        <div className='py-1'>{`Example 1: Show me the members in the project working on web development with a monthly pay under ₹1 Lakh.`}</div>
+                        <div className='py-1'>{`Example 2: Show me the weekly synopsis of the project, including team efficiency and total hours contributed by all members.`}</div>
+                        <div className='pt-4 pb-2'>{`The inspiration moodboard is shown below`}</div>
+
+                        <ExpandImage className='w-full h-full object-cover pt-6'
+                            src='/design/uix-labs/mood.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+
+                        <div className='pt-6'>{`There were several other high-fidelity wireframes involved, but considering the complexity of the application above, I was advised to focus on the Members section for now. The other sections can be added later once the foundation is properly laid. But defining those sections beforehand was necessary.`}</div>
+
+                        <div
+                            id='webapp'
+                            className='pt-12 text-3xl company'>WEB-APP DESIGN</div>
+
+                        {/* Desktop: Hover effect for signup images */}
+                        <div
+                            className="relative hidden md:block"
+                            onMouseEnter={() => setHoveredImage('signup')}
+                            onMouseLeave={() => setHoveredImage(null)}
+                        >
+                            <ExpandImage
+                                className={`w-full h-full object-cover pt-4 transition-transform duration-400 ${hoveredImage === 'signup' ? 'opacity-0' : 'opacity-100'}`}
+                                src='/design/uix-labs/signup.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
-                            <div
-                                id='refer'
-                                className='pt-12 text-3xl company'>REFERENCES</div>
-                            <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/design/uix-labs/6.png'
+                            <ExpandImage
+                                className={`w-full h-full object-cover pt-4 absolute top-0 left-0 transition-transform duration-400 ${hoveredImage === 'signup' ? 'opacity-100' : 'opacity-0'}`}
+                                src='/design/uix-labs/signupdetails.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner Details'
+                                priority
+                            />
+                        </div>
+
+                        {/* Mobile: Show both images */}
+                        <div className="block md:hidden">
+                            <ExpandImage
+                                className='w-full h-full object-cover pt-4'
+                                src='/design/uix-labs/signup.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
+                            <ExpandImage
+                                className='w-full h-full object-cover pt-4'
+                                src='/design/uix-labs/signupdetails.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner Details'
+                                priority
+                            />
+                        </div>
+
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/design/uix-labs/login.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+
+                        <div className='pt-6'>{`Here, only a limited number of screens can be shared here since it's an internal app of the firm, but they should give you a clear idea of the web app's design and overall structure.`}</div>
+
+                        {/* Desktop: Hover effect for sidebar images */}
+                        <div
+                            className="relative hidden md:block"
+                            onMouseEnter={() => setHoveredImage('sidebar')}
+                            onMouseLeave={() => setHoveredImage(null)}
+                        >
+                            <ExpandImage
+                                className={`w-full h-full object-cover pt-4 transition-transform duration-400 ${hoveredImage === 'sidebar' ? 'opacity-0' : 'opacity-100'}`}
+                                src='/design/uix-labs/sidebar.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner'
+                                priority
+                            />
+                            <ExpandImage
+                                className={`w-full h-full object-cover pt-4 absolute top-0 left-0 transition-transform duration-400 ${hoveredImage === 'sidebar' ? 'opacity-100' : 'opacity-0'}`}
+                                src='/design/uix-labs/sidebardetails.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner Details'
+                                priority
+                            />
+                        </div>
+
+                        {/* Mobile: Show both images */}
+                        <div className="block md:hidden">
+                            <ExpandImage
+                                className='w-full h-full object-cover pt-4'
+                                src='/design/uix-labs/sidebar.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner'
+                                priority
+                            />
+                            <ExpandImage
+                                className='w-full h-full object-cover pt-4'
+                                src='/design/uix-labs/sidebardetails.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner Details'
+                                priority
+                            />
+                        </div>
+
+                        {/* Desktop: Hover effect for screen1 images */}
+                        <div
+                            className="relative hidden md:block"
+                            onMouseEnter={() => setHoveredImage('screen1')}
+                            onMouseLeave={() => setHoveredImage(null)}
+                        >
+                            <ExpandImage
+                                className={`w-full h-full object-cover pt-8 pb-4 transition-transform duration-400 ${hoveredImage === 'screen1' ? 'opacity-0' : 'opacity-100'}`}
+                                src='/design/uix-labs/screen1.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner'
+                                priority
+                            />
+                            <ExpandImage
+                                className={`w-full h-full object-cover pt-8 pb-4 absolute top-0 left-0 transition-transform duration-400 ${hoveredImage === 'screen1' ? 'opacity-100' : 'opacity-0'}`}
+                                src='/design/uix-labs/screen1details.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner Details'
+                                priority
+                            />
+                        </div>
+
+                        {/* Mobile: Show both images */}
+                        <div className="block md:hidden">
+                            <ExpandImage
+                                className='w-full h-full object-cover pt-8 pb-4'
+                                src='/design/uix-labs/screen1.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner'
+                                priority
+                            />
+                            <ExpandImage
+                                className='w-full h-full object-cover pb-4'
+                                src='/design/uix-labs/screen1details.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner Details'
+                                priority
+                            />
+                        </div>
+
+                        <ExpandImage className='w-full h-full object-cover'
+                            src='/design/uix-labs/screen2.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+
+                        <div className='flex flex-col gap-2 md:flex-row pt-4'>
+                            <div className='md:w-[40%] pt-6 md:pt-12'>{`Now, you might be wondering where is a essential feature like messaging with members. While they can be easily integrated, as shown in the image, with a UI similar to Gmail or Facebook messaging, they were intentionally excluded from this early version based on a decision made by the higher-ups. Similarly, aliases are used instead of names because of security purposes.`}</div>
+                            <ExpandImage
+                                className='object-cover pt-4 md:w-[60%]'
+                                src='/design/uix-labs/messages.avif'
+                                width={560}
+                                height={240}
+                                alt='TCW Brand Image'
+                                priority
+                            />
+                        </div>
+
+                        <div
+                            id='casestudy'
+                            className='pt-12 text-3xl company'>CASE STUDY TEMPELATE DESIGN</div>
+
+                        <div className='pt-4'>{`To keep the process simple, I began with a basic moodboard that guided me while designing the case study template.`}</div>
+
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/design/uix-labs/mood2.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+
+                        <div className='pt-4'>{`It took four iterations to get it finalized, as the goal was to create an extremely reusable template, the one that wouldn't require any significant manual effort. Click below to view all four iterations.`}</div>
+
+                        <div className='pt-10 flex flex-col gap-8'>
+                            <div className='flex gap-6'>
+                                <button
+                                    className={`tags ${activeMode === 'iteration1' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
+                                    onClick={() => setActiveMode('iteration1')}>
+                                    Iteration 1
+                                </button>
+                                <button
+                                    className={`tags ${activeMode === 'iteration2' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
+                                    onClick={() => setActiveMode('iteration2')}>
+                                    Iteration 2
+                                </button>
+                                <button
+                                    className={`tags ${activeMode === 'iteration3' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
+                                    onClick={() => setActiveMode('iteration3')}>
+                                    Iteration 3
+                                </button>
+                                <button
+                                    className={`tags ${activeMode === 'iteration4' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
+                                    onClick={() => setActiveMode('iteration4')}>
+                                    Iteration 4
+                                </button>
+                            </div>
+                            <div>
+                                {activeMode === 'iteration1' && (
+                                    <div className='flex flex-col gap-4'>
+                                        <ExpandImage className='w-full h-full object-cover'
+                                            src='/design/uix-labs/iteration1.avif'
+                                            width={1660}
+                                            height={800}
+                                            alt='Small Banner'
+                                            priority
+                                        />
+                                    </div>
+                                )}
+
+                                {activeMode === 'iteration2' && (
+                                    <div className='flex flex-col gap-4'>
+                                        <ExpandImage className='w-full h-full object-cover'
+                                            src='/design/uix-labs/iteration2.avif'
+                                            width={1660}
+                                            height={800}
+                                            alt='Small Banner'
+                                            priority
+                                        />
+                                    </div>
+                                )}
+                            
+                                {activeMode === 'iteration3' && (
+                                    <div className='flex flex-col gap-4'>
+                                        <ExpandImage className='w-full h-full object-cover'
+                                            src='/design/uix-labs/iteration3.avif'
+                                            width={1660}
+                                            height={800}
+                                            alt='Small Banner'
+                                            priority
+                                        />
+                                    </div>
+                                )}
+
+                                {activeMode === 'iteration4' && (
+                                    <div className='flex flex-col gap-4'>
+                                        <ExpandImage className='w-full h-full object-cover'
+                                            src='/design/uix-labs/iteration4.avif'
+                                            width={1660}
+                                            height={800}
+                                            alt='Small Banner'
+                                            priority
+                                        />
+                                    </div>
+                                )}
+                            </div>
+                        </div>
+
+                        <div className='py-6'>{`While going through these iterations, do keep in mind that I didn't get to fully complete any single version. I was consistently asked to transition into newer designs as new goals were introduced, hence the multiple iterations. The evolution reflects a journey: from an early Notion-inspired aesthetic, to progressively enhancing the quality of mockups and detailing, and finally, to striking the right balance between various stakeholder needs. `}</div>
+
                     </div>
                 </div>
             </div>

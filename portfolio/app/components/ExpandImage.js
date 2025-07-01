@@ -148,7 +148,7 @@ const ExpandImage = ({
           priority={priority}
           quality={quality}
           {...props}
-          className="transition-opacity hover:opacity-80"
+          className="transition-opacity hover:opacity-95"
         />
       </div>
 

@@ -198,7 +198,7 @@ const Bento = ({ isGlobeVisible }) => {
           {/* {isGlobeVisible && <Globe />} */}
           <div className='flex justify-center items-center mb-4 '>
             <Image
-              className='transition-all duration-500 ease-in-out mt-8 group-hover:scale-125'
+              className='transition-all duration-500 ease-in-out lg:mt-6 xl:mt-7 group-hover:scale-125'
               src={isNightTime ? '/moon.svg' : '/sun.svg'}
               width={96}
               height={96}
