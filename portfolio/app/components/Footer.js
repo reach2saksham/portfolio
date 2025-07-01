@@ -177,6 +177,23 @@ const Footer = () => {
     window.open('https://calendly.com/sakshamjainiitr', '_blank');
   };
 
+  // Handle keyboard events
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // Don't trigger if user is typing in a form input
+      const isFormInput = event.target.tagName === 'INPUT' ||
+        event.target.tagName === 'TEXTAREA' ||
+        event.target.isContentEditable;
+
+      if ((event.key === 'M' || event.key === 'm') && !isFormInput) {
+        window.open('https://calendly.com/sakshamjainiitr', '_blank');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    return () => window.removeEventListener('keydown', handleKeyPress);
+  }, []);
+
   // Time tracking
   useEffect(() => {
     const updateTime = () => {
@@ -758,7 +775,7 @@ const Footer = () => {
                   onClick={index === 10 ? handleCalendarClick : undefined}
                 >
                   <Image
-                    className="lg:grayscale lg:hover:grayscale-0 hover:scale-[135%] transition duration-300"
+                    className="w-auto h-[18px] lg:grayscale lg:hover:grayscale-0 hover:scale-[135%] transition duration-300"
                     src={`/social/${item.icon}`}
                     width={18}
                     height={18}

@@ -102,7 +102,7 @@ const Bento = ({ isGlobeVisible }) => {
           flex flex-col justify-between'>
 
           <div className='text-2xl lg:text-3xl pt-3 px-5 text-[#D9D9D9] font-bold'>
-            I&apos;M <span className='group-hover:hidden'> SAKSHAM JAIN</span>
+            I'M <span className='group-hover:hidden'> SAKSHAM JAIN</span>
 
             <span className='hidden group-hover:inline-block'>
               <TypeAnimation

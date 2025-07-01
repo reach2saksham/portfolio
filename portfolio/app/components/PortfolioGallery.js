@@ -18,8 +18,10 @@ const Gallery = React.memo(({ mousePosition, handle }) => {
           src={`/images/${handle}/background.avif`}
           alt="background image"
           fill
+          sizes="100vw"
+          quality={90}
           className="w-full object-cover"
-          priority={handle === "1"} // Only prioritize first image
+          priority={handle === "1" || handle === "2"} // Prioritize first two images
         />
       </div>
       <motion.div
@@ -30,6 +32,9 @@ const Gallery = React.memo(({ mousePosition, handle }) => {
           src={`/images/${handle}/1.avif`}
           alt="vignette image"
           fill
+          sizes="(max-width: 768px) 35vw, 26vh"
+          quality={90}
+          priority={handle === "1" || handle === "2"} // Prioritize first two images
           className="w-full object-cover"
         />
       </motion.div>
@@ -88,6 +93,9 @@ const Description = React.memo(({ mousePosition, projects }) => {
           src={`/images/${projects[index].handle}/about.avif`}
           alt="about image"
           fill
+          sizes="(max-width: 768px) 35vw, 26vh"
+          quality={90}
+          priority={index < 2} // Prioritize first two 'about' images
           className="w-full object-cover"
         />
       </motion.div>
