@@ -23,6 +23,28 @@ export default function RootLayout({ children }) {
   const excludedPaths = ['/design', '/product', '/consult'];
   const showStars = !excludedPaths.some(path => pathname?.includes(path));
 
+  // Add global key press handler for Calendly link
+  useEffect(() => {
+    const handleKeyPress = (event) => {
+      // Don't trigger if user is typing in a form input
+      const isFormInput = 
+        event.target.tagName === 'INPUT' ||
+        event.target.tagName === 'TEXTAREA' ||
+        event.target.isContentEditable;
+
+      if (!isFormInput && (event.key === 'M' || event.key === 'm')) {
+        window.open('https://calendly.com/sakshamjainiitr', '_blank');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyPress);
+    
+    // Cleanup the event listener when the component unmounts
+    return () => {
+      window.removeEventListener('keydown', handleKeyPress);
+    };
+  }, []); // Empty dependency array ensures this runs only once
+
   // // Add error boundary and loading state
   // const [isLoading, setIsLoading] = useState(true);
   // const [hasError, setHasError] = useState(false);
