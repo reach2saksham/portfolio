@@ -44,13 +44,33 @@ const ExpandImage = ({
       }
     };
 
+    // Handle mouse wheel zoom
+    const handleWheel = (e) => {
+      if (!isExpanded) return;
+      
+      e.preventDefault();
+      
+      // Determine zoom direction
+      const delta = e.deltaY || e.detail || e.wheelDelta;
+      
+      if (delta < 0) {
+        // Scroll up = zoom in
+        handleZoomIn();
+      } else {
+        // Scroll down = zoom out
+        handleZoomOut();
+      }
+    };
+
     if (isExpanded) {
       document.addEventListener('keydown', handleKeyDown);
+      document.addEventListener('wheel', handleWheel, { passive: false });
       document.body.style.overflow = 'hidden';
     }
 
     return () => {
       document.removeEventListener('keydown', handleKeyDown);
+      document.removeEventListener('wheel', handleWheel);
       document.body.style.overflow = 'unset';
     };
   }, [isExpanded, scale]);
@@ -257,7 +277,7 @@ const ExpandImage = ({
 
           {/* Instructions */}
           <div className="absolute bottom-4 left-1/2 transform -translate-x-1/2 bg-white bg-opacity-20 text-white px-4 py-2 rounded-full text-sm">
-            Use +/- to zoom, R to rotate, drag to pan, ESC to close
+            Use +/- to zoom, mouse wheel to zoom, R to rotate, drag to pan, ESC to close
           </div>
         </div>
       )}

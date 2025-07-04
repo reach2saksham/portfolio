@@ -74,6 +74,35 @@ let consultitems = {
     impact: ['Projected 3x revenue in 12 months'],
     description: `Covered GTM, branding & investor strategy for BoldCares next phase. Conducted profit/loss, market, user analysis to craft 20+ strategies. National Finalist in top 20 of 1600+ teams.`,
     docsLink: '/consult/bold-care',
+  },
+
+  card3: {
+    title: `Rebranding & Crisis Recovery Post Emission Scandal of Gryphon Motors`,
+    image: '/consult/c-suite/thumbnail.avif',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['Case Competition', `November 2024`],
+    role: ['Cheif Executive Officer',],
+    domain: ['Corporate Ethics', 'Sustainibility'],
+    impact: ['Investor confidence ↑, -ve customer sentiment ↓'],
+    description: `Led a 5-phase recovery in rebranding, employees, sustainibility, PR Pan, etc. Secured 1st position among 200+ teams in C-Suite 8.0 at IBS Hyderabad.`,
+    docsLink: '/consult/c-suite',
+  },
+
+  card4: {
+    title: `Policybazaar: Extensive Analysis and deciphering Business Model`,
+    image: '/consult/policybazaar/thumbnail.png',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['Startup Analysis', `August 2024`],
+    role: ['Venture Analyst',],
+    domain: ['Fintech', 'InsureTech'],
+    impact: ['Thorougly understood their Business Model'],
+    description: `Breakdown of an early-stage startup's vision, market, risks, and growth path — combining founder analysis, UI/UX audits, TAM/SAM/SOM sizing, and investor trends.`,
+    docsLink: '/consult/policybazaar',
+    liveLink: 'https://prezi.com/p/r8_qiiuwhtrt/?present=1'
   }
 };
 
@@ -92,6 +121,19 @@ let productitems = {
     docsLink: '/product/vevana',
   },  
   card2: {
+    title: `Zero to One AI based apps 1Health & 1Intel for Healthcare`,
+    image: '/product/1health-1intel/thumbnail.avif',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['White Paper', 'December 2024 - February 2025'],
+    role: ['Product Researcher'],
+    domain: ['Healthcare', 'AI'],
+    impact: ['1Intel Boosted Trial Readiness by 20%'],
+    description: `1Health app with smart consultations, reminders & device sync; improved access for rural users & reduced missed care. 1Intel web app using AI/NER for de-ID, error correction & harmonization and cutting EHR noise. National Finalist across 500+ individuals in TASIC'25, SPJIMR Mumbai`,
+    docsLink: '/product/1health-1intel',
+  },  
+  card3: {
     title: `Driving EatSure's Adoption and Affinity Among College Students and Youth`,
     image: '/product/eat-sure/thumbnail.avif',
     width: 350,
