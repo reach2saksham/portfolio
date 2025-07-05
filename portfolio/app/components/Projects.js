@@ -50,7 +50,7 @@ let designitems = {
 
 let consultitems = {
   card1: {
-    title: `Production Optimization Strategy for B2B Company`,
+    title: `Deriving a New Production Optimization Strategy for a B2B Company`,
     image: '/consult/operatopolis/thumbnail.avif',
     width: 350,
     height: 380,
@@ -63,7 +63,7 @@ let consultitems = {
     docsLink: '/consult/operatopolis',
   },
   card2: {
-    title: `Strategies & Growth Plan for BoldCare, a D2C Wellness Brand`,
+    title: `Making BoldCare the next D2C Indian Leader in Wellness : Strategy & Growth Plan`,
     image: '/consult/bold-care/thumbnail.avif',
     width: 350,
     height: 380,
@@ -92,7 +92,7 @@ let consultitems = {
 
   card4: {
     title: `Policybazaar: Extensive Analysis and deciphering Business Model`,
-    image: '/consult/policybazaar/thumbnail.png',
+    image: '/consult/policybazaar/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -121,7 +121,7 @@ let productitems = {
     docsLink: '/product/vevana',
   },  
   card2: {
-    title: `Zero to One AI based apps 1Health & 1Intel for Healthcare`,
+    title: `Zero to One: AI based apps 1Health & 1Intel for Healthcare`,
     image: '/product/1health-1intel/thumbnail.avif',
     width: 350,
     height: 380,

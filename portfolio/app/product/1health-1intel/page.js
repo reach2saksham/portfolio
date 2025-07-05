@@ -10,13 +10,16 @@ import ExpandImage from '@/app/components/ExpandImage';
 const SECTIONS_CONFIG = {
     'Overview': 'overview',
     'Highlights': 'highlights',
-    'The Problem': 'problem',
-    'Market Validation': 'market',
-    'Comparitive Analysis': 'compete',
-    'Methodology': 'method',
-    'Cost Structure': 'cost',
-    'USPs, Distribution & SDGs': 'usp',
-    'Impact': 'impact',
+    'Introduction & Statistics': 'intro',
+    'User Personas': 'persona',
+    'Identified Problems': 'problem',
+    '1Health': '1health',
+    '1Intel': '1intel',
+    'Feasibility': 'feasibility',
+    'Scalability': 'scalability',
+    'Pitfalls & Mitigation': 'pitfall',
+    'Conclusion & Degree of Impact': 'conclusion',
+    'Citations': 'citation',
 };
 
 const caseStudy = {
@@ -36,14 +39,14 @@ const caseStudy = {
     role: ['Product Researcher'],
     collaborators: ['-'],
     deliverables: ['Expedite patient access', 'Reduce trial costs', 'Health-related Interconnctivity'],
-    timelineStatus: ['Completed'],
+    timelineStatus: ['National Finalist', 'Completed'],
     //   links: {
     //     liveProduct: 'https://rankmatrix.in/',
     //     // figmaFile: 'https://figma.com',
     //   },
-    thewhat: `VéVana is a sustainable fashion initiative that transforms rice stubble into biodegradable vegan leather. Our mission is to offer a high-quality, cruelty-free, and eco-friendly alternative to traditional leather—built on a zero-waste circular model.`,
-    thewhy: `Every year, over 92 million tons of rice stubble are burned in India, severely affecting air quality and public health. At the same time, the leather industry consumes excessive water, pollutes with toxic chemicals, and relies on animal slaughter. VéVana was born to solve these interconnected problems with one sustainable solution.`,
-    thehow: `I was deeply inspired by the growing use of Mycelium-based technologies in sustainable fashion and noticed its presence across our competitive landscape. After conducting thorough market research, we realized that developing a similar product using rice stubble would be feasible—especially with access to the Biotechnology lab at IIT Roorkee. Being selected at the international level further validated our approach and progress.`,
+    thewhat: `Keeping the vision of AI for Healthcare in India. The purpose was to solve and fill the current infrastructural gaps that are currently present in the healthcare system of India.`,
+    thewhy: `India's healthcare system faces key challenges like doctor shortages, poor rural access, disorganized records, and error-prone manual processes. With over 1 billion people lacking essential care and major inefficiencies in clinical trials and EHR systems, there's a pressing need for scalable, tech-driven solutions.`,
+    thehow: `The content presented in this case study is a culmination of online research, user surveys, and user interviews. The problems identified are based on these findings, and the proposed solutions with prototype design screens are done by me to visualise and address the most feasible and relevant challenges. These solutions are offered as two distinct packages: “1Health” and “1Intel”.`,
 };
 
 const Page = () => {
@@ -141,7 +144,7 @@ const Page = () => {
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
                     <div className="w-full lg:w-3/4 pb-4 lg:pb-0 mt-14 sm:mt-0">
                         <Image
-                            src="/product/1health-1intel/cover.png"
+                            src="/product/1health-1intel/cover.avif"
                             width={1080}
                             height={400}
                             alt="Cover"
@@ -304,160 +307,239 @@ const Page = () => {
                             )}
                         </div>
 
-                         <div
+                        <div
                             id='highlights'
                             className='company text-3xl pt-12 mb-2'>
                             THE HIGHLIGHTS
                         </div>
-                        <ExpandImage className='w-full h-fobject-cover pb-4'
-                            src='/product/1health-1intel/hult.png'
+                        <div className='flex flex-col lg:flex-row gap-1 justify-center items-center pt-4'>
+                            <div>
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/1health-1intel/TASIC.avif'
+                                    width={478}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                            </div>
+                            <div>
+                                <ExpandImage className='w-full h-full object-cover'
+                                    src='/product/1health-1intel/highlight.avif'
+                                    width={440}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                            </div>
+                        </div>
+
+                        <div
+                            id='intro'
+                            className='pt-12 flex flex-col'>
+                            <div className='text-3xl company'>INTRODUCTION & STATISTICS</div>
+                        </div>
+
+                        <div className='pt-2'>{`Healthcare systems worldwide face challenges such as limited accessibility, fragmented data management, and inadequate patient engagement. Current Status The healthcare IT sector is growing at an 18.5% CAGR, emphasizing the need for interoperable systems and data-driven insights. The statistics reveal concerning gaps:`}</div>
+
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/1.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
 
-                        <div className="relative w-full h-full aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-l">
-                            <iframe
-                                className="absolute inset-0 w-full h-full"
-                                src="https://www.youtube.com/embed/EoGtd_4nVLA?si=JTSxAUg1L1Pbig5M"
-                                title="YouTube video player"
-                                frameBorder="0"
-                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                referrerPolicy="strict-origin-when-cross-origin"
-                                allowFullScreen
-                            />
-                        </div>
+                        <div id='persona'
+                            className='pt-12 text-3xl company'>USER PERSONAS</div>
+
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/2.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
                         <div
                             id='problem'
-                            className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>THE PROBLEM</div>
+                            className='pt-12 text-3xl company'>IDENTIFIED PROBLEMS</div>
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/ps1.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/ps2.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/ps3.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <div id='1health'
+                            className='pt-12 text-3xl company'>PROPOSED SOLUTIONS - 1HEALTH (COMMON POPULATION)</div>
+                            <div className='flex self-center pt-6'>
+                        <ExpandImage className='w-full h-full object-cover'
+                            src='/product/1health-1intel/4.avif'
+                            width={260}
+                            height={100}
+                            alt='Small Banner'
+                            priority
+                        />
                         </div>
 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/3.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/4.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <div
-                                id='market'
-                                className='pt-12 text-3xl company'>MARKET VALIDATION</div>
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/5.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/5.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/6.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/7.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
-                            <div id='compete'
-                                className='pt-12 text-3xl company'>COMPARITIVE ANALYSIS</div>
+                        <div id='1intel'
+                            className='pt-12 text-3xl company'>PROPOSED SOLUTIONS - 1INTEL (PHARMA INSTITUTIONS)</div>
 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/17.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/8.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover pt-6 px-28'
+                            src='/product/1health-1intel/9.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/10.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover py-12 px-20'
+                            src='/product/1health-1intel/10a.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover'
+                            src='/product/1health-1intel/11.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover py-12 px-20'
+                            src='/product/1health-1intel/11a.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover'
+                            src='/product/1health-1intel/12.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/13.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/14.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
-                            <div className='unican text-2xl pt-4'>Some of our Competitors Include:</div>
-                            <div>
-                                <div className='pt-2'>1. Recore</div>
-                                <div>2. Banofi Leather</div>
-                                <div>3. Prara</div>
-                                <div>4. Winner Nippon Leatherette Pvt Ltd</div>
-                                <div className='pt-2'>VéVana stands out by using locally-sourced rice stubble, offering a lower-cost, zero-waste production process, and focusing on farmer empowerment while tackling air pollution</div>
-                            </div>
+                        <div id='feasibility'
+                            className='pt-12 text-3xl company'>FEASIBILITY</div>
 
-                            <div id='method'
-                                className='pt-12 text-3xl company'>METHODOLOGY</div>
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/7.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/method.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/10.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/15.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
-                            <div id='cost'
-                                className='pt-12 text-3xl company'>COST STRUCTURE</div>
+                        <div id='scalability'
+                            className='pt-12 text-3xl company'>SCALABILITY</div>
 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/15.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/16.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
-                            <div className='pt-2'>We will initially operate in the B2C market, offering sustainable vegan leather products directly to consumers. This will allow us to build brand recognition & validate our product. As we scale, we will expand in a B2B model, supplying to different industries. </div>
-                            <div className='unican text-2xl pt-4'>Our revenue streams include:</div>
-                            <span className='pt-2'>1. Direct-to-Consumer: Vegan leather accessories (wallets, belts, handbags) through e-commerce & sustainable marketplaces.</span>
-                            <div>2. B2B Supply: Partnering with various industries</div>
-                            <div>3. Technology Licensing: Licensing our production process</div>
-                            <div id='usp'
-                                className='pt-12 text-3xl company'>USP, DISTRIBUTION & SGS</div>
+                        <div id='pitfall'
+                            className='pt-12 text-3xl company'>PITFALLS & MITIGATION</div>
 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/9.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/16.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/18.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/17.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
-                            <div id='impact'
-                                className='pt-12 text-3xl company'>IMPACT</div>
+                        <div id='conclusion'
+                            className='pt-12 text-3xl company'>CONCLUSION & DEGREE OF IMPACT</div>
 
-                            <ExpandImage className='w-full h-full object-cover'
-                                src='/product/1health-1intel/6.png'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/18.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
-                            <div className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</div>
+                        <div id='citation'
+                            className='pt-12 text-3xl company'>CITATION</div>
+
+                        <ExpandImage className='w-full h-full object-cover pt-4'
+                            src='/product/1health-1intel/19.avif'
+                            width={1660}
+                            height={800}
+                            alt='Small Banner'
+                            priority
+                        />
 
                     </div>
                 </div>

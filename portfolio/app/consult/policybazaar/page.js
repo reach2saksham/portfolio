@@ -10,7 +10,7 @@ import ExpandImage from '@/app/components/ExpandImage';
 const SECTIONS_CONFIG = {
     'Overview': 'overview',
     'Basis of Analysis': 'basis',
-    'foundation': 'foundation',
+    'Foundation': 'foundation',
     "Company's Timeline": 'timeline',
     'Strategy': 'strategy',
     'Financials & Investors': 'finance',
