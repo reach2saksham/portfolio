@@ -22,7 +22,7 @@ const Hero = ({ isSplineVisible }) => {
   const router = useRouter();
 
   const handleLatestProject = useCallback(() => {
-    router.push('/design/img-brand');
+    router.push('/design/uix-labs');
   }, [router]);
 
   return (
