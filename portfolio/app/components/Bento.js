@@ -5,7 +5,7 @@ import { TypeAnimation } from 'react-type-animation';
 import { Globe } from "./Globe";
 
 const stack1Order = [
-  'figma.svg',
+  'html.svg',
   'css3.svg',
   'js.svg',
   'c++.svg',

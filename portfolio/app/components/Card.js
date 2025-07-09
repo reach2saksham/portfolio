@@ -46,7 +46,7 @@ const Card = (props) => {
           unoptimized={true}
         />
         {/* Black Overlay on Hover */}
-        <div className='absolute inset-0 bg-[#1E1E1E] opacity-0 group-hover:opacity-70 transition-opacity rounded-2xl'></div>
+        <div className='absolute inset-0 bg-[#1E1E1E] opacity-0 group-hover:opacity-70 transition-opacity rounded-2xl' ></div>
 
         {/* Centered "View Live" Button - Only render if liveLink exists */}
         {props.liveLink && (

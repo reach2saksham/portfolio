@@ -50,7 +50,7 @@ const Hero = ({ isSplineVisible }) => {
                 New
               </span>
               <p className="text-white/60 text-xs md:text-sm md:pr-2">
-                Project AlphaQ is completed recently!
+                Check out my project at UIX Labs!
               </p>
               <ChevronRightIcon className="h-4 w-4 text-white/70 mr-1" />
             </button>

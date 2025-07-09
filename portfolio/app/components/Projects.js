@@ -12,14 +12,28 @@ let designitems = {
     height: 380,
     alt: 'Mockup',
     tags: ['Internship', 'July 2024 - September 2024'],
-    role: ['Tech-Consulting', 'Web-app'],
-    domain: ['UI/UX Designer', 'Product Manager'],
+    role: ['UI/UX Designer', 'Product Manager'],
+    domain: ['Tech-Consulting', 'Web-app'],
     impact: ['Used monthly by 80+ top companies to boost projects.'],
     description: `When a client company gives project to a tech-consulting firm, they need a way to track the project and the employees working on it. This web app provides a comprehensive solution for tracking projects and employees, ensuring that everything is organized and efficient.`,
     docsLink: '/design/uix-labs',
     // liveLink: 'https://rankmatrix.in/'
   },
   card2: {
+    title: `How to manage 13K+ IIT Roorkee webapges with a consistent design`,
+    image: '/design/chakra/thumbnail.png',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['College Project', 'January 2024 - Present'],
+    role: ['Project Leader',],
+    domain: ['Design System', 'CMS'],
+    impact: ['A landing page with 1M+ MAU'],
+    description: `With the responsibility of IIT Roorkee's Landing Page while also adhering to the self-made CMS is the task executed. Chakra is a component-based content management system, creating pages by using components is modular, sustainable interface for faculties to manage & publish their pages`,
+    docsLink: '/design/chakra',
+    // liveLink: 'https://rankmatrix.in/'
+  },
+  card3: {
     title: `Making college prediction easier for JEE students`,
     image: '/design/rank-matrix/mockup.avif',
     width: 350,
@@ -33,7 +47,7 @@ let designitems = {
     docsLink: '/design/rank-matrix',
     liveLink: 'https://rankmatrix.in/'
   },
-  card3: {
+  card4: {
     title: `Elevating IMG's Brand Identity Game`,
     image: '/design/img-brand/mockup.avif',
     width: 350,

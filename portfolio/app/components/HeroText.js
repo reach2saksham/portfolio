@@ -82,7 +82,7 @@ const HeroText = () => {
 
         </div>
         <a
-          href="https://drive.google.com/your-resume-link" // Replace with your actual Drive link
+          href="https://drive.google.com/file/d/1nHBW7guJvgIO5H5-QiPUCrRkAWXpQHsg/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="block md:hidden tags px-4 py-2 text-sm  rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-purple-950 shadow-lg transform transition duration-300 ease-in-out hover:scale-105"

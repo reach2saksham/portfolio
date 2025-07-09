@@ -38,7 +38,7 @@ const caseStudy = {
     sections: Object.keys(SECTIONS_CONFIG),
     role: ['Product Researcher'],
     collaborators: ['-'],
-    deliverables: ['Expedite patient access', 'Reduce trial costs', 'Health-related Interconnctivity'],
+    deliverables: ['Expedite patient access', 'Reduce trial costs', 'Health-related Interconnectivity'],
     timelineStatus: ['National Finalist', 'Completed'],
     //   links: {
     //     liveProduct: 'https://rankmatrix.in/',

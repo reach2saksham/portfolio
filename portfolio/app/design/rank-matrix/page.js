@@ -19,16 +19,18 @@ const SECTIONS_CONFIG = {
 const caseStudy = {
     industry: 'Education',
     techStack: {
-        'Design Tool for UI': ['figma'],
-        'Anmation Tools': ['figma', 'lotte'],
+        'Design and Animation Tools for UI': ['figma', 'lotte'],
+        'Development Stack': ['reactjs', 'js'],
     },
     // Tech stack names for tooltips
     techStackNames: {
         'figma': 'Figma',
         'lotte': 'Lotte Files Creator',
+        'reactjs': 'React',
+        'js': 'JavaScript',
     },
     companyName: 'RANK MATRIX',
-    period: 'April 2024',
+    period: 'April 2025',
     domain: 'ADAPTIVE UI DESIGN',
     description: `Rank Matrix is a web app designed to simplify the college selection process for JEE aspirants. Instead of sifting through multiple rounds of counseling data, students can instantly view their best admission chances based on the final seat matrix. The platform features a clean, intuitive UI/UX, smooth loading animations, and full accessibility with both light and dark mode support.`,
     sections: Object.keys(SECTIONS_CONFIG),
