@@ -21,7 +21,7 @@ let designitems = {
   },
   card2: {
     title: `How to manage 13K+ IIT Roorkee webapges with a consistent design`,
-    image: '/design/chakra/thumbnail.png',
+    image: '/design/chakra/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',

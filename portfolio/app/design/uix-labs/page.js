@@ -603,7 +603,7 @@ const Page = () => {
                                 <button
                                     className={`tags ${activeMode === 'iteration4' ? 'bg-[#606060]' : ''} p-2 rounded-lg`}
                                     onClick={() => setActiveMode('iteration4')}>
-                                    Iteration 4
+                                    Selected
                                 </button>
                             </div>
                             <div>

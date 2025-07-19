@@ -31,10 +31,9 @@ export default function Home() {
     about: false,
     bento: false,
     gallery: false,
-    footer: false
+    // Footer is no longer lazy-loaded, so it doesn't need to be in this state.
   });
 
-  // Re-introduced state to track which components are currently visible
   const [visibleSections, setVisibleSections] = useState({
     hero: true,
     maskEffect: false,
@@ -54,7 +53,7 @@ export default function Home() {
   const aboutRef = useRef(null);
   const bentoRef = useRef(null);
   const galleryRef = useRef(null);
-  const footerRef = useRef(null);
+  const footerRef = useRef(null); // The ref is still useful for visibility checks
 
   useEffect(() => {
     const checkMobile = () => {
@@ -66,10 +65,8 @@ export default function Home() {
     return () => window.removeEventListener('resize', checkMobile);
   }, []);
 
-  // Modified observer to handle both loading and visibility tracking
   useEffect(() => {
     const observers = [];
-
     const observerOptions = {
       root: null,
       rootMargin: '200px',
@@ -80,13 +77,10 @@ export default function Home() {
       if (ref.current) {
         const observer = new IntersectionObserver((entries) => {
           entries.forEach((entry) => {
-            // Update visibility status
             setVisibleSections(prev => ({
               ...prev,
               [sectionName]: entry.isIntersecting
             }));
-
-            // Load the component once if it's intersecting and not already loaded
             if (entry.isIntersecting) {
               setLoadedSections(prev => ({
                 ...prev,
@@ -101,20 +95,18 @@ export default function Home() {
       }
     };
 
-    // We only need to create one observer for each section.
     createObserver(heroRef, 'hero');
     createObserver(maskEffectRef, 'maskEffect');
     createObserver(projectsRef, 'projects');
     createObserver(aboutRef, 'about');
     createObserver(bentoRef, 'bento');
     createObserver(galleryRef, 'gallery');
-    createObserver(footerRef, 'footer');
+    createObserver(footerRef, 'footer'); // Observer for the footer remains
 
     return () => {
       observers.forEach(observer => observer.disconnect());
     };
   }, []);
-
 
   const handlePositionToggle = () => {
     setIsDiscClicked(!isDiscClicked);
@@ -197,10 +189,9 @@ export default function Home() {
         </LazyComponent>
       </div>
 
+      {/* MODIFICATION: Removed LazyComponent wrapper from Footer */}
       <div ref={footerRef}>
-        <LazyComponent shouldRender={loadedSections.footer} minHeight="800px">
-          <Footer isInView={visibleSections.footer} />
-        </LazyComponent>
+        <Footer isInView={visibleSections.footer} />
       </div>
     </main>
   );

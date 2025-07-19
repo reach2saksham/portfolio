@@ -1,109 +1,86 @@
 "use client";
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
 const NavLink = ({ href, title }) => {
     const [isActive, setIsActive] = useState(false);
+    const router = useRouter();
 
+    // This effect correctly handles the active state on the home page
     useEffect(() => {
         const checkActiveSection = () => {
-            // Handle hash links for sections on the same page
             if (href.startsWith('#')) {
                 const sectionId = href.substring(1);
                 
-                // Special handling for Home button
                 if (sectionId === 'hero' || title === 'Home') {
-                    const isOnHomePage = window.location.pathname === '/';
-                    const isAtTop = window.scrollY < 100; // Consider "home" when near top
-                    setIsActive(isOnHomePage && isAtTop);
+                    setIsActive(window.location.pathname === '/' && window.scrollY < 100);
                     return;
                 }
                 
-                // Handle other sections
                 const section = document.getElementById(sectionId);
-                
                 if (section) {
                     const rect = section.getBoundingClientRect();
                     const isInView = rect.top <= 100 && rect.bottom >= 100;
                     setIsActive(isInView);
+                } else {
+                    setIsActive(false); // Section not on this page
                 }
             } else {
-                // Handle regular page links
-                setIsActive(window.location.pathname === href);
+                // For external links like the resume
+                setIsActive(false);
             }
         };
 
-        // Check immediately
         checkActiveSection();
-
-        // Add scroll listener for hash links
-        if (href.startsWith('#')) {
-            window.addEventListener('scroll', checkActiveSection);
-            return () => window.removeEventListener('scroll', checkActiveSection);
-        }
+        window.addEventListener('scroll', checkActiveSection, { passive: true });
+        return () => window.removeEventListener('scroll', checkActiveSection);
     }, [href, title]);
 
     const handleClick = (e) => {
-        if (href.startsWith('#')) {
-            e.preventDefault();
-            
-            const sectionId = href.substring(1);
-            
-            // Special handling for Home button
-            if (sectionId === 'hero' || title === 'Home') {
-                const isOnHomePage = window.location.pathname === '/';
-                
-                if (isOnHomePage) {
-                    // If on home page, scroll to top
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                } else {
-                    // If on another page, navigate to home page
-                    window.location.href = '/';
-                }
-                return;
-            }
-            
-            // Handle other sections
+        // For external links (like resume), let the browser handle it
+        if (!href.startsWith('#')) {
+            return;
+        }
+
+        e.preventDefault();
+        const sectionId = href.substring(1);
+        const isOnHomePage = window.location.pathname === '/';
+
+        if (isOnHomePage) {
+            // If on the home page, just scroll smoothly
             const section = document.getElementById(sectionId);
-            
             if (section) {
-                // Get the section's position
-                const rect = section.getBoundingClientRect();
-                const currentScrollY = window.scrollY;
+                let offset = 80; // Default navbar offset
+                if (sectionId === 'projects') offset = 40;
+                if (sectionId === 'about') offset = 10;
+                if (sectionId === 'footer') offset = 30;
+
+                const targetScrollY = window.scrollY + section.getBoundingClientRect().top - offset;
                 
-                // Define different offsets for different sections
-                let offset = 80; // Default offset for navbar height
-                
-                // Custom offsets for specific sections
-                if (sectionId === 'projects') {
-                    offset = 40; // Extra offset for projects section
-                } else if (sectionId === 'about') {
-                    offset = 10; // Custom offset for about section
-                } else if (sectionId === 'footer') {
-                    offset = 30; // Less offset for footer
-                }
-                
-                // Calculate target scroll position
-                const targetScrollY = currentScrollY + rect.top - offset;
-                
-                // Smooth scroll to target position
                 window.scrollTo({
                     top: targetScrollY,
                     behavior: 'smooth'
                 });
             }
+        } else {
+            // If on a case study page, navigate to the home page with the hash
+            router.push(`/${href}`);
         }
     };
 
+    // Use a standard <a> tag for hash links to allow onClick to manage navigation
+    // and for external links. Use Next.js <Link> for internal page routes if you add them later.
+    const isExternal = href.startsWith('http') || href.startsWith('https');
+
     return (
-        <Link
+        <a
             href={href}
             onClick={handleClick}
+            target={isExternal ? '_blank' : undefined}
+            rel={isExternal ? 'noopener noreferrer' : undefined}
             className={`
-                block py-2 pr-4 pl-3 rounded md:p-0 transition-all duration-300 ease-in-out
+                block py-2 pr-4 pl-3 rounded md:p-0 transition-all duration-300 ease-in-out cursor-pointer
                 ${isActive 
                     ? 'text-purple-400 opacity-100' 
                     : 'text-white opacity-50 hover:text-purple-300 hover:opacity-80'
@@ -111,7 +88,7 @@ const NavLink = ({ href, title }) => {
             `}
         >
             {title}
-        </Link>
+        </a>
     );
 };
 
