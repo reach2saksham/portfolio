@@ -127,7 +127,7 @@ const Card = (props) => {
 export const MouseTooltip = () => {
   const [tooltipData, setTooltipData] = useState({ show: false, x: 0, y: 0 });
 
-  // Set up global event listeners for mouse movement and card hover
+  // Set up global event listeners for mouse movement, card hover, and scrolling
   React.useEffect(() => {
     const handleMouseMove = (e) => {
       // Check if mouse is over a "View Live" button, and hide tooltip if it is
@@ -146,9 +146,19 @@ export const MouseTooltip = () => {
       }
     };
 
+    // **NEW**: Function to hide the tooltip whenever the user scrolls
+    const handleScroll = () => {
+      setTooltipData(prev => ({ ...prev, show: false }));
+    };
+
     document.addEventListener('mousemove', handleMouseMove);
+    // **NEW**: Add the scroll event listener
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    // Cleanup function to remove both listeners
     return () => {
       document.removeEventListener('mousemove', handleMouseMove);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 

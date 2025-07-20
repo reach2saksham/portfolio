@@ -43,7 +43,7 @@ let designitems = {
     role: ['UI Designer', 'Motion Designer'],
     domain: ['UI/UX', 'Anmation', 'Graphics'],
     impact: ['Counselling tool for 12M+ JEE Students every year'],
-    description: `While countless web apps offer seat information for students, this platform goes a step further—intelligently sorting and presenting the best counseling options based on your details, with zero manual calibration. Just input your info, and let the system do the rest.`,
+    description: `While countless web apps offer seat information for students, this platform goes a step further, intelligently sorting and presenting the best counseling options based on your details, with zero manual calibration. Just input your info, and let the system do the rest.`,
     docsLink: '/design/rank-matrix',
     liveLink: 'https://rankmatrix.in/'
   },
@@ -114,7 +114,7 @@ let consultitems = {
     role: ['Venture Analyst',],
     domain: ['Fintech', 'InsureTech'],
     impact: ['Thorougly understood their Business Model'],
-    description: `Breakdown of an early-stage startup's vision, market, risks, and growth path — combining founder analysis, UI/UX audits, TAM/SAM/SOM sizing, and investor trends.`,
+    description: `Breakdown of an early stage startup's vision, market, risks, and growth path by combining founder analysis, UI/UX audits, TAM/SAM/SOM sizing, and investor trends.`,
     docsLink: '/consult/policybazaar',
     liveLink: 'https://prezi.com/p/r8_qiiuwhtrt/?present=1'
   }
@@ -135,6 +135,19 @@ let productitems = {
     docsLink: '/product/vevana',
   },  
   card2: {
+    title: `Amenities: Redefining infra-operations in institutions`,
+    image: '/product/amenities/thumbnail.avif',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['Hyundai Grant', 'December 2025 - Present'],
+    role: ['Product Lead'],
+    domain: ['Facility Management', 'SaaS'],
+    impact: ['Estimated $18M SOM; building IITR pilot'],
+    description: `Amenities app for real-time bookings, QR check-ins, role-based access, and live facility status; streamlined amenity management for campuses, societies, public sports sites, institutions, etc. Selected as Hyundai Hope Scholar being in top 25 students across 23 IITs for B2B SaaS innovation.`,
+    docsLink: '/product/amenities',
+  },  
+  card3: {
     title: `Zero to One: AI based apps 1Health & 1Intel for Healthcare`,
     image: '/product/1health-1intel/thumbnail.avif',
     width: 350,
@@ -147,7 +160,7 @@ let productitems = {
     description: `1Health app with smart consultations, reminders & device sync; improved access for rural users & reduced missed care. 1Intel web app using AI/NER for de-ID, error correction & harmonization and cutting EHR noise. National Finalist across 500+ individuals in TASIC'25, SPJIMR Mumbai`,
     docsLink: '/product/1health-1intel',
   },  
-  card3: {
+  card4: {
     title: `Driving EatSure's Adoption and Affinity Among College Students and Youth`,
     image: '/product/eat-sure/thumbnail.avif',
     width: 350,
