@@ -1,110 +1,28 @@
-"use client";
-
-// import { useState, useEffect } from "react";
-import { useEffect } from "react";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
-import { Star } from "lucide-react";
-import Starsbackground from "./components/Starbackground";
-import { usePathname } from "next/navigation";
+import './globals.css';
+import { Geist, Geist_Mono } from 'next/font/google';
+import ClientLayout from './components/ClientLayout';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
+  variable: '--font-geist-sans',
+  subsets: ['latin'],
 });
 
 const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
+  variable: '--font-geist-mono',
+  subsets: ['latin'],
 });
 
+export const metadata = {
+  title: 'Your Site Title',
+  description: 'Your site description here',
+};
+
 export default function RootLayout({ children }) {
-  const pathname = usePathname();
-  const excludedPaths = ['/design', '/product', '/consult'];
-  const showStars = !excludedPaths.some(path => pathname?.includes(path));
-
-  // Add global key press handler for Calendly link
-  useEffect(() => {
-    const handleKeyPress = (event) => {
-      // Don't trigger if user is typing in a form input
-      const isFormInput = 
-        event.target.tagName === 'INPUT' ||
-        event.target.tagName === 'TEXTAREA' ||
-        event.target.isContentEditable;
-
-      if (!isFormInput && (event.key === 'M' || event.key === 'm')) {
-        window.open('https://calendly.com/sakshamjainiitr', '_blank');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyPress);
-    
-    // Cleanup the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('keydown', handleKeyPress);
-    };
-  }, []); // Empty dependency array ensures this runs only once
-
-  // // Add error boundary and loading state
-  // const [isLoading, setIsLoading] = useState(true);
-  // const [hasError, setHasError] = useState(false);
-
-  // useEffect(() => {
-  //   // Ensure DOM is ready
-  //   const timer = setTimeout(() => setIsLoading(false), 100);
-  //   return () => clearTimeout(timer);
-  // }, []);
-
-  // // Add error handler
-  // useEffect(() => {
-  //   const handleError = (error) => {
-  //     console.error('Global error:', error);
-  //     setHasError(true);
-  //   };
-
-  //   window.addEventListener('error', handleError);
-  //   window.addEventListener('unhandledrejection', handleError);
-
-  //   return () => {
-  //     window.removeEventListener('error', handleError);
-  //     window.removeEventListener('unhandledrejection', handleError);
-  //   };
-  // }, []);
-
-  // if (isLoading) {
-  //   return (
-  //     <html lang="en">
-  //       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black`}>
-  //         <div className="min-h-screen flex items-center justify-center">
-  //           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-white/50"></div>
-  //         </div>
-  //       </body>
-  //     </html>
-  //   );
-  // }
-
-  // if (hasError) {
-  //   return (
-  //     <html lang="en">
-  //       <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}>
-  //         <div className="min-h-screen flex items-center justify-center flex-col gap-4">
-  //           <h1 className="text-2xl">Something went wrong</h1>
-  //           <button onClick={() => window.location.reload()} className="px-4 py-2 bg-blue-600 rounded">
-  //             Reload Page
-  //           </button>
-  //         </div>
-  //       </body>
-  //     </html>
-  //   );
-  // }
-
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {showStars && <Starsbackground />}
-        {children}
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
