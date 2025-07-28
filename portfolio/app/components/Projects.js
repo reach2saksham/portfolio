@@ -39,7 +39,7 @@ let designitems = {
     width: 350,
     height: 380,
     alt: 'Mockup',
-    tags: ['Internship', 'April 2024'],
+    tags: ['Internship', 'April 2025'],
     role: ['UI Designer', 'Motion Designer'],
     domain: ['UI/UX', 'Anmation', 'Graphics'],
     impact: ['Counselling tool for 12M+ JEE Students every year'],

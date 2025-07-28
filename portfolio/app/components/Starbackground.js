@@ -1,3 +1,4 @@
+// portfolio/app/components/Starbackground.js
 "use client";
 
 import React, { useState, useRef, Suspense } from 'react';
@@ -7,7 +8,7 @@ import * as random from 'maath/random/dist/maath-random.esm';
 
 const Stars = (props) => {
   const ref = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(800), { radius: 1.2 }));
+  const [sphere] = useState(() => random.inSphere(new Float32Array(1500), { radius: 1.2 }));
 
   useFrame((state, delta) => {
     if (ref.current) {
@@ -15,7 +16,6 @@ const Stars = (props) => {
       ref.current.rotation.y -= delta / 80;
     }
   });
-
 
   return (
     <group rotation={[0, 0, Math.PI / 4]}>
@@ -36,20 +36,24 @@ const StarsCanvas = () => (
   <div className="w-full h-full fixed inset-0 z-10 bg-black">
     <Canvas
       onCreated={({ gl }) => {
+        // Add context loss/restoration handling
         gl.domElement.addEventListener('webglcontextlost', (e) => {
           e.preventDefault();
-          console.warn('WebGL context lost. The canvas may need to be re-initialized.');
+          console.warn('WebGL context lost. Attempting to restore...');
+        });
+         gl.domElement.addEventListener('webglcontextrestored', () => {
+          console.log('WebGL context restored.');
         });
       }}
       camera={{ position: [0, 0, 1], fov: 75 }}
       gl={{
         alpha: false,
-        antialias: true,
+        antialias: true, // Antialiasing can be demanding; set to true but monitor performance
         powerPreference: 'high-performance',
+        failIfMajorPerformanceCaveat: true // Prevent running on very low-end devices
       }}
       style={{ background: 'transparent' }}
     >
-      {/* Explicitly set the canvas background color to black to prevent white flashes */}
       <color attach="background" args={['#000000']} />
       <Suspense fallback={null}>
         <Stars />
@@ -58,6 +62,5 @@ const StarsCanvas = () => (
     </Canvas>
   </div>
 );
-
 
 export default StarsCanvas;

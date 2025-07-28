@@ -1,7 +1,6 @@
 import './globals.css';
 import { Geist, Geist_Mono } from 'next/font/google';
 import ClientLayout from './components/ClientLayout';
-import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
