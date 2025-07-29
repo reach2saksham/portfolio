@@ -1,11 +1,9 @@
 import React from 'react'
 
-const MoreProjects = () => {
-  return (
+const MoreProjects = () => (
     <div>
-      Hi
+        Checkout These Projects
     </div>
-  )
-}
+)
 
 export default MoreProjects

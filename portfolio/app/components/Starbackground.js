@@ -6,6 +6,30 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Points, PointMaterial, Preload } from '@react-three/drei';
 import * as random from 'maath/random/dist/maath-random.esm';
 
+// Error Boundary specifically for the 3D canvas
+class CanvasErrorBoundary extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error) {
+    return { hasError: true };
+  }
+
+  componentDidCatch(error, errorInfo) {
+    console.error("Star background failed to render:", error, errorInfo);
+  }
+
+  render() {
+    if (this.state.hasError) {
+      // Return null to render nothing, making it gracefully disappear
+      return null;
+    }
+    return this.props.children;
+  }
+}
+
 const Stars = (props) => {
   const ref = useRef();
   const [sphere] = useState(() => random.inSphere(new Float32Array(1500), { radius: 1.2 }));
@@ -34,32 +58,17 @@ const Stars = (props) => {
 
 const StarsCanvas = () => (
   <div className="w-full h-full fixed inset-0 z-10 bg-black">
-    <Canvas
-      onCreated={({ gl }) => {
-        // Add context loss/restoration handling
-        gl.domElement.addEventListener('webglcontextlost', (e) => {
-          e.preventDefault();
-          console.warn('WebGL context lost. Attempting to restore...');
-        });
-         gl.domElement.addEventListener('webglcontextrestored', () => {
-          console.log('WebGL context restored.');
-        });
-      }}
-      camera={{ position: [0, 0, 1], fov: 75 }}
-      gl={{
-        alpha: false,
-        antialias: true, // Antialiasing can be demanding; set to true but monitor performance
-        powerPreference: 'high-performance',
-        failIfMajorPerformanceCaveat: true // Prevent running on very low-end devices
-      }}
-      style={{ background: 'transparent' }}
-    >
-      <color attach="background" args={['#000000']} />
-      <Suspense fallback={null}>
-        <Stars />
-      </Suspense>
-      <Preload all />
-    </Canvas>
+    <CanvasErrorBoundary>
+      <Canvas
+        camera={{ position: [0, 0, 1] }}
+        gl={{ powerPreference: 'high-performance', failIfMajorPerformanceCaveat: true }}
+      >
+        <Suspense fallback={null}>
+          <Stars />
+        </Suspense>
+        <Preload all />
+      </Canvas>
+    </CanvasErrorBoundary>
   </div>
 );
 

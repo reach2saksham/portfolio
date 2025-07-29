@@ -5,6 +5,7 @@ import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import ExpandImage from '@/app/components/ExpandImage';
+import MoreProjects from '@/app/components/MoreProjects';
 
 // Centralized section configuration - no more duplication!
 const SECTIONS_CONFIG = {
@@ -457,8 +458,7 @@ const Page = () => {
                                 alt='Small Banner'
                                 priority
                             />
-
-                            <div className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</div>
+                          {/* <MoreProjects/>   */}
 
                     </div>
                 </div>
