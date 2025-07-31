@@ -15,7 +15,7 @@ import dynamic from 'next/dynamic';
 
 const SplineScene = dynamic(() => import('./SplineScene'), {
   ssr: false,
-  loading: () => <div className="w-full h-[85vh] bg-black/20 rounded-xl" />,
+  loading: () => <div className="w-full bg-black/20 rounded-xl" />,
 });
 
 const Hero = ({ isSplineVisible }) => {
@@ -26,38 +26,38 @@ const Hero = ({ isSplineVisible }) => {
   }, [router]);
 
   return (
-    <div className="min-h-screen w-full px-6 md:px-8 lg:px-16 xl:px-[150px] items-center relative overflow-hidden">
+    <div className="min-h-scren sm:h-[720px] w-full px-6 md:px-8 lg:px-16 xl:px-[150px] items-center relative overflow-hidden">
       <motion.div
-        className="flex max-w-full w-full"
+        className="flex max-w-full w-full md:h-[420px] "
         
       >
         {/* Left side content - Remove pointer-events-none from parent */}
-        <div className="w-full lg:w-[60%] h-full
-        md:mt-[172px]
+        <div className="w-full h-full
+        xl:mt-[172px]
         sm:mt-[162px]
         min-[390px]:mt-[216px]
         mt-[188px]
         
-        flex flex-col gap-2 justify-center relative z-40">
+        flex flex-col gap-2 justify-start relative z-40">
 
           {/* Project AlphaQ Button - Moved above title */}
-          <div className="backdrop-blur ">
+          <div className="backdrop-blur lg:w-[60%]">
             <button
               onClick={handleLatestProject}
-              className="flex gap-2 p-1 bg-white/10 backdrop-blur-sm items-center border border-white/30 rounded-full w-fit shadow-lg cursor-pointer transition-all duration-200 hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/50"
+              className="flex gap-2 p-1 bg-white/10 backdrop-blur-sm items-center border border-white/30 rounded-full w-fit shadow-lg cursor-pointer transition-transform duration-200 ease-in-out hover:bg-white/20 hover:scale-105 focus:outline-none focus:ring-2 focus:ring-white/50"
             >
-              <span className=" px-3 bg-blue-600 py-1 rounded-full text-[10px] md:text-xs font-medium text-white">
-                New
+              <span className=" px-3 bg-blue-600 py-1 rounded-full text-[10px] md:text-xs font-medium text-white herointro">
+                Check Out
               </span>
-              <p className="text-white/60 text-xs md:text-sm md:pr-2">
-                Check out my project at UIX Labs!
+              <p className="text-white/60 text-xs md:text-sm md:pr-2 herointro">
+                My project at UIX Labs!
               </p>
               <ChevronRightIcon className="h-4 w-4 text-white/70 mr-1" />
             </button>
           </div>
 
           {/* Hero title section - fully interactive */}
-          <div className="herotext drop-shadow-[0_4px_8px_#4C4C4C]  mb-1">
+          <div className="herotext drop-shadow-[0_4px_8px_#4C4C4C] lg:w-[60%]  mb-1">
             <h1 className="text-[26px] 
             min-[368px]:text-[29px] 
             min-[410px]:text-[32px] leading-3
@@ -80,7 +80,7 @@ const Hero = ({ isSplineVisible }) => {
                 alt="i"
                 width={2}
                 height={4}
-                className="w-4 h-[52px] sm:w-5 sm:h-[70px]  md:w-6 md:h-24 -mx-0.5 pb-[12px] sm:pb-4 md:pb-5 hover:-translate-y-4 transition-transform"
+                className="w-4 h-[52px] sm:w-5 sm:h-[70px]  md:w-6 md:h-24 -mx-0.5 pb-[12px] sm:pb-4 md:pb-5 hover:-translate-y-4 transition-transform duration-200 ease-in-out"
               />
 
               <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">gned.</span>
@@ -101,23 +101,23 @@ const Hero = ({ isSplineVisible }) => {
               </div>
             </h1>
           </div>
-          <div className='flex flex-col h-[47vh] sm:h-[28vh] justify-between'>
+          <div className='flex flex-col h-[47vh] sm:h-[40vh] md:h-[28vh] justify-between xl:w-[60%]'>
           {/* HeroText component - fully interactive */}
-          <div className="relative z-30 ">
+          <div className="relative z-30">
             <HeroText />
           </div>
 
           {/* Companies section - Fixed hover effects */}
           <div className="relative w-full z-30">
             {/* Gradient overlay - pointer-events-none to not block interactions */}
-            <div className="absolute -top-20 left-0 right-0 h-20 bg-gradient-to-b from-transparent via-black/20 to-black/40 pointer-events-none z-10"></div>
+            <div className="absolute -top-20 left-0 right-0 h-20 bg-gradient-to-b xl:w-[60%]from-transparent via-black/20 to-black/40 pointer-events-none z-10"></div>
 
             {/* Main companies content */}
             <div className="group relative mr-6">
               <div className="flex w-[70%] sm:w-[80%] md:w-[90%] items-center md:flex-row">
-                <div className="flex flex-col items-start justify-center text-center border-r-2 text-white/50 border-white/20 min-w-32">
-                  <p className='text-lg'>Previously</p>
-                  <p className='text-lg'>worked with</p>
+                <div className="flex flex-col items-start justify-between text-center border-r-2 text-white/50 border-white/20 min-w-32">
+                  <p className='text-lg herointro'>Previously</p>
+                  <p className='text-lg herointro'>worked with</p>
                 </div>
                 
                 {/* Slider container with proper z-index */}
@@ -139,7 +139,7 @@ const Hero = ({ isSplineVisible }) => {
                     ].map(([src, alt, height], index) => (
                       <div key={index} className="flex">
                         <Image
-                          className="mx-auto w-fit grayscale opacity-25 dark:invert-0 brightness-110 contrast-110 
+                          className="mx-auto w-fit grayscale opacity-40 dark:invert-0 brightness-110 contrast-110 
                           group-hover:opacity-100 group-hover:brightness-100 group-hover:contrast-100 group-hover:grayscale-0
                           transition-all duration-300 hover:scale-[120%] hover:opacity-90"
                           src={src}
@@ -170,7 +170,7 @@ const Hero = ({ isSplineVisible }) => {
         </div>
 
         {/* Right side Spline 3D scene - Maintain high z-index for robot interactions */}
-        {isSplineVisible && <div className="w-[40%] hidden xl:block absolute right-14 z-30">
+        {isSplineVisible && <div className="w-[40%] hidden xl:block absolute right-14 z-50">
           <SplineScene />
         </div>}
 

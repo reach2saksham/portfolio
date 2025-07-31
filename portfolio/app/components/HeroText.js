@@ -25,7 +25,7 @@ const HeroText = () => {
               }`}
           />
         </div>
-        
+
 
         {/* Waving emoji with framer motion */}
         <motion.div
@@ -49,16 +49,16 @@ const HeroText = () => {
           👋
         </motion.div>
       </div>
-      
+
       <a className='block lg:hidden pl-2' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
-          <Image
-            className="lg:grayscale lg:hover:grayscale-0 transition duration-300"
-            src='/linkedin.svg'
-            width={30}
-            height={30}
-            alt='LinkedIn Icon'
-          />
-        </a>
+        <Image
+          className="lg:grayscale lg:hover:grayscale-0 transition duration-300"
+          src='/linkedin.svg'
+          width={30}
+          height={30}
+          alt='LinkedIn Icon'
+        />
+      </a>
 
       <div className='flex items-center gap-4 flex-wrap herointro text-lg'>
         <p className='hidden lg:block'>Press </p>

@@ -156,8 +156,8 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
   }, [isPlaying]);
 
   return (
-    <motion.div className="relative z-40">
-      <motion.div className='z-40'>
+    <motion.div className="relative z-40 group ">
+      <motion.div className='z-40 group-hover:scale-105 transition-transform duration-200 ease-in-out'>
         <button
           onClick={handleDiscClick}
           className={`flex relative w-32 md:w-40 h-32 md:h-40 cursor-pointer transition-transform duration-200 rounded-full z-40 ${

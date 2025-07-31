@@ -32,12 +32,12 @@ class SplineErrorBoundary extends React.Component {
 
 // A fallback component to show while Spline is loading
 const SplineLoadingFallback = () => {
-  return <div className="w-full h-[85vh] bg-black/20 rounded-xl flex items-center justify-center text-white/50 animate-pulse">Loading 3D Scene...</div>;
+  return <div className="w-full bg-black/20 rounded-xl flex items-center justify-center text-white/50 animate-pulse">Loading 3D Scene...</div>;
 };
 
 const SplineScene = () => {
   return (
-    <div className="absolute w-full h-[85vh] z-30">
+    <div className="absolute w-full h-[600px] z-30">
         <SplineErrorBoundary>
             <Suspense fallback={<SplineLoadingFallback />}>
                 <Spline
