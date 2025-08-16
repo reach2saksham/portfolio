@@ -118,7 +118,6 @@
               min-[346px]:text-[26px] 
               min-[372px]:text-[29px] 
               min-[382px]:text-[30px] 
-              min-[392px]:text-[31px] 
               min-[404px]:text-[32px] leading-3
               min-[414px]:text-[33px]
               min-[426px]:text-[34px]
