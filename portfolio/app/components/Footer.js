@@ -119,40 +119,40 @@ const Footer = () => {
   const form = useRef();
 
   // EmailJS configuration
- const sendEmail = async (e) => {
-  e.preventDefault();
+  const sendEmail = async (e) => {
+    e.preventDefault();
 
-  const currentForm = form.current;
+    const currentForm = form.current;
 
-  // Native validation for required fields and patterns
-  if (!currentForm.checkValidity()) {
-    currentForm.reportValidity();
-    return;
-  }
+    // Native validation for required fields and patterns
+    if (!currentForm.checkValidity()) {
+      currentForm.reportValidity();
+      return;
+    }
 
-  setIsLoading(true);
+    setIsLoading(true);
 
-  const publicKey = "K2zm_VwrmppRUatQf";
-  const serviceID = "service_x2qubbg";
-  const templateID = "template_63j2uvb";
+    const publicKey = "K2zm_VwrmppRUatQf";
+    const serviceID = "service_x2qubbg";
+    const templateID = "template_63j2uvb";
 
-  try {
-    await emailjs.sendForm(serviceID, templateID, currentForm, {
-      publicKey: publicKey,
-    });
+    try {
+      await emailjs.sendForm(serviceID, templateID, currentForm, {
+        publicKey: publicKey,
+      });
 
-    setIsLoading(false);
-    setSubmitted(true);
-    currentForm.reset();
+      setIsLoading(false);
+      setSubmitted(true);
+      currentForm.reset();
 
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 3000);
-  } catch (error) {
-    console.error("FAILED...", error.text);
-    setIsLoading(false);
-  }
-};
+      setTimeout(() => {
+        setSubmitted(false);
+      }, 3000);
+    } catch (error) {
+      console.error("FAILED...", error.text);
+      setIsLoading(false);
+    }
+  };
 
 
   // Function to show Calendly widget
@@ -176,6 +176,13 @@ const Footer = () => {
     e.preventDefault();
     window.open('https://calendly.com/sakshamjainiitr', '_blank');
   };
+
+  useEffect(() => {
+  const savedScore = localStorage.getItem('score');
+  if (savedScore) {
+    setScore(parseInt(savedScore, 10) || 0);
+  }
+}, []);
 
   // Handle keyboard events
   useEffect(() => {
@@ -520,7 +527,11 @@ const Footer = () => {
 
           if (distance < pacmanRadius) {
             eatenDots.push(dot.id);
-            setScore(s => s + 10);
+            setScore(s => {
+              const newScore = s + 10;
+              localStorage.setItem('score', newScore.toString());
+              return newScore;
+            });
           }
         });
 
@@ -544,11 +555,11 @@ const Footer = () => {
 
 
   return (
-    <div ref={footerRef} id="footer" className="container max-w-full py-6 px-6 mx-auto xl:px-36 lg:px-14 sm:px-4 relative z-30">
+    <div ref={footerRef} id="footer" className="container max-w-full pb-[4vh] px-6 mx-auto xl:px-36 lg:px-14 sm:px-4 relative z-30 min-h-screen flex flex-col justify-between">
       {/* Game Area */}
       <div
         ref={gameAreaRef}
-        className="relative w-full overflow-hidden"
+        className="relative w-full overflow-hidden pt-[16vh]"
         style={{ minHeight: '350px' }}
       >
         {/* Pacman - Always render */}

@@ -37,7 +37,7 @@ const desktopNavLinks = [
     },
     {
         title: "Resume",
-        path: "https://drive.google.com/file/d/1nHBW7guJvgIO5H5-QiPUCrRkAWXpQHsg/view?usp=sharing",
+        path: "https://drive.google.com/file/d/1FlUNdu_kKrjWGUyURgATFx2ihJzsD4Q6/view?usp=sharing",
     },
     {
         title: "Contact",

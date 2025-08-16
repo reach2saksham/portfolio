@@ -7,7 +7,7 @@ const HeroText = () => {
 
 
   return (
-    <div className="w-full flex flex-wrap items-center pt-6 md:pt-2 text-white text-lg font-medium gap-2 herointro">
+    <div className="w-full flex flex-wrap items-center pt-4 text-white text-lg font-medium gap-2 herointro">
       <span>Hi, I&apos;m Saksham Jain</span>
 
       <div
@@ -50,15 +50,17 @@ const HeroText = () => {
         </motion.div>
       </div>
 
-      <a className='block lg:hidden pl-2' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
-        <Image
-          className="lg:grayscale lg:hover:grayscale-0 transition duration-300"
-          src='/linkedin.svg'
-          width={30}
-          height={30}
-          alt='LinkedIn Icon'
-        />
-      </a>
+              <a className='block lg:hidden' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
+          <Image
+            className="sm:grayscale sm:hover:grayscale-0 ml-2 hover:scale-[115%] transition duration-300"
+            src='/linkedin.svg'
+            width={30}
+            height={30}
+            alt='LinkedIn Icon'
+          />
+        </a>
+
+
 
       <div className='flex items-center gap-4 flex-wrap herointro text-lg'>
         <p className='hidden lg:block'>Press </p>
@@ -68,7 +70,7 @@ const HeroText = () => {
         <p className='hidden lg:block'>with me!</p>
         <a className='hidden lg:block' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
           <Image
-            className="lg:grayscale lg:hover:grayscale-0 hover:scale-[135%] transition duration-300"
+            className="sm:grayscale sm:hover:grayscale-0 hover:scale-[135%] transition duration-300"
             src='/linkedin.svg'
             width={28}
             height={28}
@@ -79,16 +81,26 @@ const HeroText = () => {
         {/* Mobile text with Resume button */}
         <div className='block lg:hidden flex flex-col gap-3'>
           <p>Currently a undergrad student at IIT Roorkee</p>
-
         </div>
+        
+        {/* <div className='flex items-center gap-2 flex-wrap herointro text-lg -mt-1'>
+          <p className=''>Click</p>
+          <a href='https://calendly.com/sakshamjainiitr' target='_blank' className='herointrobold -mx-2md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent hover:scale-110 '>&lsquo; Here &rsquo;</a>
+          <p className=''>to schedule a</p>
+          <a href='https://calendly.com/sakshamjainiitr' target='_blank' className='herointrobold -mx-2md:text-xl bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent hover:scale-105'>Meeting</a>
+          <p className=''>with me!</p>
+          <a className='' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/"></a>
+        </div> */}
+
         <a
-          href="https://drive.google.com/file/d/1nHBW7guJvgIO5H5-QiPUCrRkAWXpQHsg/view?usp=sharing"
+          href="https://drive.google.com/file/d/1FlUNdu_kKrjWGUyURgATFx2ihJzsD4Q6/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className="block md:hidden tags px-4 py-2 text-sm  rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-purple-950 shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
+          className="block md:hidden tags px-4 py-2 text-sm  rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-violet-950 font-semibold shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
         >
           View Resume
         </a>
+
       </div>
     </div>
   );

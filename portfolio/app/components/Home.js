@@ -129,7 +129,9 @@ export default function Home() {
         <motion.div
           className={`w-fit flex bg-red items-center justify-start max-w-full container
              mx-auto 
-             sm:mt-[48px]
+             sm:mt-[8vh]
+             lg:mt-[10vh]
+             xl:mt-[8vh]
              min-[390px]:mt-[104px]
              mt-[76px]
              xl:px-36 
