@@ -148,7 +148,7 @@ const Page = () => {
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
                     <div className="w-full lg:w-3/4 pb-4 lg:pb-0 mt-14 sm:mt-0">
                         <Image
-                            src="/consult/policybazaar/cover.avif"
+                            src="/business/policybazaar/cover.avif"
                             width={1080}
                             height={400}
                             alt="Cover"
@@ -317,7 +317,7 @@ const Page = () => {
                         </div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
-                            src='/consult/policybazaar/1.avif'
+                            src='/business/policybazaar/1.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -332,14 +332,14 @@ const Page = () => {
                             <div className='text-3xl company'>FOUNDATION</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-4'
-                            src='/consult/policybazaar/2.avif'
+                            src='/business/policybazaar/2.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <ExpandImage className='w-full h-full object-cover pt-4'
-                            src='/consult/policybazaar/3.avif'
+                            src='/business/policybazaar/3.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -357,14 +357,14 @@ const Page = () => {
                             />
                         </div>
                         <ExpandImage className='w-full h-full object-cover '
-                            src='/consult/policybazaar/4.avif'
+                            src='/business/policybazaar/4.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <ExpandImage className='w-full h-full object-cover pt-4'
-                            src='/consult/policybazaar/5.avif'
+                            src='/business/policybazaar/5.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -385,7 +385,7 @@ const Page = () => {
                             <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
                         </a>
                         <ExpandImage className='w-full h-full object-cover pt-4'
-                            src='/consult/policybazaar/7a.png'
+                            src='/business/policybazaar/7a.png'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -399,7 +399,7 @@ const Page = () => {
                             <div className='text-3xl company'>STRATEGY</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-4'
-                            src='/consult/policybazaar/8.avif'
+                            src='/business/policybazaar/8.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -417,7 +417,7 @@ const Page = () => {
                             className='pt-12 text-3xl company'>FINANCIALS & INVESTORS</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
-                            src='/consult/policybazaar/9.avif'
+                            src='/business/policybazaar/9.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -425,7 +425,7 @@ const Page = () => {
                         />
                         <div className='py-4'>{`At first glance, this financial chart may suggest that Policybazaar is incurring losses, as its expenses appear to exceed revenue. However, it's important to note that this data represents Policybazaar alone, not the entire parent company, PB Fintech Ltd. A deeper look into the stock analysis of PB Fintech reveals the full picture, uncovering the actual business model and strategic play behind Policybazaar's operations.`}</div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/9a.jpg'
+                            src='/business/policybazaar/9a.jpg'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -562,7 +562,7 @@ const Page = () => {
 
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
-                            src='/consult/policybazaar/10.avif'
+                            src='/business/policybazaar/10.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -570,7 +570,7 @@ const Page = () => {
                         />
                         <div className='py-4'>{`You'll be able to find the strategic entry of key investors like Info Edge, Tiger Global, Tencent, and others within the company's timeline section, each bringing not just capital, but market influence and domain expertise at critical phases of Policybazaar's growth. `}</div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/11.avif'
+                            src='/business/policybazaar/11.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -582,7 +582,7 @@ const Page = () => {
                             <div className='text-3xl company'>VISION & USP</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/12.avif'
+                            src='/business/policybazaar/12.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -688,7 +688,7 @@ const Page = () => {
                             <div className='text-3xl company'>COMPETITOR ANALYSIS</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/13.avif'
+                            src='/business/policybazaar/13.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -701,7 +701,7 @@ const Page = () => {
                             <div className='text-3xl company'>SUBSIDARIES</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/14.avif'
+                            src='/business/policybazaar/14.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -709,21 +709,21 @@ const Page = () => {
                         />
                         <div className='py-4'>{`Paisabazaar is expanding from personal loans to home and property loans, now making up over 30% of its disbursals, supported by an offline agent network. It partners with banks to launch exclusive offerings like StepUP and Duet cards, generating long-term revenue through customer usage. Over 50 million users have accessed free credit scores via Paisabazaar, making it a leading platform for financial literacy and access.`}</div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/15.avif'
+                            src='/business/policybazaar/15.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/16.avif'
+                            src='/business/policybazaar/16.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/17.avif'
+                            src='/business/policybazaar/17.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -735,21 +735,21 @@ const Page = () => {
                             <div className='text-3xl company'>MARKET</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/18.avif'
+                            src='/business/policybazaar/18.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/19.avif'
+                            src='/business/policybazaar/19.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/20.avif'
+                            src='/business/policybazaar/20.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -761,21 +761,21 @@ const Page = () => {
                             <div className='text-3xl company'>PRESENT PRODUCT</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/21.avif'
+                            src='/business/policybazaar/21.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/22.avif'
+                            src='/business/policybazaar/22.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
                             priority
                         />
                         <ExpandImage className='w-full h-full object-cover'
-                            src='/consult/policybazaar/22a.png'
+                            src='/business/policybazaar/22a.png'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -787,7 +787,7 @@ const Page = () => {
                             <div className='text-3xl company'>CURRENT AFFIARS</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/23.avif'
+                            src='/business/policybazaar/23.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -799,7 +799,7 @@ const Page = () => {
                             <div className='text-3xl company'>CURRENT DRAWBACKS</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
-                            src='/consult/policybazaar/24.avif'
+                            src='/business/policybazaar/24.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'

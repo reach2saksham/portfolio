@@ -28,7 +28,7 @@ const Card = (props) => {
   return (
     <div
       className='cursor-pointer z-30 relative'
-      onClick={() => window.open(props.docsLink || '#', '_self')}
+      onClick={() => window.open(props.docsLink || '#', '_blank')}
       onMouseEnter={handleMouseEnter}
       onMouseMove={handleMouseMove}
       onMouseLeave={handleMouseLeave}

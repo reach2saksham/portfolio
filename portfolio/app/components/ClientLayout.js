@@ -6,7 +6,7 @@ import Starsbackground from './Starbackground';
 
 export default function ClientLayout({ children }) {
   const pathname = usePathname();
-  const excludedPaths = ['/design', '/product', '/consult'];
+  const excludedPaths = ['/design', '/product', '/business'];
   const showStars = !excludedPaths.some((path) => pathname?.includes(path));
 
   // Calendly shortcut listener

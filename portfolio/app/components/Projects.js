@@ -62,10 +62,10 @@ let designitems = {
   },
 };
 
-let consultitems = {
+let businessitems = {
   card1: {
     title: `Deriving a New Production Optimization Strategy for a B2B Company`,
-    image: '/consult/operatopolis/thumbnail.avif',
+    image: '/business/operatopolis/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -74,11 +74,11 @@ let consultitems = {
     domain: ['Supply Chain', 'Manufacturing', 'Operations'],
     impact: ['Cost/piece↓ by 34% keeping a 5-day workweek'],
     description: `Capacity and Labour Planning and Cost Optimization for a Fabrication company with strategic Order Fulfillment demand. Secured 2nd Runner-up position among 330+ teams in Operatopolis 3.0 at BIMTECH.`,
-    docsLink: '/consult/operatopolis',
+    docsLink: '/business/operatopolis',
   },
   card2: {
     title: `Making BoldCare the next D2C Indian Leader in Wellness : Strategy & Growth Plan`,
-    image: '/consult/bold-care/thumbnail.avif',
+    image: '/business/bold-care/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -87,12 +87,12 @@ let consultitems = {
     domain: ['Wellness', 'E-Commerce'],
     impact: ['Projected 3x revenue in 12 months'],
     description: `Covered GTM, branding & investor strategy for BoldCares next phase. Conducted profit/loss, market, user analysis to craft 20+ strategies. National Finalist in top 20 of 1600+ teams.`,
-    docsLink: '/consult/bold-care',
+    docsLink: '/business/bold-care',
   },
 
   card3: {
     title: `Rebranding & Crisis Recovery Post Emission Scandal of Gryphon Motors`,
-    image: '/consult/c-suite/thumbnail.avif',
+    image: '/business/c-suite/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -101,12 +101,12 @@ let consultitems = {
     domain: ['Corporate Ethics', 'Sustainibility'],
     impact: ['Investor confidence ↑, -ve customer sentiment ↓'],
     description: `Led a 5-phase recovery in rebranding, employees, sustainibility, PR Pan, etc. Secured 1st position among 200+ teams in C-Suite 8.0 at IBS Hyderabad.`,
-    docsLink: '/consult/c-suite',
+    docsLink: '/business/c-suite',
   },
 
   card4: {
     title: `Policybazaar: Extensive Analysis and deciphering Business Model`,
-    image: '/consult/policybazaar/thumbnail.avif',
+    image: '/business/policybazaar/thumbnail.avif',
     width: 350,
     height: 380,
     alt: 'Mockup',
@@ -115,7 +115,7 @@ let consultitems = {
     domain: ['Fintech', 'InsureTech'],
     impact: ['Thorougly understood their Business Model'],
     description: `Breakdown of an early stage startup's vision, market, risks, and growth path by combining founder analysis, UI/UX audits, TAM/SAM/SOM sizing, and investor trends.`,
-    docsLink: '/consult/policybazaar',
+    docsLink: '/business/policybazaar',
     liveLink: 'https://prezi.com/p/r8_qiiuwhtrt/?present=1'
   }
 };
@@ -181,7 +181,7 @@ const Projects = () => {
 
   const columns = [
     { title: 'DESIGN', content: Object.entries(designitems) },
-    { title: 'CONSULT', content: Object.entries(consultitems) },
+    { title: 'BUSINESS', content: Object.entries(businessitems) },
     { title: 'PRODUCT', content: Object.entries(productitems) },
   ];
 

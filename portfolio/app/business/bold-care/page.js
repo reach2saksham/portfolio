@@ -143,7 +143,7 @@ const Page = () => {
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
                     <div className="w-full lg:w-3/4 pb-4 lg:pb-0 mt-14 sm:mt-0">
                         <Image
-                            src="/consult/bold-care/cover.avif"
+                            src="/business/bold-care/cover.avif"
                             width={1080}
                             height={400}
                             alt="Cover"
@@ -313,7 +313,7 @@ const Page = () => {
                             THE HIGHLIGHTS
                         </div>
                         <ExpandImage className='w-full h-fobject-cover pb-4'
-                            src='/consult/bold-care/selection.avif'
+                            src='/business/bold-care/selection.avif'
                             width={1660}
                             height={800}
                             alt='Small Banner'
@@ -326,7 +326,7 @@ const Page = () => {
                         </div>
 
                             <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/bold-care/ps.avif'
+                                src='/business/bold-care/ps.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -337,7 +337,7 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>BUSINESS CANVAS</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/bold-care/1.png'
+                                src='/business/bold-care/1.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -348,7 +348,7 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>USER RESEARCH</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/bold-care/2.png'
+                                src='/business/bold-care/2.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -358,7 +358,7 @@ const Page = () => {
                                 id='marketing'
                                 className='pt-12 text-3xl company'>MARKETING STRATEGIES</div>
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/bold-care/3.png'
+                                src='/business/bold-care/3.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -369,7 +369,7 @@ const Page = () => {
                                 className='pt-12 text-3xl company'>EXPANSION STRATEGIES</div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/bold-care/4.png'
+                                src='/business/bold-care/4.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -379,7 +379,7 @@ const Page = () => {
                                 id='gtm'
                                 className='pt-12 text-3xl company'>GTM AND IT'S IMPACT</div>
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/bold-care/5.png'
+                                src='/business/bold-care/5.png'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
@@ -389,7 +389,7 @@ const Page = () => {
                                 id='refer'
                                 className='pt-12 text-3xl company'>REFERENCES</div>
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/bold-care/6.avif'
+                                src='/business/bold-care/6.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'

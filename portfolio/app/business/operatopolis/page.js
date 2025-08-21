@@ -11,13 +11,14 @@ const SECTIONS_CONFIG = {
     'Overview': 'overview',
     'Highlights': 'highlights',
     'The Problem': 'problem',
-    'TL;DR Problem Statement': 'tldr',
-    'SWOT Analysis': 'swot',
-    'Strategies and Impact': 'strategies'
+    'Problem Breakdown': 'breakdown',
+    'Initial Conditions': 'initial',
+    'Solution Method': 'tmm',
+    'Impact': 'impact',
 };
 
 const caseStudy = {
-    industry: 'Automotive Industry',
+    industry: 'Manufacturing in Secondary Sector',
     techStack: {
         'Design Tool': ['canva'],
         'Analyst Tool': ['excel'],
@@ -27,77 +28,59 @@ const caseStudy = {
         'canva': 'Canva',
         'excel': 'MS Excel',
     },
-    companyName: 'C-SUITE 8.0',
-    period: 'November 2024',
-    domain: 'CRISIS MANAGEMENT CASE',
-    description: `This case study examines the emissions smirch that engulfed Gryphon Motors in 2001, where the company was found guilty of installing defeat devices in diesel vehicles to manipulate emissions tests. The scandal triggered a global backlash, legal penalties, and reputational damage. In this study, I analyze the ethical, and operational fallout of the crisis and propose strategic solutions for rebuilding stakeholder trust, realigning corporate culture, and driving long-term sustainability through innovative reforms.`,
-    sections: Object.keys(SECTIONS_CONFIG), // Use the centralized config
-    role: ['Cheif Executive Officer'],
-    collaborators: ['Aashi Jain'],
-    deliverables: ['Strategic Recommendations', 'Campaign Concepts', 'Implementation Plan'],
-    timelineStatus: ['Gold Medalist', 'Completed'],
+    companyName: 'OPERATOPOLIS',
+    period: 'Februrary 2025',
+    domain: 'CONSULT STRATEGY DECK',
+    description: `This project involved analyzing a Fabricator company's end-to-end production capabilities to determine whether the company could fulfill a high-volume, time-sensitive order from Dhanashree Forge Ltd. The goal was to assess daily processing capacity under variability, identify constraints, and evaluate cost-effective alternatives such as overtime or workforce reallocation to meet delivery commitments while maintaining quality and profitability.`,
+    sections: Object.keys(SECTIONS_CONFIG),
+    role: ['Strategy Consultant', 'Operations Analyst', 'Marketing Strategist'],
+    collaborators: ['Aashi Jain', 'Akankshya Priyadarshini'],
+    deliverables: [ 'Cost per piece reduction', 'Production capacity optimisation', 'Working Hours optimisation',],
+    timelineStatus: ['2nd Runner up', 'Completed'],
     //   links: {
     //     liveProduct: 'https://rankmatrix.in/',
     //     // figmaFile: 'https://figma.com',
     //   },
-    thewhat: `The central problem revolves around Gryphon Motors' deliberate use of software to falsify diesel emissions data, betraying consumer trust, violating environmental laws, and misleading global regulators. The manipulation led to widespread fallout, massive lawsuits, plummeting stock prices, CEO resignation, and irreversible damage to the brand's credibility. The case underscores a systemic failure in corporate ethics, governance, and risk management, requiring a complete overhaul of the company's culture and long-term strategy.`,
-    thewhy: `This case is significant because it highlights the devastating impact of unethical leadership and short-term gain over long-term integrity. It emphasizes the importance of corporate responsibility in a hyper-regulated and environmentally sensitive world. For business leaders, it serves as a compelling lesson on how quickly a brand built over decades can unravel due to poor ethical judgment. It also offers insights into stakeholder management, regulatory compliance, and crisis communication—core skills for future decision-makers across industries.`,
-    thehow: `The case is approached by analyzing Gryphon Motors timeline of actions, decisions, and responses from the moment the smirch was uncovered. It involves a critical evaluation of stakeholder impact, legal consequences, leadership accountability, and communication strategy. The study then examines the company's recovery playbook—its shift to electric vehicles, rebranding efforts, internal ethical reforms, and Strategy 2025.`,
+    thewhat: `To supply 500 finished components weekly for ten weeks to Dhanashree Forge—a reputed domestic and global supplier. The production line followed a five-stage process involving machining, heat treatment, finishing, and quality packing. Each stage had specific time and labor requirements, variability in processing times further complicated capacity estimation.`,
+    thewhy: `The large order created a tough trade-off between controlling costs and maintaining humane labor conditions. Meeting the demand either required expensive additional labor or pushed existing workers into excessive overtime. Despite these challenges, the opportunity to partner with Dhanashree Forge promised long-term benefits, making it critical to find a sustainable and balanced fulfillment strategy.`,
+    thehow: `We began by breaking down and quantifying the problem to understand the company’s current capacity and constraints. After evaluating standard industry solutions—like buffer stock estimation at 95% confidence, extended workdays, and additional workforce deployment—we identified their limitations in this specific context. To overcome these, we developed a custom approach: the Trapezoidal Matrix Method, which is discussed in this case study.`,
 };
 
 const Page = () => {
     const [selectedSection, setSelectedSection] = useState(0);
     const [activeMode, setActiveMode] = useState('dark');
-    const [isManualClick, setIsManualClick] = useState(false);
 
     // Scroll-based section highlighting
     useEffect(() => {
         const observerOptions = {
             root: null,
-            rootMargin: '-10% 0px -60% 0px', // More lenient trigger zones
-            threshold: [0, 0.1, 0.25] // Multiple thresholds for better detection
+            rootMargin: '-20% 0px -70% 0px', // Trigger when section is 20% from top
+            threshold: 0.1
         };
 
         const observerCallback = (entries) => {
-            // Don't update if user just clicked manually
-            if (isManualClick) return;
-            
-            // Find the entry with the highest intersection ratio that's actually intersecting
-            let bestEntry = null;
-            let highestRatio = 0;
-            
             entries.forEach((entry) => {
-                if (entry.isIntersecting && entry.intersectionRatio > highestRatio) {
-                    bestEntry = entry;
-                    highestRatio = entry.intersectionRatio;
-                }
-            });
-            
-            if (bestEntry) {
-                const sectionId = bestEntry.target.id;
-                console.log('Section in view:', sectionId, 'Ratio:', bestEntry.intersectionRatio); // Debug log
-                
-                // Find the section index based on the ID
-                const sectionName = Object.keys(SECTIONS_CONFIG).find(key => SECTIONS_CONFIG[key] === sectionId);
-                if (sectionName && caseStudy.sections) {
-                    const sectionIndex = caseStudy.sections.indexOf(sectionName);
-                    if (sectionIndex !== -1) {
-                        setSelectedSection(sectionIndex);
+                if (entry.isIntersecting) {
+                    const sectionId = entry.target.id;
+                    // Find the section index based on the ID
+                    const sectionName = Object.keys(SECTIONS_CONFIG).find(key => SECTIONS_CONFIG[key] === sectionId);
+                    if (sectionName && caseStudy.sections) {
+                        const sectionIndex = caseStudy.sections.indexOf(sectionName);
+                        if (sectionIndex !== -1) {
+                            setSelectedSection(sectionIndex);
+                        }
                     }
                 }
-            }
+            });
         };
 
         const observer = new IntersectionObserver(observerCallback, observerOptions);
 
-        // Observe all sections and log which ones are found
+        // Observe all sections
         caseStudy.sections.forEach((section) => {
             const element = document.getElementById(SECTIONS_CONFIG[section]);
             if (element) {
-                console.log('Observing section:', section, 'with ID:', SECTIONS_CONFIG[section]); // Debug log
                 observer.observe(element);
-            } else {
-                console.warn('Section not found:', section, 'with ID:', SECTIONS_CONFIG[section]); // Debug log
             }
         });
 
@@ -105,12 +88,10 @@ const Page = () => {
         return () => {
             observer.disconnect();
         };
-    }, [isManualClick]);
+    }, []);
 
     const handleSectionClick = (index, section) => {
-        setIsManualClick(true);
         setSelectedSection(index);
-        
         const element = document.getElementById(SECTIONS_CONFIG[section]);
         if (element) {
             element.scrollIntoView({
@@ -118,11 +99,6 @@ const Page = () => {
                 block: 'start'
             });
         }
-
-        // Re-enable observer after scroll animation completes
-        setTimeout(() => {
-            setIsManualClick(false);
-        }, 1000); // Adjust timing as needed
     };
 
     // Helper function to check if links exist
@@ -130,8 +106,8 @@ const Page = () => {
 
     return (
         <main
-        className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
-        <div id='overview' ></div>
+            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
+                <div id='overview'></div>
             <Navbar />
             <div
                 className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
@@ -140,7 +116,7 @@ const Page = () => {
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
                     <div className="w-full lg:w-3/4 pb-4 lg:pb-0 mt-14 sm:mt-0">
                         <Image
-                            src="/consult/c-suite/1.avif"
+                            src="/business/operatopolis/poster.avif"
                             width={1080}
                             height={400}
                             alt="Cover"
@@ -309,20 +285,30 @@ const Page = () => {
                             className='company text-3xl pt-12 mb-2'>
                             THE HIGHLIGHTS
                         </div>
-                        <div className='flex flex-col lg:flex-row gap-1 justify-center items-center pt-4'>
+
+                        <div className='flex flex-col lg:flex-row gap-1 justify-center items-center'>
                             <div>
-                                <ExpandImage className='w-full h-full object-cover'
-                                    src='/consult/c-suite/certificate.avif'
-                                    width={520}
+                                <ExpandImage className='object-cover'
+                                    src='/business/operatopolis/certificate.png'
+                                    width={306}
                                     height={800}
                                     alt='Small Banner'
                                     priority
                                 />
                             </div>
                             <div>
-                                <ExpandImage className='w-full h-full object-cover'
-                                    src='/consult/c-suite/igpost.avif'
-                                    width={398}
+                                <ExpandImage className='object-cover'
+                                    src='/business/operatopolis/highlight.png'
+                                    width={306}
+                                    height={800}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                            </div>
+                            <div>
+                                <ExpandImage className='object-cover'
+                                    src='/business/operatopolis/selection.png'
+                                    width={306}
                                     height={800}
                                     alt='Small Banner'
                                     priority
@@ -332,122 +318,92 @@ const Page = () => {
                         <div
                             id='problem'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>THE PROBLEM</div>
+                            <div className='text-3xl company'>PROBLEM STATEMENT</div>
                         </div>
+                            <ExpandImage className='w-full h-full object-cover'
+                                src='/business/operatopolis/ps.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner'
+                                priority
+                            />
+                            <div
+                                id='breakdown'
+                                className='pt-12 text-3xl company'>PROBLEM BREAKDOWN</div>
 
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps1.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps2.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps3.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps4.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps5.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps6.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps7.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps8.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <ExpandImage className='w-full h-full object-cover pt-4'
-                                src='/consult/c-suite/ps9.avif'
-                                width={1660}
-                                height={800}
-                                alt='Small Banner'
-                                priority
-                            />
-                            <div
-                            id='tldr'
-                            className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>TL;DR Problem Statement</div>
-                            <div className='pt-4'>{`In 2001, Gryphon Motors was exposed for installing defeat devices in over 11 million diesel vehicles, causing them to emit up to 40 times the legal pollution limit while appearing compliant during tests. The fallout included over $30 billion in global penalties and settlements, a 40% drop in stock value, and the resignation of top leadership. This case explores how Gryphon Motors can rebuild investor confidence, employee morale, and public trust while shifting strategically toward electric mobility, ethical governance, and sustainable growth.`}</div>
-                        </div>
-                            <div
-                                id='swot'
-                                className='pt-12 text-3xl company'>SWOT ANALYSIS</div>
+                            <div className='flex flex-col md:flex-row gap-1'>
+                                <ExpandImage className='object-cover'
+                                    src='/business/operatopolis/pb1.avif'
+                                    width={464}
+                                    height={240}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                                <ExpandImage className='object-cover'
+                                    src='/business/operatopolis/pb2.avif'
+                                    width={464}
+                                    height={240}
+                                    alt='Small Banner'
+                                    priority
+                                />
+                            </div>
 
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/c-suite/2.avif'
+                                src='/business/operatopolis/1.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <div
-                                id='strategies'
-                                className='pt-12 text-3xl company'>STRATEGIES AND IMPACT</div>
+                                id='initial'
+                                className='pt-12 text-3xl company'>INITIAL CONDITIONS</div>
+
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/c-suite/3.avif'
+                                src='/business/operatopolis/5.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/c-suite/4.avif'
+                                src='/business/operatopolis/6.avif'
+                                width={1660}
+                                height={800}
+                                alt='Small Banner'
+                                priority
+                            />
+                            <div
+                                id='tmm'
+                                className='pt-12 text-3xl company'>TRAPEZOIDAL MATRIX METHOD</div>
+
+                            <ExpandImage className='w-full h-full object-cover pt-2'
+                                src='/business/operatopolis/7.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/c-suite/5.avif'
+                                src='/business/operatopolis/8.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/c-suite/6.avif'
+                                src='/business/operatopolis/9.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
                                 priority
                             />
+                            <div
+                                id='impact'
+                                className='pt-12 text-3xl company'>IMPACT</div>
+
                             <ExpandImage className='w-full h-full object-cover pt-2'
-                                src='/consult/c-suite/7.avif'
+                                src='/business/operatopolis/10.avif'
                                 width={1660}
                                 height={800}
                                 alt='Small Banner'
