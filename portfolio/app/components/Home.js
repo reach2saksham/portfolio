@@ -117,7 +117,7 @@ export default function Home() {
       return { x: 0, y: 0 };
     }
     return {
-      x: isDiscClicked ? -205 : 0,
+      x: isDiscClicked ? -180 : 0,
       y: 0
     };
   };
@@ -134,7 +134,7 @@ export default function Home() {
              xl:mt-[8vh]
              min-[390px]:mt-[104px]
              mt-[76px]
-             xl:px-36 
+             xl:px-28 
              lg:px-14 
              sm:px-4 
              px-4 z-40 ${!isMobile && isDiscClicked ? 'fixed' : 'absolute'}`}

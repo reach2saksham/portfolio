@@ -130,7 +130,7 @@ const Navbar = () => {
 
   return (
     <nav className='navbar fixed sm:sticky top-0 left-0 right-0 bg-black z-50'>
-      <div className='flex flex-wrap items-center justify-between mx-auto p-3 sm:px-4 lg:px-14 xl:px-36'>
+      <div className='flex flex-wrap items-center justify-between mx-auto p-3 sm:px-4 lg:px-14 xl:px-28'>
 
         {/* Mobile View - Only Navigation Links */}
         <div className='menu w-full md:hidden' id='navbar-mobile'>

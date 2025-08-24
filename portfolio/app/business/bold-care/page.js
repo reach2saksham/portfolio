@@ -137,7 +137,7 @@ const Page = () => {
         <div id='overview' ></div>
             <Navbar />
             <div
-                className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-36 lg:px-14 sm:px-4">
+                className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-28 lg:px-14 sm:px-4">
                 {/* Header Section */}
                 <div
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">

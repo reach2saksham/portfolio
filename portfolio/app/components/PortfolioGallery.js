@@ -116,7 +116,7 @@ const PortfolioGallery = () => {
 
   const aboutProjects = [
     { name: "@cooking", handle: "1" },
-    { name: "@अवतरण दिवस", handle: "2" },
+    { name: "@अवतरण", handle: "2" },
     { name: "@Respect+", handle: "3" },
     { name: "@gaming", handle: "4" },
     { name: "@cosplay", handle: "5" },
@@ -178,7 +178,7 @@ const PortfolioGallery = () => {
       onMouseMove={mouseMove}
       onTouchMove={handleTouchMove}
       onTouchStart={handleTouchStart}
-      className="text-white overflow-x-hidden relative container max-w-full mx-auto xl:px-36 lg:px-14 sm:px-4 px-4 z-10 tags"
+      className="text-white overflow-x-hidden relative container max-w-full mx-auto xl:px-28 lg:px-14 sm:px-4 px-4 z-10 tags"
       style={{ 
         backgroundColor: 'transparent'
       }}

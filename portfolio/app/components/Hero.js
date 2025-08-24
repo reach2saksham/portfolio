@@ -27,7 +27,7 @@
     }, [router]);
 
     return (
-      <div className="min-h-screen w-full px-6 md:px-8 lg:px-16 xl:px-[150px] items-center relative overflow-hidden flex justify-center">
+      <div className="min-h-screen w-full px-6 md:px-8 lg:px-16 xl:px-28 items-center relative overflow-hidden flex justify-center">
         <motion.div
           className="flex w-full pb-24"
 
@@ -237,7 +237,7 @@
           </div>
 
           {/* Right side Spline 3D scene - Maintain high z-index for robot interactions */}
-          {isSplineVisible && <div className="w-[40%] hidden xl:block absolute right-14 z-50">
+          {isSplineVisible && <div className="w-[36%] bg-green-500 hidden xl:block absolute right-14 z-50">
             <SplineScene />
           </div>}
 

@@ -131,7 +131,7 @@ export default function MaskEffect() {
                 </span>
             </motion.div>
 
-            <div className="w-full h-full flex items-center justify-start -m-4 lg:pl-8 xl:pl-[122px] leading-[48px] sm:leading-[56px] md:leading-[66px] text-[42px] sm:text-[56px] md:text-6xl relative z-20 select-none">
+            <div className="w-full h-full flex items-center justify-start -m-4 lg:pl-8 xl:pl-[84px] leading-[48px] sm:leading-[56px] md:leading-[66px] text-[42px] sm:text-[56px] md:text-6xl relative z-20 select-none">
                 <span
                     className="w-[1000px] text-[#c1b3a5] px-10 md:px-10 flex flex-col gap-6"
                     // REMOVED event handlers from this underlying, non-interactive element
