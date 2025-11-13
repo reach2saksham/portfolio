@@ -542,8 +542,6 @@ const Page = () => {
                                     <BlurImage src="/design/img-brand/ig1.avif" width={460} height={460} title="Open Source Workshop 2024" subtitle="A poster for inviting students" alt="Small Banner" />
                                     <BlurImage src="/design/img-brand/rankmatrix2.avif" width={460} height={460} title="Rank Matrix Launch 2024" subtitle={<>Read Rank Matrix, <a href="" className="text-blue-500 hover:underline">Case Study Here!</a></>} alt="Another Banner" />
                                 </div>
-
-                                <div className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</div>
                             </div>
                         </div>
                     </div>

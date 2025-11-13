@@ -43,9 +43,9 @@ const caseStudy = {
     //     liveProduct: 'https://rankmatrix.in/',
     //     // figmaFile: 'https://figma.com',
     //   },
-    thewhat: `VéVana is a sustainable fashion initiative that transforms rice stubble into biodegradable vegan leather. Our mission is to offer a high-quality, cruelty-free, and eco-friendly alternative to traditional leather—built on a zero-waste circular model.`,
+    thewhat: `VéVana is a sustainable fashion initiative that transforms rice stubble into biodegradable vegan leather. Our mission is to offer a high-quality, cruelty-free, and eco-friendly alternative to traditional leather, built on a zero-waste circular model.`,
     thewhy: `Every year, over 92 million tons of rice stubble are burned in India, severely affecting air quality and public health. At the same time, the leather industry consumes excessive water, pollutes with toxic chemicals, and relies on animal slaughter. VéVana was born to solve these interconnected problems with one sustainable solution.`,
-    thehow: `I was deeply inspired by the growing use of Mycelium-based technologies in sustainable fashion and noticed its presence across our competitive landscape. After conducting thorough market research, we realized that developing a similar product using rice stubble would be feasible—especially with access to the Biotechnology lab at IIT Roorkee. Being selected at the international level further validated our approach and progress.`,
+    thehow: `I was deeply inspired by the growing use of Mycelium-based technologies in sustainable fashion and noticed its presence across our competitive landscape. After conducting thorough market research, we realized that developing a similar product using rice stubble would be feasible, especially with access to the Biotechnology lab at IIT Roorkee. Being selected at the international level further validated our approach and progress.`,
 };
 
 const Page = () => {
