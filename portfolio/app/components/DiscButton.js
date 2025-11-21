@@ -16,7 +16,7 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
 
   // Memoize music tracks to prevent recreation on every render
   const musicTracks = useMemo(() => [
-    '/music/kids.mp3',
+    '/music/kidstheme.mp3',
     '/music/yourname.mp3',
     '/music/interstellar.mp3',
     '/music/rude.mp3',

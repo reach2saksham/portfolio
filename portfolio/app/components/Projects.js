@@ -6,7 +6,7 @@ import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
 // Your data objects remain the same
 let designitems = {
   card1: {
-    title: `A project and employee tracking dashboard for High-profile companies `,
+    title: `A project and employee tracking dashboard for High-profile company clients `,
     image: '/design/uix-labs/thumbnail.avif',
     width: 350,
     height: 380,
