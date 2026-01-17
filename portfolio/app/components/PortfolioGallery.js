@@ -178,7 +178,7 @@ const PortfolioGallery = () => {
       onMouseMove={mouseMove}
       onTouchMove={handleTouchMove}
       onTouchStart={handleTouchStart}
-      className="text-white overflow-x-hidden relative container max-w-full mx-auto xl:px-28 lg:px-14 sm:px-4 px-4 z-10 tags"
+      className="text-white overflow-x-hidden relative container max-w-full mx-auto xl:px-24 lg:px-14 sm:px-4 px-4 z-10 tags"
       style={{ 
         backgroundColor: 'transparent'
       }}

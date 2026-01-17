@@ -8,7 +8,7 @@ const About = () => {
   return (
     <div 
     id='about'
-    className='container flex flex-col justify-center items-center max-w-full px-4 pt-4 mx-auto xl:px-28 lg:px-14 sm:px-4 z-40'>
+    className='container flex flex-col justify-center items-center max-w-full px-4 pt-4 mx-auto xl:px-24 lg:px-14 sm:px-4 z-40'>
       
       <div className='relative z-40'>
         <motion.div

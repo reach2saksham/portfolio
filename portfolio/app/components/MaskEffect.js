@@ -84,7 +84,7 @@ export default function MaskEffect() {
                 className="
                 w-full h-full absolute
                 flex items-center justify-start 
-                -m-4 lg:pl-8 xl:pl-[84px] min-[383px]:pb-12 min-[412px]:pb-24 min-[438px]:pb-12 min-[477px]:pb-24 min-[489px]:pb-36 min-[517px]:pb-48 min-[526px]:pb-36 min-[553px]:pb-24 min-[557px]:pb-12 min-[663px]:pb-[216px] min-[674px]:pb-40 min-[711px]:pb-[104px] min-[717px]:pb-12 md:pb-0
+                -m-4 lg:pl-8 xl:pl-[74px] min-[383px]:pb-12 min-[412px]:pb-24 min-[438px]:pb-12 min-[477px]:pb-24 min-[489px]:pb-36 min-[517px]:pb-48 min-[526px]:pb-36 min-[553px]:pb-24 min-[557px]:pb-12 min-[663px]:pb-[216px] min-[674px]:pb-40 min-[711px]:pb-[104px] min-[717px]:pb-12 md:pb-0
                 leading-[48px] sm:leading-[56px] md:leading-[66px] 
                 text-[42px] sm:text-[56px] md:text-6xl 
                  bg-gradient-to-b from-[#BA3C97] to-[#E000C2] z-30 select-none cursor-default" // MOVED CURSOR HERE
@@ -131,7 +131,7 @@ export default function MaskEffect() {
                 </span>
             </motion.div>
 
-            <div className="w-full h-full flex items-center justify-start -m-4 lg:pl-8 xl:pl-[84px] leading-[48px] sm:leading-[56px] md:leading-[66px] text-[42px] sm:text-[56px] md:text-6xl relative z-20 select-none">
+            <div className="w-full h-full flex items-center justify-start -m-4 lg:pl-8 xl:pl-[74px] leading-[48px] sm:leading-[56px] md:leading-[66px] text-[42px] sm:text-[56px] md:text-6xl relative z-20 select-none">
                 <span
                     className="w-[1000px] text-[#c1b3a5] px-10 md:px-10 flex flex-col gap-6"
                     // REMOVED event handlers from this underlying, non-interactive element

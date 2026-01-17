@@ -27,7 +27,7 @@
     }, [router]);
 
     return (
-      <div className="min-h-screen w-full px-6 md:px-8 lg:px-16 xl:px-28 items-center relative overflow-hidden flex justify-center">
+      <div className="min-h-screen w-full px-6 md:px-8 lg:px-16 xl:px-24 items-center relative overflow-hidden flex justify-center">
         <motion.div
           className="flex w-full pb-24"
 
@@ -115,6 +115,7 @@
             {/* Hero title section - fully interactive */}
             <div className="herotext drop-shadow-[0_4px_8px_#4C4C4C] lg:w-[60%]  mb-1">
               <h1 className="text-[28px]
+              min-[344px]:text-[25px] 
               min-[346px]:text-[26px] 
               min-[372px]:text-[29px] 
               min-[382px]:text-[30px] 
@@ -168,7 +169,7 @@
                 </div>
               </h1>
             </div>
-            <div className='flex flex-col h-[47vh] sm:h-[40vh] md:h-[28vh] justify-between xl:w-[60%]'>
+            <div className='flex flex-col h-[47vh] sm:h-[40vh] md:h-[28vh] xl:h-[212px] justify-between xl:w-[60%]'>
               {/* HeroText component - fully interactive */}
               <div className="relative z-30">
                 <HeroText />
@@ -191,16 +192,17 @@
                     <div className="relative w-full z-30">
                       <InfiniteSlider
                         durationOnHover={40}
-                        duration={40}
-                        gap={112}
+                        duration={36}
+                        gap={96}
                         className="w-full group"
                       >
                         {[
-                          ['/companies/hyundai.svg', 'Hyundai Logo', 20],
-                          ['/companies/uix.svg', 'UIX Labs Logo', 20],
                           ['/companies/rmx.svg', 'RankMatrix Logo', 20],
-                          ['/companies/tedx.svg', 'TEDx Logo', 20],
-                          ['/companies/ecell.svg', 'E-Cell Logo', 20],
+                          ['/companies/hyundai.svg', 'Hyundai Logo', 20],
+                          ['/companies/sleek.svg', 'Sleek Logo', 20],
+                          ['/companies/uix.svg', 'UIX Labs Logo', 20],
+                          ['/companies/aiims.svg', 'AIIMS Rishikesh Logo', 20],
+                          ['/companies/aicte.svg', 'AICTE India Logo', 20],
                           ['/companies/img.svg', 'IMG Logo', 20],
 
                         ].map(([src, alt, height], index) => (

@@ -555,7 +555,7 @@ const Footer = () => {
 
 
   return (
-    <div ref={footerRef} id="footer" className="container max-w-full pb-[4vh] px-6 mx-auto xl:px-28 lg:px-14 sm:px-4 relative z-30 min-h-screen flex flex-col justify-between">
+    <div ref={footerRef} id="footer" className="container max-w-full pb-[4vh] px-6 mx-auto xl:px-24 lg:px-14 sm:px-4 relative z-30 min-h-screen flex flex-col justify-between">
       {/* Game Area */}
       <div
         ref={gameAreaRef}

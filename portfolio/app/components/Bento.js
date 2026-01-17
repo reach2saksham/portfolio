@@ -67,7 +67,7 @@ const Bento = ({ isGlobeVisible }) => {
        flex items-center justify-center 
        md:h-[600px] h-[1400px] max-w-full container 
        pt-4 mx-auto mt-2 mb-5 
-       xl:px-28 lg:px-14 sm:px-4 px-2 z-30'>
+       xl:px-24 lg:px-14 sm:px-4 px-2 z-30'>
 
       <div className='grid grid-cols-3 grid-rows-10 gap-3
          lg:grid-cols-11 md:grid-cols-12  sm:grid-rows-10
@@ -180,7 +180,7 @@ const Bento = ({ isGlobeVisible }) => {
 
           <div className='flex flex-col gap-1 items-center'>
             <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>5+</p>
-            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center bentobold'>Work Experiences</p>
+            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center bentobold'>Internships Completed</p>
           </div>
         </div>
 
@@ -223,7 +223,7 @@ const Bento = ({ isGlobeVisible }) => {
           lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
 
           <div className='flex flex-col gap-1 items-center'>
-            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>3+</p>
+            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>2+</p>
             <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center'>Years Experience</p>
           </div>
         </div>

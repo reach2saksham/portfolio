@@ -130,11 +130,11 @@ export default function Home() {
           className={`w-fit flex bg-red items-center justify-start max-w-full container
              mx-auto 
              sm:mt-[8vh]
-             lg:mt-[10vh]
+             lg:mt-[8vh]
              xl:mt-[8vh]
              min-[390px]:mt-[104px]
              mt-[76px]
-             xl:px-28 
+             xl:px-24 
              lg:px-14 
              sm:px-4 
              px-4 z-40 ${!isMobile && isDiscClicked ? 'fixed' : 'absolute'}`}
