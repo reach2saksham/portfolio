@@ -1,8 +1,25 @@
 "use client";
 
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { motion, useSpring } from 'framer-motion';
 import Image from 'next/image';
+
+// Static data moved outside component
+const mainProjects = [
+  { name: "IIT ROORKEE", handle: "1" },
+  { name: "RAVINDRA BHAWAN", handle: "2" },
+  { name: "DAP", handle: "3" },
+  { name: "RKB TAPRI", handle: "4" }
+];
+
+const aboutProjects = [
+  { name: "@cooking", handle: "1" },
+  { name: "@अवतरण", handle: "2" },
+  { name: "@Respect+", handle: "3" },
+  { name: "@gaming", handle: "4" },
+  { name: "@cosplay", handle: "5" },
+  { name: "@anime", handle: "6" }
+];
 
 // Memoized Gallery component to prevent unnecessary re-renders
 const Gallery = React.memo(({ mousePosition, handle }) => {
@@ -21,11 +38,11 @@ const Gallery = React.memo(({ mousePosition, handle }) => {
           sizes="100vw"
           quality={90}
           className="w-full object-cover"
-          priority={handle === "1" || handle === "2"} // Prioritize first two images
+          priority={handle === "1" || handle === "2"}
         />
       </div>
       <motion.div
-        className="h-[30vh] md:h-[40vh] w-[35vw] md:w-[26vh] fixed top-0 rounded-[5vw] md:rounded-[1.5vw] overflow-hidden pointer-events-none "
+        className="h-[30vh] md:h-[40vh] w-[35vw] md:w-[26vh] fixed top-0 rounded-[5vw] md:rounded-[1.5vw] overflow-hidden pointer-events-none"
         style={{ x, y }}
       >
         <Image 
@@ -34,7 +51,7 @@ const Gallery = React.memo(({ mousePosition, handle }) => {
           fill
           sizes="(max-width: 768px) 35vw, 26vh"
           quality={90}
-          priority={handle === "1" || handle === "2"} // Prioritize first two images
+          priority={handle === "1" || handle === "2"}
           className="w-full object-cover"
         />
       </motion.div>
@@ -46,7 +63,7 @@ Gallery.displayName = 'Gallery';
 // Memoized ProjectItem component for Description section
 const ProjectItem = React.memo(({ name, handle, setIndex, index }) => (
   <div 
-    onMouseOver={() => setIndex(index)}
+    onMouseEnter={() => setIndex(index)}
     className="cursor-default hover:opacity-80 transition-opacity"
   >
     <div className="text-[6vw] md:text-[2.5vw] font-bold text-[#c1b3a5] py-1 md:pt-4 md:pb-20 select-none">
@@ -95,7 +112,7 @@ const Description = React.memo(({ mousePosition, projects }) => {
           fill
           sizes="(max-width: 768px) 35vw, 26vh"
           quality={90}
-          priority={index < 2} // Prioritize first two 'about' images
+          priority={index < 2}
           className="w-full object-cover"
         />
       </motion.div>
@@ -106,22 +123,9 @@ Description.displayName = 'Description';
 
 // Main Portfolio Gallery Component
 const PortfolioGallery = () => {
-  // Moved static data outside component to prevent recreation on every render
-  const mainProjects = [
-    { name: "IIT ROORKEE", handle: "1" },
-    { name: "RAVINDRA BHAWAN", handle: "2" },
-    { name: "DAP", handle: "3" },
-    { name: "RKB TAPRI", handle: "4" }
-  ];
-
-  const aboutProjects = [
-    { name: "@cooking", handle: "1" },
-    { name: "@अवतरण", handle: "2" },
-    { name: "@Respect+", handle: "3" },
-    { name: "@gaming", handle: "4" },
-    { name: "@cosplay", handle: "5" },
-    { name: "@anime", handle: "6" }
-  ];
+  const containerRef = useRef(null);
+  const lastMousePosRef = useRef({ x: 0, y: 0 });
+  const rafIdRef = useRef(null);
 
   const spring = {
     stiffness: 150,
@@ -134,47 +138,100 @@ const PortfolioGallery = () => {
     y: useSpring(0, spring)
   };
 
-  // Memoized mouse move handler
-  const mouseMove = useCallback((e) => {
-    const { clientX, clientY } = e;
-    const targetX = clientX - (window.innerWidth / 2 * 0.25);
-    const targetY = clientY - (window.innerWidth / 2 * 0.30);
-    mousePosition.x.set(targetX);
-    mousePosition.y.set(targetY);
+  // Initialize mouse position to center of screen
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const centerX = window.innerWidth / 2 - (window.innerWidth / 2 * 0.25);
+      const centerY = window.innerHeight / 2 - (window.innerWidth / 2 * 0.30);
+      mousePosition.x.set(centerX);
+      mousePosition.y.set(centerY);
+      lastMousePosRef.current = { x: centerX, y: centerY };
+    }
+  }, []);
+
+  // Throttled update function using RAF
+  const updateMousePosition = useCallback((clientX, clientY) => {
+    if (rafIdRef.current) {
+      cancelAnimationFrame(rafIdRef.current);
+    }
+
+    rafIdRef.current = requestAnimationFrame(() => {
+      const targetX = clientX - (window.innerWidth / 2 * 0.25);
+      const targetY = clientY - (window.innerWidth / 2 * 0.30);
+      
+      mousePosition.x.set(targetX);
+      mousePosition.y.set(targetY);
+      
+      lastMousePosRef.current = { x: clientX, y: clientY };
+    });
   }, [mousePosition.x, mousePosition.y]);
+
+  // Mouse move handler with throttling
+  const mouseMove = useCallback((e) => {
+    updateMousePosition(e.clientX, e.clientY);
+  }, [updateMousePosition]);
 
   // Touch event handlers for mobile
   const handleTouchMove = useCallback((e) => {
     const touch = e.touches[0];
     if (touch) {
-      const { clientX, clientY } = touch;
-      const targetX = clientX - (window.innerWidth / 2 * 0.25);
-      const targetY = clientY - (window.innerWidth / 2 * 0.30);
-      mousePosition.x.set(targetX);
-      mousePosition.y.set(targetY);
+      updateMousePosition(touch.clientX, touch.clientY);
     }
-  }, [mousePosition.x, mousePosition.y]);
+  }, [updateMousePosition]);
 
   const handleTouchStart = useCallback((e) => {
     const touch = e.touches[0];
     if (touch) {
-      const { clientX, clientY } = touch;
-      const targetX = clientX - (window.innerWidth / 2 * 0.25);
-      const targetY = clientY - (window.innerWidth / 2 * 0.30);
-      mousePosition.x.set(targetX);
-      mousePosition.y.set(targetY);
+      updateMousePosition(touch.clientX, touch.clientY);
     }
+  }, [updateMousePosition]);
+
+  // Handle scroll events to keep floating image at last known mouse position
+  useEffect(() => {
+    const handleScroll = () => {
+      // Update position based on last known mouse coordinates
+      if (lastMousePosRef.current.x !== 0 || lastMousePosRef.current.y !== 0) {
+        const targetX = lastMousePosRef.current.x - (window.innerWidth / 2 * 0.25);
+        const targetY = lastMousePosRef.current.y - (window.innerWidth / 2 * 0.30);
+        mousePosition.x.set(targetX);
+        mousePosition.y.set(targetY);
+      }
+    };
+
+    // Use passive listener for better scroll performance
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
   }, [mousePosition.x, mousePosition.y]);
+
+  // Track mouse position globally to maintain it during scroll
+  useEffect(() => {
+    const handleGlobalMouseMove = (e) => {
+      lastMousePosRef.current = { x: e.clientX, y: e.clientY };
+    };
+
+    window.addEventListener('mousemove', handleGlobalMouseMove, { passive: true });
+    
+    return () => {
+      window.removeEventListener('mousemove', handleGlobalMouseMove);
+    };
+  }, []);
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth';
     return () => {
       document.documentElement.style.scrollBehavior = 'auto';
+      if (rafIdRef.current) {
+        cancelAnimationFrame(rafIdRef.current);
+      }
     };
   }, []);
 
-   return (
+  return (
     <main 
+      ref={containerRef}
       onMouseMove={mouseMove}
       onTouchMove={handleTouchMove}
       onTouchStart={handleTouchStart}

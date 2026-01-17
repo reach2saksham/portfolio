@@ -1,9 +1,13 @@
-# *
+# Allow all crawlers
 User-agent: *
 Allow: /
 
-# Host
-Host: https://www.sakshamjain.in
+# Crawl-delay for good behavior
+Crawl-delay: 0
 
-# Sitemaps
+# Disallow admin or private paths (add your own if any)
+# Disallow: /admin/
+# Disallow: /api/
+
+# Sitemap location
 Sitemap: https://www.sakshamjain.in/sitemap.xml

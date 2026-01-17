@@ -1,10 +1,10 @@
 "use client"
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import Card, { MouseTooltip } from './Card';
-import { ChevronLeftIcon, ChevronRightIcon} from "@heroicons/react/24/solid";
+import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
-// Your data objects remain the same
-let designitems = {
+// Move data outside component to prevent re-creation on every render
+const designitems = {
   card1: {
     title: `A project and employee tracking dashboard for High-profile company clients `,
     image: '/design/uix-labs/thumbnail.avif',
@@ -17,7 +17,6 @@ let designitems = {
     impact: ['Used monthly by 80+ top companies to boost projects.'],
     description: `When a client company gives project to a tech-consulting firm, they need a way to track the project and the employees working on it. This web app provides a comprehensive solution for tracking projects and employees, ensuring that everything is organized and efficient.`,
     docsLink: '/design/uix-labs',
-    // liveLink: 'https://rankmatrix.in/'
   },
   card2: {
     title: `How to manage 13K+ IIT Roorkee webapges with a consistent design`,
@@ -31,7 +30,6 @@ let designitems = {
     impact: ['A landing page with 1M+ MAU'],
     description: `With the responsibility of IIT Roorkee's Landing Page while also adhering to the self-made CMS is the task executed. Chakra is a component-based content management system, creating pages by using components is modular, sustainable interface for faculties to manage & publish their pages`,
     docsLink: '/design/chakra',
-    // liveLink: 'https://rankmatrix.in/'
   },
   card3: {
     title: `Making college prediction easier for JEE students`,
@@ -62,7 +60,7 @@ let designitems = {
   },
 };
 
-let businessitems = {
+const businessitems = {
   card1: {
     title: `Deriving a New Production Optimization Strategy for a B2B Company`,
     image: '/business/operatopolis/thumbnail.avif',
@@ -89,7 +87,6 @@ let businessitems = {
     description: `Covered GTM, branding & investor strategy for BoldCares next phase. Conducted profit/loss, market, user analysis to craft 20+ strategies. National Finalist in top 20 of 1600+ teams.`,
     docsLink: '/business/bold-care',
   },
-
   card3: {
     title: `Rebranding & Crisis Recovery Post Emission Scandal of Gryphon Motors`,
     image: '/business/c-suite/thumbnail.avif',
@@ -103,7 +100,6 @@ let businessitems = {
     description: `Led a 5-phase recovery in rebranding, employees, sustainibility, PR Pan, etc. Secured 1st position among 200+ teams in C-Suite 8.0 at IBS Hyderabad.`,
     docsLink: '/business/c-suite',
   },
-
   card4: {
     title: `Policybazaar: Extensive Analysis and deciphering Business Model`,
     image: '/business/policybazaar/thumbnail.avif',
@@ -120,7 +116,7 @@ let businessitems = {
   }
 };
 
-let productitems = {
+const productitems = {
   card1: {
     title: `VéVana: Vegan Leather from Stubble Waste`,
     image: '/product/vevana/thumbnail.avif',
@@ -173,36 +169,83 @@ let productitems = {
     description: `Developed 8+ student-focused, price-sensitive growth strategies in Rebel Foods EatSure Cloud 2024 through behavioral analysis, including tailored pricing models, platform-specific enhancements, localized packaging, etc.`,
     docsLink: '/product/eat-sure',
   },
-  
 };
+
+// Pre-calculate column width classes
+const COLUMN_WIDTH_MAP = {
+  1: 'md:w-full',
+  2: 'md:w-1/2',
+  3: 'md:w-1/3',
+  4: 'md:w-1/4',
+};
+
+// Memoized column component
+const Column = React.memo(({ col, index, currentColumn, onPrev, onNext }) => {
+  const isVisible = index === currentColumn;
+  
+  return (
+    <div
+      className={`w-full ${COLUMN_WIDTH_MAP[3] || 'md:w-1/3'} z-30 ${
+        isVisible ? 'block' : 'hidden'
+      } md:block`}
+    >
+      <div className="bg-[#131313] relative rounded-[20px] px-2 md:px-0 z-30">
+        <div className='flex justify-between md:justify-center px-4 items-center z-30'>
+          <ChevronLeftIcon
+            className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
+            onClick={onPrev}
+          />
+          <div className="projecthead text-center pt-6 text-7xl mb-4 select-none">
+            {col.title}
+          </div>
+          <ChevronRightIcon
+            className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
+            onClick={onNext}
+          />
+        </div>
+        {col.content.map(([key, card]) => (
+          <div data-card-tooltip="true" key={key}>
+            <Card
+              title={card.title}
+              image={card.image}
+              width={card.width}
+              height={card.height}
+              alt={card.alt}
+              tags={card.tags}
+              role={card.role}
+              domain={card.domain}
+              impact={card.impact}
+              description={card.description}
+              docsLink={card.docsLink}
+              liveLink={card.liveLink}
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+});
+
+Column.displayName = 'Column';
 
 const Projects = () => {
   const [currentColumn, setCurrentColumn] = useState(0);
 
-  const columns = [
+  // Memoize columns array to prevent recreation on every render
+  const columns = useMemo(() => [
     { title: 'DESIGN', content: Object.entries(designitems) },
     { title: 'BUSINESS', content: Object.entries(businessitems) },
     { title: 'PRODUCT', content: Object.entries(productitems) },
-  ];
+  ], []); // Empty dependency array since data is static
 
-  // Dynamic width calculation based on number of columns
-  const getColumnWidth = () => {
-    const totalColumns = columns.length;
-    if (totalColumns === 1) return 'md:w-full';
-    if (totalColumns === 2) return 'md:w-1/2';
-    if (totalColumns === 3) return 'md:w-1/3';
-    if (totalColumns === 4) return 'md:w-1/4';
-    // For more than 4, you might want to use grid or different approach
-    return `md:w-1/${totalColumns}`;
-  };
-
-  const handlePrev = () => {
+  // Memoize navigation handlers
+  const handlePrev = useCallback(() => {
     setCurrentColumn((prev) => (prev === 0 ? columns.length - 1 : prev - 1));
-  };
+  }, [columns.length]);
 
-  const handleNext = () => {
+  const handleNext = useCallback(() => {
     setCurrentColumn((prev) => (prev === columns.length - 1 ? 0 : prev + 1));
-  };
+  }, [columns.length]);
 
   return (
     <div id='projects' className="projects container max-w-full px-4 pt-4 mx-auto xl:px-20 lg:px-14 sm:px-4 z-50">
@@ -212,51 +255,20 @@ const Projects = () => {
         {/* Mobile navigation header if needed */}
       </div>
 
-      {/* Flexbox approach with dynamic width calculation */}
       <div className="flex gap-2 justify-between max-w-full z-30">
         {columns.map((col, index) => (
-          <div
-            key={index}
-            className={`w-full ${getColumnWidth()} z-30 ${
-              index === currentColumn ? 'block' : 'hidden'
-            } md:block`}
-          >
-            <div className="bg-[#131313] relative rounded-[20px] px-2 md:px-0 z-30">
-              <div className='flex justify-between md:justify-center px-4 items-center z-30'>
-                <ChevronLeftIcon
-                  className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
-                  onClick={handlePrev}
-                />
-                <div className="projecthead text-center pt-6 text-7xl mb-4 select-none">{col.title}</div>
-                <ChevronRightIcon
-                  className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
-                  onClick={handleNext}
-                />
-              </div>
-              {col.content.map(([key, card]) => (
-                <div data-card-tooltip="true" key={key}>
-                  <Card
-                    title={card.title}
-                    image={card.image}
-                    width={card.width}
-                    height={card.height}
-                    alt={card.alt}
-                    tags={card.tags}
-                    role={card.role}
-                    domain={card.domain}
-                    impact={card.impact}
-                    description={card.description}
-                    docsLink={card.docsLink}
-                    liveLink={card.liveLink}
-                  />
-                </div>
-              ))}
-            </div>
-          </div>
+          <Column
+            key={col.title}
+            col={col}
+            index={index}
+            currentColumn={currentColumn}
+            onPrev={handlePrev}
+            onNext={handleNext}
+          />
         ))}
       </div>
     </div>
   );
 };
 
-export default Projects;
+export default React.memo(Projects);

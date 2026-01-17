@@ -166,7 +166,7 @@ export const MouseTooltip = () => {
 
   return (
     <div
-      className="fixed herointro mt-6 px-3 py-1 bg-[#FF4BAC] text-white  rounded-e-xl rounded-b-xl text-xs opacity-90 whitespace-nowrap pointer-events-none z-50"
+      className="fixed herointro mt-6 px-3 py-1 bg-[#FF4BAC] text-[#121212] font-semibold  rounded-e-xl rounded-b-xl text-xs opacity-90 whitespace-nowrap pointer-events-none z-50"
       style={{
         left: `${tooltipData.x}px`,
         top: `${tooltipData.y}px`,

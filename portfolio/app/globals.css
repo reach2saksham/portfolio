@@ -23,10 +23,6 @@ html {
   width: 4px;
 }
 
-/* ::-webkit-scrollbar-track {
-  background: #f1f1f1; 
-} */
-
 ::-webkit-scrollbar-thumb {
   background-color: #888;
   border-radius: 10px;
@@ -36,17 +32,13 @@ html {
   background: #555;
 }
 
-/* Firefox */
-/* html {
-  scrollbar-width: thin;
-  scrollbar-color: #888 #f1f1f1;
-} */
-
+/* Optimized font loading with font-display: swap to prevent FOIT (Flash of Invisible Text) */
 @font-face {
   font-family: 'WhyteM';
   src: url('/fonts/WhyteMedium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -54,6 +46,7 @@ html {
   src: url('/fonts/WhyteRegular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -61,6 +54,7 @@ html {
   src: url('/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -68,6 +62,7 @@ html {
   src: url('/fonts/Sequel\ Sans\ Roman\ Body.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -75,6 +70,7 @@ html {
   src: url('/fonts/SixCaps.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -82,6 +78,7 @@ html {
   src: url('/fonts/OffBitTrial-DotBold.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -89,6 +86,7 @@ html {
   src: url('/fonts/SSRomanBody.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -96,6 +94,7 @@ html {
   src: url('/fonts/SSRomanDisplay.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -103,6 +102,7 @@ html {
   src: url('/fonts/SFPRODISPLAYMEDIUM.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -110,6 +110,7 @@ html {
   src: url('/fonts/itc.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -117,6 +118,7 @@ html {
   src: url('/fonts/ppbook.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -124,6 +126,7 @@ html {
   src: url('/fonts/ppmedium.otf') format('opentype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -131,6 +134,7 @@ html {
   src: url('/fonts/Movatif.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -138,6 +142,7 @@ html {
   src: url('/fonts/avant.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -145,6 +150,7 @@ html {
   src: url('/fonts/goodvibrations.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -152,6 +158,7 @@ html {
   src: url('/fonts/NeueUnicaM.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -159,6 +166,7 @@ html {
   src: url('/fonts/NeueUnicaN.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -166,6 +174,7 @@ html {
   src: url('/fonts/manropemedium.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
 @font-face {
@@ -173,38 +182,40 @@ html {
   src: url('/fonts/manropebold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
 }
 
+/* Font utility classes with fallback stacks */
 .mask {
-  font-family: 'avant', sans-serif;
+  font-family: 'avant', system-ui, -apple-system, sans-serif;
 }
 
 .bentotext {
-  font-family: 'mrm', sans-serif;
+  font-family: 'mrm', system-ui, -apple-system, sans-serif;
 }
 
 .bentobold {
-  font-family: 'mrb', sans-serif;
+  font-family: 'mrb', system-ui, -apple-system, sans-serif;
 }
 
 .good {
-  font-family: 'goodv', sans-serif;
+  font-family: 'goodv', cursive, sans-serif;
 }
 
 .heroheading {
-  font-family: 'WhyteR', sans-serif;
+  font-family: 'WhyteR', system-ui, -apple-system, sans-serif;
 }
 
 .herotext {
-  font-family: 'SSRD', sans-serif;
+  font-family: 'SSRD', system-ui, -apple-system, sans-serif;
 }
 
 .herointro {
-  font-family: 'ppbook', sans-serif;
+  font-family: 'ppbook', system-ui, -apple-system, sans-serif;
 }
 
 .herointrobold {
-  font-family: 'ppmedium', sans-serif;
+  font-family: 'ppmedium', system-ui, -apple-system, sans-serif;
 }
 
 .navbar,
@@ -212,24 +223,24 @@ html {
 .card,
 .footer,
 .tags {
-  font-family: 'SSRB', sans-serif;
+  font-family: 'SSRB', system-ui, -apple-system, sans-serif;
 }
 
 .projecthead {
-  font-family: 'SixCaps', sans-serif;
+  font-family: 'SixCaps', system-ui, -apple-system, sans-serif;
 }
 
 .foothead,
 .company {
-  font-family: 'OffBit', sans-serif;
+  font-family: 'OffBit', system-ui, -apple-system, sans-serif;
 }
 
 .sfpro {
-  font-family: 'Sfpro', sans-serif;
+  font-family: 'Sfpro', system-ui, -apple-system, sans-serif;
 }
 
 .casetags {
-  font-family: 'unican', sans-serif;
+  font-family: 'unican', system-ui, -apple-system, sans-serif;
 }
 
 :root {
