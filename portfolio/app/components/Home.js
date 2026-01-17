@@ -134,7 +134,7 @@ export default function Home() {
              xl:mt-[8vh]
              min-[390px]:mt-[104px]
              mt-[76px]
-             xl:px-24 
+             xl:px-20 
              lg:px-14 
              sm:px-4 
              px-4 z-40 ${!isMobile && isDiscClicked ? 'fixed' : 'absolute'}`}

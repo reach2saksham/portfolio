@@ -67,7 +67,7 @@ const Bento = ({ isGlobeVisible }) => {
        flex items-center justify-center 
        md:h-[600px] h-[1400px] max-w-full container 
        pt-4 mx-auto mt-2 mb-5 
-       xl:px-24 lg:px-14 sm:px-4 px-2 z-30'>
+       xl:px-20 lg:px-14 sm:px-4 px-2 z-30'>
 
       <div className='grid grid-cols-3 grid-rows-10 gap-3
          lg:grid-cols-11 md:grid-cols-12  sm:grid-rows-10

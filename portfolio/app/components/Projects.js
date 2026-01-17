@@ -205,7 +205,7 @@ const Projects = () => {
   };
 
   return (
-    <div id='projects' className="projects container max-w-full px-4 pt-4 mx-auto xl:px-24 lg:px-14 sm:px-4 z-50">
+    <div id='projects' className="projects container max-w-full px-4 pt-4 mx-auto xl:px-20 lg:px-14 sm:px-4 z-50">
       <MouseTooltip />
       
       <div className="md:hidden flex items-center justify-around mb-4 z-30">

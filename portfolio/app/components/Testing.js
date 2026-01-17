@@ -4,7 +4,7 @@ import { ArrowUpRightIcon } from "@heroicons/react/24/solid";
 
 const Projects = () => {
     return (
-        <div className='projects flex gap-2 items-center justify-between max-w-full container pt-4 mx-auto xl:px-24 lg:px-14 sm:px-4'>
+        <div className='projects flex gap-2 items-center justify-between max-w-full container pt-4 mx-auto xl:px-20 lg:px-14 sm:px-4'>
 
                 <div className='p-4'>
                     <div className='projecthead text-7xl text-center mb-4'>DESIGN</div>
