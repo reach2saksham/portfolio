@@ -146,9 +146,9 @@ const Bento = ({ isGlobeVisible }) => {
             </div>
             <div className='text-sm px-5 pb-3 flex flex-col gap-2 bentotext'>
               <p>UI/UX Design</p>
-              <p>Consulting</p>
-              <p>Product Management</p>
               <p>Visual & Motion Design</p>
+              <p>Product Management</p>
+              <p>Consulting</p>
               <p>Fullstack Development</p>
             </div>
           </div>
