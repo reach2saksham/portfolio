@@ -117,7 +117,7 @@ export default function Home() {
       return { x: 0, y: 0 };
     }
     return {
-      x: isDiscClicked ? -180 : 0,
+      x: isDiscClicked ? -160 : 0,
       y: 0
     };
   };
