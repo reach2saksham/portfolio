@@ -133,7 +133,7 @@ const Page = () => {
 
     return (
         <main
-        className="flex min-h-screen flex-col mx-auto max-w-screen-2xl]">
+        className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
         <div id='overview' ></div>
             <Navbar />
             <div
