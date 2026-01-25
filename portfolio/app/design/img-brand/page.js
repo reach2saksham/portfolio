@@ -4,7 +4,6 @@ import Navbar from '../../components/Navbar';
 import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
-import BlurImage from '@/app/components/BlurImage';
 import ExpandImage from '@/app/components/ExpandImage';
 
 // Centralized section configuration - no more duplication!
@@ -139,7 +138,7 @@ const Page = () => {
             <div id='overview' ></div>
             <Navbar />
             <div
-                className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-20 lg:px-14 sm:px-4">
+                className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-24 lg:px-14 sm:px-4">
                 {/* Header Section */}
                 <div
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
@@ -316,12 +315,12 @@ const Page = () => {
 
                         <div className='justify-center items-center'>
                             <div className="flex gap-1 sm:gap-4 justify-center items-center flex-col sm:flex-row">
-                                <BlurImage src="/design/img-brand/ig1.avif" width={460} height={460} title="Open Source Workshop" subtitle="A poster for inviting students" alt="Small Banner" />
-                                <BlurImage src="/design/img-brand/tshirt.avif" width={460} height={460} title="T-Shirt 2024" subtitle="I have screenshots of members wearing it to Singapore" alt="Another Banner" />
+                                <ExpandImage src="/design/img-brand/ig1.avif" width={460} height={460} title="Open Source Workshop" subtitle="A poster for inviting students" alt="Small Banner" />
+                                <ExpandImage src="/design/img-brand/tshirt.avif" width={460} height={460} title="T-Shirt 2024" subtitle="I have screenshots of members wearing it to Singapore" alt="Another Banner" />
                             </div>
                             <div className="flex gap-1 sm:gap-4 justify-center items-center flex-col sm:flex-row">
-                                <BlurImage src="/design/img-brand/tshirt2.avif" width={460} height={460} title="T-Shirt 2024 Interation" subtitle="This was supposed to be printed 🥺" alt="Small Banner" />
-                                <BlurImage src="/design/img-brand/ig2.avif" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Another Banner" />
+                                <ExpandImage src="/design/img-brand/tshirt2.avif" width={460} height={460} title="T-Shirt 2024 Interation" subtitle="This was supposed to be printed 🥺" alt="Small Banner" />
+                                <ExpandImage src="/design/img-brand/ig2.avif" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Another Banner" />
                             </div>
                         </div>
 
@@ -529,18 +528,18 @@ const Page = () => {
                                     className='text-3xl company mb-4'>POSTERS</div>
                                 <div className=''>
                                     <div className="flex gap-4 flex-col lg:flex-row">
-                                        <BlurImage src="/design/img-brand/rankmatrix.avif" width={460} height={460} title="Rank Matrix 2024" subtitle="Advertising post to redirect JEE students to the portal." alt="Small Banner" />
-                                        <BlurImage src="/design/img-brand/webautomation.avif" width={460} height={460} title="Web Automation Workshop 2024" subtitle="Minimalstic poster required by the team." alt="Another Banner" />
+                                        <ExpandImage src="/design/img-brand/rankmatrix.avif" width={460} height={460} title="Rank Matrix 2024" subtitle="Advertising post to redirect JEE students to the portal." alt="Small Banner" />
+                                        <ExpandImage src="/design/img-brand/webautomation.avif" width={460} height={460} title="Web Automation Workshop 2024" subtitle="Minimalstic poster required by the team." alt="Another Banner" />
 
                                     </div>
                                 </div>
                                 <div className="flex gap-4 flex-col lg:flex-row">
-                                    <BlurImage src="/design/img-brand/ig2.avif" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Small Banner" />
-                                    <BlurImage src="/design/img-brand/gympravesh.avif" width={460} height={460} title="Gym Pravesh 2024" subtitle="Launch of Gym Pravesh app in the campus." alt="Another Banner" />
+                                    <ExpandImage src="/design/img-brand/ig2.avif" width={460} height={460} title="Blog 2024" subtitle={<>It is actually a nice read, <a href="https://medium.com/img-iit-roorkee/127-0-0-1-img-53cf90e3acab" className="text-blue-500 hover:underline">Check it out!</a></>} alt="Small Banner" />
+                                    <ExpandImage src="/design/img-brand/gympravesh.avif" width={460} height={460} title="Gym Pravesh 2024" subtitle="Launch of Gym Pravesh app in the campus." alt="Another Banner" />
                                 </div>
                                 <div className="flex gap-4 flex-col lg:flex-row">
-                                    <BlurImage src="/design/img-brand/ig1.avif" width={460} height={460} title="Open Source Workshop 2024" subtitle="A poster for inviting students" alt="Small Banner" />
-                                    <BlurImage src="/design/img-brand/rankmatrix2.avif" width={460} height={460} title="Rank Matrix Launch 2024" subtitle={<>Read Rank Matrix, <a href="" className="text-blue-500 hover:underline">Case Study Here!</a></>} alt="Another Banner" />
+                                    <ExpandImage src="/design/img-brand/ig1.avif" width={460} height={460} title="Open Source Workshop 2024" subtitle="A poster for inviting students" alt="Small Banner" />
+                                    <ExpandImage src="/design/img-brand/rankmatrix2.avif" width={460} height={460} title="Rank Matrix Launch 2024" subtitle={<>Read Rank Matrix, <a href="" className="text-blue-500 hover:underline">Case Study Here!</a></>} alt="Another Banner" />
                                 </div>
                             </div>
                         </div>

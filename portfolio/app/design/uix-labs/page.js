@@ -185,10 +185,10 @@ const Page = () => {
     (caseStudy.links.liveProduct || caseStudy.links.figmaFile);
 
   return (
-    <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
+    <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl font-sans">
       <div id="overview"></div>
       <Navbar />
-      <div className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-20 lg:px-14 sm:px-4">
+      <div className="container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-24 lg:px-14 sm:px-4">
         {/* Header Section with Video Loader */}
         <div className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-3/4 pb-4 lg:pb-0 mt-14 sm:mt-0 relative">
@@ -244,10 +244,10 @@ const Page = () => {
           <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080] border-opacity-40">
             {caseStudy.industry && (
               <>
-                <div className="sfpro text-sm text-[#646464] tracking-wider">
+                <div className="font-mono font-medium text-xs text-white/40 tracking-wider">
                   INDUSTRY
                 </div>
-                <div className="casetags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
+                <div className="text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
                   {caseStudy.industry}
                 </div>
               </>
@@ -255,12 +255,12 @@ const Page = () => {
             {caseStudy.techStack &&
               Object.keys(caseStudy.techStack).length > 0 && (
                 <>
-                  <div className="sfpro text-sm text-[#646464] pt-4 pb-2 tracking-wider">
+                  <div className="pt-4 pb-2 font-mono font-medium text-xs text-white/40 tracking-wider">
                     TECH STACK
                   </div>
                   {Object.entries(caseStudy.techStack).map(
                     ([category, icons], index) => (
-                      <div key={index} className="casetags text-sm">
+                      <div key={index} className=" text-sm">
                         <div className="pt-2">{category}</div>
                         <div className="flex gap-4 flex-wrap justify-start py-3 border-gray-500">
                           {icons.map((icon, idx) => (
@@ -301,22 +301,22 @@ const Page = () => {
         <div className="flex flex-col lg:flex-row pt-6 min-h-screen">
           {/* Sidebar with scroll-based highlighting */}
           <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
-            <div className="flex flex-col w-full hidden lg:block">
+            <div className="flex-col w-full hidden lg:block">
               {caseStudy.companyName && (
-                <div className="company text-[40px]">
+                <div className=" text-[40px] font-offbit">
                   {caseStudy.companyName}
                 </div>
               )}
               {caseStudy.period && (
-                <div className="casetags text-sm">{caseStudy.period}</div>
+                <div className=" text-sm">{caseStudy.period}</div>
               )}
               {caseStudy.domain && (
-                <div className="sfpro text-sm pt-4 text-[#646464] tracking-wider">
+                <div className="pt-4 font-mono font-medium text-xs text-white/40 tracking-wider">
                   {caseStudy.domain}
                 </div>
               )}
               {caseStudy.sections && caseStudy.sections.length > 0 && (
-                <div className="casetags text-base py-4">
+                <div className=" text-sm font py-4 ">
                   {caseStudy.sections.map((section, index) => (
                     <button
                       key={index}
@@ -338,7 +338,7 @@ const Page = () => {
           {/* Main Content */}
           <div className="flex flex-col w-full lg:w-3/4 pt-2 lg:pt-0">
             {caseStudy.description && (
-              <div className="casetags pt-2 lg:pt-0">
+              <div className=" pt-2 lg:pt-0">
                 {caseStudy.description}
               </div>
             )}
@@ -353,12 +353,12 @@ const Page = () => {
                 .filter(([_, items]) => items && items.length > 0)
                 .map(([title, items], idx) => (
                   <div key={idx} className="flex flex-col gap-1 w-fit">
-                    <div className="sfpro text-sm text-[#646464] tracking-wider">
+                    <div className="font-mono font-medium text-xs text-white/40 tracking-wider">
                       {title}
                     </div>
                     <div className="pt-1">
                       {items.map((item, i) => (
-                        <div key={i} className="casetags w-fit text-sm">
+                        <div key={i} className="font-medium w-fit text-sm">
                           {item}
                         </div>
                       ))}
@@ -369,7 +369,7 @@ const Page = () => {
 
             {/* Links Section - Only show if links exist */}
             {hasLinks && (
-              <div className="pt-6 flex gap-4">
+              <div className="pt-6 flex gap-4 font-mono">
                 {caseStudy.links.liveProduct && (
                   <a
                     href={caseStudy.links.liveProduct}
@@ -423,7 +423,7 @@ const Page = () => {
               )}
             </div>
 
-            <div id="highlights" className="company text-3xl pt-12 mb-2">
+            <div id="highlights" className="text-3xl pt-12 mb-2">
               THE HIGHLIGHTS
             </div>
             <ExpandImage
@@ -435,7 +435,7 @@ const Page = () => {
               priority
             />
             <div id="research" className="pt-12 flex flex-col">
-              <div className="text-3xl company">USER RESEARCH</div>
+              <div className="text-3xl">USER RESEARCH</div>
             </div>
 
             <ExpandImage
@@ -457,7 +457,7 @@ const Page = () => {
               priority
             />
 
-            <div id="process" className="pt-12 text-3xl company">
+            <div id="process" className="pt-12 text-3xl">
               THE PROCESS
             </div>
 
@@ -524,7 +524,7 @@ const Page = () => {
 
             <div className="pt-6">{`There were several other high-fidelity wireframes involved, but considering the complexity of the application above, I was advised to focus on the Members section for now. The other sections can be added later once the foundation is properly laid. But defining those sections beforehand was necessary.`}</div>
 
-            <div id="webapp" className="pt-12 text-3xl company">
+            <div id="webapp" className="pt-12 text-3xl">
               WEB-APP DESIGN
             </div>
 
@@ -692,7 +692,7 @@ const Page = () => {
               />
             </div>
 
-            <div id="casestudy" className="pt-12 text-3xl company">
+            <div id="casestudy" className="pt-12 text-3xl">
               CASE STUDY TEMPELATE DESIGN
             </div>
 

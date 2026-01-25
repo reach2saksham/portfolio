@@ -1,8 +1,3 @@
-html {
-  /* Enforce a black background on the root element to prevent any white flashing during page loads or heavy rendering. */
-  background-color: #000;
-}
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -11,11 +6,6 @@ html {
   * {
     cursor: url('/newcursor.svg'), auto;
   }
-}
-
-.animate-in {
-  opacity: 1 !important;
-  transform: translate(0, 0) !important;
 }
 
 /* WebKit browsers (Chrome, Safari, Edge) */
@@ -32,217 +22,6 @@ html {
   background: #555;
 }
 
-/* Optimized font loading with font-display: swap to prevent FOIT (Flash of Invisible Text) */
-@font-face {
-  font-family: 'WhyteM';
-  src: url('/fonts/WhyteMedium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'WhyteR';
-  src: url('/fonts/WhyteRegular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SSMedium';
-  src: url('/fonts/Sequel\ Sans\ Medium\ Body.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SSRoman';
-  src: url('/fonts/Sequel\ Sans\ Roman\ Body.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SixCaps';
-  src: url('/fonts/SixCaps.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'OffBit';
-  src: url('/fonts/OffBitTrial-DotBold.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SSRB';
-  src: url('/fonts/SSRomanBody.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'SSRD';
-  src: url('/fonts/SSRomanDisplay.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Sfpro';
-  src: url('/fonts/SFPRODISPLAYMEDIUM.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'itc';
-  src: url('/fonts/itc.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'ppbook';
-  src: url('/fonts/ppbook.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'ppmedium';
-  src: url('/fonts/ppmedium.otf') format('opentype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'movatif';
-  src: url('/fonts/Movatif.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'avant';
-  src: url('/fonts/avant.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'goodv';
-  src: url('/fonts/goodvibrations.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'unicam';
-  src: url('/fonts/NeueUnicaM.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'unican';
-  src: url('/fonts/NeueUnicaN.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'mrm';
-  src: url('/fonts/manropemedium.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'mrb';
-  src: url('/fonts/manropebold.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* Font utility classes with fallback stacks */
-.mask {
-  font-family: 'avant', system-ui, -apple-system, sans-serif;
-}
-
-.bentotext {
-  font-family: 'mrm', system-ui, -apple-system, sans-serif;
-}
-
-.bentobold {
-  font-family: 'mrb', system-ui, -apple-system, sans-serif;
-}
-
-.good {
-  font-family: 'goodv', cursive, sans-serif;
-}
-
-.heroheading {
-  font-family: 'WhyteR', system-ui, -apple-system, sans-serif;
-}
-
-.herotext {
-  font-family: 'SSRD', system-ui, -apple-system, sans-serif;
-}
-
-.herointro {
-  font-family: 'ppbook', system-ui, -apple-system, sans-serif;
-}
-
-.herointrobold {
-  font-family: 'ppmedium', system-ui, -apple-system, sans-serif;
-}
-
-.navbar,
-.bento,
-.card,
-.footer,
-.tags {
-  font-family: 'SSRB', system-ui, -apple-system, sans-serif;
-}
-
-.projecthead {
-  font-family: 'SixCaps', system-ui, -apple-system, sans-serif;
-}
-
-.foothead,
-.company {
-  font-family: 'OffBit', system-ui, -apple-system, sans-serif;
-}
-
-.sfpro {
-  font-family: 'Sfpro', system-ui, -apple-system, sans-serif;
-}
-
-.casetags {
-  font-family: 'unican', system-ui, -apple-system, sans-serif;
-}
-
 :root {
   --background: #000000;
   --foreground: #ededed;
@@ -256,75 +35,70 @@ body {
   min-height: 100vh;
 }
 
-
-
-/* New enlarged globe styles */
-.globe-enlarged {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  overflow: hidden;
-}
-
-/* Ensure the globe canvas scales properly within its container */
-.globe-enlarged canvas {
-  width: 150% !important;
-  height: 150% !important;
-  object-fit: cover;
-  transform: scale(1.2);
-}
-
-/* Alternative: If you want even larger globe */
-.globe-enlarged.xl canvas {
-  width: 200% !important;
-  height: 200% !important;
-  transform: scale(1.5);
-}
-
-/* Responsive adjustments for mobile */
-@media (max-width: 768px) {
-  .globe-enlarged canvas {
-    width: 120% !important;
-    height: 120% !important;
-    transform: scale(1.1);
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-@layer base {
-  .theme {
-    --animate-shimmer-slide: shimmer-slide var(--speed) ease-in-out infinite alternate;
-    --animate-spin-around: spin-around calc(var(--speed) * 2) infinite linear;
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out;
+}
+
+/* If you need reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in {
+    animation: none;
   }
 }
 
-
-/* Ensure content is never completely hidden */
-main {
-  min-height: 100vh;
-  background-color: #000000;
+@font-face {
+  font-family: 'OffBit';
+  src: url('/fonts/OffBitDotBold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
 }
 
-
-
-
-/* Loading state styles */
-.loading-fallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #000000;
-  color: white;
+.font-offbit {
+  font-family: 'OffBit', system-ui, -apple-system, sans-serif;
 }
 
-/* Error state styles */
-.error-fallback {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background-color: #000000;
-  color: white;
-  flex-direction: column;
-  gap: 1rem;
+@font-face {
+  font-family: 'SSRomanDisplay';
+  src: url('/fonts/SSRomanDisplay.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-ssromandisplay {
+  font-family: 'SSRomanDisplay', system-ui, -apple-system, sans-serif;
+
+}
+@font-face {
+  font-family: 'GoodVibrations';
+  src: url('/fonts/GoodVibrations.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-goodvibrations {
+  font-family: 'GoodVibrations', system-ui, -apple-system, sans-serif;
+}
+
+@font-face {
+  font-family: 'SixCaps';
+  src: url('/fonts/SixCaps.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+.font-sixcaps {
+  font-family: 'SixCaps', system-ui, -apple-system, sans-serif;
 }

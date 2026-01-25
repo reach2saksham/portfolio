@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useEffect, useState, useRef, useCallback, useMemo } from 'react'
-import { motion } from "framer-motion";
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 
@@ -101,10 +100,12 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
     setIsPlaying(false);
   }, []);
 
-  // Optimized project navigation
-  const handleLatestProject = useCallback(() => {
-    router.push('/design/case1/');
-  }, [router]);
+  // Optimized scroll handler with throttling
+  const handleScroll = useCallback(() => {
+    const scrollY = window.scrollY;
+    const isAtHero = scrollY < window.innerHeight;
+    setIsAtHeroSection(isAtHero);
+  }, []);
 
   // Initialize audio with cleanup
   useEffect(() => {
@@ -114,15 +115,19 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
     audio.addEventListener('ended', handleAudioEnd);
     audio.addEventListener('error', handleAudioError);
 
-    // Scroll listener to detect hero section
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      // Consider hero section if scroll is within first 100vh (adjust as needed)
-      const isAtHero = scrollY < window.innerHeight;
-      setIsAtHeroSection(isAtHero);
+    // Throttled scroll listener
+    let ticking = false;
+    const throttledScrollHandler = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
+      }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', throttledScrollHandler, { passive: true });
     
     // Initial check
     handleScroll();
@@ -133,22 +138,21 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
       }
       audio.removeEventListener('ended', handleAudioEnd);
       audio.removeEventListener('error', handleAudioError);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', throttledScrollHandler);
       audio.pause();
       audio.src = '';
     };
-  }, [handleAudioEnd, handleAudioError]);
+  }, [handleAudioEnd, handleAudioError, handleScroll]);
 
   // Memoized circular text content
   const circularText = useMemo(() => {
-  const baseText = isPlaying
-    ? "♪ NOW PLAYING • CLICK TO PAUSE • II & PLAY TO CHANGE • "
-    : isPositionFixed 
-      ? "CLICK THE DISC • CLICK THE DISC • CLICK THE DISC • CLICK •" 
-      : "CLICK TO PLAY MUSIC • CLICK THE DISC • CLICK THE DISC •";
-  return baseText.repeat(2); // duplicate to ensure full loop
-}, [isPlaying, isPositionFixed]);
-
+    const baseText = isPlaying
+      ? "♪ NOW PLAYING • CLICK TO PAUSE • II & PLAY TO CHANGE • "
+      : isPositionFixed 
+        ? "CLICK THE DISC • CLICK THE DISC • CLICK THE DISC • CLICK •" 
+        : "CLICK TO PLAY MUSIC • CLICK THE DISC • CLICK THE DISC •";
+    return baseText.repeat(2); // duplicate to ensure full loop
+  }, [isPlaying, isPositionFixed]);
 
   // Memoized animation duration
   const animationDuration = useMemo(() => {
@@ -156,11 +160,11 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
   }, [isPlaying]);
 
   return (
-    <motion.div className="relative z-40 group ">
-      <motion.div className='z-40 group-hover:scale-105 transition-transform duration-200 ease-in-out'>
+    <div className="relative z-40 group">
+      <div className="z-40 group-hover:scale-105 transition-transform duration-200 ease-in-out">
         <button
           onClick={handleDiscClick}
-          className={`flex relative w-32 md:w-40 h-32 md:h-40 cursor-pointer transition-transform duration-200 rounded-full z-40 ${
+          className={`flex relative w-32 h-32 cursor-pointer transition-transform duration-200 rounded-full z-40 ${
             isDiscClicked ? 'scale-110' : 'scale-100'
           } ${isPlaying ? 'animate-pulse' : ''}`}
           aria-label={isPlaying ? "Pause music" : "Play random music"}
@@ -171,18 +175,18 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
             alt="Music Disc"
             width={160}
             height={160}
-            className="w-30 md:w-36 h-30 md:h-36 z-40"
+            className="w-30 h-30 z-40"
             priority
+            draggable="false"
             sizes="(max-width: 768px) 120px, 144px"
           />
 
-          {/* Optimized circular text overlay */}
+          {/* Optimized circular text overlay with CSS animation */}
           <svg
-            className="absolute inset-0 w-30 md:w-36 h-30 md:h-36 pointer-events-none animate-spin z-40"
+            className="absolute inset-0 w-30 h-30 pointer-events-none z-40"
             viewBox="0 0 160 160"
             style={{
-              animationDuration,
-              animationPlayState: 'running'
+              animation: `spin ${animationDuration} linear infinite`
             }}
           >
             <defs>
@@ -194,7 +198,7 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
             <text
               fill="#FFFFFF"
               fillOpacity="0.55"
-              fontSize="11"
+              fontSize="10"
               fontFamily="Arial, sans-serif"
               letterSpacing="2"
             >
@@ -204,8 +208,8 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
             </text>
           </svg>
         </button>
-      </motion.div>
-    </motion.div>
+      </div>
+    </div>
   );
 };
 

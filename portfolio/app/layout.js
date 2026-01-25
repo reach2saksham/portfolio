@@ -1,17 +1,21 @@
 import './globals.css';
-import { Geist, Geist_Mono } from 'next/font/google';
 import ClientLayout from './components/ClientLayout';
+import { Geist, Geist_Mono } from 'next/font/google';
 
+// Configure Geist Sans
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
   display: 'swap',
+  weight: ['400', '500', '600', '700'], // Only load weights you need
 });
 
+// Configure Geist Mono
 const geistMono = Geist_Mono({
   variable: '--font-geist-mono',
   subsets: ['latin'],
   display: 'swap',
+  weight: ['400', '500', '600', '700'], // Only load weights you need
 });
 
 export const metadata = {
@@ -59,37 +63,6 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <head>
-        {/* Preload critical fonts - only the most important ones used above the fold */}
-        <link
-          rel="preload"
-          href="/fonts/SSRomanBody.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/WhyteRegular.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/manropemedium.ttf"
-          as="font"
-          type="font/ttf"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preload"
-          href="/fonts/ppbook.otf"
-          as="font"
-          type="font/otf"
-          crossOrigin="anonymous"
-        />
-      </head>
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <ClientLayout>{children}</ClientLayout>
       </body>

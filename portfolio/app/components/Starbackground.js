@@ -1,4 +1,3 @@
-// portfolio/app/components/Starbackground.js
 "use client";
 
 import React, { useState, useRef, Suspense } from 'react';
@@ -32,7 +31,7 @@ class CanvasErrorBoundary extends React.Component {
 
 const Stars = (props) => {
   const ref = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(1500), { radius: 1.2 }));
+  const [sphere] = useState(() => random.inSphere(new Float32Array(1000), { radius: 1.2 }));
 
   useFrame((state, delta) => {
     if (ref.current) {

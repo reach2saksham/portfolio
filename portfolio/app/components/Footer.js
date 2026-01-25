@@ -555,7 +555,7 @@ const Footer = () => {
 
 
   return (
-    <div ref={footerRef} id="footer" className="container max-w-full pb-[4vh] px-6 mx-auto xl:px-20 lg:px-14 sm:px-4 relative z-30 min-h-[95vh] flex flex-col justify-between">
+    <div ref={footerRef} id="footer" className="container max-w-full pb-[4vh] px-6 mx-auto xl:px-24 lg:px-14 sm:px-4 relative z-30 min-h-[95vh] flex flex-col justify-between font-sans font-medium select-none">
       {/* Game Area */}
       <div
         ref={gameAreaRef}
@@ -571,7 +571,7 @@ const Footer = () => {
         ))}
 
         {/* Content */}
-        <div className="foothead text-[40px] sm:text-5xl md:text-6xl pt-8 pb-8 sm:pb-2 text-center uppercase w-full lg:w-[72%] xl:w-[65%] md:w-[90%] mx-auto select-none">
+        <div className="text-[40px] sm:text-5xl md:text-6xl pt-8 pb-8 sm:pb-2 text-center uppercase w-full lg:w-[72%] xl:w-[65%] md:w-[90%] mx-auto select-none font-offbit">
           Contact me to create fun things together
         </div>
 
@@ -758,24 +758,24 @@ const Footer = () => {
       </div>
 
       {/* Footer Info (No game elements below this line) */}
-      <div className="footer flex flex-col gap-6 md:flex-row md:justify-between">
+      <div className="flex flex-col gap-6 md:flex-row md:justify-between">
         <div className="flex gap-6 lg:w-none md:w-[45%]">
           <div className="flex flex-col gap-3">
-            <div className="text-white opacity-35 text-sm">VERSION</div>
+            <div className="text-white opacity-35 text-xs font-mono">VERSION</div>
             <div className="text-base">2025©Edition</div>
           </div>
           <div className="flex flex-col gap-3 md:flex-1 lg:flex-none">
-            <div className="text-white opacity-35 text-sm">LOCAL TIME</div>
+            <div className="text-white opacity-35 text-xs font-mono">LOCAL TIME</div>
             <div className="text-transform: uppercase text-base">{time} IST</div>
           </div>
           <div className="flex flex-col gap-3">
-            <div className="text-white opacity-35 text-sm">SCORE</div>
+            <div className="text-white opacity-35 text-xs font-mono">SCORE</div>
             <div className="text-base">{score}</div>
           </div>
         </div>
         <div>
           <div className="flex flex-col gap-4 w-4/5 md:w-6/10 lg:w-full md:ml-auto">
-            <div className="text-white opacity-35 text-sm">SOCIAL MEDIA</div>
+            <div className="text-white opacity-35 text-xs font-mono">SOCIAL MEDIA</div>
             <div className="flex flex-wrap items-center gap-6 md:gap-6">
               {social.map((item, index) => (
                 <a

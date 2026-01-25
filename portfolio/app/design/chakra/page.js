@@ -4,7 +4,6 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Image from "next/image";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import BlurImage from "@/app/components/BlurImage";
 import ExpandImage from "@/app/components/ExpandImage";
 
 // Centralized section configuration - no more duplication!
@@ -206,7 +205,7 @@ const Page = () => {
     <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
       <div id="overview"></div>
       <Navbar />
-      <div className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-20 lg:px-14 sm:px-4">
+      <div className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-24 lg:px-14 sm:px-4">
         {/* Header Section with Video Loader*/}
         <div className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
           <div className="w-full lg:w-3/4 pb-4 lg:pb-0 mt-14 sm:mt-0 relative">

@@ -2,7 +2,6 @@
 "use client";
 
 import React, { useCallback, useMemo } from "react";
-import { motion } from "framer-motion";
 import HeroText from "./HeroText";
 import Image from "next/image";
 import InfiniteSlider from "./InfiniteSlider";
@@ -11,7 +10,7 @@ import { useRouter } from "next/navigation";
 import dynamic from "next/dynamic";
 
 // Lazy load Spline with proper loading state
-const SplineScene = dynamic(() => import('./SplineScene'), {
+const SplineScene = dynamic(() => import("./SplineScene"), {
   ssr: false,
   loading: () => (
     <div className="w-full h-full bg-gradient-to-br from-gray-900/20 to-gray-800/20 rounded-xl animate-pulse" />
@@ -37,62 +36,61 @@ const Hero = ({ isSplineVisible }) => {
   }, [router]);
 
   // Memoize the company logos section to prevent unnecessary re-renders
-  const CompanyLogos = useMemo(() => (
-    <div className="relative w-full">
-      {/* Gradient overlay */}
-      <div className="absolute -top-20 left-0 right-0 h-20 bg-gradient-to-b xl:w-[60%] from-transparent via-black/20 to-black/40 pointer-events-none"></div>
+  const CompanyLogos = useMemo(
+    () => (
+      <div className="relative w-full">
+        {/* Gradient overlay */}
+        <div className="absolute -top-20 left-0 right-0 h-20 bg-gradient-to-b xl:w-[60%] from-transparent via-black/20 to-black/40 pointer-events-none"></div>
 
-      {/* Main companies content - Added group for hover functionality */}
-      <div className="relative mr-6 group">
-        <div className="flex w-[70%] sm:w-[80%] md:w-[90%] items-center md:flex-row">
-          <div className="flex flex-col items-start justify-between text-center border-r-2 text-white/50 border-white/20 min-w-32">
-            <p className="text-lg herointro">Previously</p>
-            <p className="text-lg herointro">worked with</p>
-          </div>
+        {/* Main companies content - Added group for hover functionality */}
+        <div className="relative mr-6 group">
+          <div className="flex w-[70%] sm:w-[80%] md:w-[90%] items-center md:flex-row">
+            <div className="flex flex-col items-start justify-between text-center border-r-2 text-white/50 border-white/20 min-w-32">
+              <p className="text-lg font-thin tracking-tight">Previously</p>
+              <p className="text-lg font-thin tracking-tight">worked with</p>
+            </div>
 
-          {/* Slider container - optimized */}
-          <div className="relative w-full overflow-hidden">
-            <InfiniteSlider
-              durationOnHover={40}
-              duration={40}
-              gap={108}
-              className="w-full"
-            >
-              {COMPANY_LOGOS.map(([src, alt, height], index) => (
-                <div key={`${src}-${index}`} className="flex">
-                  <Image
-                    className="mx-auto w-fit grayscale opacity-50 dark:invert-0 brightness-110 contrast-110 
+            {/* Slider container*/}
+            <div className="relative w-full">
+              <InfiniteSlider
+                durationOnHover={25}
+                duration={25}
+                gap={108}
+                className="w-full"
+              >
+                {COMPANY_LOGOS.map(([src, alt, height], index) => (
+                  <div key={`${src}-${index}`} className="flex">
+                    <Image
+                      className="mx-auto w-fit grayscale opacity-50 dark:invert-0 brightness-110 contrast-110 
                       transition-all duration-300 will-change-auto
                       group-hover:opacity-100 group-hover:brightness-100 group-hover:contrast-100 group-hover:grayscale-0
                       hover:scale-110"
-                    src={src}
-                    alt={alt}
-                    height={height}
-                    width={100}
-                    priority={true}
-                    quality={75}
-                  />
-                </div>
-              ))}
-            </InfiniteSlider>
+                      src={src}
+                      alt={alt}
+                      height={height}
+                      width={100}
+                      priority={index < 3} // Only first 3
+                      loading={index < 3 ? "eager" : "lazy"}
+                      quality={75}
+                    />
+                  </div>
+                ))}
+              </InfiniteSlider>
 
-            {/* CSS gradient overlays - much more performant than blur components */}
-            <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
-            <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-black via-black/80 to-transparent"></div>
+              {/* CSS gradient overlays - much more performant than blur components */}
+              <div className="pointer-events-none absolute left-0 top-0 h-full w-20 bg-gradient-to-r from-black via-black/80 to-transparent"></div>
+              <div className="pointer-events-none absolute right-0 top-0 h-full w-20 bg-gradient-to-l from-black via-black/80 to-transparent"></div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  ), []);
+    ),
+    [],
+  );
 
   return (
-    <div className="min-h-screen w-full px-6 md:px-8 lg:px-16 xl:px-20 items-center relative overflow-hidden flex justify-center">
-      <motion.div 
-        className="flex w-full pb-24"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, ease: "easeOut" }}
-      >
+    <div className="min-h-screen w-full px-6 md:px-8 lg:px-16 xl:px-24 items-center relative overflow-hidden flex justify-center font-sans select-none">
+      <div className="flex w-full pb-24 animate-fade-in">
         {/* Left side content */}
         <div
           className="w-full h-full
@@ -102,22 +100,22 @@ const Hero = ({ isSplineVisible }) => {
           mt-[188px]
           flex flex-col gap-2 justify-start relative z-40"
         >
-          {/* Project AlphaQ Button - Simplified hover effect */}
+          {/* Highlighted Project Button - Simplified hover effect */}
           <div className="backdrop-blur lg:w-[60%]">
             <button
               onClick={handleLatestProject}
-              className="relative flex gap-2 p-1 bg-blue-400/10 backdrop-blur-sm items-center border border-blue-400/40 rounded-full w-fit shadow-lg transition-all duration-200 ease-in-out focus:outline-none group hover:scale-105 hover:bg-blue-400/20 hover:border-blue-400/60"
+              className="relative flex gap-2 p-1 bg-blue-400/10 backdrop-blur-sm items-center justify-center border border-blue-400/35 rounded-full w-fit shadow-lg transition-all duration-200 ease-in-out focus:outline-none group hover:scale-105 hover:bg-blue-400/20 hover:border-blue-400/60"
             >
               {/* Simplified hover effect - single radial gradient */}
               <div className="absolute inset-0 bg-gradient-radial from-blue-500/30 via-blue-500/10 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
 
               {/* Check Out Badge */}
-              <span className="px-3 bg-blue-600 py-1 rounded-full text-[10px] md:text-xs font-medium text-white herointro relative z-10">
+              <span className="px-3 bg-blue-600 py-1 rounded-full text-[10px] md:text-xs text-white relative z-10 font-thin tracking-tight">
                 Check Out
               </span>
 
               {/* Main Text */}
-              <p className="text-white/68 text-xs md:text-sm md:pr-2 herointro relative z-10 group-hover:text-white/90 transition-colors">
+              <p className="text-white/68 text-xs md:text-sm md:pr-2 relative z-10 group-hover:text-white/90 transition-colors font-thin tracking-tight">
                 My project at UIX Labs!
               </p>
 
@@ -127,7 +125,7 @@ const Hero = ({ isSplineVisible }) => {
           </div>
 
           {/* Hero title section */}
-          <div className="herotext drop-shadow-[0_4px_8px_#4C4C4C] lg:w-[60%] mb-1">
+          <div className="drop-shadow-[0_4px_8px_#4C4C4C] lg:w-[60%] mb-1">
             <h1
               className="text-[28px]
               min-[344px]:text-[25px] 
@@ -153,7 +151,8 @@ const Hero = ({ isSplineVisible }) => {
               xl:text-[54px] xl:leading-10
               min-[1385px]:text-6xl 
               font-bold flex items-center flex-wrap
-              pt-4 sm:pt-0"
+              pt-4 sm:pt-0
+              font-ssromandisplay"
             >
               <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">
                 Not Just Des
@@ -206,7 +205,7 @@ const Hero = ({ isSplineVisible }) => {
             <SplineScene />
           </div>
         )}
-      </motion.div>
+      </div>
     </div>
   );
 };

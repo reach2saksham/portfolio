@@ -2,18 +2,17 @@
 import React, {useState, useEffect} from 'react'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import { motion } from 'framer-motion'
 import NavLink from './NavLink'
 
 // Mobile navigation links (includes Home)
 const mobileNavLinks = [
     {
         title: "Home",
-        path: "#hero", // This should match your Hero/Home section ID
+        path: "#hero",
     },
     {
         title: "Work",
-        path: "#projects", // This should match your Projects section ID
+        path: "#projects",
     },
     {
         title: "About",
@@ -21,7 +20,7 @@ const mobileNavLinks = [
     },
     {
         title: "Contact",
-        path: "#footer", // This should match your footer ID
+        path: "#footer",
     }
 ]
 
@@ -29,7 +28,7 @@ const mobileNavLinks = [
 const desktopNavLinks = [
     {
         title: "Work",
-        path: "#projects", // This should match your Projects section ID
+        path: "#projects",
     },
     {
         title: "About",
@@ -41,7 +40,7 @@ const desktopNavLinks = [
     },
     {
         title: "Contact",
-        path: "#footer", // This should match your footer ID
+        path: "#footer",
     }
 ]
 
@@ -50,22 +49,29 @@ const Navbar = () => {
     const [isHomeActive, setIsHomeActive] = useState(false);
     const router = useRouter();
 
-    // Check if we're at the top of the home page
+    // Debounced scroll handler for better performance
     useEffect(() => {
+        let scrollTimeout;
+        
         const checkHomeActive = () => {
             const isOnHomePage = window.location.pathname === '/';
-            const isAtTop = window.scrollY < 100; // Consider "home" when near top
+            const isAtTop = window.scrollY < 100;
             setIsHomeActive(isOnHomePage && isAtTop);
+        };
+
+        const handleScroll = () => {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(checkHomeActive, 50);
         };
 
         checkHomeActive();
         
-        // Add scroll listener
-        window.addEventListener('scroll', checkHomeActive);
+        window.addEventListener('scroll', handleScroll, { passive: true });
         window.addEventListener('load', checkHomeActive);
         
         return () => {
-            window.removeEventListener('scroll', checkHomeActive);
+            clearTimeout(scrollTimeout);
+            window.removeEventListener('scroll', handleScroll);
             window.removeEventListener('load', checkHomeActive);
         };
     }, []);
@@ -75,18 +81,14 @@ const Navbar = () => {
         
         const isOnHomePage = window.location.pathname === '/';
         
-        // Check if we're on the home page
         if (isOnHomePage) {
-            // If on home page, just scroll to top
             window.scrollTo({
                 top: 0,
                 behavior: 'smooth'
             });
         } else {
-            // If on case study page, trigger swipe animation
             setIsAnimating(true);
             
-            // Create overlay element for animation
             const overlay = document.createElement('div');
             overlay.style.cssText = `
                 position: fixed;
@@ -101,23 +103,19 @@ const Navbar = () => {
             `;
             document.body.appendChild(overlay);
             
-            // Start animation
             setTimeout(() => {
                 overlay.style.transform = 'translateX(0%)';
             }, 10);
             
-            // Navigate after animation completes
             setTimeout(() => {
                 router.push('/');
                 
-                // Scroll to top after navigation
                 setTimeout(() => {
                     window.scrollTo({
                         top: 0,
                         behavior: 'smooth'
                     });
                     
-                    // Remove overlay after navigation
                     overlay.style.transform = 'translateX(100%)';
                     setTimeout(() => {
                         document.body.removeChild(overlay);
@@ -129,22 +127,21 @@ const Navbar = () => {
     };
 
   return (
-    <nav className='navbar fixed sm:sticky top-0 left-0 right-0 bg-black z-50'>
-      <div className='flex flex-wrap items-center justify-between mx-auto p-3 sm:px-4 lg:px-14 xl:px-20'>
+    <nav className='fixed sm:sticky top-0 left-0 right-0 bg-black z-50 font-sans font-medium'>
+      <div className='flex flex-wrap items-center justify-between mx-auto p-3 sm:px-4 lg:px-14 xl:px-24'>
 
         {/* Mobile View - Only Navigation Links */}
         <div className='menu w-full md:hidden' id='navbar-mobile'>
             <ul className='flex justify-between gap-1 min-[380px]:gap-4 mt-0'>
                 {
                     mobileNavLinks.map((Link, index) => (
-                        <motion.li 
+                        <li 
                             key={index}
-                            initial={{ opacity: 0, y: -10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.3, delay: index * 0.1 }}
+                            className="animate-fade-in-nav"
+                            style={{ animationDelay: `${index * 0.1}s` }}
                         >
                             <NavLink href={Link.path} title={Link.title} />
-                        </motion.li>
+                        </li>
                     ))
                 }
             </ul>
@@ -152,16 +149,12 @@ const Navbar = () => {
         
         {/* Desktop View - Logo + Navigation Menu */}
         <div className='hidden md:flex items-center justify-between w-full'>
-            {/* Logo */}
-            <motion.div
-                whileHover={{ scale: 1.05 }}
-                whileTap={{ scale: 0.75 }}
-                transition={{ duration: 0.2 }}
-            >
+            {/* Logo with CSS hover effect */}
+            <div className="logo-container">
                 <Link 
                     href={"/"} 
                     onClick={handleLogoClick}
-                    className={`block text-base rounded cursor-pointer transition-all duration-300 ease-in-out ${
+                    className={`block text-base rounded cursor-pointer transition-all duration-300 ease-in-out hover:scale-105 active:scale-95 ${
                         isHomeActive 
                             ? 'text-purple-400 opacity-100' 
                             : 'text-white opacity-50 hover:text-purple-300 hover:opacity-80'
@@ -169,21 +162,20 @@ const Navbar = () => {
                 >
                 Saksham Jain
                 </Link>
-            </motion.div>
+            </div>
             
             {/* Navigation Menu */}
             <div className='menu' id='navbar-desktop'>
                 <ul className='flex gap-2 space-x-8'>
                     {
                         desktopNavLinks.map((Link, index) => (
-                            <motion.li 
+                            <li 
                                 key={index}
-                                initial={{ opacity: 0, y: -10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.3, delay: index * 0.1 }}
+                                className="animate-fade-in-nav"
+                                style={{ animationDelay: `${index * 0.1}s` }}
                             >
                                 <NavLink href={Link.path} title={Link.title} />
-                            </motion.li>
+                            </li>
                         ))
                     }
                 </ul>

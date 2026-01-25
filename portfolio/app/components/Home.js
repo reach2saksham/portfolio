@@ -7,6 +7,7 @@ import Projects from "./Projects";
 import Footer from "./Footer";
 import Hero from "./Hero";
 import MaskEffect from "./MaskEffect";
+import SelectedProjects from './SelectedProjects';
 import PortfolioGallery from './PortfolioGallery';
 import About from "./About";
 import DiscButton from "./DiscButton";
@@ -26,6 +27,7 @@ const LazyComponent = ({ children, shouldRender, placeholder = null, minHeight =
 export default function Home() {
   const [loadedSections, setLoadedSections] = useState({
     hero: true,
+    selectedProjects: false,
     maskEffect: false,
     projects: false,
     about: false,
@@ -36,6 +38,7 @@ export default function Home() {
 
   const [visibleSections, setVisibleSections] = useState({
     hero: true,
+    selectedProjects: false,
     maskEffect: false,
     projects: false,
     about: false,
@@ -48,6 +51,7 @@ export default function Home() {
   const [isMobile, setIsMobile] = useState(false);
 
   const heroRef = useRef(null);
+  const selectedProjectsRef = useRef(null);
   const maskEffectRef = useRef(null);
   const projectsRef = useRef(null);
   const aboutRef = useRef(null);
@@ -96,6 +100,7 @@ export default function Home() {
     };
 
     createObserver(heroRef, 'hero');
+    createObserver(selectedProjectsRef, 'selectedProjects');
     createObserver(maskEffectRef, 'maskEffect');
     createObserver(projectsRef, 'projects');
     createObserver(aboutRef, 'about');
@@ -117,7 +122,7 @@ export default function Home() {
       return { x: 0, y: 0 };
     }
     return {
-      x: isDiscClicked ? -140 : 0,
+      x: isDiscClicked ? -150 : 0,
       y: 0
     };
   };
@@ -134,7 +139,7 @@ export default function Home() {
              xl:mt-[8vh]
              min-[390px]:mt-[104px]
              mt-[76px]
-             xl:px-20 
+             xl:px-24 
              lg:px-14 
              sm:px-4 
              px-4 z-40 ${!isMobile && isDiscClicked ? 'fixed' : 'absolute'}`}
@@ -164,6 +169,11 @@ export default function Home() {
       <div ref={maskEffectRef}>
         <LazyComponent shouldRender={loadedSections.maskEffect}>
           <MaskEffect />
+        </LazyComponent>
+      </div>
+      <div ref={selectedProjectsRef}>
+        <LazyComponent shouldRender={loadedSections.selectedProjects}>
+          <SelectedProjects />
         </LazyComponent>
       </div>
 

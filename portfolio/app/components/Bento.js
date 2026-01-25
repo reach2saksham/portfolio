@@ -63,11 +63,12 @@ const Bento = ({ isGlobeVisible }) => {
   }, []);
 
   return (
-    <div className='bento
+    <div className='
        flex items-center justify-center 
        md:h-[600px] h-[1400px] max-w-full container 
        pt-4 mx-auto mt-2 mb-5 
-       xl:px-20 lg:px-14 sm:px-4 px-2 z-30'>
+       xl:px-24 lg:px-14 sm:px-4 px-2 z-30
+       font-sans select-none'>
 
       <div className='grid grid-cols-3 grid-rows-10 gap-3
          lg:grid-cols-11 md:grid-cols-12  sm:grid-rows-10
@@ -78,11 +79,12 @@ const Bento = ({ isGlobeVisible }) => {
           order-1 sm:order-1  
           md:col-span-5 md:row-span-10
           bg-[#0F0F0F] hover:bg-[#171717]
-          border border-[#363636]/20 rounded-2xl 
-          flex justify-center items-center '>
+          border border-[#363636]/20 rounded-lg 
+          flex justify-center items-center 
+          transition-colors duration-300'>
 
-          <Image className='w-full h-full object-cover  rounded-2xl lg: lg:hover:-0 transition duration-300'
-            src='/myphoto.avif'
+          <Image className='w-full h-full object-cover rounded-lg'
+            src='/myphoto2.avif'
             width={717}
             height={674}
             alt='Saksham Jain'
@@ -97,9 +99,10 @@ const Bento = ({ isGlobeVisible }) => {
           lg:col-span-6
           md:col-span-7 md:row-span-3 
           bg-[#0F0F0F] hover:bg-[#171717]
-          border border-[#363636]/20 rounded-2xl 
+          border border-[#363636]/20 rounded-lg 
           group
-          flex flex-col justify-between'>
+          flex flex-col justify-between
+          transition-colors duration-300'>
 
           <div className='text-2xl lg:text-3xl pt-3 px-5 text-[#D9D9D9] font-bold'>
             I'M <span className='group-hover:hidden'> SAKSHAM JAIN</span>
@@ -128,7 +131,7 @@ const Bento = ({ isGlobeVisible }) => {
           </div>
 
           <div className='text-sm leading-5 text-[#B8B8B8]
-                lg:pt-0 px-5 pb-3 bentotext '>
+                lg:pt-0 px-5 pb-3'>
             A strategist at heart, I have a knack for generating impactful ideas from scratch. I strive for excellence in whatever endeavour I take, be it product design, development, sports, games or even music. Whatever I take up, I ensure that it stands out as the best in its class.
           </div>
 
@@ -137,14 +140,15 @@ const Bento = ({ isGlobeVisible }) => {
           order-3 md:order-4 
           md:col-span-3 lg:col-span-2 md:row-span-4 
           bg-[#543AA8] lg:bg-[#0F0F0F] lg:text-[#B8B8B8]
-          lg:border border-[5px] border-[#6D4ED7]  lg:border-[#363636] lg:border-opacity-20  rounded-2xl 
+          lg:border border-[5px] border-[#6D4ED7]  lg:border-[#363636] lg:border-opacity-20  rounded-lg 
           flex gap-3 
-          lg:hover:bg-[#543AA8] lg:hover:border-[#6D4ED7] hover:border-[5px] lg:hover:border-[5px] lg:hover:text-[#EDE5F0] text-[#EDE5F0]'>
+          lg:hover:bg-[#543AA8] lg:hover:border-[#6D4ED7] lg:hover:text-[#EDE5F0] text-[#EDE5F0]
+          transition-all duration-300'>
           <div className='flex flex-col justify-between'>
             <div className='text-2xl lg:text-3xl pt-3 px-5 font-bold text-[#D9D9D9]'>
               SKILLS
             </div>
-            <div className='text-sm px-5 pb-3 flex flex-col gap-2 bentotext'>
+            <div className='text-sm px-5 pb-3 flex flex-col gap-2'>
               <p>UI/UX Design</p>
               <p>Visual & Motion Design</p>
               <p>Product Management</p>
@@ -158,14 +162,15 @@ const Bento = ({ isGlobeVisible }) => {
           lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-2
           order-5 sm:order-5 
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-2xl 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-lg 
           flex justify-center items-center 
           group
-          lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
+          lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40
+          transition-all duration-300'>
 
           <div className='flex flex-col gap-1 items-center'>
-            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>20+</p>
-            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center bentobold'>Projects Completed</p>
+            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A] transition-colors duration-300'>20+</p>
+            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center bentobold transition-colors duration-300'>Projects Completed</p>
           </div>
         </div>
 
@@ -173,14 +178,15 @@ const Bento = ({ isGlobeVisible }) => {
           lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-2
           order-6 sm:order-6
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-2xl 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-lg 
           flex justify-center items-center 
           group
-          lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
+          lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40
+          transition-all duration-300'>
 
           <div className='flex flex-col gap-1 items-center'>
-            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>5+</p>
-            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center bentobold'>Internships Completed</p>
+            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A] transition-colors duration-300'>5+</p>
+            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center bentobold transition-colors duration-300'>Internships Completed</p>
           </div>
         </div>
 
@@ -189,9 +195,10 @@ const Bento = ({ isGlobeVisible }) => {
           lg:col-span-2 lg:row-span-4 md:col-span-2 md:row-span-4
           block md:hidden lg:block
           bg-[#0F0F0F] text-[#B8B8B8]
-          border border-[#363636]/20  rounded-2xl
+          border border-[#363636]/20  rounded-lg
           flex flex-col justify-around items-center 
-          relative overflow-hidden hover:bg-[#171717] group'>
+          relative overflow-hidden hover:bg-[#171717] group
+          transition-colors duration-300'>
 
             
           {/* Conditionally render the Globe only when its section is visible */}
@@ -208,8 +215,8 @@ const Bento = ({ isGlobeVisible }) => {
 
           <div className='absolute bottom-3 left-1/2 transform -translate-x-1/2 text-center z-10'>
             <div className='text-xs lg:text-sm font-bold uppercase text-[#D9D9D9] mb-1'>{time}</div>
-            <p className='text-xs text-[#B8B8B8] bentotext'>Currently based in </p>
-            <p className='text-xs text-[#B8B8B8] bentotext'>IIT Roorkee, India</p>
+            <p className='text-xs text-[#B8B8B8]'>Currently based in </p>
+            <p className='text-xs text-[#B8B8B8]'>IIT Roorkee, India</p>
           </div>
         </div>
 
@@ -217,14 +224,15 @@ const Bento = ({ isGlobeVisible }) => {
           lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-2
           order-8 sm:order-8
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-2xl 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-lg 
           flex justify-center items-center 
           group
-          lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
+          lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40
+          transition-all duration-300'>
 
           <div className='flex flex-col gap-1 items-center'>
-            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>2+</p>
-            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center'>Years Experience</p>
+            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A] transition-colors duration-300'>2+</p>
+            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center transition-colors duration-300'>Years Experience</p>
           </div>
         </div>
 
@@ -232,14 +240,15 @@ const Bento = ({ isGlobeVisible }) => {
           lg:col-span-1 lg:row-span-2 md:col-span-2 md:row-span-2
           order-9 sm:order-9
           bg-[#F4F0E5] lg:bg-[#0F0F0F] 
-          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-2xl 
+          border-[#363636] lg:border border-[3px] border-opactiy-40 lg:border-[#363636]/20  rounded-lg 
           flex justify-center items-center 
           group
-          lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40  '>
+          lg:hover:bg-[#F4F0E5] lg:hover:border-[#363636] lg:hover:border-[3px] lg:hover:border-opactiy-40
+          transition-all duration-300'>
 
           <div className='flex flex-col gap-1 items-center'>
-            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A]'>14+</p>
-            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center'>Awards Recieved</p>
+            <p className='text-3xl lg:text-4xl font-bold text-[#18181A] lg:text-[#D9D9D9] group-hover:text-[#18181A] transition-colors duration-300'>14+</p>
+            <p className='text-[12px] px-2 text-[#18181A] lg:text-[#B8B8B8] group-hover:text-[#18181A] leading-4 text-center transition-colors duration-300'>Awards Recieved</p>
           </div>
         </div>
 
@@ -248,8 +257,9 @@ const Bento = ({ isGlobeVisible }) => {
           order-10 sm:order-10 
           lg:col-span-6 lg:row-span-3 md:col-span-7 md:row-span-3
           bg-[#0F0F0F] hover:bg-[#171717]
-          border border-[#363636]/20  rounded-2xl 
-          flex gap-8 sm:gap-0 justify-center items-center group'>
+          border border-[#363636]/20  rounded-lg 
+          flex gap-8 sm:gap-0 justify-center items-center group
+          transition-colors duration-300'>
 
           <div
             className='w-1/4 h-full 
@@ -263,7 +273,7 @@ const Bento = ({ isGlobeVisible }) => {
 
             <div
               className='bg-[#313034]/[0.7] 
-            rounded-2xl rounded-r-none 
+            rounded-lg rounded-r-none 
             h-2/6 
             flex gap-2 
             px-3 py-2 
@@ -282,7 +292,7 @@ const Bento = ({ isGlobeVisible }) => {
 
             <div
               className='bg-[#313034]/[0.7] 
-            rounded-2xl rounded-r-none 
+            rounded-lg rounded-r-none 
             h-2/6 
             flex gap-2 
             px-3 py-2 

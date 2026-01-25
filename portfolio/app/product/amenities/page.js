@@ -5,7 +5,7 @@ import Footer from '../../components/Footer';
 import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import { ChevronRight, ChevronDown, Building2 } from 'lucide-react';
-import BlurImage from '@/app/components/BlurImage';
+import ExpandImage from '@/app/components/ExpandImage';
 import ExpandImage from '@/app/components/ExpandImage';
 
 // Centralized section configuration - no more duplication!
@@ -142,7 +142,7 @@ const Page = () => {
             <div id='overview' ></div>
             <Navbar />
             <div
-                className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-20 lg:px-14 sm:px-4">
+                className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-24 lg:px-14 sm:px-4">
                 {/* Header Section */}
                 <div
                     className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
@@ -457,7 +457,7 @@ const Page = () => {
                             </button>
 
                             {openDropdowns.mygate && (
-                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4 animate-in slide-in-from-top-2 duration-200">
+                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4  slide-in-from-top-2 duration-200">
                                     <p className="text-gray-300 text-base leading-relaxed">
                                         MyGate is a security and community management app designed to streamline daily operations in residential societies. It focuses on enhancing communication between residents and gate security, while also offering a suite of community services.
                                     </p>
@@ -581,7 +581,7 @@ const Page = () => {
                             </button>
 
                             {openDropdowns.lodha && (
-                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4 animate-in slide-in-from-top-2 duration-200">
+                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4  slide-in-from-top-2 duration-200">
                                     <p className="text-gray-300 text-base leading-relaxed">
                                         Lodha Group is one of India's largest and most prominent real estate developers, known for its luxury residential and commercial projects. The group also offers integrated property management solutions.
                                     </p>
@@ -683,7 +683,7 @@ const Page = () => {
                             </button>
 
                             {openDropdowns.pitchbooking && (
-                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4 animate-in slide-in-from-top-2 duration-200">
+                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4  slide-in-from-top-2 duration-200">
                                     <p className="text-gray-300 text-base leading-relaxed">
                                         Pitchbooking is a streamlined facility booking platform designed to simplify the management of sports venues and community spaces. With the tagline <strong>“More Booking. Less Admin.”</strong>, it reduces manual work for admins while providing users with a seamless reservation experience.
                                     </p>
@@ -788,7 +788,7 @@ const Page = () => {
                             </button>
 
                             {openDropdowns.playsports && (
-                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4 animate-in slide-in-from-top-2 duration-200">
+                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4  slide-in-from-top-2 duration-200">
                                     <p className="text-gray-300 text-base leading-relaxed">
                                         Play Sports is a recreational sports facility booking platform offering users an easy way to find and reserve courts and playing arenas. Focused on user retention and incentives, it integrates a digital wallet and reward point system.
                                     </p>
@@ -818,9 +818,9 @@ const Page = () => {
                                     </section>
 
                                     <div className="flex gap-1 pt-4 sm:gap-4 justify-center items-center flex-col sm:flex-row">
-                                        <BlurImage src="/product/amenities/playsports1.webp" width={306} height={460} title="Occupancy calendar" alt="Small Banner" />
-                                        <BlurImage src="/product/amenities/playsports2.webp" width={306} height={460} title="Members communication" alt="Another Banner" />
-                                        <BlurImage src="/product/amenities/playsports3.webp" width={306} height={460} title="Association Marketing" alt="Another Banner" />
+                                        <ExpandImage src="/product/amenities/playsports1.webp" width={306} height={460} title="Occupancy calendar" alt="Small Banner" />
+                                        <ExpandImage src="/product/amenities/playsports2.webp" width={306} height={460} title="Members communication" alt="Another Banner" />
+                                        <ExpandImage src="/product/amenities/playsports3.webp" width={306} height={460} title="Association Marketing" alt="Another Banner" />
                                     </div>
 
                                     <section>
@@ -970,7 +970,7 @@ const Page = () => {
                             </button>
 
                             {openDropdowns.saistadia && (
-                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4 animate-in slide-in-from-top-2 duration-200">
+                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4  slide-in-from-top-2 duration-200">
                                     <p className="text-gray-300 text-base leading-relaxed">
                                         SAI Stadia is a digital interface developed by the Sports Authority of India to streamline access and bookings across its nationwide sports complexes. The platform focuses on secure, verified access and user management.
                                     </p>
@@ -1067,7 +1067,7 @@ const Page = () => {
                             </button>
 
                             {openDropdowns.upperhand && (
-                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4 animate-in slide-in-from-top-2 duration-200">
+                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4  slide-in-from-top-2 duration-200">
                                     <p className="text-gray-300 text-base leading-relaxed">
                                         Upper Hand is a sports and fitness facility management platform designed to serve both facility owners/administrators and end users. It enables seamless scheduling, payments, and business operations across various sports and wellness services.
                                     </p>
@@ -1188,7 +1188,7 @@ const Page = () => {
                             </button>
 
                             {openDropdowns.okrabook && (
-                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4 animate-in slide-in-from-top-2 duration-200">
+                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4  slide-in-from-top-2 duration-200">
                                     <p className="text-gray-300 text-base leading-relaxed">
                                         Okrabook is a comprehensive sports and fitness management platform offering structured solutions for training, facility bookings, and fitness operations. It caters to businesses with a focus on streamlining sports and wellness services through technology.
                                     </p>
@@ -1284,7 +1284,7 @@ const Page = () => {
                             </button>
 
                             {openDropdowns.playspots && (
-                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4 animate-in slide-in-from-top-2 duration-200">
+                                <div className="px-4 pb-4 border-t border-gray-700 mt-2 pt-4  slide-in-from-top-2 duration-200">
                                     <p className="text-gray-300 text-base leading-relaxed">
                                         Play Spots is a user-friendly app focused on helping players discover, book, and manage sports facilities nearby. It aims to make sports participation more accessible and rewarding for everyday users.
                                     </p>
@@ -1355,7 +1355,7 @@ const Page = () => {
                             id='ideation'
                             className='pt-12 text-3xl company'>IDEATION</div>
 
-                        <section className="py-4 animate-in slide-in-from-top-2 duration-200">
+                        <section className="py-4  slide-in-from-top-2 duration-200">
                             <p className="text-base leading-relaxed">
                                 The ideation phase focuses on generating diverse solutions by expanding on insights gathered during research. Rooted in the Double Diamond framework, this stage emphasizes breadth—through brainstorming, quick prototyping, and testing—to explore varied approaches. The goal is to identify high-impact, feasible ideas that align with user needs and product vision.
                             </p>
@@ -1442,7 +1442,7 @@ const Page = () => {
                             id='working'
                             className='pt-12 pb-4 text-3xl company'>IDEATION LEVEL WORKING</div>
 
-                        <section className="pb-4  animate-in slide-in-from-top-2 duration-200">
+                        <section className="pb-4   slide-in-from-top-2 duration-200">
                             <p className=" text-base leading-relaxed mb-4">
                                 Firstly, we are making an application to create digital booking system (which would be free of cost) with collaboration from the administration.
                             </p>

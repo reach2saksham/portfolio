@@ -4,7 +4,6 @@ import Navbar from "../../components/Navbar";
 import Footer from "../../components/Footer";
 import Image from "next/image";
 import { ChevronRightIcon } from "@heroicons/react/24/solid";
-import BlurImage from "@/app/components/BlurImage";
 import ExpandImage from "@/app/components/ExpandImage";
 
 // Centralized section configuration - no more duplication!
@@ -159,7 +158,7 @@ const Page = () => {
     <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
       <div id="overview"></div>
       <Navbar />
-      <div className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-20 lg:px-14 sm:px-4">
+      <div className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-24 lg:px-14 sm:px-4">
         {/* Header Section with Video Loader */}
         <div className="flex flex-wrap lg:flex-nowrap flex-col lg:flex-row-reverse">
           <div className="w-full h-[32vh] sm:h-auto lg:w-3/4 pb-4 lg:pb-0 relative">
@@ -445,7 +444,7 @@ const Page = () => {
             />
             <div className="">
               <div className="flex gap-4 flex-col lg:flex-row">
-                <BlurImage
+                <ExpandImage
                   src="/design/rank-matrix/iteration2.avif"
                   width={460}
                   height={460}
@@ -453,7 +452,7 @@ const Page = () => {
                   subtitle="Pretty"
                   alt="Another Banner"
                 />
-                <BlurImage
+                <ExpandImage
                   src="/design/rank-matrix/iteration1.avif"
                   width={460}
                   height={460}
@@ -464,7 +463,7 @@ const Page = () => {
               </div>
             </div>
             <div className="flex gap-4 flex-col lg:flex-row">
-              <BlurImage
+              <ExpandImage
                 src="/design/rank-matrix/iteration5.avif"
                 width={460}
                 height={460}
@@ -472,7 +471,7 @@ const Page = () => {
                 subtitle="Too Utilitarian"
                 alt="Small Banner"
               />
-              <BlurImage
+              <ExpandImage
                 src="/design/rank-matrix/iteration4.avif"
                 width={460}
                 height={460}
@@ -482,7 +481,7 @@ const Page = () => {
               />
             </div>
             <div className="flex gap-4 flex-col lg:flex-row">
-              <BlurImage
+              <ExpandImage
                 src="/design/rank-matrix/iteration3.avif"
                 width={460}
                 height={460}
@@ -490,7 +489,7 @@ const Page = () => {
                 subtitle="That James Thomson Builduibng svg took time"
                 alt="Small Banner"
               />
-              <BlurImage
+              <ExpandImage
                 src="/design/img-brand/rankmatrix.avif"
                 width={460}
                 height={460}

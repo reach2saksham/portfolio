@@ -1,9 +1,11 @@
-"use client"
-import React, { useState, useMemo, useCallback } from 'react';
-import Card, { MouseTooltip } from './Card';
+"use client";
+
+import React, { useState, useMemo, useCallback } from "react";
+import Card, { MouseTooltip } from "./Card";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
 
-// Move data outside component to prevent re-creation on every render
+/* ===================== DATA ===================== */
+
 const designitems = {
   card1: {
     title: `A project and employee tracking dashboard for High-profile company clients `,
@@ -171,54 +173,35 @@ const productitems = {
   },
 };
 
-// Pre-calculate column width classes
-const COLUMN_WIDTH_MAP = {
-  1: 'md:w-full',
-  2: 'md:w-1/2',
-  3: 'md:w-1/3',
-  4: 'md:w-1/4',
-};
+/* ===================== COLUMN ===================== */
 
-// Memoized column component
 const Column = React.memo(({ col, index, currentColumn, onPrev, onNext }) => {
   const isVisible = index === currentColumn;
-  
+
   return (
     <div
-      className={`w-full ${COLUMN_WIDTH_MAP[3] || 'md:w-1/3'} z-30 ${
-        isVisible ? 'block' : 'hidden'
+      className={`w-full md:w-1/3 z-30 ${
+        isVisible ? "block" : "hidden"
       } md:block`}
     >
-      <div className="bg-[#131313] relative rounded-[20px] px-2 md:px-0 z-30">
-        <div className='flex justify-between md:justify-center px-4 items-center z-30'>
+      <div className="rounded-[20px] px-2 md:px-0">
+        <div className="flex justify-between md:justify-center items-center ">
           <ChevronLeftIcon
-            className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
             onClick={onPrev}
+            className="md:hidden w-8 h-8 text-gray-400 cursor-pointer"
           />
-          <div className="projecthead text-center pt-6 text-7xl mb-4 select-none">
-            {col.title}
-          </div>
+
+          <h3 className="text-7xl font-sixcaps select-none pb-8">{col.title}</h3>
+
           <ChevronRightIcon
-            className="md:hidden h-8 w-8 text-gray-300 hover:text-white cursor-pointer"
             onClick={onNext}
+            className="md:hidden w-8 h-8 text-gray-400 cursor-pointer"
           />
         </div>
+
         {col.content.map(([key, card]) => (
-          <div data-card-tooltip="true" key={key}>
-            <Card
-              title={card.title}
-              image={card.image}
-              width={card.width}
-              height={card.height}
-              alt={card.alt}
-              tags={card.tags}
-              role={card.role}
-              domain={card.domain}
-              impact={card.impact}
-              description={card.description}
-              docsLink={card.docsLink}
-              liveLink={card.liveLink}
-            />
+          <div key={key} data-card-tooltip="true">
+            <Card {...card} />
           </div>
         ))}
       </div>
@@ -226,36 +209,59 @@ const Column = React.memo(({ col, index, currentColumn, onPrev, onNext }) => {
   );
 });
 
-Column.displayName = 'Column';
+Column.displayName = "Column";
+
+/* ===================== PROJECTS ===================== */
 
 const Projects = () => {
   const [currentColumn, setCurrentColumn] = useState(0);
 
-  // Memoize columns array to prevent recreation on every render
-  const columns = useMemo(() => [
-    { title: 'DESIGN', content: Object.entries(designitems) },
-    { title: 'BUSINESS', content: Object.entries(businessitems) },
-    { title: 'PRODUCT', content: Object.entries(productitems) },
-  ], []); // Empty dependency array since data is static
+  const columns = useMemo(
+    () => [
+      { title: "DESIGN", content: Object.entries(designitems) },
+      { title: "BUSINESS", content: Object.entries(businessitems) },
+      { title: "PRODUCT", content: Object.entries(productitems) },
+    ],
+    []
+  );
 
-  // Memoize navigation handlers
-  const handlePrev = useCallback(() => {
-    setCurrentColumn((prev) => (prev === 0 ? columns.length - 1 : prev - 1));
-  }, [columns.length]);
+  const handlePrev = useCallback(
+    () =>
+      setCurrentColumn((prev) =>
+        prev === 0 ? columns.length - 1 : prev - 1
+      ),
+    [columns.length]
+  );
 
-  const handleNext = useCallback(() => {
-    setCurrentColumn((prev) => (prev === columns.length - 1 ? 0 : prev + 1));
-  }, [columns.length]);
+  const handleNext = useCallback(
+    () =>
+      setCurrentColumn((prev) =>
+        prev === columns.length - 1 ? 0 : prev + 1
+      ),
+    [columns.length]
+  );
 
   return (
-    <div id='projects' className="projects container max-w-full px-4 pt-4 mx-auto xl:px-20 lg:px-14 sm:px-4 z-50">
-      <MouseTooltip />
+    <div
       
-      <div className="md:hidden flex items-center justify-around mb-4 z-30">
-        {/* Mobile navigation header if needed */}
+      className="container max-w-full px-4 pt-28 mx-auto xl:px-24 lg:px-14 z-50 select-none"
+    >
+      {/* ===== HEADING ===== */}
+      <div className="relative z-30 text-center select-none font-mono text-sm text-white/60 tracking-wider">
+        OTHER PROJECTS
       </div>
 
-      <div className="flex gap-2 justify-between max-w-full z-30">
+      <div className="relative z-30 flex flex-col items-center sm:flex-row justify-center sm:gap-4 py-4 font-ssromandisplay text-4xl sm:text-6xl font-medium select-none">
+        <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">Multidisciplinary</span>
+        <span className="bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent">
+          Impact
+        </span>
+      </div>
+
+      <MouseTooltip />
+
+      {/* ===== CONTENT ===== */}
+      <div className="flex gap-3 justify-between max-w-full z-30 pt-20">
         {columns.map((col, index) => (
           <Column
             key={col.title}
