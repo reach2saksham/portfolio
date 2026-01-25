@@ -191,7 +191,7 @@ const Column = React.memo(({ col, index, currentColumn, onPrev, onNext }) => {
             className="md:hidden w-8 h-8 text-gray-400 cursor-pointer"
           />
 
-          <h3 className="text-7xl font-sixcaps select-none pb-8">{col.title}</h3>
+          <h3 className="text-7xl font-sixcaps select-none pb-2">{col.title}</h3>
 
           <ChevronRightIcon
             onClick={onNext}
@@ -200,7 +200,7 @@ const Column = React.memo(({ col, index, currentColumn, onPrev, onNext }) => {
         </div>
 
         {col.content.map(([key, card]) => (
-          <div key={key} data-card-tooltip="true">
+          <div key={key} data-card-tooltip="true" className="pt-4">
             <Card {...card} />
           </div>
         ))}

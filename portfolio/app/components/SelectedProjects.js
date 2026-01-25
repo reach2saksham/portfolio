@@ -24,16 +24,16 @@ const SelectedProjects = () => {
         coverImage="./design/telegram-nodes/cardcover.avif"
         mainHeading="Nodes"
         companyName="@Telegram"
-        description="A real-time project and employee tracking dashboard for high-profile enterprise clients, delivering clear visibility into progress, team allocation, and performance. Trusted by 80+ companies monthly to drive efficiency and accountability."
-        bulletPoints={[
-          "Centralized platform to track all client projects",
-          "Real-time visibility into employee assignments and progress",
-          "Clear mapping between projects and team members",
-        ]}
-        bulletColor="#2FF9EB"
+        description="A ground-up UI/UX concept introducing multi-workspace “Nodes” in Telegram, enabling Discord-like servers with roles, admin controls, voice/video spaces, and separate identities, designed seamlessly for both iOS and Android with full day & night theme support."
+        // bulletPoints={[
+        //   "Centralized platform to track all client projects",
+        //   "Real-time visibility into employee assignments and progress",
+        //   "Clear mapping between projects and team members",
+        // ]}
+        // bulletColor="#2FF9EB"
         readTime="16 MIN"
         duration="DECEMBER 2025"
-        docsLink="/design/uix-labs"
+        docsLink="/design/telegram-nodes"
         // onCardClick={() => handleCardClick("")}
       />
     </div>
