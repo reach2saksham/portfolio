@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { ChevronRightIcon } from '@heroicons/react/24/solid';
 import { ChevronRight, ChevronDown, Building2 } from 'lucide-react';
 import ExpandImage from '@/app/components/ExpandImage';
-import ExpandImage from '@/app/components/ExpandImage';
 
 // Centralized section configuration - no more duplication!
 const SECTIONS_CONFIG = {
