@@ -21,7 +21,7 @@ const SelectedProjects = () => {
       <ExpandedCard
         topInfo="01 | PRODUCT DESIGNER"
         status = "Coming Soon"
-        coverImage="./design/telegram-nodes/cardcover3.avif"
+        coverImage="./design/telegram-nodes/cardcover.avif"
         mainHeading="Nodes"
         companyName="@Telegram"
         description="A real-time project and employee tracking dashboard for high-profile enterprise clients, delivering clear visibility into progress, team allocation, and performance. Trusted by 80+ companies monthly to drive efficiency and accountability."

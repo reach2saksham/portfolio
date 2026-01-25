@@ -244,7 +244,7 @@ const Page = () => {
           <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080] border-opacity-40">
             {caseStudy.industry && (
               <>
-                <div className="font-mono font-medium text-xs text-white/40 tracking-wider">
+                <div className="font-mono  text-xs text-white/40 tracking-wider">
                   INDUSTRY
                 </div>
                 <div className="text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
@@ -255,7 +255,7 @@ const Page = () => {
             {caseStudy.techStack &&
               Object.keys(caseStudy.techStack).length > 0 && (
                 <>
-                  <div className="pt-4 pb-2 font-mono font-medium text-xs text-white/40 tracking-wider">
+                  <div className="pt-4 pb-2 font-mono  text-xs text-white/40 tracking-wider">
                     TECH STACK
                   </div>
                   {Object.entries(caseStudy.techStack).map(
@@ -311,7 +311,7 @@ const Page = () => {
                 <div className=" text-sm">{caseStudy.period}</div>
               )}
               {caseStudy.domain && (
-                <div className="pt-4 font-mono font-medium text-xs text-white/40 tracking-wider">
+                <div className="pt-4 font-mono  text-xs text-white/40 tracking-wider">
                   {caseStudy.domain}
                 </div>
               )}
@@ -353,12 +353,12 @@ const Page = () => {
                 .filter(([_, items]) => items && items.length > 0)
                 .map(([title, items], idx) => (
                   <div key={idx} className="flex flex-col gap-1 w-fit">
-                    <div className="font-mono font-medium text-xs text-white/40 tracking-wider">
+                    <div className="font-mono  text-xs text-white/40 tracking-wider">
                       {title}
                     </div>
                     <div className="pt-1">
                       {items.map((item, i) => (
-                        <div key={i} className="font-medium w-fit text-sm">
+                        <div key={i} className=" w-fit text-sm">
                           {item}
                         </div>
                       ))}
