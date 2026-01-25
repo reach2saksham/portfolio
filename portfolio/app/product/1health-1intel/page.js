@@ -134,7 +134,7 @@ const Page = () => {
 
     return (
         <main
-            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
+            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl font-sans">
             <div id='overview' ></div>
             <Navbar />
             <div
@@ -157,7 +157,7 @@ const Page = () => {
                         {caseStudy.industry && (
                             <>
                                 <div
-                                    className="sfpro text-sm text-[#646464] tracking-wider">INDUSTRY</div>
+                                    className="font-mono text-xs text-white/40 tracking-wider">INDUSTRY</div>
                                 <div className="casetags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
                                     {caseStudy.industry}
                                 </div>
@@ -165,7 +165,7 @@ const Page = () => {
                         )}
                         {caseStudy.techStack && Object.keys(caseStudy.techStack).length > 0 && (
                             <>
-                                <div className="sfpro text-sm text-[#646464] pt-4 pb-2 tracking-wider">TECH STACK</div>
+                                <div className="font-mono text-xs text-white/40 pt-4 pb-2 tracking-wider">TECH STACK</div>
                                 {Object.entries(caseStudy.techStack).map(([category, icons], index) => (
                                     <div key={index} className="casetags text-sm">
                                         <div className="pt-2">{category}</div>
@@ -206,20 +206,20 @@ const Page = () => {
                     <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
                         <div className="flex flex-col w-full hidden lg:block">
                             {caseStudy.companyName && (
-                                <div className="company text-[40px]">{caseStudy.companyName}</div>
+                                <div className=" text-[40px] font-offbit">{caseStudy.companyName}</div>
                             )}
                             {caseStudy.period && (
                                 <div className="casetags text-sm">{caseStudy.period}</div>
                             )}
                             {caseStudy.domain && (
-                                <div className="sfpro text-sm pt-10 text-[#646464] tracking-wider">{caseStudy.domain}</div>
+                                <div className="font-mono text-xs pt-10 text-white/40 tracking-wider">{caseStudy.domain}</div>
                             )}
                             {caseStudy.sections && caseStudy.sections.length > 0 && (
-                                <div className="casetags text-base py-4">
+                                <div className="text-sm py-4">
                                     {caseStudy.sections.map((section, index) => (
                                         <button
                                             key={index}
-                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
+                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${selectedSection === index ? 'text-white' : 'text-white/40'
                                                 }`}
                                             onClick={() => handleSectionClick(index, section)}
                                         >
@@ -247,7 +247,7 @@ const Page = () => {
                                 .filter(([_, items]) => items && items.length > 0)
                                 .map(([title, items], idx) => (
                                     <div key={idx} className="flex flex-col gap-1 w-fit">
-                                        <div className="sfpro text-sm text-[#646464] tracking-wider">{title}</div>
+                                        <div className="font-mono text-xs text-white/40 tracking-wider">{title}</div>
                                         <div className="pt-1">
                                             {items.map((item, i) => (
                                                 <div key={i} className="casetags w-fit text-sm">{item}</div>
@@ -265,7 +265,7 @@ const Page = () => {
                                         href={caseStudy.links.liveProduct}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
+                                        className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs font-mono hover:bg-[#202020] hover:text-white/80 transition-transform ease-in-out duration-300"
                                     >
                                         <div>LIVE PRODUCT</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
@@ -309,7 +309,7 @@ const Page = () => {
 
                         <div
                             id='highlights'
-                            className='company text-3xl pt-12 mb-2'>
+                            className='text-3xl font-offbit pt-12 mb-2'>
                             THE HIGHLIGHTS
                         </div>
                         <div className='flex flex-col lg:flex-row gap-1 justify-center items-center pt-4'>
@@ -336,7 +336,7 @@ const Page = () => {
                         <div
                             id='intro'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>INTRODUCTION & STATISTICS</div>
+                            <div className='text-3xl font-offbit'>INTRODUCTION & STATISTICS</div>
                         </div>
 
                         <div className='pt-2'>{`Healthcare systems worldwide face challenges such as limited accessibility, fragmented data management, and inadequate patient engagement. Current Status The healthcare IT sector is growing at an 18.5% CAGR, emphasizing the need for interoperable systems and data-driven insights. The statistics reveal concerning gaps:`}</div>
@@ -350,7 +350,7 @@ const Page = () => {
                         />
 
                         <div id='persona'
-                            className='pt-12 text-3xl company'>USER PERSONAS</div>
+                            className='pt-12 text-3xl font-offbit'>USER PERSONAS</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/product/1health-1intel/2.avif'
@@ -362,7 +362,7 @@ const Page = () => {
 
                         <div
                             id='problem'
-                            className='pt-12 text-3xl company'>IDENTIFIED PROBLEMS</div>
+                            className='pt-12 text-3xl font-offbit'>IDENTIFIED PROBLEMS</div>
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/product/1health-1intel/ps1.avif'
                             width={1660}
@@ -385,7 +385,7 @@ const Page = () => {
                             priority
                         />
                         <div id='1health'
-                            className='pt-12 text-3xl company'>PROPOSED SOLUTIONS - 1HEALTH (COMMON POPULATION)</div>
+                            className='pt-12 text-3xl font-offbit'>PROPOSED SOLUTIONS - 1HEALTH (COMMON POPULATION)</div>
                             <div className='flex self-center pt-6'>
                         <ExpandImage className='w-full h-full object-cover'
                             src='/product/1health-1intel/4.avif'
@@ -420,7 +420,7 @@ const Page = () => {
                         />
 
                         <div id='1intel'
-                            className='pt-12 text-3xl company'>PROPOSED SOLUTIONS - 1INTEL (PHARMA INSTITUTIONS)</div>
+                            className='pt-12 text-3xl font-offbit'>PROPOSED SOLUTIONS - 1INTEL (PHARMA INSTITUTIONS)</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/product/1health-1intel/8.avif'
@@ -487,7 +487,7 @@ const Page = () => {
                         />
 
                         <div id='feasibility'
-                            className='pt-12 text-3xl company'>FEASIBILITY</div>
+                            className='pt-12 text-3xl font-offbit'>FEASIBILITY</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/product/1health-1intel/15.avif'
@@ -498,7 +498,7 @@ const Page = () => {
                         />
 
                         <div id='scalability'
-                            className='pt-12 text-3xl company'>SCALABILITY</div>
+                            className='pt-12 text-3xl font-offbit'>SCALABILITY</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/product/1health-1intel/16.avif'
@@ -509,7 +509,7 @@ const Page = () => {
                         />
 
                         <div id='pitfall'
-                            className='pt-12 text-3xl company'>PITFALLS & MITIGATION</div>
+                            className='pt-12 text-3xl font-offbit'>PITFALLS & MITIGATION</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/product/1health-1intel/17.avif'
@@ -520,7 +520,7 @@ const Page = () => {
                         />
 
                         <div id='conclusion'
-                            className='pt-12 text-3xl company'>CONCLUSION & DEGREE OF IMPACT</div>
+                            className='pt-12 text-3xl font-offbit'>CONCLUSION & DEGREE OF IMPACT</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/product/1health-1intel/18.avif'
@@ -531,7 +531,7 @@ const Page = () => {
                         />
 
                         <div id='citation'
-                            className='pt-12 text-3xl company'>CITATION</div>
+                            className='pt-12 text-3xl font-offbit'>CITATION</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/product/1health-1intel/19.avif'

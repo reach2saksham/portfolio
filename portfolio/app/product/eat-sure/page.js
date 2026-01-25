@@ -130,7 +130,7 @@ const Page = () => {
 
     return (
         <main
-            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
+            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl font-sans">
             <div id='overview' ></div>
             <Navbar />
             <div
@@ -153,7 +153,7 @@ const Page = () => {
                         {caseStudy.industry && (
                             <>
                                 <div
-                                    className="sfpro text-sm text-[#646464] tracking-wider">INDUSTRY</div>
+                                    className="font-mono text-xs text-white/40 tracking-wider">INDUSTRY</div>
                                 <div className="casetags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
                                     {caseStudy.industry}
                                 </div>
@@ -161,7 +161,7 @@ const Page = () => {
                         )}
                         {caseStudy.techStack && Object.keys(caseStudy.techStack).length > 0 && (
                             <>
-                                <div className="sfpro text-sm text-[#646464] pt-4 pb-2 tracking-wider">TECH STACK</div>
+                                <div className="font-mono text-xs text-white/40 pt-4 pb-2 tracking-wider">TECH STACK</div>
                                 {Object.entries(caseStudy.techStack).map(([category, icons], index) => (
                                     <div key={index} className="casetags text-sm">
                                         <div className="pt-2">{category}</div>
@@ -202,20 +202,20 @@ const Page = () => {
                     <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
                         <div className="flex flex-col w-full hidden lg:block">
                             {caseStudy.companyName && (
-                                <div className="company text-[40px]">{caseStudy.companyName}</div>
+                                <div className="font-offbit text-[40px]">{caseStudy.companyName}</div>
                             )}
                             {caseStudy.period && (
                                 <div className="casetags text-sm">{caseStudy.period}</div>
                             )}
                             {caseStudy.domain && (
-                                <div className="sfpro text-sm pt-10 text-[#646464] tracking-wider">{caseStudy.domain}</div>
+                                <div className="font-mono text-xs pt-4 text-white/40 tracking-wider">{caseStudy.domain}</div>
                             )}
                             {caseStudy.sections && caseStudy.sections.length > 0 && (
-                                <div className="casetags text-base py-4">
+                                <div className="text-sm py-4">
                                     {caseStudy.sections.map((section, index) => (
                                         <button
                                             key={index}
-                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
+                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${selectedSection === index ? 'text-white' : 'text-white/40'
                                                 }`}
                                             onClick={() => handleSectionClick(index, section)}
                                         >
@@ -243,7 +243,7 @@ const Page = () => {
                                 .filter(([_, items]) => items && items.length > 0)
                                 .map(([title, items], idx) => (
                                     <div key={idx} className="flex flex-col gap-1 w-fit">
-                                        <div className="sfpro text-sm text-[#646464] tracking-wider">{title}</div>
+                                        <div className="font-mono text-xs text-white/40 tracking-wider">{title}</div>
                                         <div className="pt-1">
                                             {items.map((item, i) => (
                                                 <div key={i} className="casetags w-fit text-sm">{item}</div>
@@ -261,7 +261,7 @@ const Page = () => {
                                         href={caseStudy.links.liveProduct}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
+                                        className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs font-mono hover:bg-[#202020] hover:text-white/80 transition-transform ease-in-out duration-300"
                                     >
                                         <div>LIVE PRODUCT</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
@@ -305,7 +305,7 @@ const Page = () => {
 
                          <div
                             id='highlights'
-                            className='company text-3xl pt-12 mb-2'>
+                            className='text-3xl font-offbit pt-12 mb-2'>
                             THE HIGHLIGHTS
                         </div>
                         <ExpandImage className='w-full h-fobject-cover pb-4'
@@ -321,7 +321,7 @@ const Page = () => {
                         <div
                             id='problem'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>THE PROBLEM</div>
+                            <div className='text-3xl font-offbit'>THE PROBLEM</div>
                         </div>
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/eat-sure/0.avif'
@@ -332,7 +332,7 @@ const Page = () => {
                             />
                             <div
                                 id='research'
-                                className='pt-12 text-3xl company'>USER RESEARCH</div>
+                                className='pt-12 text-3xl font-offbit'>USER RESEARCH</div>
 
                             <ExpandImage className='w-full h-full object-cover'
                                 src='/product/eat-sure/1.avif'
@@ -343,7 +343,7 @@ const Page = () => {
                             />
 
                             <div id='minimal'
-                                className='pt-12 text-3xl company'>MINIMAL INVESTMENT STRATEGIES</div>
+                                className='pt-12 text-3xl font-offbit'>MINIMAL INVESTMENT STRATEGIES</div>
 
                             <div className='flex flex-col gap-4'>
                                 <ExpandImage className='w-full h-full object-cover'
@@ -377,7 +377,7 @@ const Page = () => {
                             </div>
 
                             <div id='moderate'
-                                className='pt-12 text-3xl company'>MODERATE INVESTMENT SOLUTIONS</div>
+                                className='pt-12 text-3xl font-offbit'>MODERATE INVESTMENT SOLUTIONS</div>
 
                             <div className='flex flex-col gap-4'>
                                 <ExpandImage className='w-full h-full object-cover'
@@ -409,8 +409,6 @@ const Page = () => {
                                     priority
                                 />
                             </div>
-
-                            <div className='text-3xl justify-center items-center flex company mt-10'>THANK YOU!</div>
 
                     </div>
                 </div>

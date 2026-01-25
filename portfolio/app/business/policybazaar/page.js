@@ -138,7 +138,7 @@ const Page = () => {
 
     return (
         <main
-            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
+            className="flex min-h-screen flex-col mx-auto max-w-screen-2xl font-sans">
             <div id='overview' ></div>
             <Navbar />
             <div
@@ -161,7 +161,7 @@ const Page = () => {
                         {caseStudy.industry && (
                             <>
                                 <div
-                                    className="sfpro text-sm text-[#646464] tracking-wider">INDUSTRY</div>
+                                    className="font-mono text-xs text-white/40 tracking-wider">INDUSTRY</div>
                                 <div className="casetags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
                                     {caseStudy.industry}
                                 </div>
@@ -169,7 +169,7 @@ const Page = () => {
                         )}
                         {caseStudy.techStack && Object.keys(caseStudy.techStack).length > 0 && (
                             <>
-                                <div className="sfpro text-sm text-[#646464] pt-4 pb-2 tracking-wider">TECH STACK</div>
+                                <div className="font-mono text-xs text-white/40 pt-4 pb-2 tracking-wider">TECH STACK</div>
                                 {Object.entries(caseStudy.techStack).map(([category, icons], index) => (
                                     <div key={index} className="casetags text-sm">
                                         <div className="pt-2">{category}</div>
@@ -210,20 +210,20 @@ const Page = () => {
                     <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
                         <div className="flex flex-col w-full hidden lg:block">
                             {caseStudy.companyName && (
-                                <div className="company text-[40px]">{caseStudy.companyName}</div>
+                                <div className="font-offbit text-[40px]">{caseStudy.companyName}</div>
                             )}
                             {caseStudy.period && (
                                 <div className="casetags text-sm">{caseStudy.period}</div>
                             )}
                             {caseStudy.domain && (
-                                <div className="sfpro text-sm pt-10 text-[#646464] tracking-wider">{caseStudy.domain}</div>
+                                <div className="font-mono text-xs pt-10 text-white/40 tracking-wider">{caseStudy.domain}</div>
                             )}
                             {caseStudy.sections && caseStudy.sections.length > 0 && (
-                                <div className="casetags text-base py-4">
+                                <div className="text-sm py-4">
                                     {caseStudy.sections.map((section, index) => (
                                         <button
                                             key={index}
-                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${selectedSection === index ? 'text-white' : 'text-[#646464]'
+                                            className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${selectedSection === index ? 'text-white' : 'text-white/40'
                                                 }`}
                                             onClick={() => handleSectionClick(index, section)}
                                         >
@@ -251,7 +251,7 @@ const Page = () => {
                                 .filter(([_, items]) => items && items.length > 0)
                                 .map(([title, items], idx) => (
                                     <div key={idx} className="flex flex-col gap-1 w-fit">
-                                        <div className="sfpro text-sm text-[#646464] tracking-wider">{title}</div>
+                                        <div className="font-mono text-xs text-white/40 tracking-wider">{title}</div>
                                         <div className="pt-1">
                                             {items.map((item, i) => (
                                                 <div key={i} className="casetags w-fit text-sm">{item}</div>
@@ -269,7 +269,7 @@ const Page = () => {
                                         href={caseStudy.links.liveProduct}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
+                                        className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs font-mono hover:bg-[#202020] hover:text-white/80 transition-transform ease-in-out duration-300"
                                     >
                                         <div>LIVE PRESENTATION</div>
                                         <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
@@ -313,7 +313,7 @@ const Page = () => {
                         <div
                             id='basis'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>BASIS OF ANALYSIS</div>
+                            <div className='text-3xl font-offbit'>BASIS OF ANALYSIS</div>
                         </div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
@@ -329,7 +329,7 @@ const Page = () => {
                         <div
                             id='foundation'
                             className='pt-8 flex flex-col'>
-                            <div className='text-3xl company'>FOUNDATION</div>
+                            <div className='text-3xl font-offbit'>FOUNDATION</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/business/policybazaar/2.avif'
@@ -373,13 +373,13 @@ const Page = () => {
                         <div
                             id='timeline'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>COMPANY'S TIMELINE</div>
+                            <div className='text-3xl font-offbit'>COMPANY'S TIMELINE</div>
                         </div>
                         <a
                             href="https://excalidraw.com/#room=7eee25393f404024b0f4,jGPODY_NSRSg0hJG9807sA"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="w-1/2 my-4 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
+                            className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs font-mono hover:bg-[#202020] hover:text-white/80 transition-transform ease-in-out duration-300 my-4"
                         >
                             <div>CLICK TO SEE ON EXCALIDRAW</div>
                             <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
@@ -396,7 +396,7 @@ const Page = () => {
                         <div
                             id='strategy'
                             className='pt-8 flex flex-col'>
-                            <div className='text-3xl company'>STRATEGY</div>
+                            <div className='text-3xl font-offbit'>STRATEGY</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/business/policybazaar/8.avif'
@@ -414,7 +414,7 @@ const Page = () => {
                         <div className='pt-2'>{`This intentional concealment aligns with how the mutual fund audience behaves: those interested are typically informed and research-driven. Policybazaar leverages this by maintaining trust with the general public while still tapping into the mutual funds segment in a subtle, brand-safe way.`}</div>
                         <div
                             id='finance'
-                            className='pt-12 text-3xl company'>FINANCIALS & INVESTORS</div>
+                            className='pt-12 text-3xl font-offbit'>FINANCIALS & INVESTORS</div>
 
                         <ExpandImage className='w-full h-full object-cover pt-4'
                             src='/business/policybazaar/9.avif'
@@ -579,7 +579,7 @@ const Page = () => {
                         <div
                             id='vision'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>VISION & USP</div>
+                            <div className='text-3xl font-offbit'>VISION & USP</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
                             src='/business/policybazaar/12.avif'
@@ -685,7 +685,7 @@ const Page = () => {
                         <div
                             id='competitor'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>COMPETITOR ANALYSIS</div>
+                            <div className='text-3xl font-offbit'>COMPETITOR ANALYSIS</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
                             src='/business/policybazaar/13.avif'
@@ -698,7 +698,7 @@ const Page = () => {
                         <div
                             id='subsidaries'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>SUBSIDARIES</div>
+                            <div className='text-3xl font-offbit'>SUBSIDARIES</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
                             src='/business/policybazaar/14.avif'
@@ -732,7 +732,7 @@ const Page = () => {
                         <div
                             id='market'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>MARKET</div>
+                            <div className='text-3xl font-offbit'>MARKET</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
                             src='/business/policybazaar/18.avif'
@@ -758,7 +758,7 @@ const Page = () => {
                         <div
                             id='product'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>PRESENT PRODUCT</div>
+                            <div className='text-3xl font-offbit'>PRESENT PRODUCT</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
                             src='/business/policybazaar/21.avif'
@@ -784,7 +784,7 @@ const Page = () => {
                         <div
                             id='affairs'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>CURRENT AFFIARS</div>
+                            <div className='text-3xl font-offbit'>CURRENT AFFIARS</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
                             src='/business/policybazaar/23.avif'
@@ -796,7 +796,7 @@ const Page = () => {
                         <div
                             id='drawbacks'
                             className='pt-12 flex flex-col'>
-                            <div className='text-3xl company'>CURRENT DRAWBACKS</div>
+                            <div className='text-3xl font-offbit'>CURRENT DRAWBACKS</div>
                         </div>
                         <ExpandImage className='w-full h-full object-cover pt-2'
                             src='/business/policybazaar/24.avif'

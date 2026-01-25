@@ -316,14 +316,14 @@ const Page = () => {
                 </div>
               )}
               {caseStudy.sections && caseStudy.sections.length > 0 && (
-                <div className=" text-sm font py-4 ">
+                <div className="text-sm py-4">
                   {caseStudy.sections.map((section, index) => (
                     <button
                       key={index}
                       className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${
                         selectedSection === index
                           ? "text-white"
-                          : "text-[#646464]"
+                          : "text-white/40"
                       }`}
                       onClick={() => handleSectionClick(index, section)}
                     >
@@ -375,7 +375,7 @@ const Page = () => {
                     href={caseStudy.links.liveProduct}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
+                    className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs font-mono hover:bg-[#202020] hover:text-white/80 transition-transform ease-in-out duration-300"
                   >
                     <div>LIVE CASE STUDY WEBPAGE</div>
                     <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
@@ -423,7 +423,7 @@ const Page = () => {
               )}
             </div>
 
-            <div id="highlights" className="text-3xl pt-12 mb-2">
+            <div id="highlights" className="text-3xl pt-12 mb-2 font-offbit">
               THE HIGHLIGHTS
             </div>
             <ExpandImage
@@ -435,7 +435,7 @@ const Page = () => {
               priority
             />
             <div id="research" className="pt-12 flex flex-col">
-              <div className="text-3xl">USER RESEARCH</div>
+              <div className="text-3xl font-offbit">USER RESEARCH</div>
             </div>
 
             <ExpandImage
@@ -457,7 +457,7 @@ const Page = () => {
               priority
             />
 
-            <div id="process" className="pt-12 text-3xl">
+            <div id="process" className="pt-12 text-3xl font-offbit">
               THE PROCESS
             </div>
 
@@ -524,7 +524,7 @@ const Page = () => {
 
             <div className="pt-6">{`There were several other high-fidelity wireframes involved, but considering the complexity of the application above, I was advised to focus on the Members section for now. The other sections can be added later once the foundation is properly laid. But defining those sections beforehand was necessary.`}</div>
 
-            <div id="webapp" className="pt-12 text-3xl">
+            <div id="webapp" className="pt-12 text-3xl font-offbit">
               WEB-APP DESIGN
             </div>
 
@@ -692,7 +692,7 @@ const Page = () => {
               />
             </div>
 
-            <div id="casestudy" className="pt-12 text-3xl">
+            <div id="casestudy" className="pt-12 text-3xl font-offbit">
               CASE STUDY TEMPELATE DESIGN
             </div>
 

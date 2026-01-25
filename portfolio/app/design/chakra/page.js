@@ -202,7 +202,7 @@ const Page = () => {
     (caseStudy.links.liveProduct || caseStudy.links.figmaFile);
 
   return (
-    <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
+    <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl font-sans">
       <div id="overview"></div>
       <Navbar />
       <div className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-24 lg:px-14 sm:px-4">
@@ -265,7 +265,7 @@ const Page = () => {
           <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080] border-opacity-40">
             {caseStudy.industry && (
               <>
-                <div className="sfpro text-sm text-[#646464] tracking-wider">
+                <div className="font-mono text-xs text-white/40 tracking-wider">
                   INDUSTRY
                 </div>
                 <div className="casetags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
@@ -276,7 +276,7 @@ const Page = () => {
             {caseStudy.techStack &&
               Object.keys(caseStudy.techStack).length > 0 && (
                 <>
-                  <div className="sfpro text-sm text-[#646464] pt-4 pb-2 tracking-wider">
+                  <div className="font-mono text-xs text-white/40 pt-4 pb-2 tracking-wider">
                     TECH STACK
                   </div>
                   {Object.entries(caseStudy.techStack).map(
@@ -324,7 +324,7 @@ const Page = () => {
           <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
             <div className="flex flex-col w-full hidden lg:block">
               {caseStudy.companyName && (
-                <div className="company text-[40px]">
+                <div className="font-offbit text-[40px]">
                   {caseStudy.companyName}
                 </div>
               )}
@@ -332,19 +332,19 @@ const Page = () => {
                 <div className="casetags text-sm">{caseStudy.period}</div>
               )}
               {caseStudy.domain && (
-                <div className="sfpro text-sm pt-2 text-[#646464] tracking-wider">
+                <div className="pt-4 font-mono text-xs text-white/40 tracking-wider">
                   {caseStudy.domain}
                 </div>
               )}
               {caseStudy.sections && caseStudy.sections.length > 0 && (
-                <div className="casetags text-base py-4">
+                <div className="text-sm py-4">
                   {caseStudy.sections.map((section, index) => (
                     <button
                       key={index}
                       className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${
                         selectedSection === index
                           ? "text-white"
-                          : "text-[#646464]"
+                          : "text-white/40"
                       }`}
                       onClick={() => handleSectionClick(index, section)}
                     >
@@ -362,7 +362,7 @@ const Page = () => {
               <div className="casetags lg:pt-0">{caseStudy.description}</div>
             )}
 
-            <div className="pt-4 grid grid-cols-2 gap-x-4 gap-y-6 md:flex md:flex-wrap md:justify-between">
+            <div className="pt-6 grid grid-cols-2 gap-x-4 gap-y-6 md:flex md:flex-wrap md:justify-between">
               {[
                 ["ROLES", caseStudy.role],
                 ["COLLABORATORS", caseStudy.collaborators],
@@ -372,7 +372,7 @@ const Page = () => {
                 .filter(([_, items]) => items && items.length > 0)
                 .map(([title, items], idx) => (
                   <div key={idx} className="flex flex-col gap-1 w-fit">
-                    <div className="sfpro text-sm text-[#646464] tracking-wider">
+                    <div className="font-mono text-xs text-white/40 tracking-wider">
                       {title}
                     </div>
                     <div className="pt-1">
@@ -394,7 +394,7 @@ const Page = () => {
                     href={caseStudy.links.liveProduct}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
+                    className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs font-mono hover:bg-[#202020] hover:text-white/80 transition-transform ease-in-out duration-300"
                   >
                     <div>LIVE PRODUCT</div>
                     <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
@@ -442,7 +442,7 @@ const Page = () => {
               )}
             </div>
 
-            <div id="highlights" className="company text-3xl pt-12 mb-2">
+            <div id="highlights" className="text-3xl font-offbit pt-12 mb-2">
               THE HIGHLIGHTS
             </div>
 
@@ -456,7 +456,7 @@ const Page = () => {
             />
 
             <div id="design" className="pt-12 flex flex-col gap-4">
-              <div className="text-3xl company">THE DESIGN SYSTEM</div>
+              <div className="text-3xl font-offbit">THE DESIGN SYSTEM</div>
             </div>
 
             <ExpandImage
@@ -572,7 +572,7 @@ const Page = () => {
               priority
             />
 
-            <div id="loading" className="pt-12 text-3xl company">
+            <div id="loading" className="pt-12 text-3xl font-offbit">
               LOADING ANIMATIONS
             </div>
             <video
@@ -595,7 +595,7 @@ const Page = () => {
 
             <div className="py-4">{`The final animation was instantly approved by the admin and team for its playful nature and visually intuitive flow, captivating users right from the website's first frame, making the experience truly monumental.`}</div>
 
-            <div id="landing" className="pt-12 text-3xl company">
+            <div id="landing" className="pt-12 text-3xl font-offbit">
               LANDING PAGE
             </div>
 
@@ -768,7 +768,7 @@ const Page = () => {
               <div className="">{`The design incorporated multiple color schemes, accessibility features such as dark mode, and a fully responsive mobile view. Most design decisions were made in close collaboration with IITR's admins and faculty. Any additional components proposed for the landing page were crafted to be unique yet consistent with the existing design system, with the intention of contributing them to the Chakra UI library while maintaining stylistic harmony. `}</div>
             </div>
 
-            <div id="search" className="pt-8 text-3xl company">
+            <div id="search" className="pt-8 text-3xl font-offbit">
               SEARCH PAGE
             </div>
 
@@ -790,7 +790,7 @@ const Page = () => {
               alt="Small Banner"
               priority
             />
-            <div id="faculty" className="pt-12 text-3xl company">
+            <div id="faculty" className="pt-12 text-3xl font-offbit">
               FACULTY PAGE
             </div>
 
@@ -804,7 +804,7 @@ const Page = () => {
               priority
             />
 
-            <div id="chakra" className="pt-12 text-3xl company">
+            <div id="chakra" className="pt-12 text-3xl font-offbit">
               CHAKRA
             </div>
             <div className="pt-4">{`Now imagine this: you're tasked with creating just one page of our website. Let's say it takes around 4 days. For the entire site, that translates to nearly 100 years of work. And if you want to make a minor change to a component later, it could take 5+ years across the site.`}</div>

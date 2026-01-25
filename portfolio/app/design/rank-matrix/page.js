@@ -29,7 +29,7 @@ const caseStudy = {
     js: "JavaScript",
   },
   companyName: "RANK MATRIX",
-  period: "April 2025",
+  period: "March 2025 - April 2025",
   domain: "ADAPTIVE UI DESIGN",
   description: `Rank Matrix is a web app designed to simplify the college selection process for JEE aspirants. Instead of sifting through multiple rounds of counseling data, students can instantly view their best admission chances based on the final seat matrix. The platform features a clean, intuitive UI/UX, smooth loading animations, and full accessibility with both light and dark mode support.`,
   sections: Object.keys(SECTIONS_CONFIG),
@@ -155,7 +155,7 @@ const Page = () => {
     (caseStudy.links.liveProduct || caseStudy.links.figmaFile);
 
   return (
-    <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl">
+    <main className="flex min-h-screen flex-col mx-auto max-w-screen-2xl font-sans">
       <div id="overview"></div>
       <Navbar />
       <div className="projects container max-w-full pt-4 sm:mt-0 mx-auto px-4 xl:px-24 lg:px-14 sm:px-4">
@@ -219,7 +219,7 @@ const Page = () => {
           <div className="flex flex-col w-full lg:w-1/4 border-b border-[#808080] border-opacity-40">
             {caseStudy.industry && (
               <>
-                <div className="sfpro text-sm text-[#646464] tracking-wider">
+                <div className="font-mono text-xs text-white/40 tracking-wider">
                   INDUSTRY
                 </div>
                 <div className="casetags text-sm pt-2 pb-2 text-white tracking-wider border-b border-gray-500 border-opacity-40">
@@ -230,7 +230,7 @@ const Page = () => {
             {caseStudy.techStack &&
               Object.keys(caseStudy.techStack).length > 0 && (
                 <>
-                  <div className="sfpro text-sm text-[#646464] pt-4 pb-2 tracking-wider">
+                  <div className="font-mono text-xs text-white/40 pt-4 pb-2 tracking-wider">
                     TECH STACK
                   </div>
                   {Object.entries(caseStudy.techStack).map(
@@ -277,7 +277,7 @@ const Page = () => {
           <aside className="w-full lg:w-1/4 lg:sticky lg:top-[70px] lg:self-start lg:max-h-[calc(100vh-70px)] lg:overflow-y-auto">
             <div className="flex flex-col w-full hidden lg:block">
               {caseStudy.companyName && (
-                <div className="company text-[40px]">
+                <div className="font-offbit text-[40px]">
                   {caseStudy.companyName}
                 </div>
               )}
@@ -285,19 +285,19 @@ const Page = () => {
                 <div className="casetags text-sm">{caseStudy.period}</div>
               )}
               {caseStudy.domain && (
-                <div className="sfpro text-sm pt-4 text-[#646464] tracking-wider">
+                <div className="font-mono text-xs pt-4 text-white/40 tracking-wider">
                   {caseStudy.domain}
                 </div>
               )}
               {caseStudy.sections && caseStudy.sections.length > 0 && (
-                <div className="casetags text-base py-4">
+                <div className="text-sm py-4">
                   {caseStudy.sections.map((section, index) => (
                     <button
                       key={index}
                       className={`py-1 flex flex-col rounded transition-colors duration-300 text-left ${
                         selectedSection === index
                           ? "text-white"
-                          : "text-[#646464]"
+                          : "text-white/40"
                       }`}
                       onClick={() => handleSectionClick(index, section)}
                     >
@@ -327,7 +327,7 @@ const Page = () => {
                 .filter(([_, items]) => items && items.length > 0)
                 .map(([title, items], idx) => (
                   <div key={idx} className="flex flex-col gap-1 w-fit">
-                    <div className="sfpro text-sm text-[#646464] tracking-wider">
+                    <div className="font-mono text-xs text-white/40 tracking-wider">
                       {title}
                     </div>
                     <div className="pt-1">
@@ -349,7 +349,7 @@ const Page = () => {
                     href={caseStudy.links.liveProduct}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs"
+                    className="w-1/2 bg-[#131313] flex items-start justify-between p-4 rounded-md border-[#363636] border-opacity-20 text-[#BBBBBB] text-xs font-mono hover:bg-[#202020] hover:text-white/80 transition-transform ease-in-out duration-300"
                   >
                     <div>LIVE PRODUCT</div>
                     <ChevronRightIcon className="h-4 w-4 text-[#BBBBBB]" />
@@ -397,7 +397,7 @@ const Page = () => {
               )}
             </div>
 
-            <div id="highlights" className="company text-3xl pt-12 mb-2">
+            <div id="highlights" className="text-3xl font-offbit pt-12 mb-2">
               THE HIGHLIGHTS
             </div>
 
@@ -421,7 +421,7 @@ const Page = () => {
             </div>
 
             <div id="logos" className="pt-12 flex flex-col gap-4">
-              <div className="text-3xl company">
+              <div className="text-3xl font-offbit">
                 TYPOGRAPHY, COLOUR PALETE AND BRANDING
               </div>
             </div>
@@ -499,7 +499,7 @@ const Page = () => {
               />
             </div>
 
-            <div id="loading" className="pt-12 text-3xl company">
+            <div id="loading" className="pt-12 text-3xl font-offbit">
               LOADING ANIMATIONS
             </div>
             <video
@@ -523,7 +523,7 @@ const Page = () => {
 
             <div className="py-4">{`This loading screen was designed with reusability in mind—it also serves perfectly as a component-level loader within the webpage.`}</div>
 
-            <div id="screens" className="pt-12 text-3xl company">
+            <div id="screens" className="pt-12 text-3xl font-offbit">
               USER INTERFACES
             </div>
 
