@@ -32,7 +32,7 @@ const caseStudy = {
         'framer': 'Framer',
     },
     companyName: 'IMG BRAND',
-    period: 'April 2023 - Present',
+    period: 'April 2023 - May 2023',
     domain: 'GRAPHIC DESIGNING',
     description: `IMG, a tech-driven club at IIT Roorkee, builds impactful digital solutions for the campus. For 2 years, I've led its visual storytelling—designing bold, tech-inspired graphics and brand assets filled with easter eggs. From workshop promos to web app launches and merch, every design was crafted to make IMG stand out with pride and purpose.`,
     sections: Object.keys(SECTIONS_CONFIG),

@@ -21,10 +21,10 @@ const SelectedProjects = () => {
       <ExpandedCard
         topInfo="01 | PRODUCT DESIGNER"
         status = "Coming Soon"
-        coverImage="./design/telegram-nodes/cardcover.avif"
+        coverImage="./design/telegram-nodes/cardcover2.avif"
         mainHeading="Nodes"
         companyName="@Telegram"
-        description="A ground-up UI/UX concept introducing multi-workspace “Nodes” in Telegram, enabling Discord-like servers with roles, admin controls, voice/video spaces, and separate identities, designed seamlessly for both iOS and Android with full day & night theme support."
+        description="A ground-up product feature introducing multi-workspace “Nodes” in Telegram, enabling Discord-like servers with roles, admin controls, voice/video spaces, and separate identities, designed seamlessly for both iOS and Android with full day & night theme support."
         // bulletPoints={[
         //   "Centralized platform to track all client projects",
         //   "Real-time visibility into employee assignments and progress",
@@ -34,7 +34,7 @@ const SelectedProjects = () => {
         readTime="16 MIN"
         duration="DECEMBER 2025"
         docsLink="/design/telegram-nodes"
-        // onCardClick={() => handleCardClick("")}
+        onCardClick={() => handleCardClick("/design/telegram-nodes")}
       />
     </div>
   );

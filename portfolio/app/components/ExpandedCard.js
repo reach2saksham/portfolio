@@ -163,7 +163,7 @@ const ExpandedCard = ({
             </div> */}
 
             {/* Footer Meta Information */}
-            <div className="flex flex-col sm:flex-row justify-between gap-2 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-[#272727] sm:border-0">
+            <div className="flex flex-row justify-between gap-2 sm:gap-4 mt-6 sm:mt-8 pt-4 border-t border-[#272727] sm:border-0">
               <div className="flex gap-3 items-center">
                 <div className="w-2 h-2 rounded-full bg-green-400 animate-pulse"></div>
                 <span className="text-[#727272] font-medium text-xs sm:text-sm md:text-base select-none">

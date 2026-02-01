@@ -34,7 +34,7 @@ const caseStudy = {
     scala: "Scala",
   },
   companyName: "IITR WEBSITE",
-  period: "January 2024 - Present",
+  period: "January 2024 - May 2024",
   domain: "CONTENT MANAGEMENT SYSTEM",
   description: `In this case study we would discuss that how standardization of design system was implemented in a scalable manner through a component-based content management system. The goal was to create a consistent and reusable tool that could be easily managed and updated by staff and  faculty members, while also ensuring that the website remained accessible and user-friendly.`,
   sections: Object.keys(SECTIONS_CONFIG),
