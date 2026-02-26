@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useState } from 'react';
+import React, { useState } from 'react';
 
 const HeroText = () => {
   const [isHovered, setIsHovered] = useState(false);
@@ -19,7 +19,7 @@ const HeroText = () => {
             alt="Saksham Jain"
             width={64}
             height={64}
-            className={`w-full h-full object-cover transition-all duration-300 ease-in-out ${
+            className={`w-full h-full object-cover transition-transform duration-300 ease-in-out ${
               isHovered ? 'scale-125 -rotate-12' : 'scale-100 rotate-0'
             }`}
           />
@@ -37,7 +37,7 @@ const HeroText = () => {
 
       <a className='block lg:hidden' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
         <Image
-          className="sm:grayscale sm:hover:grayscale-0 ml-2 hover:scale-[115%] transition duration-300"
+          className="sm:grayscale sm:hover:grayscale-0 ml-2 hover:scale-[115%] transition-[filter,transform] duration-300"
           src='/linkedin.svg'
           width={30}
           height={30}
@@ -54,7 +54,7 @@ const HeroText = () => {
         <p className='hidden lg:block'>with me!</p>
         <a className='hidden lg:block' target="_blank" href="https://www.linkedin.com/in/sakshamjainiitr/">
           <Image
-            className="sm:grayscale sm:hover:grayscale-0 hover:scale-[135%] transition duration-300"
+            className="sm:grayscale sm:hover:grayscale-0 hover:scale-[135%] transition-[filter,transform] duration-300"
             src='/linkedin.svg'
             width={28}
             height={28}
@@ -71,7 +71,7 @@ const HeroText = () => {
           href="https://drive.google.com/file/d/1FlUNdu_kKrjWGUyURgATFx2ihJzsD4Q6/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
-          className="block md:hidden tags px-4 py-2 text-sm rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-violet-950 font-semibold shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
+          className="block md:hidden tags px-4 py-2 text-sm rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-violet-950 font-semibold shadow-lg transform transition-transform duration-300 ease-in-out hover:scale-105"
         >
           View Resume
         </a>
@@ -80,4 +80,4 @@ const HeroText = () => {
   );
 };
 
-export default HeroText;
+export default React.memo(HeroText);

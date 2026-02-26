@@ -29,6 +29,7 @@ const InfiniteSlider = ({
         style={{
           animation: `${reverse ? 'scroll-reverse' : 'scroll'} ${currentDuration}s linear infinite`,
           gap: `${gap}px`,
+          willChange: 'transform',
         }}
         {...hoverProps}
       >

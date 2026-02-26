@@ -62,7 +62,7 @@ const Hero = ({ isSplineVisible }) => {
                   <div key={`${src}-${index}`} className="flex">
                     <Image
                       className="mx-auto w-fit grayscale opacity-50 dark:invert-0 brightness-110 contrast-110 
-                      transition-all duration-300 will-change-auto
+                      transition-[opacity,filter,transform] duration-300
                       group-hover:opacity-100 group-hover:brightness-100 group-hover:contrast-100 group-hover:grayscale-0
                       hover:scale-110"
                       src={src}
@@ -101,10 +101,10 @@ const Hero = ({ isSplineVisible }) => {
           flex flex-col gap-2 justify-start relative z-40"
         >
           {/* Highlighted Project Button - Simplified hover effect */}
-          <div className="backdrop-blur lg:w-[60%]">
+          <div className="lg:w-[60%]">
             <button
               onClick={handleLatestProject}
-              className="relative flex gap-2 p-1 bg-blue-400/10 backdrop-blur-sm items-center justify-center border border-blue-400/35 rounded-full w-fit shadow-lg transition-all duration-200 ease-in-out focus:outline-none group hover:scale-105 hover:bg-blue-400/20 hover:border-blue-400/60"
+              className="relative flex gap-2 p-1 bg-blue-400/10 items-center justify-center border border-blue-400/35 rounded-full w-fit shadow-lg transition-[transform,background-color,border-color] duration-200 ease-in-out focus:outline-none group hover:scale-105 hover:bg-blue-400/20 hover:border-blue-400/60"
             >
               {/* Simplified hover effect - single radial gradient */}
               <div className="absolute inset-0 bg-gradient-radial from-blue-500/30 via-blue-500/10 to-transparent rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"></div>
@@ -115,12 +115,12 @@ const Hero = ({ isSplineVisible }) => {
               </span>
 
               {/* Main Text */}
-              <p className="text-white/68 text-xs md:text-sm md:pr-2 relative z-10 group-hover:text-white/90 transition-colors font-thin tracking-tight">
+              <p className="text-white/68 text-xs md:text-sm md:pr-2 relative z-10 group-hover:text-white/90 transition-colors duration-200 font-thin tracking-tight">
                 My project at UIX Labs!
               </p>
 
               {/* Arrow Icon */}
-              <ChevronRightIcon className="h-4 w-4 text-white/70 mr-1 relative z-10 group-hover:text-white/90 group-hover:translate-x-0.5 transition-all" />
+              <ChevronRightIcon className="h-4 w-4 text-white/70 mr-1 relative z-10 group-hover:text-white/90 group-hover:translate-x-0.5 transition-[color,transform] duration-200" />
             </button>
           </div>
 
