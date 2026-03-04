@@ -251,7 +251,7 @@ const Projects = () => {
         OTHER PROJECTS
       </div>
 
-      <div className="relative z-30 flex flex-col items-center sm:flex-row justify-center sm:gap-4 py-4 font-ssromandisplay text-4xl sm:text-6xl font-medium select-none">
+      <div className="relative z-30 flex flex-row items-center justify-center gap-2 sm:gap-4 py-4 font-ssromandisplay text-2xl sm:text-6xl font-medium select-none">
         <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">Multidisciplinary</span>
         <span className="bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent">
           Impact
