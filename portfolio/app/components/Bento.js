@@ -66,7 +66,7 @@ const Bento = ({ isGlobeVisible }) => {
     <div className='
        flex items-center justify-center 
        md:h-[600px] h-[1400px] max-w-full container 
-       pt-4 mx-auto mt-2 mb-5 
+       pt-4 mx-auto mt-2 mb-5 md:my-20
        xl:px-24 lg:px-14 sm:px-4 px-2 z-30
        font-sans select-none'>
 
@@ -87,7 +87,6 @@ const Bento = ({ isGlobeVisible }) => {
             src='/myphoto2.avif'
             width={717}
             height={674}
-            style={{ width: 'auto', height: 'auto' }}
             alt='Saksham Jain'
             priority
             unoptimized={true}
