@@ -164,8 +164,7 @@ const Hero = ({ isSplineVisible }) => {
                 alt="i"
                 width={2}
                 height={4}
-                className="w-4 h-[52px] sm:w-5 sm:h-[70px] md:w-6 md:h-24 -mx-0.5 pb-[12px] sm:pb-4 md:pb-5 hover:-translate-y-4 transition-transform duration-200 ease-in-out will-change-transform"
-                style={{ width: 'auto', height: 'auto' }}
+                className="w-4 h-[52px] sm:w-5 sm:h-[70px] md:w-6 md:h-24 -mx-0.5 pb-[12px] sm:pb-4 md:pb-[22px] hover:-translate-y-4 transition-transform duration-200 ease-in-out will-change-transform"
                 priority={false}
               />
 
