@@ -111,6 +111,7 @@ const Footer = () => {
   // Refs for DOM elements and animation
   const footerRef = useRef(null);
   const gameAreaRef = useRef(null);
+  const footerInfoRef = useRef(null);
   const dividerRef = useRef(null);
   const animFrameRef = useRef(null);
   const moveAxisRef = useRef("x"); // Track which axis we're moving on: "x" or "y"
@@ -241,17 +242,17 @@ const Footer = () => {
 
     // Then try to get more precise measurements
     const measureGameArea = () => {
-      if (!gameAreaRef.current || !footerRef.current) return;
+      if (!gameAreaRef.current || !footerRef.current || !footerInfoRef.current) return;
 
       try {
         const gameRect = gameAreaRef.current.getBoundingClientRect();
-        const footerRect = footerRef.current.getBoundingClientRect();
+        const footerInfoRect = footerInfoRef.current.getBoundingClientRect();
 
-        if (gameRect && footerRect) {
+        if (gameRect && footerInfoRect) {
           const gameWidth = gameRect.width;
           const gameHeight = Math.max(
             350, // Minimum height
-            footerRect.bottom - gameRect.top - 48 // Dynamic calculation
+            footerInfoRect.top - gameRect.top // Restrict to above footer info
           );
 
           setGameAreaBounds({
@@ -555,11 +556,11 @@ const Footer = () => {
 
 
   return (
-    <div ref={footerRef} id="footer" className="container max-w-full pb-[4vh] px-6 mx-auto xl:px-24 lg:px-14 sm:px-4 relative z-30 min-h-[95vh] flex flex-col justify-between font-sans font-medium select-none">
+    <div ref={footerRef} id="footer" className="container max-w-full pb-[4vh] px-6 mx-auto xl:px-24 lg:px-14 sm:px-4 relative z-30 min-h-[95vh] flex flex-col justify-between font-sans font-medium select-none overflow-hidden">
       {/* Game Area */}
       <div
         ref={gameAreaRef}
-        className="relative w-full overflow-hidden pt-[12vh]"
+        className="relative w-full  pt-[12vh]"
         style={{ minHeight: '350px' }}
       >
         {/* Pacman - Always render */}
@@ -758,7 +759,7 @@ const Footer = () => {
       </div>
 
       {/* Footer Info (No game elements below this line) */}
-      <div className="flex flex-col gap-6 md:flex-row md:justify-between">
+      <div ref={footerInfoRef} className="flex flex-col gap-6 md:flex-row md:justify-between">
         <div className="flex gap-6 lg:w-none md:w-[45%]">
           <div className="flex flex-col gap-3">
             <div className="text-white opacity-35 text-xs font-mono">VERSION</div>
