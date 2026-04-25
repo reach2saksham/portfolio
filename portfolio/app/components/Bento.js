@@ -87,6 +87,7 @@ const Bento = ({ isGlobeVisible }) => {
             src='/myphoto2.avif'
             width={717}
             height={674}
+            style={{ width: 'auto', height: 'auto' }}
             alt='Saksham Jain'
             priority
             unoptimized={true}

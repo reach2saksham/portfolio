@@ -16,7 +16,10 @@ const nextConfig = withBundleAnalyzer({
   webpack: (config) => {
     config.resolve.alias = {
       ...config.resolve.alias,
-      three: path.resolve(__dirname, 'node_modules/three'),
+      'three': path.resolve(__dirname, 'node_modules/three'),
+      'three/build/three.module.js': path.resolve(__dirname, 'node_modules/three/build/three.module.js'),
+      'three/src/Three.js': path.resolve(__dirname, 'node_modules/three/src/Three.js'),
+      '@react-three/fiber': path.resolve(__dirname, 'node_modules/@react-three/fiber'),
     };
     return config;
   },

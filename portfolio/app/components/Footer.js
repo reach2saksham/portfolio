@@ -790,7 +790,7 @@ const Footer = () => {
                     src={`/social/${item.icon}`}
                     width={item.width}
                     height={item.height}
-                    style={{ width: 'auto' }}
+                    style={{ width: 'auto', height: 'auto' }}
                     alt={item.icon.split(".")[0]}
                   />
                 </a>
