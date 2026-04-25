@@ -68,7 +68,7 @@ const HeroText = () => {
         </div>
 
         <a
-          href="https://drive.google.com/file/d/1FlUNdu_kKrjWGUyURgATFx2ihJzsD4Q6/view?usp=sharing"
+          href="https://drive.google.com/file/d/1RA-EpjXsBmR8aATrfvKQAvfZRSxPynmr/view?usp=sharing"
           target="_blank"
           rel="noopener noreferrer"
           className="block md:hidden tags px-4 py-2 text-sm rounded-full bg-gradient-to-r from-[#f020df] to-[#FF00C1] text-violet-950 font-semibold shadow-lg transform transition duration-300 ease-in-out hover:scale-105"
