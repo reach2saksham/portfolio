@@ -169,16 +169,16 @@ const DiscButton = ({ onPositionToggle, isPositionFixed = false }) => {
           } ${isPlaying ? 'animate-pulse' : ''}`}
           aria-label={isPlaying ? "Pause music" : "Play random music"}
         >
-          {/* Optimized image with priority and sizes */}
-          <Image
+          {/* Optimized image with standard img tag to avoid Next.js automatic preloading behavior */}
+          <img
             src={isPlaying ? "/discplaying.svg" : "/disc.svg"}
             alt="Music Disc"
             width={160}
             height={160}
             className="w-30 h-30 z-40"
-            priority
+            style={{ width: 'auto', height: 'auto' }}
+            loading="eager"
             draggable="false"
-            sizes="(max-width: 768px) 120px, 144px"
           />
 
           {/* Optimized circular text overlay with CSS animation */}

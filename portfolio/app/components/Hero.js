@@ -164,7 +164,7 @@ const Hero = ({ isSplineVisible }) => {
                 width={2}
                 height={4}
                 className="w-4 h-[52px] sm:w-5 sm:h-[70px] md:w-6 md:h-24 -mx-0.5 pb-[12px] sm:pb-4 md:pb-5 hover:-translate-y-4 transition-transform duration-200 ease-in-out will-change-transform"
-                priority={true}
+                priority={false}
               />
 
               <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">

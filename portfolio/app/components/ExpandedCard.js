@@ -105,7 +105,7 @@ const ExpandedCard = ({
               src={coverImage}
               alt={mainHeading}
               draggable="false"
-              className="w-full h-full pr-12 pb-6 sm:pt-12 lg:pr-0 lg:pb-0 lg:pt-0 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out select-none overflow-visible"
+              className="w-full h-full pr-12 pb-6 sm:pt-12 lg:pr-0 lg:pb-0 lg:pt-0 object-cover group-hover:scale-105 transition-transform duration-300 ease-in-out select-none"
             />
           </div>
 

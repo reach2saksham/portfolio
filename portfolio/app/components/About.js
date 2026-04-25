@@ -12,15 +12,15 @@ const About = () => {
       <div className='relative z-40'>
         {/* Image with CSS animation */}
         <div className="animate-slide-up-fade">
-          <Image 
+          <Image
             className='object-cover opacity-60 rounded-[20px] transition duration-300 z-40'
             src='/moon.avif'
             width={717}
             height={674}
+            style={{ width: 'auto', height: 'auto' }}
             alt='Saksham Jain'
             priority
-          />
-        </div>
+          />        </div>
 
         {/* Heading with CSS animation */}
         <h1 

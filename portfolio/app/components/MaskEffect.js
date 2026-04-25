@@ -106,7 +106,9 @@ export default function MaskEffect() {
                     transform: "translateZ(0)",
                     WebkitTransform: "translateZ(0)",
                     backfaceVisibility: "hidden",
-                    WebkitBackfaceVisibility: "hidden"
+                    WebkitBackfaceVisibility: "hidden",
+                    WebkitMaskSize: "40px 40px",
+                    maskSize: "40px 40px"
                 }}
                 // Since x and y are now relative to this element, the math works perfectly
                 animate={{

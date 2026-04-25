@@ -1,11 +1,25 @@
 /** @type {import('next').NextConfig} */
 import withBundleAnalyzer from '@next/bundle-analyzer';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const nextConfig = withBundleAnalyzer({
   enabled: process.env.ANALYZE === 'true',
 })({
   reactStrictMode: true,
   compress: true,
+  transpilePackages: ['three', '@react-three/fiber', '@react-three/drei'],
+
+  webpack: (config) => {
+    config.resolve.alias = {
+      ...config.resolve.alias,
+      three: path.resolve(__dirname, 'node_modules/three'),
+    };
+    return config;
+  },
 
   experimental: {
     serverActions: {},

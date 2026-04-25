@@ -31,7 +31,14 @@ class CanvasErrorBoundary extends React.Component {
 
 const Stars = (props) => {
   const ref = useRef();
-  const [sphere] = useState(() => random.inSphere(new Float32Array(1000), { radius: 1.2 }));
+  const [sphere] = useState(() => {
+    const s = random.inSphere(new Float32Array(1002), { radius: 1.2 });
+    // Sanity check for NaN values which cause Three.js BufferGeometry errors
+    for (let i = 0; i < s.length; i++) {
+      if (isNaN(s[i])) s[i] = 0;
+    }
+    return s;
+  });
 
   useFrame((state, delta) => {
     if (ref.current) {

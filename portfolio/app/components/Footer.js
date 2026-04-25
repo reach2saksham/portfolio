@@ -5,17 +5,17 @@ import emailjs from '@emailjs/browser';
 import { motion } from "framer-motion";
 
 const social = [
-  { icon: "1.svg", link: "https://www.linkedin.com/in/sakshamjainiitr/" },
-  { icon: "2.svg", link: "https://www.instagram.com/saksham.tombraider/" },
-  { icon: "3.svg", link: "https://medium.com/@reach2saksham" },
-  { icon: "4.svg", link: "https://dribbble.com/reach2saksham" },
-  { icon: "5.svg", link: "https://www.behance.net/sakshamjainiitr" },
-  { icon: "6.svg", link: "https://github.com/reach2saksham" },
-  { icon: "7.svg", link: "https://www.facebook.com/SamTR4x4/" },
-  { icon: "8.svg", link: "https://x.com/sakshamjainiitr" },
-  { icon: "9.svg", link: "https://www.youtube.com/@sakshamjainiitr" },
-  { icon: "10.svg", link: "saksham_j@ar.iitr.ac.in" },
-  { icon: "11.svg", link: "+91 7067195363" },
+  { icon: "1.svg", link: "https://www.linkedin.com/in/sakshamjainiitr/", width: 18, height: 18 },
+  { icon: "2.svg", link: "https://www.instagram.com/saksham.tombraider/", width: 18, height: 18 },
+  { icon: "3.svg", link: "https://medium.com/@reach2saksham", width: 18, height: 18 },
+  { icon: "4.svg", link: "https://dribbble.com/reach2saksham", width: 18, height: 18 },
+  { icon: "5.svg", link: "https://www.behance.net/sakshamjainiitr", width: 29, height: 18 },
+  { icon: "6.svg", link: "https://github.com/reach2saksham", width: 18, height: 18 },
+  { icon: "7.svg", link: "https://www.facebook.com/SamTR4x4/", width: 18, height: 18 },
+  { icon: "8.svg", link: "https://x.com/sakshamjainiitr", width: 18, height: 18 },
+  { icon: "9.svg", link: "https://www.youtube.com/@sakshamjainiitr", width: 18, height: 18 },
+  { icon: "10.svg", link: "saksham_j@ar.iitr.ac.in", width: 24, height: 18 },
+  { icon: "11.svg", link: "+91 7067195363", width: 19, height: 18 },
 ];
 
 // Game configuration
@@ -786,10 +786,11 @@ const Footer = () => {
                   onClick={index === 10 ? handleCalendarClick : undefined}
                 >
                   <Image
-                    className="w-auto h-[18px] lg:grayscale lg:hover:grayscale-0 hover:scale-[135%] transition duration-300"
+                    className="h-[18px] lg:grayscale lg:hover:grayscale-0 hover:scale-[135%] transition duration-300"
                     src={`/social/${item.icon}`}
-                    width={18}
-                    height={18}
+                    width={item.width}
+                    height={item.height}
+                    style={{ width: 'auto' }}
                     alt={item.icon.split(".")[0]}
                   />
                 </a>
