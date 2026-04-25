@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useCallback } from "react";
 import Card, { MouseTooltip } from "./Card";
 import { ChevronLeftIcon, ChevronRightIcon } from "@heroicons/react/24/solid";
+import { motion, AnimatePresence } from "framer-motion";
 
 /* ===================== DATA ===================== */
 
@@ -133,19 +134,6 @@ const productitems = {
     docsLink: '/product/vevana',
   },  
   card2: {
-    title: `Amenities: Redefining infra-operations in institutions`,
-    image: '/product/amenities/thumbnail.avif',
-    width: 350,
-    height: 380,
-    alt: 'Mockup',
-    tags: ['Hyundai Grant', 'December 2025 - Present'],
-    role: ['Product Lead'],
-    domain: ['Facility Management', 'SaaS'],
-    impact: ['Estimated $18M SOM; building IITR pilot'],
-    description: `Amenities app for real-time bookings, QR check-ins, role-based access, and live facility status; streamlined amenity management for campuses, societies, public sports sites, institutions, etc. Selected as Hyundai Hope Scholar being in top 25 students across 23 IITs for B2B SaaS innovation.`,
-    docsLink: '/product/amenities',
-  },  
-  card3: {
     title: `Zero to One: AI based apps 1Health & 1Intel for Healthcare`,
     image: '/product/1health-1intel/thumbnail.avif',
     width: 350,
@@ -157,6 +145,19 @@ const productitems = {
     impact: ['1Intel Boosted Trial Readiness by 20%'],
     description: `1Health app with smart consultations, reminders & device sync; improved access for rural users & reduced missed care. 1Intel web app using AI/NER for de-ID, error correction & harmonization and cutting EHR noise. National Finalist across 500+ individuals in TASIC'25, SPJIMR Mumbai`,
     docsLink: '/product/1health-1intel',
+  },  
+  card3: {
+    title: `Amenities: Redefining infra-operations in institutions`,
+    image: '/product/amenities/thumbnail.avif',
+    width: 350,
+    height: 380,
+    alt: 'Mockup',
+    tags: ['Hyundai Grant', 'July 2024 - December 2024'],
+    role: ['Product Lead'],
+    domain: ['Facility Management', 'SaaS'],
+    impact: ['Estimated $18M SOM; building IITR pilot'],
+    description: `Amenities app for real-time bookings, QR check-ins, role-based access, and live facility status; streamlined amenity management for campuses, societies, public sports sites, institutions, etc. Selected as Hyundai Hope Scholar being in top 25 students across 23 IITs for B2B SaaS innovation.`,
+    docsLink: '/product/amenities',
   },  
   card4: {
     title: `Driving EatSure's Adoption and Affinity Among College Students and Youth`,
@@ -175,7 +176,7 @@ const productitems = {
 
 /* ===================== COLUMN ===================== */
 
-const Column = React.memo(({ col, index, currentColumn, onPrev, onNext }) => {
+const Column = React.memo(({ col, index, currentColumn, totalColumns, onPrev, onNext, onSetColumn }) => {
   const isVisible = index === currentColumn;
 
   return (
@@ -185,19 +186,57 @@ const Column = React.memo(({ col, index, currentColumn, onPrev, onNext }) => {
       } md:block`}
     >
       <div className="rounded-[20px] px-2 md:px-0">
-        <div className="flex justify-between md:justify-center items-center ">
-          <ChevronLeftIcon
-            onClick={onPrev}
-            className="md:hidden w-8 h-8 text-gray-400 cursor-pointer"
-          />
+        <motion.div
+          onPanEnd={(e, info) => {
+            if (info.offset.x > 30) onPrev();
+            else if (info.offset.x < -30) onNext();
+          }}
+          className="relative z-30 touch-pan-y"
+        >
+          <div className="flex justify-between md:justify-center items-center overflow-hidden">
+            <ChevronLeftIcon
+              onClick={onPrev}
+              className="md:hidden w-8 h-8 text-gray-400 cursor-pointer z-40"
+            />
 
-          <h3 className="text-7xl font-sixcaps select-none pb-2">{col.title}</h3>
+            <div className="relative h-20 w-full flex justify-center items-center">
+              <AnimatePresence mode="wait">
+                <motion.h3
+                  key={col.title}
+                  initial={{ x: 50, opacity: 0 }}
+                  animate={{ x: 0, opacity: 1 }}
+                  exit={{ x: -50, opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-7xl font-sixcaps select-none pb-2 absolute"
+                >
+                  {col.title}
+                </motion.h3>
+              </AnimatePresence>
+            </div>
 
-          <ChevronRightIcon
-            onClick={onNext}
-            className="md:hidden w-8 h-8 text-gray-400 cursor-pointer"
-          />
-        </div>
+            <ChevronRightIcon
+              onClick={onNext}
+              className="md:hidden w-8 h-8 text-gray-400 cursor-pointer z-40"
+            />
+          </div>
+
+          {/* Pagination Dots for Mobile */}
+          <div className="flex md:hidden justify-center items-center gap-2 my-4 relative z-30">
+            {Array.from({ length: totalColumns }).map((_, i) => (
+              <motion.div
+                key={i}
+                onClick={() => onSetColumn(i)}
+                initial={false}
+                animate={{
+                  width: currentColumn === i ? 16 : 8,
+                  backgroundColor: currentColumn === i ? "#FFFFFF" : "rgba(255, 255, 255, 0.2)",
+                }}
+                className="h-2 rounded-full cursor-pointer"
+                transition={{ type: "spring", stiffness: 300, damping: 30 }}
+              />
+            ))}
+          </div>
+        </motion.div>
 
         {col.content.map(([key, card]) => (
           <div key={key} data-card-tooltip="true" className="pt-4">
@@ -268,8 +307,10 @@ const Projects = () => {
             col={col}
             index={index}
             currentColumn={currentColumn}
+            totalColumns={columns.length}
             onPrev={handlePrev}
             onNext={handleNext}
+            onSetColumn={setCurrentColumn}
           />
         ))}
       </div>
