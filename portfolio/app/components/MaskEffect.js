@@ -142,7 +142,7 @@ export default function MaskEffect() {
                         {`Learning += Everyday;`}
                         <p>
                             {`cout << " From `}
-                            <span className="text-[#FF00C1]">
+                            <span className="bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent">
                                 concept to product,
                             </span>
                             {` I love building things that work."; }`}

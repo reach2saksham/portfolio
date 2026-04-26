@@ -64,7 +64,7 @@ const HeroText = () => {
 
         {/* Mobile text with Resume button */}
         <div className='block lg:hidden flex flex-col gap-3'>
-          <p>Currently a undergrad student at IIT Roorkee</p>
+          <p>Currently a student at IIT Roorkee</p>
         </div>
 
         <a

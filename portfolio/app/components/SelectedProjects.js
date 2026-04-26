@@ -12,7 +12,7 @@ const SelectedProjects = () => {
       <div className="z-30 relative flex justify-center select-none font-mono font-medium text-sm text-white/60 tracking-wider">
         CASE STUDIES
       </div>
-      <div className="z-30 relative flex gap-4 justify-center select-none py-4 font-ssromandisplay text-4xl sm:text-6xl font-medium">
+      <div className="z-30 relative flex gap-2 sm:gap-4 justify-center select-none py-4 font-ssromandisplay text-3xl sm:text-6xl font-medium">
         <span className="text-white drop-shadow-[0_2px_4px_#4C4C4C] md:drop-shadow-[0_4px_8px_#4C4C4C]">Curated</span>
         <span className="bg-gradient-to-b from-[#DE5971] to-[#FF00C1] bg-clip-text text-transparent">
           Work
