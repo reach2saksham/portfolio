@@ -60,13 +60,20 @@ export default function Home() {
   const footerRef = useRef(null); // The ref is still useful for visibility checks
 
   useEffect(() => {
+    let resizeTimer;
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 1280);
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(() => {
+        setIsMobile(window.innerWidth < 1280);
+      }, 150);
     };
 
-    checkMobile();
+    setIsMobile(window.innerWidth < 1280);
     window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
+    return () => {
+      clearTimeout(resizeTimer);
+      window.removeEventListener('resize', checkMobile);
+    };
   }, []);
 
   useEffect(() => {
